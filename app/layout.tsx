@@ -64,8 +64,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Script
           id="adsense-script"
-          async
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2130981852492599"
           crossOrigin="anonymous"
         />
