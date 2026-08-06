@@ -21,10 +21,11 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
+const HOME_URL = 'https://zaleastudio.com/';
 const HEALTH_CALCULATORS_URL = 'https://health.zaleastudio.com/';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
+  { label: 'Home', href: HOME_URL, external: true },
   { label: 'Health Calculators', href: HEALTH_CALCULATORS_URL, external: true },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
@@ -77,14 +78,14 @@ export default function Home() {
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="#home" className="flex items-center gap-2">
+          <a href={HOME_URL} className="flex items-center gap-2">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
               <Calculator className="h-5 w-5" aria-hidden="true" />
             </span>
             <span className="text-lg font-semibold tracking-tight text-foreground">
               Zalea Studio
             </span>
-          </Link>
+          </a>
 
           <nav
             className="hidden items-center gap-8 md:flex"
@@ -396,14 +397,14 @@ export default function Home() {
       <footer id="contact" className="border-t border-border/60 bg-secondary/30">
         <div className="mx-auto max-w-[1200px] px-4 py-12 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-            <Link href="#home" className="flex items-center gap-2">
+            <a href={HOME_URL} className="flex items-center gap-2">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                 <Calculator className="h-4 w-4" aria-hidden="true" />
               </span>
               <span className="text-base font-semibold text-foreground">
                 Zalea Studio
               </span>
-            </Link>
+            </a>
             <nav
               className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
               aria-label="Footer navigation"
