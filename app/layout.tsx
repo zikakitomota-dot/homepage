@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   },
   description:
     'Zalea Studio builds free online calculators, educational resources, printable products, and digital tools that help people make smarter everyday decisions.',
+  icons: {
+      icon: "/favicon.ico",
+    },
   keywords: [
     'health calculators',
     'BMI calculator',
@@ -29,9 +32,6 @@ export const metadata: Metadata = {
     description:
       'Free online calculators, educational resources, printable products, and digital tools that help people make smarter everyday decisions.',
     siteName: 'Zalea Studio',
-    icons: {
-      icon: "/favicon.ico",
-    },
   },
   twitter: {
     card: 'summary_large_image',
