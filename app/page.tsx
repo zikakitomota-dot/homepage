@@ -21,9 +21,11 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
+const HEALTH_CALCULATORS_URL = 'https://health.zaleastudio.com/';
+
 const navLinks = [
   { label: 'Home', href: '#home' },
-  { label: 'Health Calculators', href: '#health-calculators' },
+  { label: 'Health Calculators', href: HEALTH_CALCULATORS_URL, external: true },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -88,20 +90,30 @@ export default function Home() {
             className="hidden items-center gap-8 md:flex"
             aria-label="Main navigation"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
 
           <div className="hidden md:block">
             <Button asChild size="sm">
-              <Link href="#health-calculators">Get Started</Link>
+              <a href={HEALTH_CALCULATORS_URL}>Get Started</a>
             </Button>
           </div>
 
@@ -143,10 +155,10 @@ export default function Home() {
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg" className="h-12 px-6">
-                  <Link href="#health-calculators">
+                  <a href={HEALTH_CALCULATORS_URL}>
                     Explore Health Calculators
                     <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </Link>
+                  </a>
                 </Button>
                 <Button
                   asChild
@@ -208,7 +220,6 @@ export default function Home() {
 
         {/* Featured Tool */}
         <section
-          id="health-calculators"
           className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 lg:py-24 lg:px-8"
         >
           <div className="mx-auto mb-12 max-w-2xl text-center">
@@ -247,10 +258,10 @@ export default function Home() {
                 weight, water intake and more.
               </p>
               <Button asChild size="lg" className="h-11 px-6">
-                <Link href="#health-calculators">
+                <a href={HEALTH_CALCULATORS_URL}>
                   Visit Health Calculators
                   <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </Link>
+                </a>
               </Button>
             </CardContent>
           </Card>
@@ -371,10 +382,10 @@ export default function Home() {
                 size="lg"
                 className="h-12 bg-white px-6 text-primary hover:bg-blue-50"
               >
-                <Link href="#health-calculators">
+                <a href={HEALTH_CALCULATORS_URL}>
                   Explore Health Calculators
                   <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </Link>
+                </a>
               </Button>
             </div>
           </div>
