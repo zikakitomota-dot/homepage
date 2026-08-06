@@ -17,9 +17,11 @@ export const metadata: Metadata = {
     'google-adsense-account': 'ca-pub-2130981852492599',
   },
   icons: {
-      icon: "/favicon.ico",
-      shortcut: "/favicon.ico",
-      apple: "/favicon.ico",
+       icon: [
+        { url: "/favicon.ico" },
+        { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      ],
+      apple: "/apple-touch-icon.png",
     },
   keywords: [
     'health calculators',
