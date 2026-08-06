@@ -14,6 +14,8 @@ export const metadata: Metadata = {
     'Zalea Studio builds free online calculators, educational resources, printable products, and digital tools that help people make smarter everyday decisions.',
   icons: {
       icon: "/favicon.ico",
+      shortcut: "/favicon.ico",
+      apple: "/favicon.ico",
     },
   keywords: [
     'health calculators',
