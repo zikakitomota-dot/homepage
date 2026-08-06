@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       'Free online calculators, educational resources, printable products, and digital tools that help people make smarter everyday decisions.',
     siteName: 'Zalea Studio',
     icons: {
-      icon: "/favicon.png",
+      icon: "/favicon.ico",
     },
   },
   twitter: {
