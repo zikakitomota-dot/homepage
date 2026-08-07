@@ -27,7 +27,8 @@ const PAYHIP_URL = 'https://payhip.com/ZaleaStudio';
 
 const navLinks = [
   { label: 'Home', href: HOME_URL, external: true },
-  { label: 'Health Calculators', href: HEALTH_CALCULATORS_URL, external: true },
+  { label: 'Tools', href: HEALTH_CALCULATORS_URL, external: true },
+  { label: 'Shop', href: PAYHIP_URL, external: true },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -410,30 +411,20 @@ export default function Home() {
               className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
               aria-label="Footer navigation"
             >
-              <Link
-                href="#about"
+              <a
+                href={HOME_URL}
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                About
-              </Link>
-              <Link
-                href="#privacy"
+                Home
+              </a>
+              <a
+                href={HEALTH_CALCULATORS_URL}
+                target="_blank"
+                rel="noreferrer"
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                Privacy Policy
-              </Link>
-              <Link
-                href="#terms"
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Terms of Use
-              </Link>
-              <Link
-                href="#contact"
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Contact
-              </Link>
+                Tools
+              </a>
               <a
                 href={PAYHIP_URL}
                 target="_blank"
@@ -442,6 +433,18 @@ export default function Home() {
               >
                 Shop
               </a>
+              <Link
+                href="#about"
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                About
+              </Link>
+              <Link
+                href="#contact"
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Contact
+              </Link>
             </nav>
           </div>
           <div className="mt-8 border-t border-border/60 pt-6 text-center">
