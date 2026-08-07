@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     'Zalea Studio builds free online calculators, educational resources, printable products, and digital tools that help people make smarter everyday decisions.',
   other: {
     'google-adsense-account': 'ca-pub-2130981852492599',
+    'p:domain_verify': '1398120562850ed1f403122bb9b2fdff',
   },
   icons: {
        icon: [
