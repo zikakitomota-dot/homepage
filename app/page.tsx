@@ -23,6 +23,7 @@ import { Badge } from '@/components/ui/badge';
 
 const HOME_URL = 'https://zaleastudio.com/';
 const HEALTH_CALCULATORS_URL = 'https://health.zaleastudio.com/';
+const PAYHIP_URL = 'https://payhip.com/ZaleaStudio';
 
 const navLinks = [
   { label: 'Home', href: HOME_URL, external: true },
@@ -433,6 +434,14 @@ export default function Home() {
               >
                 Contact
               </Link>
+              <a
+                href={PAYHIP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Shop
+              </a>
             </nav>
           </div>
           <div className="mt-8 border-t border-border/60 pt-6 text-center">
