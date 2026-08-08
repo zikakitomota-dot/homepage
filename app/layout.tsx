@@ -8,11 +8,11 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' });
 export const metadata: Metadata = {
   metadataBase: new URL('https://zaleastudio.com'),
   title: {
-    default: 'Zalea Studio — Free Online Calculators & Digital Tools',
+    default: 'Zalea Studio | Free Online Tools & Digital Products',
     template: '%s | Zalea Studio',
   },
   description:
-    'Zalea Studio builds free online calculators, educational resources, printable products, and digital tools that help people make smarter everyday decisions.',
+    'Free online tools, educational games, printable resources, and practical digital products designed to make everyday decisions easier.',
   other: {
     'google-adsense-account': 'ca-pub-2130981852492599',
     'p:domain_verify': '1398120562850ed1f403122bb9b2fdff',
@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     'calorie calculator',
     'free online tools',
     'educational printables',
+    'educational games',
+    'financial literacy for kids',
+    'digital products',
     'digital tools',
     'Zalea Studio',
   ],
@@ -37,16 +40,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    title: 'Zalea Studio — Free Online Calculators & Digital Tools',
+    title: 'Zalea Studio | Free Online Tools & Digital Products',
     description:
-      'Free online calculators, educational resources, printable products, and digital tools that help people make smarter everyday decisions.',
+      'Free online tools, educational games, printable resources, and practical digital products designed to make everyday decisions easier.',
     siteName: 'Zalea Studio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Zalea Studio — Free Online Calculators & Digital Tools',
+    title: 'Zalea Studio | Free Online Tools & Digital Products',
     description:
-      'Free online calculators, educational resources, printable products, and digital tools that help people make smarter everyday decisions.',
+      'Free online tools, educational games, printable resources, and practical digital products designed to make everyday decisions easier.',
   },
   robots: {
     index: true,
