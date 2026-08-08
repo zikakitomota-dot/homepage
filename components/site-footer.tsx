@@ -7,10 +7,10 @@ const footerLinks = [
   { label: 'Tools', href: HEALTH_TOOLS_URL, external: true },
   { label: 'Games', href: '/games', external: false },
   { label: 'Shop', href: '/shop', external: false },
-  { label: 'About', href: '/#about', external: false },
-  { label: 'Contact', href: '/#contact', external: false },
-  { label: 'Privacy Policy', href: '/privacy', external: false },
-  { label: 'Terms of Use', href: '/terms', external: false },
+  { label: 'About', href: '/about', external: false },
+  { label: 'Contact', href: '/contact', external: false },
+  { label: 'Privacy Policy', href: '/privacy-policy', external: false },
+  { label: 'Terms of Use', href: '/terms-of-use', external: false },
 ] as const;
 
 export function SiteFooter() {

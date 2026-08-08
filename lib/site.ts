@@ -5,6 +5,11 @@ export const HEALTH_TOOLS_URL = 'https://health.zaleastudio.com/';
 // product-specific checkout URL when one becomes available.
 export const PAYHIP_PRODUCT_URL = 'https://payhip.com/ZaleaStudio';
 
+// Set NEXT_PUBLIC_CONTACT_EMAIL to the real monitored support address before
+// publishing it. The contact page labels the example address when unset.
+export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || null;
+export const CONTACT_EMAIL_EXAMPLE = 'contact@zaleastudio.com';
+
 export const navLinks = [
   { label: 'Home', href: '/', external: false },
   { label: 'Games', href: '/games', external: false },
