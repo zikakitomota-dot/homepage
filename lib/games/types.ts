@@ -1,4 +1,5 @@
 export type GameAccess = 'free' | 'premium';
+export type GameCategory = 'Grammar' | 'Vocabulary';
 
 export type GameQuestion = {
   id: string;
@@ -9,19 +10,27 @@ export type GameQuestion = {
   illustration?: string;
 };
 
-export type EnglishGame = {
+export type GameSummary = {
   id: string;
   slug: string;
   title: string;
   shortDescription: string;
-  seoDescription: string;
-  category: 'Grammar';
-  level: 1;
+  category: GameCategory;
+  level: 1 | 2;
   access: GameAccess;
   icon: string;
+  learningObjective: string;
+};
+
+export type EnglishGame = GameSummary & {
+  seoDescription: string;
   instructions: string;
   whatItTeaches: string;
-  learningObjective: string;
   parentTip: string;
   questions: readonly GameQuestion[];
+};
+
+export type AcademyGameSummary = GameSummary & {
+  questionCount: number;
+  interaction: 'multipleChoice' | 'visualMultipleChoice' | 'wordOrder';
 };

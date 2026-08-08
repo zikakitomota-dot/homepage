@@ -88,6 +88,11 @@ export function GameEngine({ game, nextGame }: { game: EnglishGame; nextGame?: P
             <Button asChild size="lg" variant="outline" className="min-h-12"><Link href="/games/english"><ArrowLeft className="mr-2 h-5 w-5" aria-hidden="true" />English Games</Link></Button>
           </div>
           {nextGame && <Link href={`/games/english/${nextGame.slug}`} className="mt-6 inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Try another game: {nextGame.title}<ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link>}
+          <div className="mt-8 w-full rounded-2xl border border-violet-200 bg-violet-50 p-5">
+            <p className="font-bold text-violet-950">Ready for another challenge?</p>
+            <p className="mt-1 text-sm leading-relaxed text-violet-800">Explore Zalea English Academy for Grammar Level 2 and Vocabulary games.</p>
+            <Button asChild variant="outline" className="mt-4 min-h-11 border-violet-300 bg-white text-violet-800 hover:bg-violet-100 hover:text-violet-900"><Link href="/games/english/academy">Explore Academy<Sparkles className="ml-2 h-4 w-4" aria-hidden="true" /></Link></Button>
+          </div>
         </CardContent>
       </Card>
     );

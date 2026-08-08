@@ -1,8 +1,14 @@
 import type { GameAccess } from './types';
 
-export function canAccessGame(access: GameAccess) {
-  return access === 'free';
+export type EntitlementStatus = 'free' | 'premium' | 'unknown';
+
+export function getEntitlementStatus(access: GameAccess): EntitlementStatus {
+  return access === 'free' ? 'free' : 'unknown';
 }
 
-// Future premium access should replace this boundary with a server-validated
-// entitlement. Never validate Payhip credentials or license keys in this client helper.
+export function canAccessGame(access: GameAccess) {
+  return getEntitlementStatus(access) === 'free';
+}
+
+// Future premium access must replace the unknown state with a server-validated,
+// signed entitlement. Never validate Payhip credentials or license keys here.
