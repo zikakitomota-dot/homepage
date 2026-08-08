@@ -130,5 +130,13 @@ export default function AcademyPage() {
 
         <section className="border-y border-border/60 bg-secondary/30"><div className="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6 lg:px-8"><MessageCircleHeart className="mx-auto h-10 w-10 text-violet-700" aria-hidden="true" /><h2 className="mt-4 text-3xl font-bold">Trusted by Parents</h2><p className="mt-4 text-lg text-muted-foreground">Parent reviews coming soon.</p></div></section>
 
-        <section><div className="mx-auto max-w-2xl px-4 py-14 text-center sm:px-6 lg:px-8"><LockKeyhole className="mx-auto h-9 w-9 text-violet-700" aria-hidden="true" /><h2 className="mt-4 text-3xl font-bold">Already purchased?</h2><p className="mt-4 leading-relaxed text-muted-foreground">Lifetime Access customers will use their Payhip license key here when the Academy opens.</p><div className="mx-auto mt-6 flex max-w-lg flex-col gap-3 sm:flex-row"><input disabled aria-label="License key access opens with launch" placeholder="License key" className="min-h-12 flex-1 rounded-md border border-input bg-background px-3 disabled:cursor-not-allowed disabled:opacity-60" /><Button disabled className="h-auto min-h-12 whitespace-normal py-3…3844 tokens truncated…);
+        <section><div className="mx-auto max-w-2xl px-4 py-14 text-center sm:px-6 lg:px-8"><LockKeyhole className="mx-auto h-9 w-9 text-violet-700" aria-hidden="true" /><h2 className="mt-4 text-3xl font-bold">Already purchased?</h2><p className="mt-4 leading-relaxed text-muted-foreground">Lifetime Access customers will use their Payhip license key here when the Academy opens.</p><div className="mx-auto mt-6 flex max-w-lg flex-col gap-3 sm:flex-row"><input disabled aria-label="License key access opens with launch" placeholder="License key" className="min-h-12 flex-1 rounded-md border border-input bg-background px-3 disabled:cursor-not-allowed disabled:opacity-60" /><Button disabled className="h-auto min-h-12 whitespace-normal py-3">Unlock Academy — Opening Soon</Button></div></div></section>
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}
+
+function SectionHeading({ icon, title, subtitle }: { icon: React.ReactNode; title: string; subtitle: string }) {
+  return <div className="mb-9 flex items-start gap-4"><span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700">{icon}</span><div><h2 className="text-3xl font-bold tracking-tight">{title}</h2><p className="mt-2 text-muted-foreground">{subtitle}</p></div></div>;
 }
