@@ -7,6 +7,7 @@ export const PAYHIP_PRODUCT_URL = 'https://payhip.com/ZaleaStudio';
 
 export const navLinks = [
   { label: 'Home', href: '/', external: false },
+  { label: 'Games', href: '/games', external: false },
   { label: 'Shop', href: '/shop', external: false },
   { label: 'About', href: '/#about', external: false },
   { label: 'Contact', href: '/#contact', external: false },

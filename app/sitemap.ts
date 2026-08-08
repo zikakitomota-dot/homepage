@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { englishGames } from "@/lib/games/english-games";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://zaleastudio.com";
@@ -41,6 +42,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: path === "/money" ? 0.9 : 0.8,
+    })),
+    {
+      url: `${baseUrl}/games`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/games/english`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    ...englishGames.map((game) => ({
+      url: `${baseUrl}/games/english/${game.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
     {
       url: `${baseUrl}/contact`,
