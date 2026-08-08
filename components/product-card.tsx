@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Award, BookOpen, Gamepad2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -12,12 +13,15 @@ export function ProductCard({ featured = false }: ProductCardProps) {
   return (
     <Card className="overflow-hidden border-border/60 shadow-md">
       <div className={featured ? 'grid lg:grid-cols-[0.8fr_1.2fr]' : ''}>
-        <div className="flex min-h-64 items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 p-8" aria-label="Product image placeholder">
-          <div className="flex aspect-[4/3] w-full max-w-sm flex-col items-center justify-center rounded-2xl border border-dashed border-primary/30 bg-white/70 p-6 text-center shadow-sm">
-            <Gamepad2 className="h-12 w-12 text-primary" aria-hidden="true" />
-            <p className="mt-4 font-semibold text-foreground">Little Money Master™</p>
-            <p className="mt-1 text-sm text-muted-foreground">Product image coming soon</p>
-          </div>
+        <div className="flex min-h-64 items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 p-6 sm:p-8">
+          <Image
+            src="/images/Cover.png"
+            alt="Little Money Master Volume 1: Needs or Wants educational game cover"
+            width={1587}
+            height={2245}
+            className="h-auto max-h-[32rem] w-auto max-w-full rounded-2xl object-contain shadow-md"
+            sizes={featured ? '(min-width: 1024px) 32vw, 90vw' : '(min-width: 768px) 672px, 90vw'}
+          />
         </div>
         <div>
           <CardHeader>
