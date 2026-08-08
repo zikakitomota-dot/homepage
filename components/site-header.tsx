@@ -1,13 +1,17 @@
 import Link from 'next/link';
-import { Calculator, Menu } from 'lucide-react';
+import { Calculator, ChevronDown, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { HEALTH_TOOLS_URL, navLinks } from '@/lib/site';
+import { HEALTH_TOOLS_URL, navLinks, toolLinks } from '@/lib/site';
+
+type NavigationLink =
+  | (typeof navLinks)[number]
+  | (typeof toolLinks)[number];
 
 function NavItem({
   href,
   label,
   external,
-}: (typeof navLinks)[number]) {
+}: NavigationLink) {
   const className =
     'text-sm font-medium text-muted-foreground transition-colors hover:text-foreground';
 
@@ -19,6 +23,43 @@ function NavItem({
     <Link href={href} className={className}>
       {label}
     </Link>
+  );
+}
+
+function DesktopToolsMenu() {
+  return (
+    <details className="group relative">
+      <summary className="flex cursor-pointer list-none items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
+        Tools
+        <ChevronDown
+          className="h-4 w-4 transition-transform group-open:rotate-180"
+          aria-hidden="true"
+        />
+      </summary>
+      <div className="absolute left-1/2 top-full z-50 mt-3 w-44 -translate-x-1/2 rounded-xl border border-border/60 bg-background p-2 shadow-xl">
+        {toolLinks.map((link) => (
+          <div key={link.label} className="rounded-lg px-3 py-2 hover:bg-accent">
+            <NavItem {...link} />
+          </div>
+        ))}
+      </div>
+    </details>
+  );
+}
+
+function MobileToolsMenu() {
+  return (
+    <details>
+      <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium text-muted-foreground transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
+        Tools
+        <ChevronDown className="h-4 w-4" aria-hidden="true" />
+      </summary>
+      <div className="mt-3 flex flex-col gap-3 border-l border-border pl-4">
+        {toolLinks.map((link) => (
+          <NavItem key={link.label} {...link} />
+        ))}
+      </div>
+    </details>
   );
 }
 
@@ -36,7 +77,9 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
-          {navLinks.map((link) => (
+          <NavItem {...navLinks[0]} />
+          <DesktopToolsMenu />
+          {navLinks.slice(1).map((link) => (
             <NavItem key={link.label} {...link} />
           ))}
         </nav>
@@ -56,7 +99,9 @@ export function SiteHeader() {
             className="absolute right-0 top-12 flex w-52 flex-col gap-4 rounded-xl border border-border/60 bg-background p-5 shadow-xl"
             aria-label="Mobile navigation"
           >
-            {navLinks.map((link) => (
+            <NavItem {...navLinks[0]} />
+            <MobileToolsMenu />
+            {navLinks.slice(1).map((link) => (
               <NavItem key={link.label} {...link} />
             ))}
           </nav>

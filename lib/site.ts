@@ -7,10 +7,14 @@ export const PAYHIP_PRODUCT_URL = 'https://payhip.com/ZaleaStudio';
 
 export const navLinks = [
   { label: 'Home', href: '/', external: false },
-  { label: 'Tools', href: HEALTH_TOOLS_URL, external: true },
   { label: 'Shop', href: '/shop', external: false },
   { label: 'About', href: '/#about', external: false },
   { label: 'Contact', href: '/#contact', external: false },
+] as const;
+
+export const toolLinks = [
+  { label: 'Health', href: HEALTH_TOOLS_URL, external: true },
+  { label: 'Money', href: '/money', external: false },
 ] as const;
 
 export const littleMoneyMaster = {

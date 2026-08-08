@@ -28,6 +28,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    ...[
+      "/money",
+      "/money/discount-calculator",
+      "/money/split-bill-calculator",
+      "/money/savings-goal-calculator",
+      "/money/unit-price-calculator",
+      "/money/fuel-cost-calculator",
+      "/money/cashback-calculator",
+    ].map((path) => ({
+      url: `${baseUrl}${path}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: path === "/money" ? 0.9 : 0.8,
+    })),
     {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
