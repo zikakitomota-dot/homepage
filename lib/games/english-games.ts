@@ -44,7 +44,7 @@ const canCant = [
 ] as const;
 
 const whoIsIt = [
-  ['I am holding a pencil.', 'I'], ['The teacher is talking to Sam: “___ are helpful.”', 'you'], ['Tom is my brother. ___ is kind.', 'he'],
+  ['___ am holding a pencil.', 'I'], ['The teacher is talking to Sam: “___ are helpful.”', 'you'], ['Tom is my brother. ___ is kind.', 'he'],
   ['Mina is reading. ___ likes books.', 'she'], ['The robot is new. ___ can move.', 'it'], ['Sara and I are playing. ___ are a team.', 'we'],
   ['Tom and Ali are friends. ___ play together.', 'they'], ['I am seven. ___ like drawing.', 'I'], ['Mum says to me: “___ are ready.”', 'you'],
   ['Ben has a kite. ___ flies it.', 'he'], ['Ava has a red bag. ___ carries it.', 'she'], ['The bus is here. ___ is yellow.', 'it'],
