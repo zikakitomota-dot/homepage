@@ -76,7 +76,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
           <NavItem {...navLinks[0]} />
           <DesktopToolsMenu />
           {navLinks.slice(1).map((link) => (
@@ -84,13 +84,13 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Button asChild size="sm">
             <a href={HEALTH_TOOLS_URL}>Explore Tools</a>
           </Button>
         </div>
 
-        <details className="group relative md:hidden">
+        <details className="group relative lg:hidden">
           <summary className="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-lg text-muted-foreground hover:bg-accent [&::-webkit-details-marker]:hidden">
             <span className="sr-only">Open navigation menu</span>
             <Menu className="h-5 w-5" aria-hidden="true" />

@@ -1,21 +1,18 @@
 export const SITE_URL = 'https://zaleastudio.com';
 export const HEALTH_TOOLS_URL = 'https://health.zaleastudio.com/';
+export const ABOUT_ROUTE = '/about';
+export const CONTACT_ROUTE = '/contact';
 
 // Existing Zalea Studio Payhip destination. Replace this value with the
 // product-specific checkout URL when one becomes available.
 export const PAYHIP_PRODUCT_URL = 'https://payhip.com/ZaleaStudio';
 
-// Set NEXT_PUBLIC_CONTACT_EMAIL to the real monitored support address before
-// publishing it. The contact page labels the example address when unset.
-export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || null;
-export const CONTACT_EMAIL_EXAMPLE = 'contact@zaleastudio.com';
-
 export const navLinks = [
   { label: 'Home', href: '/', external: false },
   { label: 'Games', href: '/games', external: false },
   { label: 'Shop', href: '/shop', external: false },
-  { label: 'About', href: '/#about', external: false },
-  { label: 'Contact', href: '/#contact', external: false },
+  { label: 'About', href: ABOUT_ROUTE, external: false },
+  { label: 'Contact', href: CONTACT_ROUTE, external: false },
 ] as const;
 
 export const toolLinks = [

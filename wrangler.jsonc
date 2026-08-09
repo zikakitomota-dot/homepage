@@ -23,5 +23,15 @@
 		// Enable image optimization
 		// see https://opennext.js.org/cloudflare/howtos/image
 		"binding": "IMAGES"
-	}
+	},
+	"ratelimits": [
+		{
+			"name": "CONTACT_RATE_LIMITER",
+			"namespace_id": "20260809",
+			"simple": {
+				"limit": 5,
+				"period": 60
+			}
+		}
+	]
 }

@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { ProductCard } from '@/components/product-card';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
-import { HEALTH_TOOLS_URL } from '@/lib/site';
+import { ABOUT_ROUTE, HEALTH_TOOLS_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: { absolute: 'Shop Educational Games & Digital Resources | Zalea Studio' },
@@ -47,7 +47,7 @@ export default function ShopPage() {
         <section className="border-t border-border/60 bg-secondary/30">
           <div className="mx-auto max-w-[1200px] px-4 py-12 sm:px-6 lg:px-8">
             <p className="text-center text-muted-foreground">
-              Looking for something free? Visit our <a href={HEALTH_TOOLS_URL} className="font-medium text-primary hover:underline">online tools</a>, or learn more <Link href="/#about" className="font-medium text-primary hover:underline">about Zalea Studio</Link>.
+              Looking for something free? Visit our <a href={HEALTH_TOOLS_URL} className="font-medium text-primary hover:underline">online tools</a>, or learn more <Link href={ABOUT_ROUTE} className="font-medium text-primary hover:underline">about Zalea Studio</Link>.
               <ArrowRight className="ml-1 inline h-4 w-4" aria-hidden="true" />
             </p>
           </div>
