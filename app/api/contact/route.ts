@@ -3,11 +3,23 @@ import { z } from 'zod';
 
 const CONTACT_TO_EMAIL = 'zikakitomota@gmail.com';
 const RESEND_API_URL = 'https://api.resend.com/emails';
+const RESEND_FROM_EMAIL = 'Zalea Studio <contact@zaleastudio.com>';
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 5;
 
 type RateLimitBinding = {
   limit: (options: { key: string }) => Promise<{ success: boolean }>;
+};
+
+type CloudflareBindings = {
+  CONTACT_RATE_LIMITER?: RateLimitBinding;
+  RESEND_API_KEY?: string;
+};
+
+type ResendErrorPayload = {
+  message?: unknown;
+  name?: unknown;
+  statusCode?: unknown;
 };
 
 const localRateLimits = new Map<string, { count: number; resetAt: number }>();
@@ -45,15 +57,25 @@ async function hashRateLimitKey(value: string) {
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
 }
 
-async function isRateLimited(key: string) {
+function getCloudflareBindings() {
   try {
-    const env = getCloudflareContext().env as unknown as { CONTACT_RATE_LIMITER?: RateLimitBinding };
-    if (env.CONTACT_RATE_LIMITER) {
-      const result = await env.CONTACT_RATE_LIMITER.limit({ key });
-      return !result.success;
-    }
+    return getCloudflareContext().env as unknown as CloudflareBindings;
   } catch {
-    // `next dev` has no Cloudflare request context, so use the local fallback.
+    return undefined;
+  }
+}
+
+function getResendApiKey() {
+  return getCloudflareBindings()?.RESEND_API_KEY?.trim()
+    || process.env.RESEND_API_KEY?.trim()
+    || null;
+}
+
+async function isRateLimited(key: string) {
+  const rateLimiter = getCloudflareBindings()?.CONTACT_RATE_LIMITER;
+  if (rateLimiter) {
+    const result = await rateLimiter.limit({ key });
+    return !result.success;
   }
 
   const now = Date.now();
@@ -64,6 +86,23 @@ async function isRateLimited(key: string) {
   }
   current.count += 1;
   return current.count > RATE_LIMIT_MAX;
+}
+
+async function logResendError(response: Response) {
+  let details: ResendErrorPayload | null = null;
+  try {
+    details = await response.json() as ResendErrorPayload;
+  } catch {
+    // Resend did not return a JSON error body.
+  }
+
+  console.error('[contact] Resend rejected the email request.', {
+    status: response.status,
+    requestId: response.headers.get('x-request-id') || undefined,
+    errorName: typeof details?.name === 'string' ? details.name : undefined,
+    errorMessage: typeof details?.message === 'string' ? details.message : undefined,
+    errorStatusCode: typeof details?.statusCode === 'number' ? details.statusCode : undefined,
+  });
 }
 
 function formatTextBody(data: z.infer<typeof contactSchema>, submittedAt: string, ipAddress: string) {
@@ -127,11 +166,11 @@ export async function POST(request: Request) {
     return json('Too many messages were submitted. Please wait a minute and try again.', 429);
   }
 
-  const apiKey = process.env.RESEND_API_KEY?.trim();
-  const from = process.env.RESEND_FROM_EMAIL?.trim();
-  if (!apiKey || !from) {
-    console.error('Contact email delivery is not configured.');
-    return json('Email delivery is temporarily unavailable. Please try again later.', 503);
+  const apiKey = getResendApiKey();
+  if (!apiKey) {
+    const configurationError = 'Contact email delivery is unavailable because RESEND_API_KEY needs to be configured in the server environment.';
+    console.error(`[contact] ${configurationError}`);
+    return json(configurationError, 503);
   }
 
   const submittedAt = new Date().toISOString();
@@ -145,7 +184,7 @@ export async function POST(request: Request) {
         'Idempotency-Key': crypto.randomUUID(),
       },
       body: JSON.stringify({
-        from,
+        from: RESEND_FROM_EMAIL,
         to: [CONTACT_TO_EMAIL],
         reply_to: data.email,
         subject: `[Zalea Studio Contact] ${data.subject}`,
@@ -153,13 +192,16 @@ export async function POST(request: Request) {
         html: formatHtmlBody(data, submittedAt, ipAddress),
       }),
     });
-  } catch {
-    console.error('Contact email delivery request failed.');
+  } catch (error) {
+    console.error('[contact] The Resend API request failed before a response was received.', {
+      errorName: error instanceof Error ? error.name : 'UnknownError',
+      errorMessage: error instanceof Error ? error.message : 'Unknown network error',
+    });
     return json('Your message could not be sent right now. Please try again in a moment.', 502);
   }
 
   if (!resendResponse.ok) {
-    console.error('Resend rejected a contact email delivery request.', { status: resendResponse.status });
+    await logResendError(resendResponse);
     return json('Your message could not be sent right now. Please try again in a moment.', 502);
   }
 
