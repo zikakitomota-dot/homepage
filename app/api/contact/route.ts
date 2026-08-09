@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 const CONTACT_TO_EMAIL = 'zikakitomota@gmail.com';
 const RESEND_API_URL = 'https://api.resend.com/emails';
-const RESEND_FROM_EMAIL = 'Zalea Studio <contact@zaleastudio.com>';
+const RESEND_FROM_EMAIL = 'Zalea Studio <contact@mail.zaleastudio.com>';
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 5;
 
