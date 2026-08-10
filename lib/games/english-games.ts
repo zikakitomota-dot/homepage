@@ -1,7 +1,7 @@
-import type { EnglishGame, GameQuestion } from './types';
+import { gameDifficulties, type EnglishGame, type GameDifficulty, type GameQuestion } from './types';
 
-const q = (id: string, prompt: string, choices: readonly string[], correctAnswer: string, explanation: string, illustration?: string): GameQuestion =>
-  ({ id, prompt, choices, correctAnswer, explanation, illustration });
+const q = (id: string, prompt: string, choices: readonly string[], correctAnswer: string, explanation: string, illustration: string | undefined, difficulty: GameDifficulty): GameQuestion =>
+  ({ id, prompt, choices, correctAnswer, explanation, illustration, difficulty });
 
 const articleQuestions = [
   ['apple', 'an', '🍎'], ['banana', 'a', '🍌'], ['orange', 'an', '🍊'], ['cat', 'a', '🐱'], ['elephant', 'an', '🐘'],
@@ -20,9 +20,9 @@ const oneManyItems = [
 ] as const;
 
 const heSheIt = [
-  ['Tom is running.', 'he'], ['Sara is reading.', 'she'], ['The dog is sleeping.', 'it'], ['Adam is drawing.', 'he'],
-  ['Maya is singing.', 'she'], ['The ball is red.', 'it'], ['Ben is eating lunch.', 'he'], ['Lina is riding a bicycle.', 'she'],
-  ['The bird is in the tree.', 'it'], ['Omar is my brother.', 'he'], ['Aisha is my friend.', 'she'], ['The book is on the desk.', 'it'],
+  ['Tom → ___', 'he'], ['Sara → ___', 'she'], ['A dog → ___', 'it'], ['Adam → ___', 'he'],
+  ['Maya → ___', 'she'], ['A ball → ___', 'it'], ['Ben → ___', 'he'], ['Lina → ___', 'she'],
+  ['A bird → ___', 'it'], ['Omar → ___', 'he'], ['Aisha is my friend.', 'she'], ['The book is on the desk.', 'it'],
   ['Leo is swimming.', 'he'], ['Nora is smiling.', 'she'], ['The bus is yellow.', 'it'], ['Sam is kicking the ball.', 'he'],
   ['Mei is painting.', 'she'], ['The flower is pretty.', 'it'], ['Jack is wearing a hat.', 'he'], ['Priya is opening the door.', 'she'],
 ] as const;
@@ -44,10 +44,10 @@ const canCant = [
 ] as const;
 
 const whoIsIt = [
-  ['___ am holding a pencil.', 'I'], ['The teacher is talking to Sam: “___ are helpful.”', 'you'], ['Tom is my brother. ___ is kind.', 'he'],
-  ['Mina is reading. ___ likes books.', 'she'], ['The robot is new. ___ can move.', 'it'], ['Sara and I are playing. ___ are a team.', 'we'],
-  ['Tom and Ali are friends. ___ play together.', 'they'], ['I am seven. ___ like drawing.', 'I'], ['Mum says to me: “___ are ready.”', 'you'],
-  ['Ben has a kite. ___ flies it.', 'he'], ['Ava has a red bag. ___ carries it.', 'she'], ['The bus is here. ___ is yellow.', 'it'],
+  ['Me → ___', 'I'], ['The person I am speaking to → ___', 'you'], ['Tom → ___', 'he'],
+  ['Mina → ___', 'she'], ['The robot → ___', 'it'], ['Sara and I → ___', 'we'],
+  ['Tom and Ali → ___', 'they'], ['Myself → ___', 'I'], ['Sam, when I speak to him → ___', 'you'],
+  ['Ben → ___', 'he'], ['Ava has a red bag. ___ carries it.', 'she'], ['The bus is here. ___ is yellow.', 'it'],
   ['My sister and I cook. ___ help Dad.', 'we'], ['The cats are sleeping. ___ are quiet.', 'they'], ['I have a ball. ___ can throw it.', 'I'],
   ['Dad asks Sam: “Can ___ help me?”', 'you'], ['Leo is swimming. ___ is fast.', 'he'], ['Nora is smiling. ___ is happy.', 'she'],
   ['The apple fell. ___ is on the floor.', 'it'], ['My friends and I read. ___ love stories.', 'we'], ['The children are outside. ___ are running.', 'they'],
@@ -69,10 +69,10 @@ const whoseIsIt = [
 ] as const;
 
 const whereIsIt = [
-  ['The apple is ___ the bowl.', 'in'], ['The book is resting ___ the table.', 'on'], ['The shoes are ___ the bed.', 'under'],
-  ['The child is hiding ___ the curtain.', 'behind'], ['The teacher is standing ___ the class.', 'in front of'], ['The lamp is ___ the sofa.', 'next to'],
-  ['The fish is ___ the water.', 'in'], ['The cup is ___ the tray.', 'on'], ['The ball rolled ___ the chair.', 'under'],
-  ['The moon is ___ the cloud.', 'behind'], ['The bus is waiting ___ the school.', 'in front of'], ['The pencil is ___ the notebook.', 'next to'],
+  ['The apple is ___ the bowl.', 'in'], ['The book is ___ the table.', 'on'], ['The shoes are ___ the bed.', 'under'],
+  ['The toy is ___ the box.', 'in'], ['The cup is ___ the tray.', 'on'], ['The ball is ___ the chair.', 'under'],
+  ['The fish is ___ the water.', 'in'], ['The cap is ___ the shelf.', 'on'], ['The puppy is ___ the table.', 'under'],
+  ['The pencils are ___ the bag.', 'in'], ['The bus is waiting ___ the school.', 'in front of'], ['The pencil is ___ the notebook.', 'next to'],
   ['The toys are ___ the box.', 'in'], ['The picture hangs ___ the wall.', 'on'], ['The cat sleeps ___ the blanket.', 'under'],
   ['The garden is ___ the house.', 'behind'], ['The speaker stands ___ the audience.', 'in front of'], ['The tree is ___ the playground.', 'next to'],
   ['The milk is ___ the fridge.', 'in'], ['The hat is ___ his head.', 'on'],
@@ -95,7 +95,134 @@ const hasHave = [
 ] as const;
 
 const fixed = (prefix: string, rows: readonly (readonly [string, string])[], choices: readonly string[], explanation: (answer: string, prompt: string) => string) =>
-  rows.map(([prompt, answer], index) => q(`${prefix}-${index + 1}`, prompt, choices, answer, explanation(answer, prompt)));
+  rows.map(([prompt, answer], index) => q(`${prefix}-${index + 1}`, prompt, choices, answer, explanation(answer, prompt), undefined, index < 10 ? 'easy' : 'normal'));
+
+type ChallengeRow = readonly [prompt: string, choices: readonly string[], answer: string];
+const challengePool = (prefix: string, rows: readonly ChallengeRow[]) => rows.map(([prompt, choices, answer], index) =>
+  q(`${prefix}-challenge-${index + 1}`, prompt, choices, answer, `The correct answer is “${answer}”.`, undefined, 'challenge'));
+
+const challengeQuestions: Record<string, readonly GameQuestion[]> = {
+  'a-or-an': challengePool('article', [
+    ['Choose the correct sentence.', ['She has a umbrella.', 'She has an umbrella.'], 'She has an umbrella.'],
+    ['Choose the correct sentence.', ['I ate a orange.', 'I ate an orange.'], 'I ate an orange.'],
+    ['Choose the correct sentence.', ['He sees a rabbit.', 'He sees an rabbit.'], 'He sees a rabbit.'],
+    ['Choose the correct sentence.', ['It is a insect.', 'It is an insect.'], 'It is an insect.'],
+    ['Choose the correct sentence.', ['Mia drew a star.', 'Mia drew an star.'], 'Mia drew a star.'],
+    ['Choose the correct sentence.', ['We saw a owl.', 'We saw an owl.'], 'We saw an owl.'],
+    ['Choose the correct sentence.', ['Dad has a car.', 'Dad has an car.'], 'Dad has a car.'],
+    ['Choose the correct sentence.', ['I need a pencil.', 'I need an pencil.'], 'I need a pencil.'],
+    ['Choose the correct sentence.', ['She ate a avocado.', 'She ate an avocado.'], 'She ate an avocado.'],
+    ['Choose the correct sentence.', ['He made a igloo.', 'He made an igloo.'], 'He made an igloo.'],
+  ]),
+  'one-or-many': challengePool('number', [
+    ['Choose the correct phrase for 2 dogs.', ['Two dog', 'Two dogs'], 'Two dogs'],
+    ['Choose the correct phrase for 1 cat.', ['One cat', 'One cats'], 'One cat'],
+    ['Choose the correct phrase for 3 books.', ['Three book', 'Three books'], 'Three books'],
+    ['Choose the correct phrase for 1 flower.', ['One flower', 'One flowers'], 'One flower'],
+    ['Choose the correct phrase for 4 stars.', ['Four star', 'Four stars'], 'Four stars'],
+    ['Choose the correct phrase for 1 pencil.', ['One pencil', 'One pencils'], 'One pencil'],
+    ['Choose the correct phrase for 2 birds.', ['Two bird', 'Two birds'], 'Two birds'],
+    ['Choose the correct phrase for 1 cup.', ['One cup', 'One cups'], 'One cup'],
+    ['Choose the correct phrase for 5 apples.', ['Five apple', 'Five apples'], 'Five apples'],
+    ['Choose the correct phrase for 1 ball.', ['One ball', 'One balls'], 'One ball'],
+  ]),
+  'he-she-it': challengePool('pronoun', [
+    ['My sister has a book. ___ is reading.', ['he', 'she', 'it'], 'she'],
+    ['The red bus is here. ___ is late.', ['he', 'she', 'it'], 'it'],
+    ['Omar found his shoes. ___ is ready.', ['he', 'she', 'it'], 'he'],
+    ['The kitten is hungry. ___ wants milk.', ['he', 'she', 'it'], 'it'],
+    ['Maya rides to school. ___ has a helmet.', ['he', 'she', 'it'], 'she'],
+    ['My uncle cooks dinner. ___ makes soup.', ['he', 'she', 'it'], 'he'],
+    ['The clock is noisy. ___ rings loudly.', ['he', 'she', 'it'], 'it'],
+    ['Aisha has a kite. ___ flies it outside.', ['he', 'she', 'it'], 'she'],
+    ['Ben helps his friend. ___ is kind.', ['he', 'she', 'it'], 'he'],
+    ['The flower needs water. ___ looks dry.', ['he', 'she', 'it'], 'it'],
+  ]),
+  'is-am-are': challengePool('be', [
+    ['Mia and Tom ___ my friends.', ['is', 'am', 'are'], 'are'],
+    ['My little brother ___ five.', ['is', 'am', 'are'], 'is'],
+    ['I ___ ready, but my shoes are missing.', ['is', 'am', 'are'], 'am'],
+    ['The puppies ___ asleep in the basket.', ['is', 'am', 'are'], 'are'],
+    ['Our classroom ___ bright and tidy.', ['is', 'am', 'are'], 'is'],
+    ['You and I ___ on the same team.', ['is', 'am', 'are'], 'are'],
+    ['I ___ happy because it is sunny.', ['is', 'am', 'are'], 'am'],
+    ['The red apple ___ beside the bananas.', ['is', 'am', 'are'], 'is'],
+    ['Dad and Mum ___ making dinner.', ['is', 'am', 'are'], 'are'],
+    ['The children in my class ___ helpful.', ['is', 'am', 'are'], 'are'],
+  ]),
+  'can-or-cant': challengePool('ability', [
+    ['Choose the sentence that makes sense.', ['A bird can build a nest.', "A bird can't fly."], 'A bird can build a nest.'],
+    ['Choose the sentence that makes sense.', ['A fish can swim.', 'A fish can ride a bicycle.'], 'A fish can swim.'],
+    ['Choose the sentence that makes sense.', ['A pencil can write by itself.', "A pencil can't talk."], "A pencil can't talk."],
+    ['Choose the sentence that makes sense.', ['A baby can drive a car.', "A baby can't drive a car."], "A baby can't drive a car."],
+    ['Choose the sentence that makes sense.', ['A frog can jump.', "A frog can't move."], 'A frog can jump.'],
+    ['Choose the sentence that makes sense.', ['A book can bark.', "A book can't eat."], "A book can't eat."],
+    ['Choose the sentence that makes sense.', ['A monkey can climb.', "A monkey can't see."], 'A monkey can climb.'],
+    ['Choose the sentence that makes sense.', ['A chair can run.', "A chair can't run."], "A chair can't run."],
+    ['Choose the sentence that makes sense.', ['A duck can swim.', "A duck can't walk."], 'A duck can swim.'],
+    ['Choose the sentence that makes sense.', ['A child can learn.', "A child can't speak."], 'A child can learn.'],
+  ]),
+  'who-is-it': challengePool('who', [
+    ['Mina and I share a desk. ___ keep it tidy.', ['I', 'you', 'he', 'she', 'it', 'we', 'they'], 'we'],
+    ['The twins have new bikes. ___ ride together.', ['I', 'you', 'he', 'she', 'it', 'we', 'they'], 'they'],
+    ['Mum speaks to me: “___ can choose a book.”', ['I', 'you', 'he', 'she', 'it', 'we', 'they'], 'you'],
+    ['The puppy found a ball. ___ plays with it.', ['I', 'you', 'he', 'she', 'it', 'we', 'they'], 'it'],
+    ['My brother is helping Dad. ___ carries a box.', ['I', 'you', 'he', 'she', 'it', 'we', 'they'], 'he'],
+    ['Ava made a card. ___ gives it to Nan.', ['I', 'you', 'he', 'she', 'it', 'we', 'they'], 'she'],
+    ['My friends and I practise. ___ want to improve.', ['I', 'you', 'he', 'she', 'it', 'we', 'they'], 'we'],
+    ['The birds are on the roof. ___ are singing.', ['I', 'you', 'he', 'she', 'it', 'we', 'they'], 'they'],
+    ['I packed my lunch. ___ am ready for school.', ['I', 'you', 'he', 'she', 'it', 'we', 'they'], 'I'],
+    ['The coach asks Leo: “Can ___ lead the team?”', ['I', 'you', 'he', 'she', 'it', 'we', 'they'], 'you'],
+  ]),
+  'whose-is-it': challengePool('whose', [
+    ['Lina and I made this poster. It is ___ poster.', ['my', 'your', 'his', 'her', 'our', 'their'], 'our'],
+    ['Tom left his cap here. It is ___ cap.', ['my', 'your', 'his', 'her', 'our', 'their'], 'his'],
+    ['The children packed lunches. These are ___ lunches.', ['my', 'your', 'his', 'her', 'our', 'their'], 'their'],
+    ['Maya owns the red bicycle. It is ___ bicycle.', ['my', 'your', 'his', 'her', 'our', 'their'], 'her'],
+    ['I drew both pictures. They are ___ pictures.', ['my', 'your', 'his', 'her', 'our', 'their'], 'my'],
+    ['You brought this notebook. It is ___ notebook.', ['my', 'your', 'his', 'her', 'our', 'their'], 'your'],
+    ['Dad found his keys. They are ___ keys.', ['my', 'your', 'his', 'her', 'our', 'their'], 'his'],
+    ['Our family shares the garden. It is ___ garden.', ['my', 'your', 'his', 'her', 'our', 'their'], 'our'],
+    ['The birds built that nest. It is ___ nest.', ['my', 'your', 'his', 'her', 'our', 'their'], 'their'],
+    ['Sara packed the bag herself. It is ___ bag.', ['my', 'your', 'his', 'her', 'our', 'their'], 'her'],
+  ]),
+  'where-is-it': challengePool('where', [
+    ['The keys are hidden ___ the cushion where we cannot see them.', ['in', 'on', 'under', 'behind', 'in front of', 'next to'], 'under'],
+    ['The teacher stands ___ the board to speak to us.', ['in', 'on', 'under', 'behind', 'in front of', 'next to'], 'in front of'],
+    ['The bicycle is parked ___ the garage wall.', ['in', 'on', 'under', 'behind', 'in front of', 'next to'], 'next to'],
+    ['The rabbit is hiding ___ the tree trunk.', ['in', 'on', 'under', 'behind', 'in front of', 'next to'], 'behind'],
+    ['The fruit is kept ___ the kitchen bowl.', ['in', 'on', 'under', 'behind', 'in front of', 'next to'], 'in'],
+    ['The calendar hangs ___ the classroom wall.', ['in', 'on', 'under', 'behind', 'in front of', 'next to'], 'on'],
+    ['The school bag is ___ the desk, near my feet.', ['in', 'on', 'under', 'behind', 'in front of', 'next to'], 'under'],
+    ['The bus stops ___ the school gate.', ['in', 'on', 'under', 'behind', 'in front of', 'next to'], 'in front of'],
+    ['The spoon is ___ the plate on the table.', ['in', 'on', 'under', 'behind', 'in front of', 'next to'], 'next to'],
+    ['The toys are packed ___ a large box.', ['in', 'on', 'under', 'behind', 'in front of', 'next to'], 'in'],
+  ]),
+  'this-that-these-those': challengePool('demonstrative', [
+    ['[near, one] ___ sandwich is mine.', ['this', 'that', 'these', 'those'], 'this'],
+    ['[far, many] ___ clouds look dark.', ['this', 'that', 'these', 'those'], 'those'],
+    ['[near, many] ___ pencils need sharpening.', ['this', 'that', 'these', 'those'], 'these'],
+    ['[far, one] ___ playground is new.', ['this', 'that', 'these', 'those'], 'that'],
+    ['[near, one] ___ puppy is friendly.', ['this', 'that', 'these', 'those'], 'this'],
+    ['[far, many] ___ children are waving.', ['this', 'that', 'these', 'those'], 'those'],
+    ['[near, many] ___ cookies smell lovely.', ['this', 'that', 'these', 'those'], 'these'],
+    ['[far, one] ___ kite is above the trees.', ['this', 'that', 'these', 'those'], 'that'],
+    ['[near, many] ___ shoes belong to me.', ['this', 'that', 'these', 'those'], 'these'],
+    ['[far, one] ___ boat has a blue sail.', ['this', 'that', 'these', 'those'], 'that'],
+  ]),
+  'has-or-have': challengePool('have', [
+    ['Mia and Tom ___ matching hats.', ['has', 'have'], 'have'],
+    ['My older sister ___ a new library book.', ['has', 'have'], 'has'],
+    ['The puppies ___ soft brown fur.', ['has', 'have'], 'have'],
+    ['Our school ___ two playgrounds.', ['has', 'have'], 'has'],
+    ['You and I ___ the same idea.', ['has', 'have'], 'have'],
+    ['The red bicycle ___ a small bell.', ['has', 'have'], 'has'],
+    ['My friends ___ lunch at school.', ['has', 'have'], 'have'],
+    ['Dad and Mum ___ tickets for the bus.', ['has', 'have'], 'have'],
+    ['Each bird ___ two wings.', ['has', 'have'], 'has'],
+    ['My brother and I ___ pencils for class.', ['has', 'have'], 'have'],
+  ]),
+};
 
 const games: EnglishGame[] = [
   {
@@ -105,7 +232,7 @@ const games: EnglishGame[] = [
     whatItTeaches: 'Children practise choosing the indefinite articles “a” and “an” by listening to the beginning sound of a familiar noun. The question bank uses simple objects, animals, foods, and people suitable for early primary learners.',
     learningObjective: 'By the end of a session, learners should recognise that “a” comes before a consonant sound and “an” comes before a vowel sound. Each answer includes a short reminder so mistakes become useful practice.',
     parentTip: 'Say each phrase aloud together. Stretch the first sound of the noun and ask whether it begins with a vowel sound. Focus on sound rather than asking children to memorise a list.',
-    questions: articleQuestions.map(([noun, answer, icon], i) => q(`article-${i + 1}`, `___ ${noun}`, ['a', 'an'], answer, `Use “${answer}” before “${noun}” because it begins with a ${answer === 'an' ? 'vowel' : 'consonant'} sound.`, icon)),
+    questions: articleQuestions.map(([noun, answer, icon], i) => q(`article-${i + 1}`, i < 10 ? `___ ${noun}` : `I see ___ ${noun}.`, ['a', 'an'], answer, `Use “${answer}” before “${noun}” because it begins with a ${answer === 'an' ? 'vowel' : 'consonant'} sound.`, icon, i < 10 ? 'easy' : 'normal')),
   },
   {
     id: 'grammar-one-many', slug: 'one-or-many', title: 'One or Many?', shortDescription: 'Practise singular and plural nouns.',
@@ -114,7 +241,7 @@ const games: EnglishGame[] = [
     whatItTeaches: 'This game connects number clues with singular and regular plural nouns. Children see familiar examples such as one cat and two cats, helping them notice when a noun describes one thing or more than one.',
     learningObjective: 'Learners practise identifying one object as singular and two or more objects as plural. The examples reinforce the common Level 1 pattern of adding “s” to regular plural nouns.',
     parentTip: 'After each question, invite the child to say the phrase aloud. You can point to one nearby object and then a group of objects to make the idea concrete.',
-    questions: oneManyItems.map(([item, answer, icon], i) => q(`number-${i + 1}`, `${item}: is this one or many?`, ['one', 'many'], answer, `${item} means ${answer} because the number shows ${answer === 'one' ? 'a single thing' : 'more than one thing'}.`, icon)),
+    questions: oneManyItems.map(([item, answer, icon], i) => q(`number-${i + 1}`, i < 10 ? `${item}: one or many?` : `The phrase says “${item}”. Is it one or many?`, ['one', 'many'], answer, `${item} means ${answer} because the number shows ${answer === 'one' ? 'a single thing' : 'more than one thing'}.`, icon, i < 10 ? 'easy' : 'normal')),
   },
   {
     id: 'grammar-he-she-it', slug: 'he-she-it', title: 'He, She, It', shortDescription: 'Choose the correct personal pronoun.',
@@ -191,11 +318,20 @@ const games: EnglishGame[] = [
 ];
 
 for (const game of games) {
-  if (game.questions.length < 20) throw new Error(`${game.slug} needs at least 20 questions.`);
+  game.questions = [...game.questions, ...(challengeQuestions[game.slug] ?? [])];
+  for (const difficulty of gameDifficulties) {
+    const count = game.questions.filter((question) => question.difficulty === difficulty).length;
+    if (count < 10) throw new Error(`${game.slug} needs at least 10 ${difficulty} questions; found ${count}.`);
+  }
   if (new Set(game.questions.map(({ id }) => id)).size !== game.questions.length) throw new Error(`${game.slug} has duplicate question IDs.`);
-  if (new Set(game.questions.map(({ prompt }) => prompt)).size !== game.questions.length) throw new Error(`${game.slug} has duplicate prompts.`);
+  if (new Set(game.questions.map(({ prompt, choices }) => JSON.stringify([prompt, choices]))).size !== game.questions.length) throw new Error(`${game.slug} has duplicate questions.`);
   if (game.questions.some(({ choices, correctAnswer }) => !choices.includes(correctAnswer))) throw new Error(`${game.slug} has an answer missing from its choices.`);
 }
 
 export const englishGames = games;
 export const getEnglishGame = (slug: string) => englishGames.find((game) => game.slug === slug);
+export const englishGameDifficultyAudit = englishGames.map((game) => ({
+  slug: game.slug,
+  title: game.title,
+  counts: Object.fromEntries(gameDifficulties.map((difficulty) => [difficulty, game.questions.filter((question) => question.difficulty === difficulty).length])) as Record<GameDifficulty, number>,
+}));

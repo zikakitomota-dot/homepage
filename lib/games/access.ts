@@ -1,4 +1,5 @@
 import type { GameAccess } from './types';
+import { hasAcademyAccess } from './academy-access';
 
 export type EntitlementStatus = 'free' | 'premium' | 'unknown';
 
@@ -6,9 +7,6 @@ export function getEntitlementStatus(access: GameAccess): EntitlementStatus {
   return access === 'free' ? 'free' : 'unknown';
 }
 
-export function canAccessGame(access: GameAccess) {
-  return getEntitlementStatus(access) === 'free';
+export async function canAccessGame(access: GameAccess) {
+  return getEntitlementStatus(access) === 'free' || hasAcademyAccess();
 }
-
-// Future premium access must replace the unknown state with a server-validated,
-// signed entitlement. Never validate Payhip credentials or license keys here.

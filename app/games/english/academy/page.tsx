@@ -94,65 +94,56 @@ export default async function AcademyPage() {
                 <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-violet-950 sm:text-5xl lg:text-6xl">Zalea English Academy</h1>
                 <p className="mt-4 text-2xl font-semibold text-violet-700">Learn. Play. Grow.</p>
                 <p className="mt-5 max-w-2xl text-lg leading-relaxed text-violet-900">Help your child build confidence in English through short, fun interactive games designed for everyday learning.</p>
-                <p className="mt-3 max-w-2xl leading-relaxed text-violet-800">M�Ӯm�G����ƭy� : `Choose the best word for this description: ${meaningClue}.`, index < entries.length);
-  });
-  const challengeSource: Extra[] = [...entries.map(([word, , , clue]) => [clue, word] as const), ...extras];
-  const challenge = challengeSource.slice(0, 15).map(([clue, answer], index) => ({ prompt: clue, choices: rotateChoices(words, words.indexOf(answer), 4), answer, explanation: `“${answer}” is the word that best completes the clue.` }));
-  return { easy, normal, challenge };
+                <p className="mt-3 max-w-2xl leading-relaxed text-violet-800">Children get enjoyable practice at their own pace, while parents get a simple learning experience that works across phones, tablets and computers.</p>
+                <Button asChild variant="outline" className="mt-7 min-h-12 border-violet-300 bg-white text-violet-800 hover:bg-violet-100 hover:text-violet-900"><Link href="#academy-library">{academyUnlocked ? 'Start Learning' : 'Explore Academy'}<ChevronRight className="ml-2 h-5 w-5" aria-hidden="true" /></Link></Button>
+              </div>
+              <Card className="border-violet-200 bg-white shadow-md ring-1 ring-violet-100">
+                <CardHeader><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100 text-violet-700"><Trophy className="h-6 w-6" aria-hidden="true" /></span><CardTitle className="pt-2">Launch Collection</CardTitle></CardHeader>
+                <CardContent><ul className="space-y-3">{academyHighlights.map((item) => <li key={item} className="flex gap-3"><Check className="mt-0.5 h-5 w-5 shrink-0 text-green-600" aria-hidden="true" /><span>{item}</span></li>)}</ul></CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[900px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="learning-journey">
+          <div className="text-center"><p className="text-sm font-bold uppercase tracking-wider text-violet-700">A path that grows with them</p><h2 id="learning-journey" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Your Child&apos;s Learning Journey</h2><p className="mx-auto mt-4 max-w-2xl leading-relaxed text-muted-foreground">Start with free grammar practice, then keep building confidence through the Academy&apos;s current and future learning areas.</p></div>
+          <ol className="mx-auto mt-10 max-w-2xl">
+            {learningJourney.map((step, index) => <li key={step.title} className="relative">
+              <div className="flex min-w-0 gap-4 rounded-2xl border border-border/70 bg-white p-5 shadow-sm"><span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-2xl" aria-hidden="true">{step.icon}</span><div className="min-w-0"><p className="text-xs font-bold uppercase tracking-wider text-violet-700">{step.eyebrow}</p><h3 className="mt-1 text-xl font-bold">{step.title}</h3><p className="mt-1 text-sm text-muted-foreground">{step.detail}</p></div></div>
+              {index < learningJourney.length - 1 && <div className="flex h-10 items-center justify-center text-violet-400" aria-hidden="true"><ChevronDown className="h-6 w-6" /></div>}
+            </li>)}
+          </ol>
+        </section>
+
+        <section id="academy-library" className="border-t border-border/60 bg-secondary/30">
+          <div className="mx-auto max-w-[1100px] scroll-mt-20 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+            <SectionHeading icon={<BookOpen className="h-6 w-6" />} title="Grammar — Level 2" subtitle="10 Academy games that build on the free Grammar Level 1 collection." />
+            <div className="grid gap-5 md:grid-cols-2">{grammarLevelTwoGames.map((game) => <GameCard key={game.slug} game={game} unlocked={academyUnlocked} />)}</div>
+          </div>
+        </section>
+        <section className="border-y border-border/60">
+          <div className="mx-auto max-w-[1100px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+            <SectionHeading icon={<Star className="h-6 w-6" />} title="Vocabulary — Level 1" subtitle="10 visual, child-friendly games for useful everyday English words." />
+            <div className="grid gap-5 md:grid-cols-2">{vocabularyLevelOneGames.map((game) => <GameCard key={game.slug} game={game} unlocked={academyUnlocked} />)}</div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+          <div className="grid gap-6 lg:grid-cols-2">
+            <Card className="min-w-0 border-border/60"><CardHeader><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-700"><Heart className="h-5 w-5" aria-hidden="true" /></span><CardTitle className="pt-2 text-2xl">Why parents will love it</CardTitle></CardHeader><CardContent><ul className="grid gap-3 sm:grid-cols-2">{parentBenefits.map((item) => <li key={item} className="flex gap-2"><Check className="h-5 w-5 shrink-0 text-green-600" aria-hidden="true" />{item}</li>)}</ul></CardContent></Card>
+            <Card id="access" className="min-w-0 scroll-mt-24 border-violet-200 bg-violet-50 ring-1 ring-violet-100"><CardHeader><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-100 text-violet-700"><CreditCard className="h-5 w-5" aria-hidden="true" /></span><CardTitle className="pt-2 text-2xl">Zalea English Academy – Lifetime Access</CardTitle></CardHeader><CardContent><p className="font-semibold text-violet-950">One payment. No monthly subscription.</p><p className="mt-3 leading-relaxed text-violet-900">Unlock Grammar Level 2 and Vocabulary Level 1 and receive future Academy updates at no additional cost.</p><Button asChild className="mt-5 h-auto min-h-12 w-full whitespace-normal bg-violet-700 py-3 text-center"><a href={PAYHIP_ACADEMY_URL} target="_blank" rel="noreferrer">Get Lifetime Access</a></Button></CardContent></Card>
+          </div>
+        </section>
+
+        <section className="border-y border-border/60 bg-secondary/30"><div className="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6 lg:px-8"><MessageCircleHeart className="mx-auto h-10 w-10 text-violet-700" aria-hidden="true" /><h2 className="mt-4 text-3xl font-bold">Trusted by Parents</h2><p className="mt-4 text-lg text-muted-foreground">Parent reviews coming soon.</p></div></section>
+
+        <section><div className="mx-auto max-w-2xl px-4 py-14 text-center sm:px-6 lg:px-8"><LockKeyhole className="mx-auto h-9 w-9 text-violet-700" aria-hidden="true" /><h2 className="mt-4 text-3xl font-bold">Already purchased?</h2><p className="mt-4 leading-relaxed text-muted-foreground">Enter the license key you received from Payhip to unlock Zalea English Academy on this device.</p><AcademyUnlock initiallyUnlocked={academyUnlocked} /></div></section>
+      </main>
+      <SiteFooter />
+    </div>
+  );
 }
 
-function vocabGame(slug: string, entries: readonly Entry[], extras: readonly Extra[], details: { instructions: string; whatItTeaches: string; parentTip: string }) {
-  return buildPremiumGame(summary(slug), vocabularySeeds(entries, extras), details);
+function SectionHeading({ icon, title, subtitle }: { icon: React.ReactNode; title: string; subtitle: string }) {
+  return <div className="mb-9 flex items-start gap-4"><span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700">{icon}</span><div><h2 className="text-3xl font-bold tracking-tight">{title}</h2><p className="mt-2 text-muted-foreground">{subtitle}</p></div></div>;
 }
-
-const colours = [
-  ['red','🔴','a red circle','the colour of a ripe strawberry'], ['blue','🔵','a blue circle','the colour often used for a clear sky'], ['green','🟢','a green circle','the colour of fresh grass'], ['yellow','🟡','a yellow circle','the colour of a bright lemon'], ['orange','🟠','an orange circle','the colour of a pumpkin'],
-  ['purple','🟣','a purple circle','a colour made by mixing red and blue'], ['pink','🌸','a pink flower','the colour named by a pink flower'], ['black','⬛','a black square','the darkest colour in this set'], ['white','⬜','a white square with a dark outline','the colour of fresh snow'], ['brown','🟫','a brown square','the colour of many tree trunks'],
-] as const satisfies readonly Entry[];
-const animals = [
-  ['cat','🐱','a small cat face','a pet that may purr'], ['dog','🐶','a friendly dog face','a pet that may bark'], ['bird','🐦','a small bird','an animal with feathers and wings'], ['fish','🐟','a fish swimming','an animal that lives and breathes in water'], ['rabbit','🐰','a rabbit with long ears','a small animal with long ears'],
-  ['elephant','🐘','an elephant with a trunk','a very large animal with a long trunk'], ['lion','🦁','a lion with a mane','a big wild cat whose male may have a mane'], ['tiger','🐯','a striped tiger face','a large wild cat with stripes'], ['monkey','🐒','a monkey','an animal that can climb and use its hands'], ['horse','🐴','a horse face','a large animal that people may ride'], ['cow','🐄','a black-and-white cow','a farm animal that gives milk'], ['duck','🦆','a duck','a bird with a flat bill that can swim'], ['frog','🐸','a green frog face','a small animal that hops and lives near water'], ['bear','🐻','a bear face','a large furry wild animal'],
-] as const satisfies readonly Entry[];
-const foods = [
-  ['apple','🍎','a red apple','a round fruit that grows on a tree'], ['banana','🍌','a yellow banana','a long curved fruit with a peel'], ['orange','🍊','an orange fruit','a round citrus fruit with segments'], ['rice','🍚','a bowl of cooked rice','small grains eaten in meals around the world'], ['bread','🍞','a loaf of bread','a baked food often sliced'], ['egg','🥚','an egg','a food with a shell'], ['milk','🥛','a glass of milk','a pale drink used with cereal'], ['water','💧','a drop of water','a clear drink our bodies need'], ['carrot','🥕','an orange carrot','a crunchy root vegetable'], ['cake','🍰','a slice of cake','a sweet baked food for celebrations'], ['fish','🐟','a fish','an animal food that comes from water'], ['chicken','🍗','a cooked piece of chicken','a common type of poultry food'],
-] as const satisfies readonly Entry[];
-const body = [
-  ['head','🙂','a face showing the whole head','the top part of the body above the neck'], ['eyes','👀','a pair of eyes','the body parts used to see'], ['ears','👂','an ear','the body parts used to hear'], ['nose','👃','a nose','the body part used to smell'], ['mouth','👄','a mouth','the body part used to speak and eat'], ['hands','👐','two open hands','the body parts used to hold things'], ['arms','💪','a bent arm','the body parts joining shoulders to hands'], ['legs','🦵','a leg','the body parts used for walking'], ['feet','🦶','a foot','the body parts at the ends of the legs'], ['hair','💇','hair being cut','the strands that grow on the head'],
-] as const satisfies readonly Entry[];
-const school = [
-  ['book','📘','a closed blue book','pages bound together for reading'], ['pencil','✏️','a wooden pencil','a tool for writing that can be sharpened'], ['pen','🖊️','an ink pen','a writing tool that uses ink'], ['eraser','▰','a small rectangular eraser','an item used to remove pencil marks'], ['ruler','📏','a ruler with measurement marks','a tool used to measure or draw a straight line'], ['bag','🎒','a school backpack','a container used to carry school things'], ['paper','📄','a sheet of paper','a thin sheet used for writing or drawing'], ['crayon','🖍️','a colourful crayon','a wax colouring stick'], ['scissors','✂️','a pair of scissors','a tool used to cut paper'], ['notebook','📓','a spiral notebook','a book of blank or lined pages for notes'],
-] as const satisfies readonly Entry[];
-
-export const firstFiveVocabularyGames = [
-  vocabGame('colour-quest', colours, [['Which colour word completes this sentence: The school bus is often ___.','yellow'],['Which colour word completes this sentence: The leaves are fresh and ___.','green'],['Which colour word completes this sentence: The night sky can look ___.','black'],['Which colour word completes this sentence: The cloud is bright ___.','white'],['Which colour word completes this sentence: The soil is ___.','brown']], { instructions: 'Use both the symbol and written clue to choose the colour word.', whatItTeaches: 'Ten common colour words without relying on colour alone.', parentTip: 'Find the same colour on a safe object nearby and say its name aloud.' }),
-  vocabGame('animal-friends', animals, [['This animal has a long trunk.','elephant'],['This animal has orange fur with dark stripes.','tiger'],['This animal may purr on your lap.','cat'],['This animal has feathers and a flat bill.','duck'],['This animal hops and has long ears.','rabbit']], { instructions: 'Match each animal symbol or description with its English name.', whatItTeaches: 'Names and simple features of familiar pets, farm animals and wild animals.', parentTip: 'Make the animal’s sound or movement after saying its name.' }),
-  vocabGame('food-fun', foods, [['Which one is a fruit that is long and curved?','banana'],['Which drink is clear and has no added flavour?','water'],['Which food is made from baked dough and often sliced?','bread'],['Which one is a crunchy root vegetable?','carrot'],['Which food might have candles at a birthday?','cake']], { instructions: 'Choose the food or drink word that matches each clue.', whatItTeaches: 'Inclusive everyday food, drink and simple category vocabulary.', parentTip: 'Name foods during meals without labelling any familiar food as strange.' }),
-  vocabGame('my-body', body, [['You use these to hear.','ears'],['You use these to see.','eyes'],['You use this to smell a flower.','nose'],['You use these to hold a pencil.','hands'],['You stand on these.','feet']], { instructions: 'Match each body-part symbol or function with the correct word.', whatItTeaches: 'Common external body-part words and what they help us do.', parentTip: 'Point to your own body part only when the child is comfortable copying.' }),
-  vocabGame('in-my-school-bag', school, [['You use this to measure a line.','ruler'],['You use these to cut paper safely with an adult nearby.','scissors'],['You use this to remove a pencil mark.','eraser'],['You can sharpen this writing tool.','pencil'],['You carry school items inside this.','bag']], { instructions: 'Match school-item symbols and uses with their English words.', whatItTeaches: 'Useful classroom and school-supply vocabulary.', parentTip: 'Ask the learner to find and name a safe item in their own school bag.' }),
-];
-
-const family = [
-  ['mother','👩','an adult woman labelled mother','a female parent; another word is mum'], ['father','👨','an adult man labelled father','a male parent; another word is dad'], ['mum','👩','the word Mum beside a woman','an informal British word for mother'], ['dad','👨','the word Dad beside a man','an informal word for father'], ['brother','👦','a boy labelled brother','a male sibling'], ['sister','👧','a girl labelled sister','a female sibling'], ['grandmother','👵','an older woman labelled grandmother','a parent of a parent who is a woman'], ['grandfather','👴','an older man labelled grandfather','a parent of a parent who is a man'], ['parents','🧑‍🤝‍🧑','two caring adults labelled parents','a plural word for a person’s parent figures'], ['family','👪','a group of people labelled family','people connected through care, birth, marriage or adoption'],
-] as const satisfies readonly Entry[];
-const clothes = [
-  ['shirt','👔','a collared shirt','a top with a collar and buttons'], ['dress','👗','a dress','a one-piece item of clothing'], ['trousers','👖','a pair of trousers','British English for clothing covering both legs'], ['shorts','🩳','a pair of shorts','short clothing worn on the legs'], ['shoes','👟','a pair of shoes','footwear worn outside socks'], ['socks','🧦','a pair of socks','soft clothing worn on the feet inside shoes'], ['hat','🧢','a hat with a brim','something worn on the head'], ['jacket','🧥','a jacket','a short outer layer with sleeves'], ['skirt','🩱','a skirt-shaped garment','clothing hanging from the waist without separate legs'], ['T-shirt','👕','a short-sleeved T-shirt','a casual top shaped like the letter T'],
-] as const satisfies readonly Entry[];
-const home = [
-  ['bed','🛏️','a bed with a pillow','furniture used for sleeping'], ['table','🪑','a table beside a chair','furniture with a flat top for meals or work'], ['chair','🪑','a chair with a back','a seat for one person'], ['door','🚪','a closed door','a moving panel used to enter a room'], ['window','🪟','a window with panes','an opening with glass that lets in light'], ['sofa','🛋️','a sofa with cushions','a soft seat for more than one person'], ['kitchen','🍳','a cooking pan labelled kitchen','the room where food is prepared'], ['bedroom','🛏️','a bed labelled bedroom','the room where people sleep'], ['bathroom','🛁','a bath labelled bathroom','the room used for washing'], ['lamp','💡','a table lamp','an object that gives light'],
-] as const satisfies readonly Entry[];
-const actions = [
-  ['run','🏃','a person running','move quickly on your feet'], ['walk','🚶','a person walking','move on your feet at a steady pace'], ['jump','🤸','a person jumping','push off the ground into the air'], ['eat','🍽️','a plate used for eating','take food into your mouth'], ['drink','🥤','a cup with a straw','take liquid into your mouth'], ['read','📖','an open book','look at and understand written words'], ['write','✍️','a hand writing','make letters or words on a surface'], ['sleep','😴','a sleeping face','rest with your eyes closed'], ['sit','🪑','a chair labelled sit','rest your body on a seat'], ['stand','🧍','a person standing','be upright on your feet'], ['swim','🏊','a person swimming','move through water'], ['play','⚽','a ball used for play','take part in a game or fun activity'],
-] as const satisfies readonly Entry[];
-const opposites = [
-  ['small','🐭','a small mouse beside a large shape','the opposite of big'], ['cold','🧊','an ice cube labelled cold','the opposite of hot'], ['sad','🙁','a sad face','the opposite of happy'], ['slow','🐢','a slow tortoise','the opposite of fast'], ['down','⬇️','an arrow pointing down','the opposite of up'], ['closed','🔒','a closed lock','the opposite of open'], ['night','🌙','a moon at night','the opposite time to day'], ['new','✨','a shiny new object','the opposite of old'], ['empty','🫙','an empty jar','the opposite of full'], ['short','📏','a short line beside a tall one','the opposite of tall'],
-] as const satisfies readonly Entry[];
-
-export const remainingVocabularyGames = [
-  vocabGame('my-family', family, [['Which word can mean a female parent?','mother'],['Which informal word can mean a male parent?','dad'],['Which word means a male sibling?','brother'],['Which word can include the people who care for and belong with one another?','family'],['Which plural word can describe parent figures?','parents']], { instructions: 'Use the written clue to learn respectful words for family relationships.', whatItTeaches: 'Common family vocabulary without assuming that every household has the same structure.', parentTip: 'Use whichever words fit the learner’s own family and explain that families can be different.' }),
-  vocabGame('what-are-we-wearing', clothes, [['You wear these on your feet over socks.','shoes'],['British English uses this word for clothing that covers both legs.','trousers'],['You wear this on your head.','hat'],['This casual top is shaped like the letter T.','T-shirt'],['This is a short outer layer with sleeves.','jacket']], { instructions: 'Match clothing symbols and descriptions with British-English words.', whatItTeaches: 'Everyday clothing vocabulary including trousers and T-shirt.', parentTip: 'Choose one item the learner is wearing and say its English name.' }),
-  vocabGame('at-home', home, [['You sleep in this room.','bedroom'],['You prepare food in this room.','kitchen'],['You sit on this soft seat with other people.','sofa'],['You open this to enter a room.','door'],['This object gives light.','lamp']], { instructions: 'Choose the home word that matches each room, object or use.', whatItTeaches: 'Common rooms, furniture and objects found in many homes.', parentTip: 'Walk through a familiar room and name only the objects that are really there.' }),
-  vocabGame('action-time', actions, [['Which word means moving quickly on your feet?','run'],['Which word means looking at and understanding written words?','read'],['Which word means moving through water?','swim'],['Which word means resting on a seat?','sit'],['Which word means making letters or words?','write']], { instructions: 'Match each action symbol or meaning with its verb.', whatItTeaches: 'Useful everyday action verbs.', parentTip: 'Act out a safe verb and invite the learner to name it.' }),
-  vocabGame('opposite-match', opposites, [['The bottle is full. The opposite of full is ___.','empty'],['The rabbit is fast. The opposite of fast is ___.','slow'],['The door is open. The opposite of open is ___.','closed'],['The tower is tall. The opposite of tall is ___.','short'],['The toy is old. The opposite of old is ___.','new']], { instructions: 'Choose the word with the opposite meaning.', whatItTeaches: 'Ten useful opposite pairs through direct matches and simple contexts.', parentTip: 'Say both words as a pair, such as “open, closed”, and use a safe gesture.' }),
-];
-
-export const vocabularyPremiumGames = [...firstFiveVocabularyGames, ...remainingVocabularyGames];

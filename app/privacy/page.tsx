@@ -53,8 +53,8 @@ export default function PrivacyPolicyPage() {
         <p>Advertising and consent settings should be configured for the visitor&apos;s region and any child-directed treatment requirements. Visitors can learn more through <a className={legalLinkClass} href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noreferrer">How Google uses information from partner sites</a> and Google&apos;s <a className={legalLinkClass} href="https://adssettings.google.com/" target="_blank" rel="noreferrer">advertising controls</a>.</p>
       </LegalSection>
 
-      <LegalSection title="7. Payhip and future premium purchases">
-        <p>Future Zalea English Academy and digital-product purchases may use Payhip. Payhip and its payment partners may process a buyer&apos;s name, email address, order details, billing information and payment information. Zalea Studio may receive limited information needed to deliver the purchase, confirm access and provide support.</p>
+      <LegalSection title="7. Payhip and premium purchases">
+        <p>Zalea English Academy and other digital-product purchases may use Payhip. Payhip and its payment partners may process a buyer&apos;s name, email address, order details, billing information and payment information. Zalea Studio may receive limited information needed to deliver the purchase, confirm access and provide support.</p>
         <p>Payhip&apos;s processing is governed by its <a className={legalLinkClass} href="https://payhip.com/privacy" target="_blank" rel="noreferrer">Privacy and Cookies Policy</a>. Full payment-card details are not stored by Zalea Studio.</p>
       </LegalSection>
 
@@ -62,8 +62,8 @@ export default function PrivacyPolicyPage() {
         <p>Zalea Studio uses Cloudflare infrastructure for hosting, content delivery, performance and security. Cloudflare may process IP addresses, request data and security logs to deliver and protect the website. See <a className={legalLinkClass} href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noreferrer">Cloudflare&apos;s Privacy Policy</a> for more information.</p>
       </LegalSection>
 
-      <LegalSection title="9. Future license keys">
-        <p>When Academy unlocking launches, an adult purchaser may submit a Payhip-generated license key for secure validation. License and entitlement information will be used only to confirm access, prevent misuse, respond to refunds or provide purchase support. License keys will not be sent to analytics services.</p>
+      <LegalSection title="9. License keys and Academy access">
+        <p>An adult purchaser may submit a Payhip-generated license key for secure server-side validation. The raw key is sent to Payhip for verification but is not stored in browser storage, analytics or the Academy access cookie. After successful verification, the site stores a signed, HttpOnly entitlement cookie containing no buyer email or license key. It expires after seven days, after which the key must be entered again so refunded or disabled licenses are not trusted indefinitely.</p>
       </LegalSection>
 
       <LegalSection title="10. Children&apos;s privacy">

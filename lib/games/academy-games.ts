@@ -11,7 +11,10 @@ const premium = (
   learningObjective: string,
   questionCount: number,
   interaction: AcademyGameSummary['interaction'] = 'multipleChoice',
-): AcademyGameSummary => ({ id, slug, title, shortDescription, category, level, access: 'premium', icon, learningObjective, questionCount, interaction });
+): AcademyGameSummary => ({
+  id, slug, title, shortDescription, category, level, access: 'premium', icon, learningObjective, questionCount: 45, interaction,
+  difficultyQuestionCounts: { easy: 15, normal: 15, challenge: 15 },
+});
 
 export const grammarLevelTwoGames = [
   premium('grammar-was-were', 'was-or-were', 'Was or Were?', 'Practise the past form of “to be”.', 'Grammar', 2, '⏰', 'Choose was or were to complete simple past-tense sentences.', 25),
