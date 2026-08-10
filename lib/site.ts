@@ -6,6 +6,7 @@ export const CONTACT_ROUTE = '/contact';
 // Existing Zalea Studio Payhip destination. Replace this value with the
 // product-specific checkout URL when one becomes available.
 export const PAYHIP_PRODUCT_URL = 'https://payhip.com/ZaleaStudio';
+export const PAYHIP_ACADEMY_URL = process.env.NEXT_PUBLIC_PAYHIP_ACADEMY_URL?.trim() || PAYHIP_PRODUCT_URL;
 
 export const navLinks = [
   { label: 'Home', href: '/', external: false },

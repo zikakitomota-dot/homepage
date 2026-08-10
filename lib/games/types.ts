@@ -1,5 +1,8 @@
 export type GameAccess = 'free' | 'premium';
 export type GameCategory = 'Grammar' | 'Vocabulary';
+export type GameDifficulty = 'easy' | 'normal' | 'challenge';
+
+export const gameDifficulties = ['easy', 'normal', 'challenge'] as const satisfies readonly GameDifficulty[];
 
 export type GameQuestion = {
   id: string;
@@ -8,6 +11,8 @@ export type GameQuestion = {
   correctAnswer: string;
   explanation: string;
   illustration?: string;
+  illustrationLabel?: string;
+  difficulty: GameDifficulty;
 };
 
 export type GameSummary = {
@@ -28,9 +33,11 @@ export type EnglishGame = GameSummary & {
   whatItTeaches: string;
   parentTip: string;
   questions: readonly GameQuestion[];
+  interaction?: AcademyGameSummary['interaction'];
 };
 
 export type AcademyGameSummary = GameSummary & {
   questionCount: number;
+  difficultyQuestionCounts: Record<GameDifficulty, number>;
   interaction: 'multipleChoice' | 'visualMultipleChoice' | 'wordOrder';
 };
