@@ -3,10 +3,11 @@ export const HEALTH_TOOLS_URL = 'https://health.zaleastudio.com/';
 export const ABOUT_ROUTE = '/about';
 export const CONTACT_ROUTE = '/contact';
 
-// Existing Zalea Studio Payhip destination. Replace this value with the
-// product-specific checkout URL when one becomes available.
+// General storefront used by non-Academy product and legal-page links.
 export const PAYHIP_PRODUCT_URL = 'https://payhip.com/ZaleaStudio';
-export const PAYHIP_ACADEMY_URL = process.env.NEXT_PUBLIC_PAYHIP_ACADEMY_URL?.trim() || PAYHIP_PRODUCT_URL;
+// Direct Academy product page, with an optional deployment-specific override.
+export const PAYHIP_ACADEMY_PRODUCT_URL = 'https://payhip.com/b/q6xWY';
+export const PAYHIP_ACADEMY_URL = process.env.NEXT_PUBLIC_PAYHIP_ACADEMY_URL?.trim() || PAYHIP_ACADEMY_PRODUCT_URL;
 
 export const navLinks = [
   { label: 'Home', href: '/', external: false },
