@@ -6,6 +6,7 @@ export const CONTACT_ROUTE = '/contact';
 // General storefront used by non-Academy product and legal-page links.
 export const PAYHIP_PRODUCT_URL = 'https://payhip.com/ZaleaStudio';
 // Direct Academy product page, with an optional deployment-specific override.
+export const PAYHIP_ACADEMY_PRODUCT_KEY = 'q6xWY';
 export const PAYHIP_ACADEMY_PRODUCT_URL = 'https://payhip.com/b/q6xWY';
 export const PAYHIP_ACADEMY_URL = process.env.NEXT_PUBLIC_PAYHIP_ACADEMY_URL?.trim() || PAYHIP_ACADEMY_PRODUCT_URL;
 

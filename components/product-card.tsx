@@ -15,10 +15,11 @@ export function ProductCard({ featured = false }: ProductCardProps) {
       <div className={featured ? 'grid lg:grid-cols-[0.8fr_1.2fr]' : ''}>
         <div className="flex min-h-64 items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 p-6 sm:p-8">
           <Image
-            src="/images/Cover.png"
+            src="/images/Cover.webp"
             alt="Little Money Master Volume 1: Needs or Wants educational game cover"
-            width={1587}
-            height={2245}
+            width={800}
+            height={1132}
+            priority={featured}
             className="h-auto max-h-[32rem] w-auto max-w-full rounded-2xl object-contain shadow-md"
             sizes={featured ? '(min-width: 1024px) 32vw, 90vw' : '(min-width: 768px) 672px, 90vw'}
           />

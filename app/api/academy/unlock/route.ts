@@ -40,15 +40,16 @@ export async function POST(request: Request) {
   const parsed = schema.safeParse(body);
   if (!parsed.success) return json(false, "We couldn't verify this license key. Please check the key and try again.", 400);
 
-  const { productSecret, productLink } = getAcademyConfiguration();
-  if (!productSecret || !productLink) {
-    console.error('[academy-unlock] PAYHIP_PRODUCT_SECRET and PAYHIP_PRODUCT_LINK must be configured in the server environment.');
+  const { productSecret, productKey } = getAcademyConfiguration();
+  if (!productSecret) {
+    console.error('[academy-unlock] PAYHIP_PRODUCT_SECRET must be configured in the server environment.');
     return json(false, "We couldn't verify your license right now. Please try again in a few minutes.", 503);
   }
 
-  const result = await verifyPayhipLicense(parsed.data.licenseKey, productSecret, productLink);
+  const result = await verifyPayhipLicense(parsed.data.licenseKey, productSecret, productKey);
   if (result.status === 'service-error') return json(false, "We couldn't verify your license right now. Please try again in a few minutes.", 503);
   if (result.status === 'disabled') return json(false, 'This license is not currently active. If you believe this is a mistake, please contact Zalea Studio.', 403);
+  if (result.status === 'wrong-product') return json(false, "This license key isn't for Zalea English Academy. Please use the key from your Academy purchase email.", 400);
   if (result.status !== 'valid') return json(false, "We couldn't verify this license key. Please check that you've entered the key exactly as shown in your Payhip purchase email.", 400);
 
   const response = json(true, '', 200);

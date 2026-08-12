@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   BookOpen,
@@ -23,26 +22,17 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { grammarLevelTwoGames, vocabularyLevelOneGames } from '@/lib/games/academy-games';
 import { hasAcademyAccess } from '@/lib/games/academy-access';
 import { PAYHIP_ACADEMY_URL } from '@/lib/site';
+import { ACADEMY_SOCIAL_IMAGE, createEducationalMetadata } from '@/lib/seo';
 
 // Render against the current device's signed Academy entitlement cookie.
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  title: { absolute: 'Zalea English Academy – Lifetime Access | Zalea Studio' },
-  description: 'Help children build stronger English skills through interactive grammar and vocabulary games. One payment. Lifetime access. Works on phones, tablets and computers.',
-  alternates: { canonical: '/games/english/academy' },
-  openGraph: {
-    title: 'Zalea English Academy – Lifetime Access',
-    description: 'Help children build stronger English skills through interactive grammar and vocabulary games. One payment. Lifetime access.',
-    url: '/games/english/academy',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Zalea English Academy – Lifetime Access',
-    description: 'Learn. Play. Grow. Interactive English practice for young learners, with one payment and Lifetime Access.',
-  },
-};
+export const metadata = createEducationalMetadata({
+  title: 'Zalea English Academy – English Learning Games for Kids | Zalea Studio',
+  description: 'Help children practise grammar and vocabulary through interactive English games. Zalea English Academy offers mobile-friendly learning with one-time Lifetime Access.',
+  path: '/games/english/academy',
+  image: ACADEMY_SOCIAL_IMAGE,
+});
 
 const parentBenefits = [
   'Learn through play',
@@ -135,7 +125,7 @@ export default async function AcademyPage() {
           </div>
         </section>
 
-        <section className="border-y border-border/60 bg-secondary/30"><div className="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6 lg:px-8"><MessageCircleHeart className="mx-auto h-10 w-10 text-violet-700" aria-hidden="true" /><h2 className="mt-4 text-3xl font-bold">Trusted by Parents</h2><p className="mt-4 text-lg text-muted-foreground">Parent reviews coming soon.</p></div></section>
+        <section className="border-y border-border/60 bg-secondary/30"><div className="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6 lg:px-8"><MessageCircleHeart className="mx-auto h-10 w-10 text-violet-700" aria-hidden="true" /><h2 className="mt-4 text-3xl font-bold">Built for everyday family learning</h2><p className="mt-4 text-lg leading-relaxed text-muted-foreground">Use the games for short independent practice or play together and talk through each answer. New learners can begin with the <Link href="/games/english" className="font-semibold text-primary hover:underline">free English games</Link>, while parents can compare the <Link href="/grammar-games-for-kids" className="font-semibold text-primary hover:underline">grammar</Link> and <Link href="/vocabulary-games-for-kids" className="font-semibold text-primary hover:underline">vocabulary</Link> learning paths.</p></div></section>
 
         <section><div className="mx-auto max-w-2xl px-4 py-14 text-center sm:px-6 lg:px-8"><LockKeyhole className="mx-auto h-9 w-9 text-violet-700" aria-hidden="true" /><h2 className="mt-4 text-3xl font-bold">Already purchased?</h2><p className="mt-4 leading-relaxed text-muted-foreground">Enter the license key you received from Payhip to unlock Zalea English Academy on this device.</p><AcademyUnlock initiallyUnlocked={academyUnlocked} /></div></section>
       </main>

@@ -13,6 +13,9 @@
 			"PAYHIP_PRODUCT_SECRET"
 		]
 	},
+	"vars": {
+		"PAYHIP_PRODUCT_KEY": "q6xWY"
+	},
 	"assets": {
 		"directory": ".open-next/assets",
 		"binding": "ASSETS"

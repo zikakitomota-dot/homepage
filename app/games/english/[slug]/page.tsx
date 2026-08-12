@@ -12,6 +12,8 @@ import { academyGames } from '@/lib/games/academy-games';
 import { englishGames, getEnglishGame } from '@/lib/games/english-games';
 import { PAYHIP_ACADEMY_URL } from '@/lib/site';
 import type { AcademyGameSummary, EnglishGame } from '@/lib/games/types';
+import { createEducationalMetadata, safeJsonLd } from '@/lib/seo';
+import { SITE_URL } from '@/lib/site';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -34,13 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: { absolute: title }, description: academyGame.shortDescription, robots: { index: false, follow: false } };
   }
   if (!game) return {};
-  const title = `${game.title} Free English Grammar Game for Kids | Zalea Studio`;
+  const title = `${game.title} Grammar Game for Kids | Zalea Studio`;
   const url = `/games/english/${game.slug}`;
-  return {
-    title: { absolute: title }, description: game.seoDescription, alternates: { canonical: url },
-    openGraph: { title, description: game.seoDescription, url, type: 'website' },
-    twitter: { card: 'summary', title, description: game.seoDescription },
-  };
+  return createEducationalMetadata({ title, description: game.seoDescription, path: url });
 }
 
 export default async function EnglishGamePage({ params }: Props) {
@@ -62,26 +60,48 @@ export default async function EnglishGamePage({ params }: Props) {
   if (!(await canAccessGame(game.access))) notFound();
   const currentIndex = englishGames.findIndex(({ slug }) => slug === game.slug);
   const nextGame = englishGames[(currentIndex + 1) % englishGames.length];
+  const gameUrl = `${SITE_URL}/games/english/${game.slug}`;
   const jsonLd = {
-    '@context': 'https://schema.org', '@type': 'LearningResource', name: game.title,
-    description: game.seoDescription, url: `https://zaleastudio.com/games/english/${game.slug}`,
-    learningResourceType: 'Educational game', educationalLevel: 'Early primary', isAccessibleForFree: true,
-    teaches: game.learningObjective,
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['LearningResource', 'WebApplication'],
+        name: game.title,
+        description: game.seoDescription,
+        url: gameUrl,
+        applicationCategory: 'EducationalApplication',
+        operatingSystem: 'Any modern web browser',
+        learningResourceType: 'Educational game',
+        educationalLevel: 'Early primary',
+        audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
+        isAccessibleForFree: true,
+        teaches: game.learningObjective,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Games', item: `${SITE_URL}/games` },
+          { '@type': 'ListItem', position: 3, name: 'English Games', item: `${SITE_URL}/games/english` },
+          { '@type': 'ListItem', position: 4, name: game.title, item: gameUrl },
+        ],
+      },
+    ],
   };
 
   return <div className="min-h-screen bg-background"><SiteHeader /><main>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
     <section className="border-b border-border/60 bg-blue-50/70"><div className="mx-auto max-w-[1000px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <nav className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground" aria-label="Breadcrumb"><Link href="/" className="hover:text-foreground">Home</Link><ChevronRight className="h-4 w-4" aria-hidden="true" /><Link href="/games" className="hover:text-foreground">Games</Link><ChevronRight className="h-4 w-4" aria-hidden="true" /><Link href="/games/english" className="hover:text-foreground">English Games</Link><ChevronRight className="h-4 w-4" aria-hidden="true" /><span aria-current="page">{game.title}</span></nav>
       <h1 className="mt-7 text-balance text-3xl font-bold tracking-tight sm:text-4xl">{game.title} – Free English Grammar Game</h1>
       <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">{game.shortDescription} Play 10 random questions and get friendly feedback after every answer.</p>
     </div></section>
     <section className="bg-blue-50/40 px-3 py-8 sm:px-6 sm:py-12"><GameEngine game={game} nextGame={nextGame} /></section>
-    <section className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20"><div className="grid gap-5 md:grid-cols-3">
+    <section className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="learn-with-game"><h2 id="learn-with-game" className="mb-7 text-3xl font-bold tracking-tight">Learn with {game.title}</h2><div className="grid gap-5 md:grid-cols-3">
       <Info icon={<BookOpen className="h-6 w-6" />} title="What does this game teach?"><p>{game.whatItTeaches}</p></Info>
-      <Info icon={<Target className="h-6 w-6" />} title="Learning objective"><p>{game.learningObjective}</p></Info>
-      <Info icon={<Lightbulb className="h-6 w-6" />} title="Parent & teacher tip"><p>{game.parentTip}</p></Info>
-    </div><div className="mt-10 rounded-2xl border border-border/60 bg-secondary/40 p-6 sm:p-8"><h2 className="text-2xl font-bold">How to play</h2><p className="mt-4 leading-relaxed text-muted-foreground">Choose Easy, Normal or Challenge, press Start Game, then read each question and tap the answer that fits best. Every session contains 10 different questions from the selected difficulty pool. The game explains each answer, tracks a separate best score for every difficulty and remembers the most recently selected mode on this device.</p><Link href="/games/english" className="mt-6 inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Back to all English Games<ChevronRight className="ml-1 h-4 w-4" /></Link></div></section>
+      <Info icon={<Lightbulb className="h-6 w-6" />} title="Quick grammar tip"><p>{game.learningObjective}</p></Info>
+      <Info icon={<Target className="h-6 w-6" />} title="For parents and teachers"><p>{game.parentTip}</p></Info>
+    </div><div className="mt-10 rounded-2xl border border-border/60 bg-secondary/40 p-6 sm:p-8"><h2 className="text-2xl font-bold">How to play</h2><p className="mt-4 leading-relaxed text-muted-foreground">Choose Easy, Normal or Challenge, press Start Game, then read each question and tap the answer that fits best. Every session contains 10 different questions from the selected difficulty pool. The game explains each answer, tracks a separate best score for every difficulty and remembers the most recently selected mode on this device.</p><div className="mt-6 flex flex-wrap gap-x-6 gap-y-3"><Link href={`/games/english/${nextGame.slug}`} className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Try {nextGame.title}<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link><Link href="/grammar-games-for-kids" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Explore English Grammar Games<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link><Link href="/games/english/academy" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Explore Zalea English Academy<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link></div></div></section>
   </main><SiteFooter /></div>;
 }
 

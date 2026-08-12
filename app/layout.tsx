@@ -1,9 +1,7 @@
 import './globals.css';
-import Script from 'next/script';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'], display: 'swap' });
+import { safeJsonLd } from '@/lib/seo';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://zaleastudio.com'),
@@ -23,7 +21,7 @@ export const metadata: Metadata = {
       { url: '/favicon.ico', type: 'image/x-icon' },
     ],
     shortcut: '/favicon-96x96.png',
-    apple: '/apple-touch-icon.png',
+    apple: '/favicon-96x96.png',
   },
   keywords: [
     'health calculators',
@@ -45,6 +43,7 @@ export const metadata: Metadata = {
     description:
       'Free online tools, educational games, printable resources, and practical digital products designed to make everyday decisions easier.',
     siteName: 'Zalea Studio',
+    url: '/',
   },
   twitter: {
     card: 'summary_large_image',
@@ -64,6 +63,27 @@ export const metadata: Metadata = {
   },
 };
 
+const siteJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'Zalea Studio',
+      url: SITE_URL,
+      logo: `${SITE_URL}/favicon-96x96.png`,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: 'Zalea Studio',
+      url: SITE_URL,
+      publisher: { '@id': `${SITE_URL}/#organization` },
+      inLanguage: 'en',
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -71,13 +91,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Script
-          id="adsense-script"
-          strategy="beforeInteractive"
+      <head>
+        <script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2130981852492599"
           crossOrigin="anonymous"
         />
+      </head>
+      <body className="font-sans">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(siteJsonLd) }} />
         {children}</body>
     </html>
   );

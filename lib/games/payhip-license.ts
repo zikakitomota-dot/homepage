@@ -3,19 +3,20 @@ const PAYHIP_VERIFY_URL = 'https://payhip.com/api/v2/license/verify';
 type PayhipResponse = { data?: { enabled?: unknown; product_link?: unknown; product_name?: unknown } };
 export type LicenseVerificationResult = { status: 'valid' } | { status: 'invalid' | 'disabled' | 'wrong-product' | 'service-error' };
 
-function normalizeProductLink(value: string) {
+function normalizeProductKey(value: string) {
+  const trimmed = value.trim();
   try {
-    const url = new URL(value);
-    return `${url.protocol.toLowerCase()}//${url.host.toLowerCase()}${url.pathname.replace(/\/+$/, '')}`;
+    const url = new URL(trimmed);
+    return url.pathname.split('/').filter(Boolean).at(-1)?.toLowerCase() || '';
   } catch {
-    return value.trim().replace(/\/+$/, '').toLowerCase();
+    return trimmed.replace(/^\/+|\/+$/g, '').split('/').at(-1)?.toLowerCase() || '';
   }
 }
 
 export async function verifyPayhipLicense(
   licenseKey: string,
   productSecret: string,
-  expectedProductLink: string,
+  expectedProductKey: string,
   fetcher: typeof fetch = fetch,
 ): Promise<LicenseVerificationResult> {
   const url = new URL(PAYHIP_VERIFY_URL);
@@ -32,6 +33,6 @@ export async function verifyPayhipLicense(
   if (!response.ok || !payload.data) return { status: 'invalid' };
   if (payload.data.enabled === false) return { status: 'disabled' };
   if (payload.data.enabled !== true) return { status: 'invalid' };
-  if (typeof payload.data.product_link !== 'string' || normalizeProductLink(payload.data.product_link) !== normalizeProductLink(expectedProductLink)) return { status: 'wrong-product' };
+  if (typeof payload.data.product_link !== 'string' || normalizeProductKey(payload.data.product_link) !== normalizeProductKey(expectedProductKey)) return { status: 'wrong-product' };
   return { status: 'valid' };
 }
