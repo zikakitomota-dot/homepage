@@ -3,7 +3,7 @@ import { CashbackCalculator } from '@/components/money/calculators';
 import { createMoneyMetadata } from '@/lib/money-tools';
 
 const description = 'Calculate cashback earned, apply an optional cashback cap, and see the effective final purchase cost.';
-export const metadata = createMoneyMetadata('Cashback Calculator', description, '/money/cashback-calculator');
+export const metadata = createMoneyMetadata('Cashback Calculator', description, '/finance/cashback-calculator');
 
 export default function Page() {
   return <CalculatorPage title="Cashback Calculator" description={description} calculator={<CashbackCalculator />}

@@ -3,7 +3,7 @@ import { SplitBillCalculator } from '@/components/money/calculators';
 import { createMoneyMetadata } from '@/lib/money-tools';
 
 const description = 'Split a bill between friends or family and include an optional tip with this free split bill calculator.';
-export const metadata = createMoneyMetadata('Split Bill Calculator', description, '/money/split-bill-calculator');
+export const metadata = createMoneyMetadata('Split Bill Calculator', description, '/finance/split-bill-calculator');
 
 export default function Page() {
   return <CalculatorPage title="Split Bill Calculator" description={description} calculator={<SplitBillCalculator />}

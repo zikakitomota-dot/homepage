@@ -3,7 +3,7 @@ import { SavingsGoalCalculator } from '@/components/money/calculators';
 import { createMoneyMetadata } from '@/lib/money-tools';
 
 const description = 'Estimate how many months you need to reach a savings target based on your current savings and monthly contribution.';
-export const metadata = createMoneyMetadata('Savings Goal Calculator', description, '/money/savings-goal-calculator');
+export const metadata = createMoneyMetadata('Savings Goal Calculator', description, '/finance/savings-goal-calculator');
 
 export default function Page() {
   return <CalculatorPage title="Savings Goal Calculator" description={description} calculator={<SavingsGoalCalculator />}

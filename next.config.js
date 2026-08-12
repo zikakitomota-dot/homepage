@@ -14,6 +14,7 @@ const nextConfig = {
       },
       { source: '/privacy', destination: '/privacy-policy', permanent: true },
       { source: '/terms', destination: '/terms-of-use', permanent: true },
+      { source: '/money/:path*', destination: '/finance/:path*', permanent: true },
     ];
   },
   async headers() {

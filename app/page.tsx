@@ -5,6 +5,7 @@ import {
   BookOpen,
   Bot,
   Calculator,
+  Clock3,
   HeartHandshake,
   PiggyBank,
   ShieldCheck,
@@ -27,7 +28,8 @@ export const metadata: Metadata = {
 };
 
 const upcomingProjects = [
-  { icon: PiggyBank, title: 'Money Tools', description: 'Simple calculators for everyday spending, savings and smarter buying decisions.', href: '/money' },
+  { icon: PiggyBank, title: 'Finance Tools', description: 'Simple calculators for everyday spending, savings and smarter buying decisions.', href: '/finance' },
+  { icon: Clock3, title: 'Work & Time', description: 'Calculate work hours, schedules, timesheets and everyday work-related time.', href: '/work-time' },
   { icon: Users, title: 'Parenting Tools', description: 'Helpful tools and educational resources for parents.' },
   { icon: BookOpen, title: 'Educational Resources', description: 'Printable learning packs, games and classroom resources.' },
   { icon: Bot, title: 'AI Utilities', description: 'Simple AI-powered tools that improve everyday productivity.' },
@@ -88,7 +90,7 @@ export default function Home() {
                     <BookOpen className="h-5 w-5 text-primary" /><span className="text-xs font-medium">Learn</span>
                   </div>
                   <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-xl bg-white px-3 py-2 shadow-md ring-1 ring-border/60">
-                    <PiggyBank className="h-5 w-5 text-primary" /><span className="text-xs font-medium">Money</span>
+                    <PiggyBank className="h-5 w-5 text-primary" /><span className="text-xs font-medium">Finance</span>
                   </div>
                   <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-primary/30" />
                   <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary shadow-lg" />
@@ -111,9 +113,9 @@ export default function Home() {
           <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <div className="mx-auto mb-12 max-w-2xl text-center">
               <h2 id="tools-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">A Growing Hub of Useful Resources</h2>
-              <p className="mt-3 text-lg text-muted-foreground">Explore our free health and money calculators, with more practical collections on the way.</p>
+              <p className="mt-3 text-lg text-muted-foreground">Explore our free health, finance, work and time calculators, with more practical collections on the way.</p>
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
               {upcomingProjects.map((project) => {
                 const card = (
                 <Card className="h-full border-border/60 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">

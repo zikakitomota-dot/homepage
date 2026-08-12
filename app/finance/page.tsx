@@ -10,11 +10,11 @@ import { moneyTools } from '@/lib/money-tools';
 export const metadata: Metadata = {
   title: { absolute: 'Everyday Money Tools | Zalea Studio' },
   description: 'Use six free money calculators to compare prices, split bills, plan savings, estimate fuel costs, and understand cashback.',
-  alternates: { canonical: '/money' },
+  alternates: { canonical: '/finance' },
   openGraph: {
     title: 'Everyday Money Tools | Zalea Studio',
     description: 'Simple free calculators for everyday spending, savings, and smarter buying decisions.',
-    url: '/money',
+    url: '/finance',
     type: 'website',
   },
 };
@@ -50,7 +50,7 @@ export default function MoneyToolsPage() {
             {moneyTools.map((tool) => {
               const Icon = icons[tool.icon];
               return (
-                <Link key={tool.slug} href={`/money/${tool.slug}`} className="group rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                <Link key={tool.slug} href={`/finance/${tool.slug}`} className="group rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
                   <Card className="h-full border-border/60 shadow-sm transition-all group-hover:-translate-y-1 group-hover:shadow-md">
                     <CardHeader>
                       <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary"><Icon className="h-6 w-6" aria-hidden="true" /></span>

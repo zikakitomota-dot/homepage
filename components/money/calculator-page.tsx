@@ -33,9 +33,9 @@ export function CalculatorPage({
       <main>
         <section className="border-b border-border/60 bg-gradient-to-b from-blue-50/70 to-background">
           <div className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-            <Link href="/money" className="inline-flex items-center text-sm font-medium text-primary hover:underline">
+            <Link href="/finance" className="inline-flex items-center text-sm font-medium text-primary hover:underline">
               <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
-              All Money Tools
+              All Finance Tools
             </Link>
             <Badge variant="secondary" className="mt-6 block w-fit border-primary/20 bg-primary/10 text-primary">
               Free calculator

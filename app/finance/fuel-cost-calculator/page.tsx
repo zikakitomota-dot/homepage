@@ -3,7 +3,7 @@ import { FuelCostCalculator } from '@/components/money/calculators';
 import { createMoneyMetadata } from '@/lib/money-tools';
 
 const description = 'Estimate the fuel needed and fuel cost for a trip using distance, vehicle efficiency, and price per litre.';
-export const metadata = createMoneyMetadata('Fuel Cost Calculator', description, '/money/fuel-cost-calculator');
+export const metadata = createMoneyMetadata('Fuel Cost Calculator', description, '/finance/fuel-cost-calculator');
 
 export default function Page() {
   return <CalculatorPage title="Fuel Cost Calculator" description={description} calculator={<FuelCostCalculator />}

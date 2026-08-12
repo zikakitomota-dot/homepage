@@ -3,7 +3,7 @@ import { DiscountCalculator } from '@/components/money/calculators';
 import { createMoneyMetadata } from '@/lib/money-tools';
 
 const description = 'Calculate a discount amount, final sale price, and how much you save with this free discount calculator.';
-export const metadata = createMoneyMetadata('Discount Calculator', description, '/money/discount-calculator');
+export const metadata = createMoneyMetadata('Discount Calculator', description, '/finance/discount-calculator');
 
 export default function Page() {
   return <CalculatorPage title="Discount Calculator" description={description} calculator={<DiscountCalculator />}

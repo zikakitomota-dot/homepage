@@ -3,7 +3,7 @@ import { UnitPriceCalculator } from '@/components/money/calculators';
 import { createMoneyMetadata } from '@/lib/money-tools';
 
 const description = 'Compare the unit price of two products across grams, kilograms, millilitres, litres, or individual items.';
-export const metadata = createMoneyMetadata('Unit Price Calculator', description, '/money/unit-price-calculator');
+export const metadata = createMoneyMetadata('Unit Price Calculator', description, '/finance/unit-price-calculator');
 
 export default function Page() {
   return <CalculatorPage title="Unit Price Calculator" description={description} calculator={<UnitPriceCalculator />}
