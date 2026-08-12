@@ -1,5 +1,6 @@
 import { gameDifficulties, type EnglishGame, type GameDifficulty, type GameQuestion } from './types';
 import { articleGameQuestions } from './article-questions';
+import { levelOneQuestionExpansions } from './level-one-expansions';
 
 const q = (id: string, prompt: string, choices: readonly string[], correctAnswer: string, explanation: string, illustration: string | undefined, difficulty: GameDifficulty): GameQuestion =>
   ({ id, prompt, choices, correctAnswer, explanation, illustration, difficulty });
@@ -37,10 +38,10 @@ const canCant = [
 ] as const;
 
 const whoIsIt = [
-  ['Me → ___', 'I'], ['The person I am speaking to → ___', 'you'], ['Tom → ___', 'he'],
-  ['Mina → ___', 'she'], ['The robot → ___', 'it'], ['Sara and I → ___', 'we'],
-  ['Tom and Ali → ___', 'they'], ['Myself → ___', 'I'], ['Sam, when I speak to him → ___', 'you'],
-  ['Ben → ___', 'he'], ['Ava has a red bag. ___ carries it.', 'she'], ['The bus is here. ___ is yellow.', 'it'],
+  ['I am holding a pencil. ___ can write with it.', 'I'], ['I tell Sam, “___ may choose a game.”', 'you'], ['Tom is my brother. ___ is kind.', 'he'],
+  ['Mina is reading. ___ likes books.', 'she'], ['The robot is new. ___ can move.', 'it'], ['Sara and I are playing. ___ are a team.', 'we'],
+  ['Tom and Ali are friends. ___ play together.', 'they'], ['I am seven. ___ like drawing.', 'I'], ['Mum says to me, “___ are ready.”', 'you'],
+  ['Ben has a kite. ___ flies it.', 'he'], ['Ava has a red bag. ___ carries it.', 'she'], ['The bus is here. ___ is yellow.', 'it'],
   ['My sister and I cook. ___ help Dad.', 'we'], ['The cats are sleeping. ___ are quiet.', 'they'], ['I have a ball. ___ can throw it.', 'I'],
   ['Dad asks Sam: “Can ___ help me?”', 'you'], ['Leo is swimming. ___ is fast.', 'he'], ['Nora is smiling. ___ is happy.', 'she'],
   ['The apple fell. ___ is on the floor.', 'it'], ['My friends and I read. ___ love stories.', 'we'], ['The children are outside. ___ are running.', 'they'],
@@ -180,16 +181,16 @@ const challengeQuestions: Record<string, readonly GameQuestion[]> = {
     ['The toys are packed ___ a large box.', ['in', 'on', 'under', 'behind', 'in front of', 'next to'], 'in'],
   ]),
   'this-that-these-those': challengePool('demonstrative', [
-    ['[near, one] ___ sandwich is mine.', ['this', 'that', 'these', 'those'], 'this'],
-    ['[far, many] ___ clouds look dark.', ['this', 'that', 'these', 'those'], 'those'],
-    ['[near, many] ___ pencils need sharpening.', ['this', 'that', 'these', 'those'], 'these'],
-    ['[far, one] ___ playground is new.', ['this', 'that', 'these', 'those'], 'that'],
-    ['[near, one] ___ puppy is friendly.', ['this', 'that', 'these', 'those'], 'this'],
-    ['[far, many] ___ children are waving.', ['this', 'that', 'these', 'those'], 'those'],
-    ['[near, many] ___ cookies smell lovely.', ['this', 'that', 'these', 'those'], 'these'],
-    ['[far, one] ___ kite is above the trees.', ['this', 'that', 'these', 'those'], 'that'],
-    ['[near, many] ___ shoes belong to me.', ['this', 'that', 'these', 'those'], 'these'],
-    ['[far, one] ___ boat has a blue sail.', ['this', 'that', 'these', 'those'], 'that'],
+    ['I am holding one sandwich. ___ sandwich is mine.', ['this', 'that', 'these', 'those'], 'this'],
+    ['The clouds far across the valley look dark. ___ clouds may bring rain.', ['this', 'that', 'these', 'those'], 'those'],
+    ['The pencils here beside me need sharpening. ___ pencils are blunt.', ['this', 'that', 'these', 'those'], 'these'],
+    ['Look at the playground across the road. ___ playground is new.', ['this', 'that', 'these', 'those'], 'that'],
+    ['The puppy at my feet is friendly. ___ puppy wants to play.', ['this', 'that', 'these', 'those'], 'this'],
+    ['The children on the far side of the field are waving. ___ children are my friends.', ['this', 'that', 'these', 'those'], 'those'],
+    ['The cookies on this plate smell lovely. ___ cookies are warm.', ['this', 'that', 'these', 'those'], 'these'],
+    ['See the kite high above the distant trees? ___ kite is Ben’s.', ['this', 'that', 'these', 'those'], 'that'],
+    ['The shoes next to me belong to Mia. ___ shoes are wet.', ['this', 'that', 'these', 'those'], 'these'],
+    ['One boat far out at sea has a blue sail. ___ boat is fast.', ['this', 'that', 'these', 'those'], 'that'],
   ]),
   'has-or-have': challengePool('have', [
     ['Mia and Tom ___ matching hats.', ['has', 'have'], 'have'],
@@ -299,13 +300,26 @@ const games: EnglishGame[] = [
 ];
 
 for (const game of games) {
-  game.questions = [...game.questions, ...(challengeQuestions[game.slug] ?? [])];
+  game.questions = [...game.questions, ...(challengeQuestions[game.slug] ?? []), ...(levelOneQuestionExpansions[game.slug] ?? [])];
+  if (game.slug !== 'a-or-an') {
+    game.questions = game.questions.map((question, index) => {
+      const correctIndex = question.choices.indexOf(question.correctAnswer);
+      const difficultyIndex = gameDifficulties.indexOf(question.difficulty);
+      const desiredIndex = (index + difficultyIndex) % question.choices.length;
+      const shift = (correctIndex - desiredIndex + question.choices.length) % question.choices.length;
+      return { ...question, choices: [...question.choices.slice(shift), ...question.choices.slice(0, shift)] };
+    });
+  }
   for (const difficulty of gameDifficulties) {
     const count = game.questions.filter((question) => question.difficulty === difficulty).length;
     if (count < 10) throw new Error(`${game.slug} needs at least 10 ${difficulty} questions; found ${count}.`);
   }
   if (new Set(game.questions.map(({ id }) => id)).size !== game.questions.length) throw new Error(`${game.slug} has duplicate question IDs.`);
-  if (new Set(game.questions.map(({ prompt, choices }) => JSON.stringify([prompt, choices]))).size !== game.questions.length) throw new Error(`${game.slug} has duplicate questions.`);
+  const signatures = game.questions.map(({ prompt, choices }) => JSON.stringify([prompt, choices]));
+  if (new Set(signatures).size !== game.questions.length) {
+    const duplicate = signatures.find((signature, index) => signatures.indexOf(signature) !== index);
+    throw new Error(`${game.slug} has a duplicate question: ${duplicate}`);
+  }
   if (game.questions.some(({ choices, correctAnswer }) => !choices.includes(correctAnswer))) throw new Error(`${game.slug} has an answer missing from its choices.`);
 }
 
@@ -316,3 +330,4 @@ export const englishGameDifficultyAudit = englishGames.map((game) => ({
   title: game.title,
   counts: Object.fromEntries(gameDifficulties.map((difficulty) => [difficulty, game.questions.filter((question) => question.difficulty === difficulty).length])) as Record<GameDifficulty, number>,
 }));
+
