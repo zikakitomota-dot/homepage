@@ -20,7 +20,7 @@ export const navLinks = [
 
 export const toolLinks = [
   { label: 'Health', href: HEALTH_TOOLS_URL, external: true },
-  { label: 'Money', href: '/money', external: false },
+  { label: 'Finance', href: '/money', external: false },
 ] as const;
 
 export const littleMoneyMaster = {
