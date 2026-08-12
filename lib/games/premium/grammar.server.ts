@@ -20,7 +20,7 @@ const wasWereNormal = [
 const wasWereChallenge = wasWereNormal.map(([subject, answer, ending]) => {
   const wrong = answer === 'was' ? 'were' : 'was';
   const correct = `${subject} ${answer} ${ending}.`;
-  return seed(`Choose the correct sentence about the past.`, [`${subject} ${wrong} ${ending}.`, correct, `${subject} is ${ending}.`], correct, `Use “${answer}” with “${subject}” when talking about the past.`);
+  return seed(`Choose the correct past-tense sentence about “${subject}”.`, [`${subject} ${wrong} ${ending}.`, correct, `${subject} is ${ending}.`], correct, `Use “${answer}” with “${subject}” when talking about the past.`);
 });
 
 const subjectVerb = [
@@ -33,7 +33,7 @@ const doDoesChallenge = subjectVerb.map(([subject, answer, rest]) => {
   const capital = answer === 'do' ? 'Do' : 'Does';
   const wrong = answer === 'do' ? 'Does' : 'Do';
   const correct = `${capital} ${subject} ${rest}?`;
-  return seed('Choose the correct full question.', [correct, `${wrong} ${subject} ${rest}?`, `${capital} ${subject} ${rest}s?`], correct, `“${capital}” agrees with the subject, and the next verb remains in its base form.`);
+  return seed(`Build the correct question about whether ${subject} ${rest}.`, [correct, `${wrong} ${subject} ${rest}?`, `${capital} ${subject} ${rest}s?`], correct, `“${capital}” agrees with the subject, and the next verb remains in its base form.`);
 });
 
 const negativeRows = [
@@ -45,7 +45,7 @@ const negative = (longer: boolean) => negativeRows.map(([subject, answer, rest])
 const negativeChallenge = negativeRows.map(([subject, answer, rest]) => {
   const correct = `${subject[0].toUpperCase()}${subject.slice(1)} ${answer} ${rest}.`;
   const other = answer === "don't" ? "doesn't" : "don't";
-  return seed('Choose the correct negative sentence.', [correct, `${subject} ${other} ${rest}.`, `${subject} ${answer} ${rest}s.`], correct, `“${answer}” matches the subject and is followed by the base verb.`);
+  return seed(`Which negative sentence uses “${subject}” correctly with “${rest}”?`, [correct, `${subject} ${other} ${rest}.`, `${subject} ${answer} ${rest}s.`], correct, `“${answer}” matches the subject and is followed by the base verb.`);
 });
 
 const presentRows = [
@@ -56,7 +56,7 @@ const presentRows = [
 const addS = (longer: boolean) => presentRows.map(([subject, answer, base, ending]) => seed(`${subject} ___ ${ending}${longer ? ' before breakfast' : ''}.`, [base, answer], answer, `With one person or thing, “${base}” changes to “${answer}”.`));
 const addSChallenge = presentRows.map(([subject, answer, base, ending]) => {
   const correct = `${subject} ${answer} ${ending}.`;
-  return seed('Choose the correct simple-present sentence.', [correct, `${subject} ${base} ${ending}.`, `${subject} is ${answer} ${ending}.`], correct, `“${subject}” is singular, so the verb is “${answer}”.`);
+  return seed(`Which sentence uses the correct verb with “${subject}”?`, [correct, `${subject} ${base} ${ending}.`, `${subject} is ${answer} ${ending}.`], correct, `“${subject}” is singular, so the verb is “${answer}”.`);
 });
 
 const pastRows = [
@@ -68,7 +68,7 @@ const pastEasy = pastRows.map(([base, past]) => seed(`What is the past form of �
 const pastNormal = pastRows.map(([base, past, ending]) => seed(`Yesterday, Mia ___ ${ending}.`, [base, past], past, `“Yesterday” tells us to use the past form “${past}”.`));
 const pastChallenge = pastRows.map(([base, past, ending]) => {
   const correct = `Yesterday, we ${past} ${ending}.`;
-  return seed('Choose the correct sentence.', [correct, `Yesterday, we ${base} ${ending}.`, `Yesterday, we are ${past} ${ending}.`], correct, `The past form of “${base}” is “${past}”.`);
+  return seed(`Which sentence uses the past form of “${base}” correctly?`, [correct, `Yesterday, we ${base} ${ending}.`, `Yesterday, we are ${past} ${ending}.`], correct, `The past form of “${base}” is “${past}”.`);
 });
 
 export const firstFiveGrammarGames = [
@@ -87,7 +87,7 @@ const possessiveNormal = ownershipRows.map(([name, object]) => seed(`This is ${n
 const possessiveChallenge = ownershipRows.map(([name, object], index) => {
   const place = ['desk','shelf','chair'][index % 3];
   const correct = `${name}'s ${object} is on the ${place}.`;
-  return seed('Choose the sentence that clearly shows ownership.', [correct, `${name}s ${object} is on the ${place}.`, `${name} ${object}'s is on the ${place}.`], correct, `The apostrophe-s after ${name} shows who owns the ${object}.`);
+  return seed(`Which sentence shows that the ${object} belongs to ${name}?`, [correct, `${name}s ${object} is on the ${place}.`, `${name} ${object}'s is on the ${place}.`], correct, `The apostrophe-s after ${name} shows who owns the ${object}.`);
 });
 
 const questionRows = [
@@ -110,7 +110,7 @@ const conjunctionChoices = ['and','but','because'] as const;
 const conjunction = (longer: boolean) => conjunctionRows.map(([first,second,answer,reason]) => seed(`${first} ___ ${second}${longer ? ' after school' : ''}.`, conjunctionChoices, answer, `“${answer}” ${reason}.`));
 const conjunctionChallenge = conjunctionRows.map(([first,second,answer,reason]) => {
   const correct = `${first} ${answer} ${second}.`;
-  return seed('Choose the sentence with the best joining word.', conjunctionChoices.filter((word) => word !== answer).slice(0,2).map((word) => `${first} ${word} ${second}.`).concat(correct).sort(), correct, `“${answer}” ${reason}, so it makes the meaning clear.`);
+  return seed(`Which sentence best joins “${first}” and “${second}”?`, conjunctionChoices.filter((word) => word !== answer).slice(0,2).map((word) => `${first} ${word} ${second}.`).concat(correct).sort(), correct, `“${answer}” ${reason}, so it makes the meaning clear.`);
 });
 
 const timeRows = [
@@ -121,7 +121,7 @@ const timeRows = [
 const timeSeeds = (context: boolean) => timeRows.map(([time,answer,reason]) => seed(`${context ? 'Our activity happens ' : 'The activity is '}___ ${time}.`, ['in','on','at'], answer, `Use “${answer}” with ${reason}.`));
 const timeChallenge = timeRows.map(([time,answer,reason]) => {
   const correct = `We will meet ${answer} ${time}.`;
-  return seed('Choose the sentence with the correct time word.', ['in','on','at'].map((word) => `We will meet ${word} ${time}.`), correct, `Use “${answer}” with ${reason}.`);
+  return seed(`Which sentence uses the correct time word before “${time}”?`, ['in','on','at'].map((word) => `We will meet ${word} ${time}.`), correct, `Use “${answer}” with ${reason}.`);
 });
 
 const sentenceSets = {

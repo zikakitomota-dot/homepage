@@ -16,11 +16,11 @@ function vocabularySeeds(entries: readonly Entry[], extras: readonly Extra[]): R
   };
   const easy = Array.from({ length: 15 }, (_, index) => {
     const [, , , meaningClue] = entries[index % entries.length];
-    return question(index, 2, index < entries.length ? 'Which word matches this symbol?' : `Which word matches this clue: ${meaningClue}?`, index < entries.length);
+    return question(index, 2, index < entries.length ? `Which word matches this symbol and clue: ${meaningClue}?` : `Which word matches this clue: ${meaningClue}?`, index < entries.length);
   });
   const normal = Array.from({ length: 15 }, (_, index) => {
     const [, , , meaningClue] = entries[index % entries.length];
-    return question(index, 4, index < entries.length ? 'Choose the best word for this visual clue.' : `Choose the best word for this description: ${meaningClue}.`, index < entries.length);
+    return question(index, 4, index < entries.length ? `Choose the best word for this visual clue: ${meaningClue}.` : `Choose the best word for this description: ${meaningClue}.`, index < entries.length);
   });
   const challengeSource: Extra[] = [...entries.map(([word, , , clue]) => [clue, word] as const), ...extras];
   const challenge = challengeSource.slice(0, 15).map(([clue, answer], index) => ({ prompt: clue, choices: rotateChoices(words, words.indexOf(answer), 4), answer, explanation: `“${answer}” is the word that best completes the clue.` }));
