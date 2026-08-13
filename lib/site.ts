@@ -9,6 +9,9 @@ export const PAYHIP_PRODUCT_URL = 'https://payhip.com/ZaleaStudio';
 export const PAYHIP_ACADEMY_PRODUCT_KEY = 'q6xWY';
 export const PAYHIP_ACADEMY_PRODUCT_URL = 'https://payhip.com/b/q6xWY';
 export const PAYHIP_ACADEMY_URL = process.env.NEXT_PUBLIC_PAYHIP_ACADEMY_URL?.trim() || PAYHIP_ACADEMY_PRODUCT_URL;
+export const PAYHIP_LITTLE_MONEY_MASTER_URL = 'https://payhip.com/b/h2vaZ';
+export const PAYHIP_NO_SPEND_COLLECTION_URL = 'https://payhip.com/b/VZjpT';
+export const PAYHIP_MONEY_MILESTONE_USD_URL = 'https://payhip.com/b/tvpjN';
 
 export const navLinks = [
   { label: 'Home', href: '/', external: false },

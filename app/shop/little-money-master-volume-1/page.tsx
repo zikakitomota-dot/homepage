@@ -6,7 +6,7 @@ import { SiteHeader } from '@/components/site-header';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { littleMoneyMaster, PAYHIP_PRODUCT_URL, SITE_URL } from '@/lib/site';
+import { littleMoneyMaster, PAYHIP_LITTLE_MONEY_MASTER_URL, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: { absolute: 'Needs or Wants? Money Game for Kids Ages 5–8 | Zalea Studio' },
@@ -84,7 +84,7 @@ export default function LittleMoneyMasterPage() {
               </h1>
               <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{littleMoneyMaster.description}</p>
               <Button asChild size="lg" className="mt-8 h-12 px-6">
-                <a href={PAYHIP_PRODUCT_URL}>
+                <a href={PAYHIP_LITTLE_MONEY_MASTER_URL} target="_blank" rel="noreferrer">
                   Get Little Money Master™
                   <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </a>
@@ -158,7 +158,7 @@ export default function LittleMoneyMasterPage() {
           <div className="rounded-3xl bg-gradient-to-br from-primary to-blue-700 px-6 py-14 text-center text-white shadow-lg sm:px-12">
             <h2 className="text-3xl font-bold tracking-tight">Make Money Learning Fun</h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-blue-50">Help a child build a strong foundation by learning how to tell the difference between needs and wants.</p>
-            <Button asChild size="lg" className="mt-8 h-12 bg-white px-6 text-primary hover:bg-blue-50"><a href={PAYHIP_PRODUCT_URL}>Get Little Money Master™</a></Button>
+            <Button asChild size="lg" className="mt-8 h-12 bg-white px-6 text-primary hover:bg-blue-50"><a href={PAYHIP_LITTLE_MONEY_MASTER_URL} target="_blank" rel="noreferrer">Get Little Money Master™</a></Button>
             <p className="mt-5 text-sm text-blue-100">Want to see more? <Link href="/shop" className="font-medium text-white underline underline-offset-4">Return to the Zalea Studio shop</Link>.</p>
           </div>
         </section>
