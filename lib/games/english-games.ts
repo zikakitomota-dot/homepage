@@ -330,4 +330,3 @@ export const englishGameDifficultyAudit = englishGames.map((game) => ({
   title: game.title,
   counts: Object.fromEntries(gameDifficulties.map((difficulty) => [difficulty, game.questions.filter((question) => question.difficulty === difficulty).length])) as Record<GameDifficulty, number>,
 }));
-

@@ -225,4 +225,3 @@ export const levelOneQuestionExpansions: Record<string, readonly GameQuestion[]>
     ],
   }, (answer) => `Use “${answer}” with the subject in this sentence.`),
 };
-

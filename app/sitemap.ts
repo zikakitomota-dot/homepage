@@ -57,11 +57,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/work-time/business-days-calculator",
       "/work-time/time-duration-calculator",
       "/work-time/overtime-calculator",
+      "/work-time/salary-to-hourly-calculator",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
       lastModified,
       changeFrequency: "monthly" as const,
       priority: path === "/work-time" ? 0.9 : 0.8,
+    })),
+    ...[
+      "/education",
+      "/education/grade-calculator",
+      "/education/final-grade-calculator",
+      "/education/weighted-grade-calculator",
+      "/education/gpa-calculator",
+      "/education/test-grade-calculator",
+    ].map((path) => ({
+      url: `${baseUrl}${path}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: path === "/education" ? 0.9 : 0.8,
     })),
     {
       url: `${baseUrl}/games`,

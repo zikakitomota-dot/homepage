@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, BadgeDollarSign, CalendarDays, Clock3, Timer } from 'lucide-react';
+import { ArrowRight, BadgeDollarSign, Banknote, CalendarDays, Clock3, Timer } from 'lucide-react';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { Badge } from '@/components/ui/badge';
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-const icons = { clock: Clock3, calendar: CalendarDays, timer: Timer, overtime: BadgeDollarSign };
+const icons = { clock: Clock3, calendar: CalendarDays, timer: Timer, overtime: BadgeDollarSign, salary: Banknote };
 
 export default function WorkTimeToolsPage() {
   return (

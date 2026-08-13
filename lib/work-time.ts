@@ -25,6 +25,12 @@ export const workTimeTools = [
     description: 'Calculate overtime hours and estimate overtime pay using your hourly rate and overtime multiplier.',
     icon: 'overtime',
   },
+  {
+    slug: 'salary-to-hourly-calculator',
+    title: 'Salary to Hourly Calculator',
+    description: 'Convert salary into hourly, daily, weekly and monthly pay—or convert an hourly rate back into annual salary.',
+    icon: 'salary',
+  },
 ] as const;
 
 export type WorkDay = (typeof workDays)[number];
