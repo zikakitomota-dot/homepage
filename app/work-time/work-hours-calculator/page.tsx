@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, BriefcaseBusiness, CircleHelp } from 'lucide-react';
 import { WorkHoursCalculator } from '@/components/work-time/work-hours-calculator';
+import { RelatedWorkTimeTools } from '@/components/work-time/related-work-time-tools';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { Badge } from '@/components/ui/badge';
@@ -105,6 +106,7 @@ export default function WorkHoursCalculatorPage() {
           <div className="text-center"><CircleHelp className="mx-auto h-9 w-9 text-primary" aria-hidden="true" /><h2 id="work-hours-faq" className="mt-4 text-3xl font-bold tracking-tight">Frequently Asked Questions</h2></div>
           <div className="mt-9 divide-y divide-border rounded-2xl border border-border/60 bg-card px-6 shadow-sm">{faqs.map((faq) => <div key={faq.question} className="py-6"><h3 className="font-semibold">{faq.question}</h3><p className="mt-2 leading-relaxed text-muted-foreground">{faq.answer}</p></div>)}</div>
         </section>
+        <div className="border-t border-border/60"><RelatedWorkTimeTools currentSlug="work-hours-calculator" /></div>
       </main>
       <SiteFooter />
     </div>

@@ -10,20 +10,26 @@ const summary = (slug: string) => vocabularyLevelOneGames.find((game) => game.sl
 
 function vocabularySeeds(entries: readonly Entry[], extras: readonly Extra[]): Record<'easy' | 'normal' | 'challenge', QuestionSeed[]> {
   const words = entries.map(([word]) => word);
-  const question = (index: number, size: 2 | 4, prompt: string, usePicture: boolean): QuestionSeed => {
+  const question = (index: number, size: 2 | 3 | 4, prompt: string, usePicture: boolean): QuestionSeed => {
     const [answer, icon, , meaningClue] = entries[index % entries.length];
     return { prompt, choices: rotateChoices(words, index % entries.length, size), answer, explanation: `“${answer}” is the word that matches this clue.`, ...(usePicture ? { illustration: icon, illustrationLabel: meaningClue } : {}) };
   };
-  const easy = Array.from({ length: 15 }, (_, index) => {
-    const [, , , meaningClue] = entries[index % entries.length];
-    return question(index, 2, index < entries.length ? `Which word matches this symbol and clue: ${meaningClue}?` : `Which word matches this clue: ${meaningClue}?`, index < entries.length);
+  const easy = Array.from({ length: 20 }, (_, index) => {
+    const [, , accessibleClue, meaningClue] = entries[index % entries.length];
+    const round = Math.floor(index / entries.length) % 3;
+    const prompts = [
+      `Which word matches this picture clue: ${accessibleClue}?`,
+      `Find the everyday word for ${meaningClue}.`,
+      `Point to the word that means ${meaningClue}.`,
+    ];
+    return question(index, 2, prompts[round], round === 0);
   });
-  const normal = Array.from({ length: 15 }, (_, index) => {
-    const [, , , meaningClue] = entries[index % entries.length];
-    return question(index, 4, index < entries.length ? `Choose the best word for this visual clue: ${meaningClue}.` : `Choose the best word for this description: ${meaningClue}.`, index < entries.length);
-  });
+  const normal = [
+    ...entries.map(([answer, , , meaningClue], index) => ({ ...question(index, 3, `Choose the best word for this description: ${meaningClue}.`, false), explanation: `“${answer}” matches the description: ${meaningClue}.` })),
+    ...extras.map(([clue, answer], index) => ({ prompt: `Use the context to complete this vocabulary clue: ${clue}`, choices: rotateChoices(words, words.indexOf(answer), 3), answer, explanation: `“${answer}” best fits this simple context.` })),
+  ];
   const challengeSource: Extra[] = [...entries.map(([word, , , clue]) => [clue, word] as const), ...extras];
-  const challenge = challengeSource.slice(0, 15).map(([clue, answer], index) => ({ prompt: clue, choices: rotateChoices(words, words.indexOf(answer), 4), answer, explanation: `“${answer}” is the word that best completes the clue.` }));
+  const challenge = challengeSource.map(([clue, answer], index) => ({ prompt: index < entries.length ? `Which word is the most precise match for this situation: ${clue}?` : clue, choices: rotateChoices(words, words.indexOf(answer), 4), answer, explanation: `“${answer}” is the most precise word for this clue.` }));
   return { easy, normal, challenge };
 }
 
@@ -50,7 +56,7 @@ const school = [
 ] as const satisfies readonly Entry[];
 
 export const firstFiveVocabularyGames = [
-  vocabGame('colour-quest', colours, [['Which colour word completes this sentence: The school bus is often ___.','yellow'],['Which colour word completes this sentence: The leaves are fresh and ___.','green'],['Which colour word completes this sentence: The night sky can look ___.','black'],['Which colour word completes this sentence: The cloud is bright ___.','white'],['Which colour word completes this sentence: The soil is ___.','brown']], { instructions: 'Use both the symbol and written clue to choose the colour word.', whatItTeaches: 'Ten common colour words without relying on colour alone.', parentTip: 'Find the same colour on a safe object nearby and say its name aloud.' }),
+  vocabGame('colour-quest', colours, [['Which colour word completes this sentence: A ripe lemon is usually ___.','yellow'],['Which colour word completes this sentence: Healthy grass is often ___.','green'],['Which colour word completes this sentence: A moonless night can look ___.','black'],['Which colour word completes this sentence: Fresh snow is ___.','white'],['Which colour word completes this sentence: Many tree trunks are ___.','brown']], { instructions: 'Use both the symbol and written clue to choose the colour word.', whatItTeaches: 'Ten common colour words without relying on colour alone.', parentTip: 'Find the same colour on a safe object nearby and say its name aloud.' }),
   vocabGame('animal-friends', animals, [['This animal has a long trunk.','elephant'],['This animal has orange fur with dark stripes.','tiger'],['This animal may purr on your lap.','cat'],['This animal has feathers and a flat bill.','duck'],['This animal hops and has long ears.','rabbit']], { instructions: 'Match each animal symbol or description with its English name.', whatItTeaches: 'Names and simple features of familiar pets, farm animals and wild animals.', parentTip: 'Make the animal’s sound or movement after saying its name.' }),
   vocabGame('food-fun', foods, [['Which one is a fruit that is long and curved?','banana'],['Which drink is clear and has no added flavour?','water'],['Which food is made from baked dough and often sliced?','bread'],['Which one is a crunchy root vegetable?','carrot'],['Which food might have candles at a birthday?','cake']], { instructions: 'Choose the food or drink word that matches each clue.', whatItTeaches: 'Inclusive everyday food, drink and simple category vocabulary.', parentTip: 'Name foods during meals without labelling any familiar food as strange.' }),
   vocabGame('my-body', body, [['You use these to hear.','ears'],['You use these to see.','eyes'],['You use this to smell a flower.','nose'],['You use these to hold a pencil.','hands'],['You stand on these.','feet']], { instructions: 'Match each body-part symbol or function with the correct word.', whatItTeaches: 'Common external body-part words and what they help us do.', parentTip: 'Point to your own body part only when the child is comfortable copying.' }),

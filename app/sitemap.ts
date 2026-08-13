@@ -4,7 +4,7 @@ import { SITE_URL } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
-  const lastModified = new Date('2026-08-12');
+  const lastModified = new Date('2026-08-13');
 
   return [
     {
@@ -54,6 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...[
       "/work-time",
       "/work-time/work-hours-calculator",
+      "/work-time/business-days-calculator",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
       lastModified,

@@ -59,15 +59,25 @@ export function auditPremiumGames(games: readonly EnglishGame[]) {
     const ids = new Set<string>();
     for (const difficulty of ['easy', 'normal', 'challenge'] as const) {
       const questions = game.questions.filter((question) => question.difficulty === difficulty);
-      if (questions.length !== 15) throw new Error(`${game.slug} must have exactly 15 ${difficulty} questions.`);
+      if (questions.length < 15) throw new Error(`${game.slug} must have at least 15 ${difficulty} questions.`);
       const signatures = new Set<string>();
       for (const question of questions) {
         if (ids.has(question.id)) throw new Error(`Duplicate question id: ${question.id}`);
         ids.add(question.id);
         if (!question.prompt.trim() || !question.explanation.trim()) throw new Error(`Incomplete question: ${question.id}`);
-        if (question.choices.length < 2 || new Set(question.choices).size !== question.choices.length) throw new Error(`Invalid choices: ${question.id}`);
+        if (question.choices.length < 2 || (game.interaction !== 'wordOrder' && new Set(question.choices).size !== question.choices.length)) throw new Error(`Invalid choices: ${question.id}`);
         if (game.interaction !== 'wordOrder' && !question.choices.includes(question.correctAnswer)) throw new Error(`Missing correct answer: ${question.id}`);
-        if (game.interaction === 'wordOrder' && !question.choices.every((choice) => question.correctAnswer.includes(choice))) throw new Error(`Invalid word-order answer: ${question.id}`);
+        if (game.interaction === 'wordOrder') {
+          const answerWords = question.correctAnswer.split(' ');
+          const availableWords = [...question.choices];
+          const hasSameWords = answerWords.length === availableWords.length && answerWords.every((word) => {
+            const index = availableWords.indexOf(word);
+            if (index < 0) return false;
+            availableWords.splice(index, 1);
+            return true;
+          });
+          if (!hasSameWords) throw new Error(`Invalid word-order answer: ${question.id}`);
+        }
         const signature = JSON.stringify([question.prompt, question.choices, question.illustration]);
         if (signatures.has(signature)) throw new Error(`Repeated ${difficulty} question: ${question.id}`);
         signatures.add(signature);
