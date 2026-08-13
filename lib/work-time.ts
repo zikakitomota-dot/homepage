@@ -13,6 +13,18 @@ export const workTimeTools = [
     description: 'Count working days between dates or add and subtract business days from any date.',
     icon: 'calendar',
   },
+  {
+    slug: 'time-duration-calculator',
+    title: 'Time Duration Calculator',
+    description: 'Calculate the time between two times, add or subtract time, and convert durations into decimal hours.',
+    icon: 'timer',
+  },
+  {
+    slug: 'overtime-calculator',
+    title: 'Overtime Calculator',
+    description: 'Calculate overtime hours and estimate overtime pay using your hourly rate and overtime multiplier.',
+    icon: 'overtime',
+  },
 ] as const;
 
 export type WorkDay = (typeof workDays)[number];

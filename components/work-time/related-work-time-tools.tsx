@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { ArrowRight, CalendarDays, Clock3 } from 'lucide-react';
+import { ArrowRight, BadgeDollarSign, CalendarDays, Clock3, Timer } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { workTimeTools } from '@/lib/work-time';
 
-const icons = { clock: Clock3, calendar: CalendarDays };
+const icons = { clock: Clock3, calendar: CalendarDays, timer: Timer, overtime: BadgeDollarSign };
 
 export function RelatedWorkTimeTools({ currentSlug }: { currentSlug: string }) {
   const relatedTools = workTimeTools.filter((tool) => tool.slug !== currentSlug);

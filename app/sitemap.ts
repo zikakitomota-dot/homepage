@@ -55,6 +55,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/work-time",
       "/work-time/work-hours-calculator",
       "/work-time/business-days-calculator",
+      "/work-time/time-duration-calculator",
+      "/work-time/overtime-calculator",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
       lastModified,
