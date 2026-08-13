@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { BookOpen, ChevronRight, Lightbulb, LockKeyhole, Target } from 'lucide-react';
 import { GameEngine } from '@/components/games/game-engine';
-import { AcademyDiscoveryCard } from '@/components/games/academy-cta';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -102,7 +101,7 @@ export default async function EnglishGamePage({ params }: Props) {
       <Info icon={<BookOpen className="h-6 w-6" />} title="What does this game teach?"><p>{game.whatItTeaches}</p></Info>
       <Info icon={<Lightbulb className="h-6 w-6" />} title="Quick grammar tip"><p>{game.learningObjective}</p></Info>
       <Info icon={<Target className="h-6 w-6" />} title="For parents and teachers"><p>{game.parentTip}</p></Info>
-    </div><div className="mt-10 rounded-2xl border border-border/60 bg-secondary/40 p-6 sm:p-8"><h2 className="text-2xl font-bold">How to play</h2><p className="mt-4 leading-relaxed text-muted-foreground">Choose Easy, Medium or Hard, press Start Game, then read each question and tap the answer that fits best. Every session contains 10 different questions from the selected difficulty pool. The game explains each answer, tracks a separate best score for every difficulty and remembers the most recently selected mode on this device.</p><div className="mt-6 flex flex-wrap gap-x-6 gap-y-3"><Link href={`/games/english/${nextGame.slug}`} className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Try {nextGame.title}<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link><Link href="/grammar-games-for-kids" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Explore English Grammar Games<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link></div></div><div className="mt-10"><AcademyDiscoveryCard /></div></section>
+    </div><div className="mt-10 rounded-2xl border border-border/60 bg-secondary/40 p-6 sm:p-8"><h2 className="text-2xl font-bold">How to play</h2><p className="mt-4 leading-relaxed text-muted-foreground">Choose Easy, Medium or Hard, press Start Game, then read each question and tap the answer that fits best. Every session contains 10 different questions from the selected difficulty pool. The game explains each answer, tracks a separate best score for every difficulty and remembers the most recently selected mode on this device.</p><div className="mt-6 flex flex-wrap gap-x-6 gap-y-3"><Link href={`/games/english/${nextGame.slug}`} className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Try {nextGame.title}<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link><Link href="/grammar-games-for-kids" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Explore English Grammar Games<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link><Link href="/games/english/academy" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Explore Zalea English Academy<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link></div></div></section>
   </main><SiteFooter /></div>;
 }
 
