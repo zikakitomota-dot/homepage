@@ -7,6 +7,7 @@ import {
   Calculator,
   Clock3,
   HeartHandshake,
+  Percent,
   PiggyBank,
   ShieldCheck,
   Users,
@@ -32,6 +33,7 @@ const upcomingProjects = [
   { icon: Clock3, title: 'Work & Time', description: 'Calculate work hours, schedules, timesheets and everyday work-related time.', href: '/work-time' },
   { icon: Users, title: 'Parenting Tools', description: 'Helpful tools and educational resources for parents.' },
   { icon: BookOpen, title: 'Education Tools', description: 'Free grade calculators and practical student tools for schoolwork.', href: '/education' },
+  { icon: Percent, title: 'Math Tools', description: 'Fast percentage calculations with clear formulas and useful explanations.', href: '/math' },
   { icon: Bot, title: 'AI Utilities', description: 'Simple AI-powered tools that improve everyday productivity.' },
 ];
 
@@ -113,9 +115,9 @@ export default function Home() {
           <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <div className="mx-auto mb-12 max-w-2xl text-center">
               <h2 id="tools-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">A Growing Hub of Useful Resources</h2>
-              <p className="mt-3 text-lg text-muted-foreground">Explore our free health, finance, work, time and education calculators, with more practical collections on the way.</p>
+              <p className="mt-3 text-lg text-muted-foreground">Explore our free health, finance, work, time, education and math calculators, with more practical collections on the way.</p>
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {upcomingProjects.map((project) => {
                 const card = (
                 <Card className="h-full border-border/60 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">

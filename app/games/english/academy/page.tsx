@@ -21,7 +21,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { grammarLevelTwoGames, vocabularyLevelOneGames } from '@/lib/games/academy-games';
 import { hasAcademyAccess } from '@/lib/games/academy-access';
-import { PAYHIP_ACADEMY_URL } from '@/lib/site';
 import { ACADEMY_SOCIAL_IMAGE, createEducationalMetadata } from '@/lib/seo';
 
 // Render against the current device's signed Academy entitlement cookie.
@@ -80,7 +79,7 @@ export default async function AcademyPage() {
             </nav>
             <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1.25fr_0.75fr]">
               <div>
-                <Badge className="bg-violet-700 hover:bg-violet-700"><Sparkles className="mr-1 h-4 w-4" aria-hidden="true" />Lifetime Access · Available Now</Badge>
+                <Badge className="bg-violet-700 hover:bg-violet-700"><Sparkles className="mr-1 h-4 w-4" aria-hidden="true" />Lifetime Access · Purchases Paused</Badge>
                 <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-violet-950 sm:text-5xl lg:text-6xl">Zalea English Academy</h1>
                 <p className="mt-4 text-2xl font-semibold text-violet-700">Learn. Play. Grow.</p>
                 <p className="mt-5 max-w-2xl text-lg leading-relaxed text-violet-900">Help your child build confidence in English through short, fun interactive games designed for everyday learning.</p>
@@ -121,7 +120,7 @@ export default async function AcademyPage() {
         <section className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="grid gap-6 lg:grid-cols-2">
             <Card className="min-w-0 border-border/60"><CardHeader><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-700"><Heart className="h-5 w-5" aria-hidden="true" /></span><CardTitle className="pt-2 text-2xl">Why parents will love it</CardTitle></CardHeader><CardContent><ul className="grid gap-3 sm:grid-cols-2">{parentBenefits.map((item) => <li key={item} className="flex gap-2"><Check className="h-5 w-5 shrink-0 text-green-600" aria-hidden="true" />{item}</li>)}</ul></CardContent></Card>
-            <Card id="access" className="min-w-0 scroll-mt-24 border-violet-200 bg-violet-50 ring-1 ring-violet-100"><CardHeader><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-100 text-violet-700"><CreditCard className="h-5 w-5" aria-hidden="true" /></span><CardTitle className="pt-2 text-2xl">Zalea English Academy – Lifetime Access</CardTitle></CardHeader><CardContent><p className="font-semibold text-violet-950">One payment. No monthly subscription.</p><p className="mt-3 leading-relaxed text-violet-900">Unlock Grammar Level 2 and Vocabulary Level 1 and receive future Academy updates at no additional cost.</p><Button asChild className="mt-5 h-auto min-h-12 w-full whitespace-normal bg-violet-700 py-3 text-center"><a href={PAYHIP_ACADEMY_URL} target="_blank" rel="noreferrer">Get Lifetime Access</a></Button></CardContent></Card>
+            <Card id="access" className="min-w-0 scroll-mt-24 border-violet-200 bg-violet-50 ring-1 ring-violet-100"><CardHeader><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-100 text-violet-700"><CreditCard className="h-5 w-5" aria-hidden="true" /></span><CardTitle className="pt-2 text-2xl">Zalea English Academy – Lifetime Access</CardTitle></CardHeader><CardContent><p className="font-semibold text-violet-950">New purchases are temporarily unavailable.</p><p className="mt-3 leading-relaxed text-violet-900">We have paused Lifetime Access purchases while resolving a store issue. Existing customers can still enter their license key below to unlock the Academy.</p><Button type="button" disabled className="mt-5 h-auto min-h-12 w-full whitespace-normal py-3 text-center">Purchases Temporarily Unavailable</Button></CardContent></Card>
           </div>
         </section>
 

@@ -77,6 +77,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: path === "/education" ? 0.9 : 0.8,
     })),
+    ...[
+      "/math",
+      "/math/percentage-calculator",
+    ].map((path) => ({
+      url: `${baseUrl}${path}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: path === "/math" ? 0.9 : 0.8,
+    })),
     {
       url: `${baseUrl}/games`,
       lastModified,

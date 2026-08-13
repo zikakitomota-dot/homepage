@@ -26,6 +26,7 @@ export const toolLinks = [
   { label: 'Finance', href: '/finance', external: false },
   { label: 'Work & Time', href: '/work-time', external: false },
   { label: 'Education', href: '/education', external: false },
+  { label: 'Math', href: '/math', external: false },
 ] as const;
 
 export const littleMoneyMaster = {
