@@ -6,12 +6,6 @@ const nextConfig = {
   images: { unoptimized: true },
   async redirects() {
     return [
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.zaleastudio.com' }],
-        destination: 'https://zaleastudio.com/:path*',
-        permanent: true,
-      },
       { source: '/privacy', destination: '/privacy-policy', permanent: true },
       { source: '/terms', destination: '/terms-of-use', permanent: true },
       { source: '/money/:path*', destination: '/finance/:path*', permanent: true },
