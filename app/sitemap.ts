@@ -83,6 +83,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/math/fraction-calculator",
       "/math/ratio-calculator",
       "/math/average-calculator",
+      "/math/standard-deviation-calculator",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
       lastModified,
