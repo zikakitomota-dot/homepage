@@ -86,7 +86,7 @@ export function SiteHeader() {
 
         <div className="hidden lg:block">
           <Button asChild size="sm">
-            <a href={HEALTH_TOOLS_URL}>Explore Tools</a>
+            <a href={HEALTH_TOOLS_URL} data-ga-event="cta_click" data-ga-label="header_explore_tools">Explore Tools</a>
           </Button>
         </div>
 

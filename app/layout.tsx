@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { GoogleAnalytics } from '@/components/google-analytics';
 import { safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 
@@ -100,7 +101,9 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(siteJsonLd) }} />
-        {children}</body>
+        {children}
+        <GoogleAnalytics />
+      </body>
     </html>
   );
 }

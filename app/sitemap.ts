@@ -81,6 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/math",
       "/math/percentage-calculator",
       "/math/fraction-calculator",
+      "/math/ratio-calculator",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
       lastModified,
@@ -135,4 +136,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 }
-

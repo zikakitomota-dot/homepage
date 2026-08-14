@@ -64,13 +64,13 @@ export default function Home() {
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg" className="h-12 px-6">
-                  <a href={HEALTH_TOOLS_URL}>
+                  <a href={HEALTH_TOOLS_URL} data-ga-event="cta_click" data-ga-label="home_explore_tools">
                     Explore Free Tools
                     <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="h-12 px-6">
-                  <Link href="/shop">Browse the Shop</Link>
+                  <Link href="/shop" data-ga-event="cta_click" data-ga-label="home_browse_shop">Browse the Shop</Link>
                 </Button>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function Home() {
                 return project.href ? <Link key={project.title} href={project.href} className="rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">{card}</Link> : <div key={project.title}>{card}</div>;
               })}
             </div>
-            <div className="mt-10 text-center"><Button asChild variant="outline"><a href={HEALTH_TOOLS_URL}>Explore Current Tools</a></Button></div>
+            <div className="mt-10 text-center"><Button asChild variant="outline"><a href={HEALTH_TOOLS_URL} data-ga-event="cta_click" data-ga-label="home_explore_current_tools">Explore Current Tools</a></Button></div>
           </div>
         </section>
 
@@ -165,8 +165,8 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Explore Zalea Studio</h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-blue-50">Discover free tools and practical digital resources created to make learning and everyday decisions easier.</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button asChild size="lg" className="h-12 bg-white px-6 text-primary hover:bg-blue-50"><a href={HEALTH_TOOLS_URL}>Explore Free Tools</a></Button>
-              <Button asChild size="lg" variant="outline" className="h-12 border-white bg-transparent px-6 text-white hover:bg-white/10 hover:text-white"><Link href="/shop">Browse the Shop</Link></Button>
+              <Button asChild size="lg" className="h-12 bg-white px-6 text-primary hover:bg-blue-50"><a href={HEALTH_TOOLS_URL} data-ga-event="cta_click" data-ga-label="home_explore_free_tools">Explore Free Tools</a></Button>
+              <Button asChild size="lg" variant="outline" className="h-12 border-white bg-transparent px-6 text-white hover:bg-white/10 hover:text-white"><Link href="/shop" data-ga-event="cta_click" data-ga-label="home_final_browse_shop">Browse the Shop</Link></Button>
             </div>
           </div>
         </section>

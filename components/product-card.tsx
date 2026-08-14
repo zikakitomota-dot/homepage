@@ -42,7 +42,7 @@ export function ProductCard({ featured = false }: ProductCardProps) {
               ))}
             </ul>
             <Button asChild size="lg">
-              <Link href={littleMoneyMaster.href}>
+              <Link href={littleMoneyMaster.href} data-ga-event="product_click" data-ga-label="little_money_master_volume_1">
                 Learn More
                 <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Link>
