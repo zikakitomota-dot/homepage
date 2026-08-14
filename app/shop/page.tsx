@@ -61,4 +61,83 @@ const products = [
     price: 'USD 4.99',
     features: ['Four no-spend challenge lengths', 'Reflection pages', 'Reward planner'],
     image: '/images/shop/no-spend-collection.jpg',
-   ;ßÍí¢G§²ÚîÆ­yÓ¦w&–BÖ6öÇ2ÓB#ç¶ÖöFW2æÖ‚†—FVÒ’ÓâÆ'WGFöâ¶W“×¶—FVÒæ–GÒG—SÒ&'WGFöâ"&öÆSÒ'F""&–×6VÆV7FVC×¶ÖöFRÓÓÒ—FVÒæ–GÒ&–Ö6öçG&öÇ3Ò'&F–ò×æVÂ"öä6Æ–6³×²‚’Óâ6†ævTÖöFR†—FVÒæ–B—Ò6Æ74æÖS×¶Ö–âÖ‚Ó"&÷VæFVBÖÆr‚Ó2’Ó"FW‡B×6ÒföçB×6VÖ–&öÆBfö7W2×f—6–&ÆS¦÷WFÆ–æRÖæöæRfö7W2×f—6–&ÆS§&–ærÓ"fö7W2×f—6–&ÆS§&–ær×&–ærfö7W2×f—6–&ÆS§&–ærÖöfg6WBÓ"G¶ÖöFRÓÓÒ—FVÒæ–Bòv&rÖ&6¶w&÷VæBFW‡BÖf÷&Vw&÷VæB6†F÷r×6Òr¢wFW‡BÖ×WFVBÖf÷&Vw&÷VæB†÷fW#§FW‡BÖf÷&Vw&÷VæBwÖÓãÇ7â6Æ74æÖSÒ'6Ó¦†–FFVâ#ç¶—FVÒç6†÷'DÆ&VÇÓÂ÷7ããÇ7â6Æ74æÖSÒ&†–FFVâ6Ó¦–æÆ–æR#ç¶—FVÒæÆ&VÇÓÂ÷7ããÂö'WGFöãâ—ÓÂöF—cà¢ÆF—b–CÒ'&F–ò×æVÂ"&öÆSÒ'F'æVÂ"6Æ74æÖSÒ&×BÓbw&–BvÓbÆs¦w&–BÖ6öÇ2Õ³ã–g%óãg%Ò#à¢Ç6V7F–öâ&–ÖÆ&VÃÒ%&F–ò–çWG2#à¢ÄÖöFTf–VÆG2ÖöFS×¶ÖöFWÒfÇVW3×·fÇVW7Òöä6†ævS×·WFFUfÇVWÒóà¢Ä'WGFöâG—SÒ&'WGFöâ"f&–çCÒ&÷WFÆ–æR"6Æ74æÖSÒ&×BÓb"öä6Æ–6³×·&W6WGÓãÅ&÷FFT67r6Æ74æÖSÒ&×"Ó"‚ÓBrÓB"&–Ö†–FFVãÒ'G'VR"óå&W6WCÂô'WGFöãà¢¶6Æ7VÆF–öâæW'&÷"bbÇ&öÆSÒ&ÆW'B"6Æ74æÖSÒ&×BÓR&÷VæFVBÖÆr&÷&FW"&÷&FW"ÖFW7G'V7F—fRó3&rÖFW7G'V7F—fRóRÓ2FW‡B×6ÒföçBÖÖVF—VÒFW‡BÖFW7G'V7F—fR#ç¶6Æ7VÆF–öâæW'&÷'ÓÂ÷çÐ¢Â÷6V7F–öãà¢Å&W7VÇEæVÂ6Æ7VÆF–öã×¶6Æ7VÆF–öâç&W7VÇGÒóà¢ÂöF—cà¢Âô6&D6öçFVçCà¢Âô6&Cã°§Ð ¦gVæ7F–öâÖöFTf–VÆG2‡²ÖöFRÂfÇVW2Âöä6†ævRÓ¢²ÖöFS¢&F–ôÖöFS²fÇVW3¢7G&–æuµÓ²öä6†ævS¢†–æFWƒ¢çVÖ&W"ÂfÇVS¢7G&–ær’Óâfö–BÒ’°¢–b†ÖöFRÓÓÒw&÷÷'F–öâr’°¢&WGW&âÆf–VÆG6WCãÆÆVvVæB6Æ74æÖSÒ&föçB×6VÖ–&öÆB#ä¢"Ò2¢CÂöÆVvVæCãÇ6Æ74æÖSÒ&×BÓ"FW‡B×6ÒFW‡BÖ×WFVBÖf÷&Vw&÷VæB#äÆVfRW†7FÇ’öæRf–VÆBV×G’÷"VçFW"‚f÷"F†RÖ—76–ærfÇVRãÂ÷ãÆF—b6Æ74æÖSÒ&×BÓBw&–B—FV×2ÖVæBvÓ26Ó¦w&–BÖ6öÇ2Õ³g%öWFõóg%öWFõóg%öWFõóg%Ò#à¢ÄçVÖ&W$f–VÆB–CÒ'&F–òÖ"Æ&VÃÒ$"fÇVS×·fÇVW5³ÒóòrwÒöä6†ævS×²‡fÇVR’Óâöä6†ævRƒÂfÇVR—ÒÆ6V†öÆFW#Ò#""ÆÆ÷uVæ¶æ÷vâóà¢Å6W&F÷#ã£Âõ6W&F÷#à¢ÄçVÖ&W$f–VÆB–CÒ'&F–òÖ""Æ&VÃÒ$""fÇVS×·fÇVW5³ÒóòrwÒöä6†ævS×²‡fÇVR’Óâöä6†ævRƒÂfÇVR—ÒÆ6V†öÆFW#Ò#2"ÆÆ÷uVæ¶æ÷vâóà¢Å6W&F÷#ãÓÂõ6W&F÷#à¢ÄçVÖ&W$f–VÆB–CÒ'&F–òÖ2"Æ&VÃÒ$2"fÇVS×·fÇVW5³%ÒóòrwÒöä6†ævS×²‡fÇVR’Óâöä6†ævRƒ"ÂfÇVR—ÒÆ6V†öÆFW#Ò'‚"ÆÆ÷uVæ¶æ÷vâóà¢Å6W&F÷#ã£Âõ6W&F÷#à¢ÄçVÖ&W$f–VÆB–CÒ'&F–òÖB"Æ&VÃÒ$B"fÇVS×·fÇVW5³5ÒóòrwÒöä6†ævS×²‡fÇVR’Óâöä6†ævRƒ2ÂfÇVR—ÒÆ6V†öÆFW#Ò#""ÆÆ÷uVæ¶æ÷vâóà¢ÂöF—cãÂöf–VÆG6WCã°¢Ð ¢6öç7Bf–VÆD6÷VçBÒÖöFRÓÓÒw6–×Æ–g’rò"¢3°¢6öç7BÆ&VÇ2ÒÖöFRÓÓÒw66ÆRrò²u&F–òrÂu&F–ò"rÂu66ÆRf7F÷"uÒ¢ÖöFRÓÓÒwF‡&VRrò²u&F–òrÂu&F–ò"rÂu&F–ò2uÒ¢²u&F–òrÂu&F–ò"uÓ°¢&WGW&âÆf–VÆG6WCãÆÆVvVæB6Æ74æÖSÒ&föçB×6VÖ–&öÆB#ç¶ÖöFRÓÓÒw66ÆRròu66ÆRâWV—fÆVçB&F–òr¢ÖöFRÓÓÒwF‡&VRròu6–×Æ–g’F‡&VRÖçVÖ&W"&F–òr¢u6–×Æ–g’GvòÖçVÖ&W"&F–òwÓÂöÆVvVæCãÆF—b6Æ74æÖS×¶×BÓBw&–BvÓBG¶f–VÆD6÷VçBÓÓÒ2òw6Ó¦w&–BÖ6öÇ2Ó2r¢w6Ó¦w&–BÖ6öÇ2Ó"wÖÓç¶Æ&VÇ2æÖ‚†Æ&VÂÂ–æFW‚’ÓâÄçVÖ&W$f–VÆB¶W“×¶Æ&VÇÒ–C×¶G¶ÖöFWÒÒG¶–æFW‡ÖÒÆ&VÃ×¶Æ&VÇÒfÇVS×·fÇVW5¶–æFW…ÒóòrwÒöä6†ævS×²‡fÇVR’Óâöä6†ævR†–æFW‚ÂfÇVR—Òóâ—ÓÂöF—cãÂöf–VÆG6WCã°§Ð ¦gVæ7F–öâçVÖ&W$f–VÆB‡²–BÂÆ&VÂÂfÇVRÂÆ6V†öÆFW"ÂÆÆ÷uVæ¶æ÷vâÂöä6†ævRÓ¢²–C¢7G&–æs²Æ&VÃ¢7G&–æs²fÇVS¢7G&–æs²Æ6V†öÆFW#ó¢7G&–æs²ÆÆ÷uVæ¶æ÷vãó¢&ööÆVã²öä6†ævS¢‡fÇVS¢7G&–ær’Óâfö–BÒ’°¢&WGW&âÆF—b6Æ74æÖSÒ'76R×’Ó"#ãÄÆ&VÂ‡FÖÄf÷#×¶–GÓç¶Æ&VÇÓÂôÆ&VÃãÄ–çWB–C×¶–GÒG—SÒ'FW‡B"–çWDÖöFSÒ&FV6–ÖÂ"WFô6ö×ÆWFSÒ&öfb"fÇVS×·fÇVWÒÆ6V†öÆFW#×·Æ6V†öÆFW'Òöä6†ævS×²†WfVçB’Óâöä6†ævR†WfVçBçF&vWBçfÇVR—Ò&–ÖFW67&—F–öã×¶ÆÆ÷uVæ¶æ÷vâòtVçFW"çVÖ&W"Â‚Â÷"ÆVfRV×G’f÷"F†RVæ¶æ÷vâfÇVRâr¢VæFVf–æVGÒ6Æ74æÖSÒ&‚ÓFW‡BÖ&6R"óãÂöF—cã°§Ð ¦gVæ7F–öâ6W&F÷"‡²6†–ÆG&VâÓ¢²6†–ÆG&Vã¢&V7Bå&V7DæöFRÒ’°¢&WGW&âÇ7â6Æ74æÖSÒ&†–FFVâ‚Ó—FV×2Ö6VçFW"§W7F–g’Ö6VçFW"FW‡B×†ÂföçBÖ&öÆBFW‡BÖ×WFVBÖf÷&Vw&÷VæB6Ó¦fÆW‚"&–Ö†–FFVãÒ'G'VR#ç¶6†–ÆG&VçÓÂ÷7ãã°§Ð ¦gVæ7F–öâ&W7VÇEæVÂ‡²6Æ7VÆF–öâÓ¢²6Æ7VÆF–öã¢6Æ7VÆF–öâÂçVÆÂÒ’°¢&WGW&âÇ6V7F–öâ6Æ74æÖSÒ'&÷VæFVBÓ'†Â&rÖ&ÇVRÓSósÓR6Ó§Ób"&–ÖÆ&VÆÆVF'“Ò'&F–ò×&W7VÇB"&–ÖÆ—fSÒ'öÆ—FR#à¢Ç6Æ74æÖSÒ'FW‡B×6ÒföçB×6VÖ–&öÆBWW&66RG&6¶–ær×v–FW"FW‡B×&–Ö'’#å&W7VÇCÂ÷à¢Æƒ2–CÒ'&F–ò×&W7VÇB"6Æ74æÖSÒ&×BÓ"FW‡B×†ÂföçBÖ&öÆB#å–÷W"&F–ò6Æ7VÆF–öãÂöƒ3à¢²6Æ7VÆF–öâbbÇ6Æ74æÖSÒ&×BÓBÆVF–ær×&VÆ†VBFW‡BÖ×WFVBÖf÷&Vw&÷VæB#äVçFW"fÆ–BfÇVW2Fò6VRF†Rç7vW"æB7FWÖ'’×7FW6Æ7VÆF–öâãÂ÷çÐ¢¶6Æ7VÆF–öâbb†6Æ7VÆF–öâæ¶–æBÓÓÒw6–×Æ–g’rÇÂ6Æ7VÆF–öâæ¶–æBÓÓÒwF‡&VRr’bbÅ6–×Æ–g•&W7VÇB&W7VÇC×¶6Æ7VÆF–öâç&W7VÇGÒF‡&VS×¶6Æ7VÆF–öâæ¶–æBÓÓÒwF‡&VRwÒóçÐ¢¶6Æ7VÆF–öãòæ¶–æBÓÓÒw66ÆRrbbÅ66ÆU&W7VÇB&W7VÇC×¶6Æ7VÆF–öâç&W7VÇGÒóçÐ¢¶6Æ7VÆF–öãòæ¶–æBÓÓÒw&÷÷'F–öârbbÅ&÷÷'F–öå&W7VÇEæVÂ&W7VÇC×¶6Æ7VÆF–öâç&W7VÇGÒóçÐ¢Â÷6V7F–öãã°§Ð ¦gVæ7F–öâ6–×Æ–g•&W7VÇB‡²&W7VÇBÂF‡&VRÓ¢²&W7VÇC¢6–×Æ–f–VE&F–ó²F‡&VS¢&ööÆVâÒ’°¢&WGW&âÃãÇ6Æ74æÖSÒ&×BÓR'&V²×v÷&G2FW‡BÓG†ÂföçBÖ&öÆBG&6¶–ær×F–v‡BFW‡B×&–Ö'’6Ó§FW‡BÓW†Â#ç·&W7VÇBç6–×Æ–f–VGÓÂ÷ãÆFÂ6Æ74æÖSÒ&×BÓbw&–BvÓ26Ó¦w&–BÖ6öÇ2Ó"#ãÅ&W7VÇD—FVÒÆ&VÃÒ$÷&–v–æÂ&F–ò"fÇVS×·&W7VÇBæ÷&–v–æÇÒóãÅ&W7VÇD—FVÒÆ&VÃÒ$w&VFW7B6öÖÖöâF—f—6÷""fÇVS×·&W7VÇBæF—f—6÷'Òóç·&W7VÇBæ–çFVvW$WV—fÆVçBÓÒ&W7VÇBæ÷&–v–æÂbbÅ&W7VÇD—FVÒÆ&VÃÒ$–çFVvW"WV—fÆVçB"fÇVS×·&W7VÇBæ–çFVvW$WV—fÆVçGÒóç×²F‡&VRbb&W7VÇBæg&7F–öâbbÅ&W7VÇD—FVÒÆ&VÃÒ%&F–òg&7F–öâô""fÇVS×·&W7VÇBæg&7F–öçÒóçÓÂöFÃãÅ7FW27FW3×µ¶6öçfW'BFòâ–çFVvW"&F–ó¢G·&W7VÇBæ–çFVvW$WV—fÆVçGÒæÂF—f–FRWfW'’fÇVR'’G·&W7VÇBæF—f—6÷'ÒæÂ&W7VÇBæ6Æ7VÆF–öå×Òóç²F‡&VRbb&W7VÇBçF÷FÅ'G2bbÆF—b6Æ74æÖSÒ&×BÓR&÷VæFVB×†Â&rÖ&6¶w&÷VæBÓB#ãÆƒB6Æ74æÖSÒ&föçB×6VÖ–&öÆB#å'B×Fò×v†öÆR–ç6–v‡CÂöƒCãÇ6Æ74æÖSÒ&×BÓ"FW‡B×6ÒFW‡BÖ×WFVBÖf÷&Vw&÷VæB#åF÷FÂ'G3¢·&W7VÇBçF÷FÅ'G7ÓÂ÷ãÇ6Æ74æÖSÒ&×BÓ"FW‡B×6ÒFW‡BÖ×WFVBÖf÷&Vw&÷VæB#äf—'7BVçF—G“¢·&W7VÇBæf—'7E6†&WÓÂ÷ãÇ6Æ74æÖSÒ&×BÓFW‡B×6ÒFW‡BÖ×WFVBÖf÷&Vw&÷VæB#å6V6öæBVçF—G“¢·&W7VÇBç6V6öæE6†&WÓÂ÷ãÂöF—cçÓÂóã°§Ð ¦gVæ7F–öâ66ÆU&W7VÇB‡²&W7VÇBÓ¢²&W7VÇC¢66ÆVE&F–òÒ’°¢&WGW&âÃãÇ6Æ74æÖSÒ&×BÓR'&V²×v÷&G2FW‡BÓG†ÂföçBÖ&öÆBG&6¶–ær×F–v‡BFW‡B×&–Ö'’6Ó§FW‡BÓW†Â#ç·&W7VÇBç66ÆVGÓÂ÷ãÆFÂ6Æ74æÖSÒ&×BÓbw&–BvÓ26Ó¦w&–BÖ6öÇ2Ó"#ãÅ&W7VÇD—FVÒÆ&VÃÒ$÷&–v–æÂ&F–ò"fÇVS×·&W7VÇBæ÷&–v–æÇÒóãÅ&W7VÇD—FVÒÆ&VÃÒ%6–×ÆW7Bf÷&Ò"fÇVS×·&W7VÇBç6–×Æ–f–VGÒóãÂöFÃãÅ7FW27FW3×µ²t×VÇF—Ç’WfW'’&F–òfÇVR'’F†R6ÖR66ÆRf7F÷"ârÂ&W7VÇBæ6Æ7VÆF–öâÂG·&W7VÇBç66ÆVGÒ—2WV—fÆVçBFòG·&W7VÇBæ÷&–v–æÇÒæ×ÒóãÂóã°§Ð ¦gVæ7F–öâ&÷÷'F–öå&W7VÇEæVÂ‡²&W7VÇBÓ¢²&W7VÇC¢&÷÷'F–öå&W7VÇBÒ’°¢&WGW&âÃãÇ6Æ74æÖSÒ&×BÓR'&V²×v÷&G2FW‡BÓG†ÂföçBÖ&öÆBG&6¶–ær×F–v‡BFW‡B×&–Ö'’6Ó§FW‡BÓW†Â#ç·&W7VÇBæç7vW'ÓÂ÷ãÆFÂ6Æ74æÖSÒ&×BÓb#ãÅ&W7VÇD—FVÒÆ&VÃÒ%&÷÷'F–öâ"fÇVS×·&W7VÇBæWVF–öçÒóãÂöFÃãÅ7FW27FW3×·&W7VÇBç7FW7ÒóãÂóã°§Ð ¦gVæ7F–öâ&W7VÇD—FVÒ‡²Æ&VÂÂfÇVRÂ6Æ74æÖRÒrrÓ¢²Æ&VÃ¢7G&–æs²fÇVS¢7G&–æs²6Æ74æÖSó¢7G&–ærÒ’°¢&WGW&âÆF—b6Æ74æÖS×¶&÷VæFVB×†Â&rÖ&6¶w&÷VæBÓBG¶6Æ74æÖWÖÓãÆGB6Æ74æÖSÒ'FW‡B×6ÒföçBÖÖVF—VÒFW‡BÖ×WFVBÖf÷&Vw&÷VæB#ç¶Æ&VÇÓÂöGCãÆFB6Æ74æÖSÒ&×BÓ'&V²×v÷&G2FW‡BÖÆrföçB×6VÖ–&öÆB#ç·fÇVWÓÂöFCãÂöF—cã°§Ð ¦gVæ7F–öâ7FW2‡²7FW2Ó¢²7FW3¢7G&–æuµÒÒ’°¢&WGW&âÆF—b6Æ74æÖSÒ&×BÓR&÷VæFVB×†Â&rÖ&6¶w&÷VæBÓB#ãÆƒB6Æ74æÖSÒ&föçB×6VÖ–&öÆB#å7FWÖ'’×7FW6öÇWF–öãÂöƒCãÆöÂ6Æ74æÖSÒ&×BÓ2Æ—7BÖFV6–ÖÂ76R×’Ó"ÂÓRFW‡B×6ÒÆVF–ær×&VÆ†VBFW‡BÖ×WFVBÖf÷&Vw&÷VæB#ç·7FW2æÖ‚‡7FWÂ–æFW‚’ÓâÆÆ’¶W“×¶G¶–æFW‡ÒÒG·7FWÖÓç·7FWÓÂöÆ“â—ÓÂööÃãÂöF—cã°§Ð ¦gVæ7F–öâ6Æ7VÆFR†ÖöFS¢&F–ôÖöFRÂfÇVW3¢7G&–æuµÒ“¢²&W7VÇC¢6Æ7VÆF–öâÂçVÆÃ²W'&÷#¢7G&–ærÂçVÆÂÒ°¢G'’°¢–b†ÖöFRÓÓÒw6–×Æ–g’r’&WGW&â²&W7VÇC¢²¶–æC¢ÖöFRÂ&W7VÇC¢6–×Æ–g•&F–ò‡fÇVW2ç6Æ–6RƒÂ"’’ÒÂW'&÷#¢çVÆÂÓ°¢–b†ÖöFRÓÓÒwF‡&VRr’&WGW&â²&W7VÇC¢²¶–æC¢ÖöFRÂ&W7VÇC¢6–×Æ–g•&F–ò‡fÇVW2ç6Æ–6RƒÂ2’’ÒÂW'&÷#¢çVÆÂÓ°¢–b†ÖöFRÓÓÒw66ÆRr’&WGW&â²&W7VÇC¢²¶–æC¢ÖöFRÂ&W7VÇC¢66ÆU&F–ò‡fÇVW5³ÒóòrrÂfÇVW5³ÒóòrrÂfÇVW5³%Òóòrr’ÒÂW'&÷#¢çVÆÂÓ°¢&WGW&â²&W7VÇC¢²¶–æC¢ÖöFRÂ&W7VÇC¢6öÇfU&÷÷'F–öâ…·fÇVW5³ÒóòrrÂfÇVW5³ÒóòrrÂfÇVW5³%ÒóòrrÂfÇVW5³5ÒóòruÒ’ÒÂW'&÷#¢çVÆÂÓ°¢Ò6F6‚†W'&÷"’°¢&WGW&â²&W7VÇC¢çVÆÂÂW'&÷#¢W'&÷"–ç7Fæ6VöbW'&÷"òW'&÷"æÖW76vR¢t6†V6²F†RfÇVW2æBG'’v–âârÓ°¢Ð§Ð
+    imageAlt: 'The Do-It Challenge No Spend Collection printable bundle cover',
+    href: PAYHIP_NO_SPEND_COLLECTION_URL,
+    cta: 'View Collection',
+    external: true,
+  },
+  {
+    category: 'Savings challenge',
+    badge: undefined,
+    title: 'The Do-It Challengeâ„¢ â€“ Money Milestone (USD)',
+    description: 'A printable savings tracker that turns your money goals into visible milestones worth celebrating.',
+    price: 'USD 4.99',
+    features: ['$500 to $10,000 goals', 'Five printable challenges', '50-envelope tracking format'],
+    image: '/images/shop/money-milestone-usd.jpg',
+    imageAlt: 'The Do-It Challenge Money Milestone USD printable savings bundle cover',
+    href: PAYHIP_MONEY_MILESTONE_USD_URL,
+    cta: 'View Challenge',
+    external: true,
+  },
+] as const;
+
+export default function ShopPage() {
+  return (
+    <div className="min-h-screen bg-background">
+      <SiteHeader />
+      <main>
+        <section className="border-b border-border/60 bg-blue-50/50">
+          <div className="mx-auto max-w-[1200px] px-4 py-14 text-center sm:px-6 lg:px-8 lg:py-20">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">Zalea Studio Shop</p>
+            <h1 className="mx-auto mt-3 max-w-4xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">Digital Products &amp; Learning Resources</h1>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">Practical resources for learning, money habits and everyday lifeâ€”created to make learning and personal goals a little more enjoyable.</p>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[1200px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="products-heading">
+          <div className="mb-9">
+            <h2 id="products-heading" className="text-3xl font-bold tracking-tight">Explore all products</h2>
+            <p className="mt-3 max-w-2xl text-muted-foreground">Choose an interactive learning experience or a printable challenge designed for steady, practical progress.</p>
+          </div>
+          <div className="grid gap-7 md:grid-cols-2">
+            {products.map((product, index) => <ShopProductCard key={product.title} product={product} priority={index < 2} />)}
+          </div>
+        </section>
+
+        <section className="border-t border-border/60 bg-secondary/30">
+          <div className="mx-auto max-w-[1200px] px-4 py-12 sm:px-6 lg:px-8">
+            <p className="text-center text-muted-foreground">Looking for something free? Visit our <a href={HEALTH_TOOLS_URL} className="font-medium text-primary hover:underline">online tools</a>, or learn more <Link href={ABOUT_ROUTE} className="font-medium text-primary hover:underline">about Zalea Studio</Link>.<ArrowRight className="ml-1 inline h-4 w-4" aria-hidden="true" /></p>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}
+
+function ShopProductCard({ product, priority }: { product: (typeof products)[number]; priority: boolean }) {
+  return (
+    <Card className={`group flex h-full min-w-0 flex-col overflow-hidden border-border/60 shadow-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-md ${product.badge ? 'ring-1 ring-violet-200' : ''}`}>
+      <div className={`relative aspect-[4/3] overflow-hidden ${product.badge ? 'bg-violet-50' : 'bg-stone-50'}`}>
+        <Image src={product.image} alt={product.imageAlt} fill priority={priority} sizes="(min-width: 768px) 50vw, 100vw" className="object-contain p-5 transition-transform duration-300 group-hover:scale-[1.02] sm:p-7" />
+        {product.badge && <Badge className="absolute left-4 top-4 bg-violet-700 uppercase tracking-wide hover:bg-violet-700">{product.badge}</Badge>}
+      </div>
+      <CardHeader className="pb-3">
+        <p className="text-xs font-bold uppercase tracking-wider text-primary">{product.category}</p>
+        <CardTitle className="text-balance text-2xl leading-tight">{product.title}</CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-1 flex-col">
+        <p className="leading-relaxed text-muted-foreground">{product.description}</p>
+        <p className="mt-5 text-2xl font-bold">{product.price}</p>
+        <ul className="mt-5 space-y-2.5">
+          {product.features.map((feature) => <li key={feature} className="flex gap-2.5 text-sm"><Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" aria-hidden="true" /><span>{feature}</span></li>)}
+        </ul>
+        <Button asChild size="lg" className="mt-7 min-h-12 w-full sm:w-fit">
+          {product.external
+            ? <a href={product.href} target="_blank" rel="noreferrer" data-ga-event="product_click" data-ga-label={product.title}>{product.cta}<ExternalLink className="ml-2 h-4 w-4" aria-hidden="true" /></a>
+            : <Link href={product.href} data-ga-event="product_click" data-ga-label={product.title}>{product.cta}<ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link>}
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}

@@ -62,33 +62,12 @@ export default function RatioCalculatorPage() {
       <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap items-center gap-2 text-sm text-muted-foreground"><Link href="/" className="hover:text-foreground hover:underline">Home</Link><span aria-hidden="true">/</span><Link href="/math" className="hover:text-foreground hover:underline">Math Tools</Link><span aria-hidden="true">/</span><span aria-current="page">Ratio Calculator</span></nav>
       <Link href="/math" className="inline-flex items-center text-sm font-medium text-primary hover:underline"><ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />All Math Tools</Link>
       <Badge variant="secondary" className="mt-6 block w-fit border-primary/20 bg-primary/10 text-primary">Four ratio tools in one</Badge>
-      <h1 className="mt-4 max-{Ó]­¢G§²ÚîÆ­yÜ™Y‹ˆX™[ˆ^\›˜[ŸNˆ˜]šYØ][Û“[šÊHÂˆÛÛœÝÛ\ÜÓ˜[YHBˆ	Ý^\ÛH›Û[YY][H^[]]YY›Ü™YÜ›Ý[™˜[œÚ][Û‹XÛÛÜœÈÝ™\Ž^Y›Ü™YÜ›Ý[™	ÎÂ‚ˆ™]\›ˆ^\›˜[È
-ˆH™Y^Ú™YŸHÛ\ÜÓ˜[YO^ØÛ\ÜÓ˜[Y_O‚ˆÛX™[BˆØO‚ˆ
-Hˆ
-ˆ[šÈ™Y^Ú™YŸHÛ\ÜÓ˜[YO^ØÛ\ÜÓ˜[Y_O‚ˆÛX™[BˆÓ[šÏ‚ˆ
-NÂŸB‚™[˜Ý[Ûˆ\ÚÝÜÛÛÓY[J
-HÂˆ™]\›ˆ
-ˆ]Z[ÈÛ\ÜÓ˜[YOH™Ü›Ý\™[]]™H‚ˆÝ[[X\žHÛ\ÜÓ˜[YOH™›^Ý\œÛÜ‹\Ú[\ˆ\Ý[›Û™H][\ËXÙ[\ˆØ\LH^\ÛH›Û[YY][H^[]]YY›Ü™YÜ›Ý[™˜[œÚ][Û‹XÛÛÜœÈÝ™\Ž^Y›Ü™YÜ›Ý[™ÉŽŽ‹]ÙXšÚ]Y]Z[Ë[X\šÙ\—NšY[ˆ‚ˆÛÛÂˆÚ]œ›Û‘ÝÛ‚ˆÛ\ÜÓ˜[YOHšMËM˜[œÚ][Û‹]˜[œÙ›Ü›HÜ›Ý\[Ü[Žœ›Ý]KLN‚ˆ\šXKZY[HYH‚ˆÏ‚ˆÜÝ[[X\žO‚ˆ]ˆÛ\ÜÓ˜[YOH˜XœÛÛ]HYLKÌˆÜY[‹ML]LÈËM]˜[œÛ]K^LKÌˆ›Ý[™Y^›Ü™\ˆ›Ü™\‹X›Ü™\‹ÍŒ™ËX˜XÚÙÜ›Ý[™LˆÚYÝË^‚ˆÝÛÛ[šÜË›X\
-
-[šÊHOˆ
-ˆ]ˆÙ^O^Û[šË›X™[HÛ\ÜÓ˜[YOHœ›Ý[™Y[ÈLÈKLˆÝ™\Ž˜™ËXXØÙ[‚ˆ˜]’][HË‹‹›[šßHÏ‚ˆÙ]‚ˆ
-J_BˆÙ]‚ˆÙ]Z[Ï‚ˆ
-NÂŸB‚™[˜Ý[Ûˆ[Øš[UÛÛÓY[J
-HÂˆ™]\›ˆ
-ˆ]Z[Ï‚ˆÝ[[X\žHÛ\ÜÓ˜[YOH™›^Ý\œÛÜ‹\Ú[\ˆ\Ý[›Û™H][\ËXÙ[\ˆ\ÝYžKX™]ÙY[ˆ^\ÛH›Û[YY][H^[]]YY›Ü™YÜ›Ý[™˜[œÚ][Û‹XÛÛÜœÈÝ™\Ž^Y›Ü™YÜ›Ý[™ÉŽŽ‹]ÙXšÚ]Y]Z[Ë[X\šÙ\—NšY[ˆ‚ˆÛÛÂˆÚ]œ›Û‘ÝÛˆÛ\ÜÓ˜[YOHšMËMˆ\šXKZY[HYHˆÏ‚ˆÜÝ[[X\žO‚ˆ]ˆÛ\ÜÓ˜[YOH›]LÈ›^›^XÛÛØ\LÈ›Ü™\‹[›Ü™\‹X›Ü™\ˆM‚ˆÝÛÛ[šÜË›X\
-
-[šÊHOˆ
-ˆ˜]’][HÙ^O^Û[šË›X™[HË‹‹›[šßHÏ‚ˆ
-J_BˆÙ]‚ˆÙ]Z[Ï‚ˆ
-NÂŸB‚™^Ü[˜Ý[ÛˆÚ]RXY\Š
-HÂˆ™]\›ˆ
-ˆXY\ˆÛ\ÜÓ˜[YOHœÝXÚÞHÜL‹MLËY[›Ü™\‹Xˆ›Ü™\‹X›Ü™\‹ÍŒ™ËX˜XÚÙÜ›Ý[™ÎL˜XÚÙ›ÜX›\‹[Y‚ˆ]ˆÛ\ÜÓ˜[YOH›^X]]È›^LMˆX^]ËVÌLŒH][\ËXÙ[\ˆ\ÝYžKX™]ÙY[ˆMÛNœMˆÎœN‚ˆ[šÈ™YH‹ÈˆÛ\ÜÓ˜[YOH™›^][\ËXÙ[\ˆØ\Lˆˆ\šXK[X™[H–˜[XHÝY[ÈÛYH‚ˆÜ[ˆÛ\ÜÓ˜[YOH™›^NHËNH][\ËXÙ[\ˆ\ÝYžKXÙ[\ˆ›Ý[™Y^™Ë\š[X\žH^\š[X\žKY›Ü™YÜ›Ý[™ÚYÝË\ÛH‚ˆØ[Ý[]ÜˆÛ\ÜÓ˜[YOHšMHËMHˆ\šXKZY[HYHˆÏ‚ˆÜÜ[‚ˆÜ[ˆÛ\ÜÓ˜[YOH^[È›Û\Ù[ZX›Û˜XÚÚ[™Ë]YÚ^Y›Ü™YÜ›Ý[™‚ˆ˜[XHÝY[ÂˆÜÜ[‚ˆÓ[šÏ‚‚ˆ˜]ˆÛ\ÜÓ˜[YOHšY[ˆ][\ËXÙ[\ˆØ\NÎ™›^ˆ\šXK[X™[H“XZ[ˆ˜]šYØ][Ûˆ‚ˆ˜]’][HË‹‹›˜]“[šÜÖÌ_HÏ‚ˆ\ÚÝÜÛÛÓY[HÏ‚ˆÛ˜]“[šÜËœÛXÙJJK›X\
-
-[šÊHOˆ
-ˆ˜]’][HÙ^O^Û[šË›X™[HË‹‹›[šßHÏ‚ˆ
-J_BˆÛ˜]‚‚ˆ]ˆÛ\ÜÓ˜[YOHšY[ˆÎ˜›ØÚÈ‚ˆ]Ûˆ\ÐÚ[Ú^™OHœÛH‚ˆH™Y^ÒPSÕÓÓ×ÕT“H]KYØKY]™[H˜ÝWØÛXÚÈˆ]KYØK[X™[HšXY\—Ù^Ü™WÝÛÛÈ‘^Ü™HÛÛÏØO‚ˆÐ]Û‚ˆÙ]‚‚ˆ]Z[ÈÛ\ÜÓ˜[YOH™Ü›Ý\™[]]™HÎšY[ˆ‚ˆÝ[[X\žHÛ\ÜÓ˜[YOH™›^LLËLLÝ\œÛÜ‹\Ú[\ˆ\Ý[›Û™H][\ËXÙ[\ˆ\ÝYžKXÙ[\ˆ›Ý[™Y[È^[]]YY›Ü™YÜ›Ý[™Ý™\Ž˜™ËXXØÙ[ÉŽŽ‹]ÙXšÚ]Y]Z[Ë[X\šÙ\—NšY[ˆ‚ˆÜ[ˆÛ\ÜÓ˜[YOHœÜ‹[Û›H“Ü[ˆ˜]šYØ][ÛˆY[OÜÜ[‚ˆY[HÛ\ÜÓ˜[YOHšMHËMHˆ\šXKZY[HYHˆÏ‚ˆÜÝ[[X\žO‚ˆ˜]‚ˆÛ\ÜÓ˜[YOH˜XœÛÛ]HšYÚLÜLLˆ›^ËMLˆ›^XÛÛØ\M›Ý[™Y^›Ü™\ˆ›Ü™\‹X›Ü™\‹ÍŒ™ËX˜XÚÙÜ›Ý[™MHÚYÝË^‚ˆ\šXK[X™[H“[Øš[H˜]šYØ][Ûˆ‚ˆ‚ˆ˜]’][HË‹‹›˜]“[šÜÖÌ_HÏ‚ˆ[Øš[UÛÛÓY[HÏ‚ˆÛ˜]“[šÜËœÛXÙJJK›X\
-
-[šÊHOˆ
-ˆ˜]’][HÙ^O^Û[šË›X™[HË‹‹›[šßHÏ‚ˆ
-J_BˆÛ˜]‚ˆÙ]Z[Ï‚ˆÙ]‚ˆÚXY\‚ˆ
-NÂŸB
+      <h1 className="mt-4 max-w-4xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">Ratio Calculator</h1>
+      <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">Simplify ratios, find equivalent ratios, solve proportions and calculate missing ratio values instantly. Supports two-number and three-number ratios with clear step-by-step results.</p>
+    </div></section>
+    <section className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14"><RatioCalculator /></section>
+    <section className="border-y border-border/60 bg-secondary/30"><div className="mx-auto grid max-w-[1000px] gap-6 px-4 py-14 sm:px-6 md:grid-cols-2 lg:px-8 lg:py-20">{guides.map((guide) => <Card key={guide.title} className="border-border/60 shadow-sm"><CardHeader><span className="mb-2 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary"><Ratio className="h-6 w-6" aria-hidden="true" /></span><h2 className="text-xl font-semibold leading-none tracking-tight">{guide.title}</h2></CardHeader><CardContent className="leading-relaxed text-muted-foreground">{guide.body}</CardContent></Card>)}</div></section>
+    <section className="mx-auto max-w-[900px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="ratio-uses"><h2 id="ratio-uses" className="text-3xl font-bold tracking-tight">Common Uses for Ratios</h2><p className="mt-4 leading-relaxed text-muted-foreground">Ratios make relationships easier to compare, scale and share in everyday situations.</p><ul className="mt-6 grid gap-3 sm:grid-cols-2">{commonUses.map((item) => <li key={item} className="rounded-xl border border-border/60 bg-card p-4">{item}</li>)}</ul><p className="mt-6 leading-relaxed text-muted-foreground">For part-to-whole percentages, use the <Link href="/math/percentage-calculator" className="font-semibold text-primary hover:underline">Percentage Calculator</Link>, or return to all <Link href="/math" className="font-semibold text-primary hover:underline">Math Tools</Link>.</p></section>
+    <section className="mx-auto max-w-[800px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="ratio-faq"><div className="text-center"><CircleHelp className="mx-auto h-9 w-9 text-primary" aria-hidden="true" /><h2 id="ratio-faq" className="mt-4 text-3xl font-bold tracking-tight">Frequently Asked Questions</h2></div><div className="mt-9 divide-y divide-border rounded-2xl border border-border/60 bg-card px-6 shadow-sm">{faqs.map((faq) => <div key={faq.question} className="py-6"><h3 className="font-semibold">{faq.question}</h3><p className="mt-2 leading-relaxed text-muted-foreground">{faq.answer}</p></div>)}</div></section>
+  </main><SiteFooter /></div>;
+}
