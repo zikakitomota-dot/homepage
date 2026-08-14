@@ -4,7 +4,7 @@ import { SITE_URL } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
-  const lastModified = new Date('2026-08-13');
+  const lastModified = new Date('2026-08-14');
 
   return [
     {
@@ -82,6 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/math/percentage-calculator",
       "/math/fraction-calculator",
       "/math/ratio-calculator",
+      "/math/average-calculator",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
       lastModified,
