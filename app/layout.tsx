@@ -17,11 +17,7 @@ export const metadata: Metadata = {
     'p:domain_verify': '1398120562850ed1f403122bb9b2fdff',
   },
   icons: {
-    icon: [
-      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
-      { url: '/favicon.ico', type: 'image/x-icon' },
-    ],
-    shortcut: '/favicon-96x96.png',
+    icon: { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
     apple: '/favicon-96x96.png',
   },
   keywords: [
