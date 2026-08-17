@@ -12,7 +12,7 @@ import { canAccessGame } from '@/lib/games/access';
 import { academyGames } from '@/lib/games/academy-games';
 import { englishGames, getEnglishGame } from '@/lib/games/english-games';
 import type { AcademyGameSummary, EnglishGame } from '@/lib/games/types';
-import { createEducationalMetadata, safeJsonLd } from '@/lib/seo';
+import { ACADEMY_SOCIAL_IMAGE, createEducationalMetadata, safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -33,7 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!game && !academyGame) return {};
   if (academyGame) {
     const title = `${academyGame.title} | Zalea English Academy`;
-    return { title: { absolute: title }, description: academyGame.shortDescription, robots: { index: false, follow: false } };
+    return createEducationalMetadata({
+      title,
+      description: academyGame.shortDescription,
+      path: `/games/english/${academyGame.slug}`,
+      image: ACADEMY_SOCIAL_IMAGE,
+    });
   }
   if (!game) return {};
   const title = `${game.title} Grammar Game for Kids | Zalea Studio`;
