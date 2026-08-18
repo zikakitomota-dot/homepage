@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 
 export const ENGLISH_GAMES_SOCIAL_IMAGE = {
-  url: '/images/english-games-social',
+  url: '/images/english-games-social.png',
   width: 1200,
   height: 630,
   alt: 'Free English Games for Kids from Zalea Studio',
 } as const;
 
 export const ENGLISH_GAMES_PINTEREST_IMAGE = {
-  url: '/images/english-games-pinterest',
+  url: '/images/english-games-pinterest.png',
   width: 1000,
   height: 1500,
   alt: 'Free English grammar games for children ages 5–8',
