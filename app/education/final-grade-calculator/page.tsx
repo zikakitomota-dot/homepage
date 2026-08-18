@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 
-const title = 'Final Grade Calculator – What Grade Do I Need on My Final? | Zalea Studio';
+const title = 'Final Grade Calculator – What Grade Do I Need? | Zalea Studio';
 const description = 'Find out what grade you need on your final exam to reach your target course grade. Enter your current grade, final exam weight and desired grade for an instant result.';
 const path = '/education/final-grade-calculator';
 

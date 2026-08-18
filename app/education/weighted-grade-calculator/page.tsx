@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 
-const title = 'Weighted Grade Calculator – Calculate Your Weighted Average | Zalea Studio';
+const title = 'Weighted Grade Calculator – Calculate Your Weighted Average';
 const description = 'Calculate your weighted grade from assignments, tests or course categories. Enter each grade and weight to find your weighted average instantly.';
 const path = '/education/weighted-grade-calculator';
 
