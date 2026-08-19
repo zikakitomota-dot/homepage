@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 
-const title = 'Business Days Calculator – Count Working Days Between Dates | Zalea Studio';
+const title = 'Business Days Calculator – Count Working Days | Zalea Studio';
 const description = 'Calculate business days between dates or add and subtract working days. Customize weekends and exclude holidays with this free business days calculator.';
 const path = '/work-time/business-days-calculator';
 

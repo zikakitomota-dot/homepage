@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 
-const title = 'Salary to Hourly Calculator – Convert Salary & Hourly Pay | Zalea Studio';
+const title = 'Salary to Hourly Calculator | Zalea Studio';
 const description = 'Convert annual, monthly or weekly salary into hourly pay—or calculate annual salary from an hourly rate using your actual work schedule.';
 const path = '/work-time/salary-to-hourly-calculator';
 

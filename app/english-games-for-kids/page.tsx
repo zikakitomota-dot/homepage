@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { createEducationalMetadata } from '@/lib/seo';
 
 export const metadata = createEducationalMetadata({
-  title: 'English Games for Kids – Free Grammar & Vocabulary Games | Zalea Studio',
+  title: 'Free English Games for Kids | Zalea Studio',
   description: 'Find free English grammar games for children ages 5–8, plus mobile-friendly grammar and vocabulary learning in Zalea English Academy.',
   path: '/english-games-for-kids',
 });

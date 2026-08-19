@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 
-const title = 'Fraction Calculator – Add, Subtract, Multiply & Divide Fractions | Zalea Studio';
+const title = 'Fraction Calculator – Add, Subtract, Multiply & Divide | Zalea Studio';
 const description = 'Free fraction calculator to add, subtract, multiply and divide fractions and mixed numbers. Get simplified answers, decimals and clear step-by-step solutions.';
 const path = '/math/fraction-calculator';
 
