@@ -15,6 +15,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: 'https://zaleastudio.com/sitemap.xml',
-    host: 'https://zaleastudio.com',
   };
 }
