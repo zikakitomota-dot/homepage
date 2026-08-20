@@ -3,8 +3,9 @@ export const HEALTH_TOOLS_URL = 'https://health.zaleastudio.com/';
 export const ABOUT_ROUTE = '/about';
 export const CONTACT_ROUTE = '/contact';
 
-// General storefront used by non-Academy product and legal-page links.
+// General storefronts used by shop and legal-page links.
 export const PAYHIP_PRODUCT_URL = 'https://payhip.com/ZaleaStudio';
+export const KO_FI_SHOP_URL = 'https://ko-fi.com/zaleastudio/shop';
 // Direct Academy product page, with an optional deployment-specific override.
 export const PAYHIP_ACADEMY_PRODUCT_KEY = 'q6xWY';
 export const PAYHIP_ACADEMY_PRODUCT_URL = 'https://payhip.com/b/q6xWY';
