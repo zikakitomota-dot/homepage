@@ -64,6 +64,22 @@ export default function MoneyToolsPage() {
           </div>
         </section>
 
+        <section className="border-y border-border/60 bg-secondary/30">
+          <div className="mx-auto max-w-[1100px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+            <div className="max-w-3xl"><p className="text-sm font-semibold uppercase tracking-wider text-primary">Choose by decision</p><h2 className="mt-2 text-3xl font-bold tracking-tight">What are you trying to compare or plan?</h2><p className="mt-4 leading-relaxed text-muted-foreground">The tools are grouped around everyday decisions rather than financial products. You can check a price before buying, divide a shared expense, or estimate the time and cost involved in a future goal.</p></div>
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Check a purchase</h3><p className="mt-3 leading-relaxed text-muted-foreground">Use the <Link href="/finance/discount-calculator" className="font-semibold text-primary hover:underline">Discount Calculator</Link> to check a sale price, the <Link href="/finance/unit-price-calculator" className="font-semibold text-primary hover:underline">Unit Price Calculator</Link> to compare package value, or the <Link href="/finance/cashback-calculator" className="font-semibold text-primary hover:underline">Cashback Calculator</Link> to understand a reward cap.</p></div>
+              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Share an expense</h3><p className="mt-3 leading-relaxed text-muted-foreground">The <Link href="/finance/split-bill-calculator" className="font-semibold text-primary hover:underline">Split Bill Calculator</Link> divides a total between people and can include a tip. Review the original receipt and any individual items before treating an equal split as fair.</p></div>
+              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Plan ahead</h3><p className="mt-3 leading-relaxed text-muted-foreground">Use the <Link href="/finance/savings-goal-calculator" className="font-semibold text-primary hover:underline">Savings Goal Calculator</Link> to compare monthly contributions, or estimate a journey with the <Link href="/finance/fuel-cost-calculator" className="font-semibold text-primary hover:underline">Fuel Cost Calculator</Link>.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20"><div className="grid gap-8 lg:grid-cols-2">
+          <div><h2 className="text-3xl font-bold tracking-tight">How to use the estimates responsibly</h2><p className="mt-4 leading-relaxed text-muted-foreground">Results are calculated from the numbers and options entered; they do not retrieve live prices, bank rates or merchant terms. Check the currency, quantities, percentage rates, limits and time period before comparing two scenarios.</p><p className="mt-4 leading-relaxed text-muted-foreground">For a more realistic plan, test more than one input. A fuel price, monthly contribution or purchase amount can change, so a range of results is often more useful than one exact-looking number.</p></div>
+          <aside className="rounded-2xl border border-amber-200 bg-amber-50/60 p-6 sm:p-8" aria-labelledby="money-information-note"><h2 id="money-information-note" className="text-2xl font-bold">General information only</h2><p className="mt-4 leading-relaxed text-muted-foreground">These calculators support everyday arithmetic and planning. They do not provide personalised financial, tax, credit or investment advice. Confirm important decisions with current receipts, provider terms or an appropriately qualified professional.</p></aside>
+        </div></section>
+
         <section className="border-t border-border/60 bg-secondary/30">
           <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
             <PiggyBank className="mx-auto h-10 w-10 text-primary" aria-hidden="true" />
@@ -76,3 +92,4 @@ export default function MoneyToolsPage() {
     </div>
   );
 }
+
