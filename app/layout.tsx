@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { GoogleAdSense } from '@/components/google-adsense';
 import { GoogleAnalytics } from '@/components/google-analytics';
 import { safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
@@ -88,16 +89,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2130981852492599"
-          crossOrigin="anonymous"
-        />
-      </head>
       <body className="font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(siteJsonLd) }} />
         {children}
+        <GoogleAdSense />
         <GoogleAnalytics />
       </body>
     </html>

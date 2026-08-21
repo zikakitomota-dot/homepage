@@ -1,5 +1,4 @@
 import type { MetadataRoute } from 'next';
-import { academyGames } from '@/lib/games/academy-games';
 import { englishGames } from '@/lib/games/english-games';
 import { SITE_URL } from '@/lib/site';
 
@@ -120,12 +119,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
     ...englishGames.map((game) => ({
-      url: `${baseUrl}/games/english/${game.slug}`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    })),
-    ...academyGames.map((game) => ({
       url: `${baseUrl}/games/english/${game.slug}`,
       lastModified,
       changeFrequency: "monthly" as const,

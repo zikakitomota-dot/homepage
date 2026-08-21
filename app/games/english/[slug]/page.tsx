@@ -33,12 +33,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!game && !academyGame) return {};
   if (academyGame) {
     const title = `${academyGame.title} | Zalea English Academy`;
-    return createEducationalMetadata({
+    const metadata = createEducationalMetadata({
       title,
       description: academyGame.shortDescription,
       path: `/games/english/${academyGame.slug}`,
       image: ACADEMY_SOCIAL_IMAGE,
     });
+    return {
+      ...metadata,
+      robots: {
+        index: false,
+        follow: true,
+        googleBot: {
+          index: false,
+          follow: true,
+        },
+      },
+    };
   }
   if (!game) return {};
   const title = `${game.title} Grammar Game for Kids | Zalea Studio`;
