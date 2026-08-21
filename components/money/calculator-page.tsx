@@ -14,6 +14,8 @@ type CalculatorPageProps = {
   howToUse: string[];
   formula: string;
   example: string;
+  assumptions: string[];
+  limitations: string[];
   faqs: { question: string; answer: string }[];
 };
 
@@ -25,6 +27,8 @@ export function CalculatorPage({
   howToUse,
   formula,
   example,
+  assumptions,
+  limitations,
   faqs,
 }: CalculatorPageProps) {
   return (
@@ -65,6 +69,16 @@ export function CalculatorPage({
             <InfoCard title="Simple example">
               <p>{example}</p>
             </InfoCard>
+            <InfoCard title="Assumptions used">
+              <ul className="list-disc space-y-2 pl-5">
+                {assumptions.map((assumption) => <li key={assumption}>{assumption}</li>)}
+              </ul>
+            </InfoCard>
+            <InfoCard title="Important limitations">
+              <ul className="list-disc space-y-2 pl-5">
+                {limitations.map((limitation) => <li key={limitation}>{limitation}</li>)}
+              </ul>
+            </InfoCard>
           </div>
         </section>
 
@@ -99,3 +113,4 @@ function InfoCard({ icon, title, children }: { icon?: ReactNode; title: string; 
     </Card>
   );
 }
+

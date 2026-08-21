@@ -11,9 +11,22 @@ export default function Page() {
     howToUse={['Enter your total savings goal.', 'Add the amount you have already saved.', 'Enter the amount you plan to contribute each month.']}
     formula="Remaining amount = savings goal − amount already saved. Months needed = remaining amount ÷ monthly contribution, rounded up."
     example="For a RM10,000 goal with RM2,000 saved and RM500 added monthly, RM8,000 remains and the estimate is 16 months."
+    assumptions={[
+      'The same contribution is added once every month.',
+      'Current savings remain available for this goal and are not withdrawn.',
+      'The estimate uses contributions only, with no interest, fees, or investment returns.',
+    ]}
+    limitations={[
+      'The completion month is approximate because it is based on today’s date rather than a chosen contribution day.',
+      'Changing income, irregular contributions, withdrawals, and emergencies are not modelled.',
+      'Inflation and changes in the future cost of the goal are not included.',
+    ]}
     faqs={[
       { question: 'Why are months rounded up?', answer: 'A partial month still requires another contribution, so rounding up gives a practical estimate for reaching the full goal.' },
       { question: 'What if I have already reached my goal?', answer: 'The calculator recognizes when current savings equal or exceed the goal and displays a goal-reached message.' },
       { question: 'Does this include savings interest?', answer: 'No. This is a simple contribution-based estimate and does not assume interest, investment returns, or changing contributions.' },
+      { question: 'What should I enter if my monthly savings change?', answer: 'Use a realistic average monthly contribution and recalculate whenever your plan changes. A lower conservative average can give a more cautious timeline.' },
+      { question: 'Why might the estimated completion month differ from my actual date?', answer: 'The calculator adds whole months from the current date. Your actual result depends on when each contribution arrives and whether every planned payment is made.' },
     ]} />;
 }
+
