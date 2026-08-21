@@ -3,14 +3,12 @@ import Link from 'next/link';
 import {
   ArrowRight,
   BookOpen,
-  Bot,
   Calculator,
   Clock3,
   HeartHandshake,
   Percent,
   PiggyBank,
   ShieldCheck,
-  Users,
   Zap,
 } from 'lucide-react';
 import { ProductCard } from '@/components/product-card';
@@ -31,10 +29,8 @@ export const metadata: Metadata = {
 const upcomingProjects = [
   { icon: PiggyBank, title: 'Finance Tools', description: 'Simple calculators for everyday spending, savings and smarter buying decisions.', href: '/finance' },
   { icon: Clock3, title: 'Work & Time', description: 'Calculate work hours, schedules, timesheets and everyday work-related time.', href: '/work-time' },
-  { icon: Users, title: 'Parenting Tools', description: 'Helpful tools and educational resources for parents.' },
   { icon: BookOpen, title: 'Education Tools', description: 'Free grade calculators and practical student tools for schoolwork.', href: '/education' },
   { icon: Percent, title: 'Math Tools', description: 'Fast percentage calculations with clear formulas and useful explanations.', href: '/math' },
-  { icon: Bot, title: 'AI Utilities', description: 'Simple AI-powered tools that improve everyday productivity.' },
 ];
 
 const features = [
@@ -115,23 +111,21 @@ export default function Home() {
           <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <div className="mx-auto mb-12 max-w-2xl text-center">
               <h2 id="tools-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">A Growing Hub of Useful Resources</h2>
-              <p className="mt-3 text-lg text-muted-foreground">Explore our free health, finance, work, time, education and math calculators, with more practical collections on the way.</p>
+              <p className="mt-3 text-lg text-muted-foreground">Explore our free health, finance, work, time, education and math calculators.</p>
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {upcomingProjects.map((project) => {
-                const card = (
-                <Card className="h-full border-border/60 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
-                  <CardHeader>
-                    <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary"><project.icon className="h-6 w-6" aria-hidden="true" /></span>
-                    <CardTitle className="text-lg">{project.title}</CardTitle>
-                    {project.href ? <Badge variant="secondary" className="w-fit border-primary/20 bg-primary/10 text-primary">Available now</Badge> : <Badge variant="outline" className="w-fit border-amber-300 bg-amber-50 text-amber-700">Coming Soon</Badge>}
-                  </CardHeader>
-                  <CardContent><p className="text-sm leading-relaxed text-muted-foreground">{project.description}</p></CardContent>
-                </Card>
-                );
-
-                return project.href ? <Link key={project.title} href={project.href} className="rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">{card}</Link> : <div key={project.title}>{card}</div>;
-              })}
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {upcomingProjects.map((project) => (
+                <Link key={project.title} href={project.href} className="rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                  <Card className="h-full border-border/60 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+                    <CardHeader>
+                      <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary"><project.icon className="h-6 w-6" aria-hidden="true" /></span>
+                      <CardTitle className="text-lg">{project.title}</CardTitle>
+                      <Badge variant="secondary" className="w-fit border-primary/20 bg-primary/10 text-primary">Available now</Badge>
+                    </CardHeader>
+                    <CardContent><p className="text-sm leading-relaxed text-muted-foreground">{project.description}</p></CardContent>
+                  </Card>
+                </Link>
+              ))}
             </div>
             <div className="mt-10 text-center"><Button asChild variant="outline"><a href={HEALTH_TOOLS_URL} data-ga-event="cta_click" data-ga-label="home_explore_current_tools">Explore Current Tools</a></Button></div>
           </div>
