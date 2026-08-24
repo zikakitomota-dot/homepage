@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { englishGames } from '@/lib/games/english-games';
 import { SITE_URL } from '@/lib/site';
+import { publishedFreebies } from '@/lib/freebies';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
@@ -37,6 +38,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/freebies`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    ...publishedFreebies.map((freebie) => ({
+      url: `${baseUrl}/freebies/${freebie.slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
     ...[
       "/finance",
       "/finance/discount-calculator",

@@ -76,6 +76,7 @@ function AnalyticsEvents() {
       const configuredElement = interactiveElement.closest<HTMLElement>('[data-ga-event]');
       const configuredEvent = configuredElement?.dataset.gaEvent;
       const configuredLabel = configuredElement?.dataset.gaLabel;
+      const configuredFormat = configuredElement?.dataset.gaFormat;
 
       if (configuredEvent && isAnalyticsEventName(configuredEvent)) {
         const labelKey =
@@ -83,9 +84,12 @@ function AnalyticsEvents() {
             ? 'product_name'
             : configuredEvent === 'game_launch'
               ? 'game_slug'
+              : configuredEvent === 'freebie_download'
+                ? 'freebie_slug'
               : 'cta_name';
         trackEvent(configuredEvent, {
           ...(configuredLabel ? { [labelKey]: configuredLabel } : {}),
+          ...(configuredEvent === 'freebie_download' && configuredFormat ? { format: configuredFormat } : {}),
           page_path: pagePath,
         });
       }

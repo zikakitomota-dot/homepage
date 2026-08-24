@@ -17,6 +17,7 @@ export const PAYHIP_MONEY_MILESTONE_USD_URL = 'https://payhip.com/b/tvpjN';
 export const navLinks = [
   { label: 'Home', href: '/', external: false },
   { label: 'Games', href: '/games', external: false },
+  { label: 'Freebies', href: '/freebies', external: false },
   { label: 'Shop', href: '/shop', external: false },
   { label: 'About', href: ABOUT_ROUTE, external: false },
   { label: 'Contact', href: CONTACT_ROUTE, external: false },

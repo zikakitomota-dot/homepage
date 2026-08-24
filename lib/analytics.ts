@@ -6,6 +6,7 @@ export const analyticsEventNames = [
   'payhip_click',
   'game_launch',
   'cta_click',
+  'freebie_download',
   'page_view',
 ] as const;
 
