@@ -1,4 +1,4 @@
-export const GA_MEASUREMENT_ID = 'G-BDC576HP9G';
+export const GA_MEASUREMENT_ID = 'G-NE4EWMSCGB';
 
 export const analyticsEventNames = [
   'calculator_used',
