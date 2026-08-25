@@ -18,6 +18,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { HEALTH_TOOLS_URL } from '@/lib/site';
+import { SHOP_PRODUCTS } from '@/lib/shop-products';
 
 export const metadata: Metadata = {
   title: { absolute: 'Zalea Studio | Free Online Tools & Digital Products' },
@@ -39,7 +40,13 @@ const features = [
   { icon: HeartHandshake, title: 'Made for Everyday Life', description: 'Every tool and product is designed to solve a practical problem.' },
 ];
 
+const featuredProduct = SHOP_PRODUCTS.find((product) => product.id === 'money-milestone-usd');
+
 export default function Home() {
+  if (!featuredProduct) {
+    throw new Error('Money Milestone featured product is missing from the shop catalogue.');
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -101,10 +108,10 @@ export default function Home() {
 
         <section className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 lg:px-8 lg:py-24" aria-labelledby="featured-product-heading">
           <div className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">Learn through play</p>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">Make progress visible</p>
             <h2 id="featured-product-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">Featured Product</h2>
           </div>
-          <ProductCard featured />
+          <ProductCard product={featuredProduct} featured />
         </section>
 
         <section className="border-y border-border/60 bg-secondary/30" aria-labelledby="tools-heading">
