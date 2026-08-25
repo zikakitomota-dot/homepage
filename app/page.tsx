@@ -68,7 +68,7 @@ export default function Home() {
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg" className="h-12 px-6">
                   <a href={HEALTH_TOOLS_URL} data-ga-event="cta_click" data-ga-label="home_explore_tools">
-                    Explore Free Tools
+                    Explore Health Calculators
                     <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                   </a>
                 </Button>
@@ -134,7 +134,7 @@ export default function Home() {
                 </Link>
               ))}
             </div>
-            <div className="mt-10 text-center"><Button asChild variant="outline"><a href={HEALTH_TOOLS_URL} data-ga-event="cta_click" data-ga-label="home_explore_current_tools">Explore Current Tools</a></Button></div>
+            <div className="mt-10 text-center"><Button asChild variant="outline"><a href={HEALTH_TOOLS_URL} data-ga-event="cta_click" data-ga-label="home_explore_current_tools">Explore Health Calculators</a></Button></div>
           </div>
         </section>
 
@@ -142,7 +142,7 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">About Zalea Studio</h2>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Zalea Studio creates practical digital experiences for children, parents, teachers, and families. From <a href={HEALTH_TOOLS_URL} className="font-medium text-primary hover:underline">free online tools</a> to educational games in our <Link href="/shop" className="font-medium text-primary hover:underline">digital shop</Link>, everything is designed to make learning and everyday decisions simpler.
+              Zalea Studio creates practical digital experiences for children, parents, teachers, and families. From <a href={HEALTH_TOOLS_URL} className="font-medium text-primary hover:underline">free health calculators</a> to educational games in our <Link href="/shop" className="font-medium text-primary hover:underline">digital shop</Link>, everything is designed to make learning and everyday decisions simpler.
             </p>
           </div>
         </section>
@@ -166,7 +166,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Explore Zalea Studio</h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-blue-50">Discover free tools and practical digital resources created to make learning and everyday decisions easier.</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button asChild size="lg" className="h-12 bg-white px-6 text-primary hover:bg-blue-50"><a href={HEALTH_TOOLS_URL} data-ga-event="cta_click" data-ga-label="home_explore_free_tools">Explore Free Tools</a></Button>
+              <Button asChild size="lg" className="h-12 bg-white px-6 text-primary hover:bg-blue-50"><a href={HEALTH_TOOLS_URL} data-ga-event="cta_click" data-ga-label="home_explore_free_tools">Explore Health Calculators</a></Button>
               <Button asChild size="lg" variant="outline" className="h-12 border-white bg-transparent px-6 text-white hover:bg-white/10 hover:text-white"><Link href="/shop" data-ga-event="cta_click" data-ga-label="home_final_browse_shop">Browse the Shop</Link></Button>
             </div>
           </div>
