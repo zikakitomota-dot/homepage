@@ -46,6 +46,11 @@ const config: Config = {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
         },
+        sage: {
+          DEFAULT: 'hsl(var(--sage))',
+          foreground: 'hsl(var(--sage-foreground))',
+          soft: 'hsl(var(--sage-soft))',
+        },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',

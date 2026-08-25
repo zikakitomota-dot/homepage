@@ -4,7 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { FreebiePreview } from '@/components/freebies/freebie-preview';
+import { buttonVariants } from '@/components/ui/button';
 import { freebieCategories, type Freebie, type FreebieCategory } from '@/lib/freebies';
+import { cn } from '@/lib/utils';
 
 type Filter = 'all' | FreebieCategory;
 
@@ -25,18 +27,18 @@ export function FreebiesFilter({ freebies, categories }: { freebies: readonly Fr
       <p className="sr-only" aria-live="polite">Showing {visibleFreebies.length} {visibleFreebies.length === 1 ? 'freebie' : 'freebies'}.</p>
       <div className="mt-8 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
         {visibleFreebies.map((freebie) => (
-          <article key={freebie.slug} className="flex overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md">
+          <article key={freebie.slug} className="flex overflow-hidden rounded-3xl border border-border/60 bg-card shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md">
             <div className="flex w-full flex-col">
               <FreebiePreview freebie={freebie} compact />
               <div className="flex flex-1 flex-col p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-800">{freebieCategories[freebie.category].label}</p>
-                <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900">{freebie.title}</h2>
-                <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">{freebie.description}</p>
-                <div className="mt-4 flex flex-wrap gap-2 text-xs font-medium text-slate-700">
-                  <span className="rounded-full bg-stone-100 px-3 py-1">{freebie.ageRange ?? `For ${freebie.audience}`}</span>
-                  <span className="rounded-full bg-stone-100 px-3 py-1">{freebie.pageCount} pages</span>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sage-foreground">{freebieCategories[freebie.category].label}</p>
+                <h2 className="mt-2 text-xl font-bold tracking-tight text-foreground">{freebie.title}</h2>
+                <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{freebie.description}</p>
+                <div className="mt-4 flex flex-wrap gap-2 text-xs font-medium text-foreground/80">
+                  <span className="rounded-full bg-sage-soft px-3 py-1">{freebie.ageRange ?? `For ${freebie.audience}`}</span>
+                  <span className="rounded-full bg-secondary px-3 py-1">{freebie.pageCount} pages</span>
                 </div>
-                <Link href={`/freebies/${freebie.slug}`} className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white outline-none transition hover:bg-emerald-800 focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2">
+                <Link href={`/freebies/${freebie.slug}`} className={cn(buttonVariants(), 'mt-6 min-h-11 gap-2 rounded-xl')}>
                   View &amp; Download <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
@@ -50,9 +52,8 @@ export function FreebiesFilter({ freebies, categories }: { freebies: readonly Fr
 
 function FilterButton({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
-    <button type="button" aria-pressed={active} onClick={onClick} className={`min-h-11 rounded-full border px-5 py-2 text-sm font-semibold outline-none transition focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2 ${active ? 'border-emerald-800 bg-emerald-800 text-white shadow-sm' : 'border-stone-300 bg-white text-slate-700 hover:border-emerald-700 hover:text-emerald-800'}`}>
+    <button type="button" aria-pressed={active} onClick={onClick} className={`min-h-11 rounded-full border px-5 py-2 text-sm font-semibold outline-none transition focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${active ? 'border-primary bg-primary text-primary-foreground shadow-sm' : 'border-input bg-background text-foreground/80 hover:border-primary/70 hover:text-primary'}`}>
       {children}{active ? <span className="sr-only"> (selected)</span> : null}
     </button>
   );
 }
-
