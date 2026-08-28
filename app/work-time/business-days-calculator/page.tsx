@@ -23,12 +23,13 @@ export const metadata: Metadata = {
 
 const faqs = [
   { question: 'How many business days are between two dates?', answer: 'Enter the start and end dates, choose whether each boundary date is included, select your working week, and add any excluded dates. The calculator counts only eligible working days.' },
-  { question: 'Do business days include weekends?', answer: 'Business days usually exclude weekends, but working weeks differ. You can use Monday–Friday, Sunday–Thursday, or choose custom working days.' },
-  { question: 'Do business days include public holidays?', answer: 'That depends on the country, organization and purpose. This version lets you manually add public holidays or other dates that should be excluded.' },
-  { question: 'How do I calculate 10 business days from today?', answer: 'Choose Business Days From Today, enter 10 or use the 10 days shortcut, then select Add. The result skips your configured non-working and excluded dates.' },
-  { question: 'Can I subtract business days from a date?', answer: 'Yes. Choose Add / Subtract Business Days, select Subtract, and enter the starting date and number of business days.' },
-  { question: 'Can I use a Sunday–Thursday working week?', answer: 'Yes. Select Sunday–Thursday under Working Week and the calculator will treat Friday and Saturday as non-working days.' },
-  { question: 'Does the calculator support custom working days?', answer: 'Yes. Choose Custom and select any combination of days used by your schedule or organization.' },
+  { question: 'Are weekends included in business days?', answer: 'Not with the default Monday–Friday working week: Saturdays and Sundays are excluded. You can instead choose Sunday–Thursday or select custom working days.' },
+  { question: 'Are public holidays included?', answer: 'Public holidays are not detected automatically because calendars vary by country and organization. Add each holiday or closure date under Exclude Holidays / Dates to remove it from the count.' },
+  { question: 'Does the calculator include the start and end date?', answer: 'Both dates are included by default when they are working days. Clear either Include option if you do not want that boundary date counted.' },
+  { question: 'Is a business day the same as a working day?', answer: 'The terms are commonly used in the same way. Here, either means a day selected in your working week that is not one of your manually excluded dates.' },
+  { question: 'How many business days are in a month?', answer: 'There is no single fixed number because month length, weekday placement, working-week settings and holidays vary. Enter the actual first and last dates for an exact count.' },
+  { question: 'How many business days are in 9 months?', answer: 'The total varies with the actual start and end dates, weekends, month lengths and holidays. Enter the specific nine-month date range and any holidays to calculate it accurately.' },
+  { question: 'What if the start date is after the end date?', answer: 'The calculator shows a validation message and does not return a negative or invalid result. Enter an end date on or after the start date.' },
 ];
 
 const jsonLd = [
@@ -72,7 +73,7 @@ export default function BusinessDaysCalculatorPage() {
             <Link href="/work-time" className="inline-flex items-center text-sm font-medium text-primary hover:underline"><ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />All Work &amp; Time Tools</Link>
             <Badge variant="secondary" className="mt-6 block w-fit border-primary/20 bg-primary/10 text-primary">Free calculator</Badge>
             <h1 className="mt-4 max-w-4xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">Business Days Calculator</h1>
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">Count working days between two dates, add or subtract business days from a date, or calculate common deadlines from today. Customize the working week and exclude holidays or other dates.</p>
+            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">Calculate the number of business or working days between two dates. Saturdays and Sundays are excluded by default, and you can customize the working week or manually exclude holidays.</p>
           </div>
         </section>
 
@@ -94,8 +95,14 @@ export default function BusinessDaysCalculatorPage() {
             <InfoCard title="Calendar Days vs Business Days">
               <p><strong>Calendar days</strong> include every day in the selected range. <strong>Business days</strong> include only selected working days and omit configured non-working and excluded dates.</p>
             </InfoCard>
+            <InfoCard title="Worked Example">
+              <p>From Monday, June 1, 2026 through Friday, June 12, 2026, there are <strong className="text-foreground">10 business days</strong> with a Monday–Friday week and no excluded holidays. Both dates are included.</p>
+            </InfoCard>
+            <InfoCard title="Longer Ranges, Including 9 Months">
+              <p>The number of working days in a month or nine months is not fixed. Use the actual start and end dates because month lengths, weekday placement, working-week settings and holidays change the result.</p>
+            </InfoCard>
             <InfoCard title="Why Business Days Matter">
-              <p>Business-day calculations are useful for project deadlines, invoice and payment terms, document processing, delivery estimates, administrative timelines and work schedules.</p>
+              <p>Business-day calculations are useful for project deadlines, document processing, delivery estimates, administrative timelines and work schedules. This tool counts working days; it does not calculate financial net payment terms.</p>
             </InfoCard>
             <InfoCard title="Planning Note">
               <p>Business-day definitions and public holidays vary by country, organization and purpose. This calculator is provided for general planning and informational purposes, not legal advice.</p>
@@ -118,3 +125,4 @@ export default function BusinessDaysCalculatorPage() {
 function InfoCard({ title, children }: { title: string; children: React.ReactNode }) {
   return <Card className="border-border/60 shadow-sm"><CardHeader><span className="mb-2 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary"><CalendarCheck2 className="h-6 w-6" aria-hidden="true" /></span><CardTitle className="text-xl">{title}</CardTitle></CardHeader><CardContent className="leading-relaxed text-muted-foreground">{children}</CardContent></Card>;
 }
+
