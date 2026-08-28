@@ -22,6 +22,7 @@ export function calculateRequiredFinal(currentGrade: number, finalWeightPercent:
   const requiredFinal = (desiredGrade - currentGrade * (1 - finalWeight)) / finalWeight;
   const projectedAtZero = projectCourseGrade(currentGrade, finalWeightPercent, 0);
   if (!Number.isFinite(requiredFinal) || projectedAtZero === null) return null;
-  const state: FinalGradeState = requiredFinal < 0 ? 'secured' : requiredFinal > 100 ? 'above-100' : 'achievable';
+  const state: FinalGradeState = requiredFinal <= 0 ? 'secured' : requiredFinal > 100 ? 'above-100' : 'achievable';
   return { currentGrade, finalWeightPercent, desiredGrade, requiredFinal, projectedAtZero, state };
 }
+

@@ -17,12 +17,14 @@ const path = '/education/final-grade-calculator';
 export const metadata: Metadata = { title: { absolute: title }, description, alternates: { canonical: path }, openGraph: { title, description, url: path, type: 'website' } };
 
 const faqs = [
-  { question: 'What grade do I need on my final?', answer: 'The required score depends on your current course grade, the percentage weight of the final exam and your desired overall course grade.' },
-  { question: 'How do I calculate my final exam grade needed?', answer: 'Multiply the current grade by the coursework weight, subtract that amount from the target grade, then divide by the final exam weight expressed as a decimal.' },
-  { question: 'Can I still pass if I fail my final exam?', answer: 'That depends on your current grade, the final exam weight, the passing grade and any school-specific rules. This calculator provides a mathematical estimate, not an interpretation of academic policy.' },
-  { question: 'What if I need more than 100% on my final?', answer: 'The target is mathematically unreachable through the final exam alone unless extra credit, curved grading or another adjustment is available.' },
-  { question: 'What if my final is worth 20% of my grade?', answer: 'A 20% final means the current coursework contributes 80% of the overall course grade and the final exam contributes the remaining 20%.' },
-  { question: 'Does this calculator work for weighted courses?', answer: 'This calculator assumes the current grade already represents all coursework completed before the final and that the final has its own specified percentage weight. Detailed category weighting requires a weighted grade calculator.' },
+  { question: 'What grade do I need on my final?', answer: 'Enter your current course grade, the final exam’s percentage weight and your target course grade. The calculator solves for the final exam score needed.' },
+  { question: 'How do I calculate my final course grade?', answer: 'Multiply the current grade by the coursework weight, then add the final exam grade multiplied by the final exam weight. Both weights must total 100%.' },
+  { question: 'How much does my final affect my course grade?', answer: 'Its effect equals its percentage weight. A final worth 20% contributes one fifth of the course grade; the existing coursework contributes the other 80%.' },
+  { question: 'What if I need more than 100% on my final?', answer: 'The target is not achievable with the final exam alone under a normal 0–100% scale. Extra credit, a curve or another grading adjustment would be required.' },
+  { question: 'What if I already have enough to reach my target?', answer: 'If the required result is 0% or lower, the target is mathematically secured even with a 0% final, assuming the entered grading structure is complete.' },
+  { question: 'How do I calculate what I need to pass?', answer: 'Use the course’s passing percentage as the target grade. The result depends on your current percentage and the final exam weight, plus any separate school rules.' },
+  { question: 'Is this the same as a weighted grade calculator?', answer: 'No. This tool solves for one remaining final exam. A weighted grade calculator combines multiple assignments or categories with different weights.' },
+  { question: 'What if my course uses points instead of percentages?', answer: 'This calculator uses percentages and course weights, not raw accumulated points. Use the Grade Calculator for points earned and total possible points.' },
 ];
 
 const jsonLd = [
@@ -32,10 +34,10 @@ const jsonLd = [
 ];
 
 const guides = [
-  { title: 'How to Calculate What Grade You Need on Your Final', body: <><p><strong>Required Final Score = (Target Grade − Current Grade × Remaining Coursework Weight) ÷ Final Exam Weight</strong></p><p className="mt-3">Convert the final weight to a decimal first. With an 82% current grade, a 30% final and an 85% target: (85 − (82 × 0.70)) ÷ 0.30 = <strong>92%</strong>.</p></> },
-  { title: 'How Final Exam Weight Affects Your Grade', body: <p>A larger final exam weight has more influence on the final course grade. A final worth 40% can change the outcome much more than one worth 10%. To combine several weighted categories, use the <Link href="/education/weighted-grade-calculator" className="font-semibold text-primary hover:underline">Weighted Grade Calculator</Link>.</p> },
-  { title: 'What If I Need More Than 100%?', body: <p>A required score above 100% usually means the target cannot be reached through the final alone. Extra credit, curved grading, bonus assignments or instructor adjustments may change the situation, but availability is not guaranteed.</p> },
-  { title: 'What If My Required Score Is Below 0%?', body: <p>A negative formula result means the current course grade is already sufficient to meet the target even with a 0% final exam score.</p> },
+  { title: 'How to Calculate What You Need on Your Final', body: <><p><strong>Required final grade = (target grade − current grade × (1 − final weight)) ÷ final weight.</strong></p><p className="mt-3">For an 82% current grade, 30% final and 80% target:</p><p className="mt-2">82 × 0.70 = 57.4<br />80 − 57.4 = 22.6<br />22.6 ÷ 0.30 = <strong>75.33%</strong></p></> },
+  { title: 'How Much Is the Final Worth?', body: <p>The calculator cannot determine the final’s weight from grades alone. Check your syllabus or gradebook. If it says the final is worth 25% of the course grade, enter <strong>25</strong>; the completed coursework then contributes the remaining 75%.</p> },
+  { title: 'Final Exam vs Weighted Grade Calculator', body: <p>Use this calculator to find the score needed on one remaining final. Use the <Link href="/education/weighted-grade-calculator" className="font-semibold text-primary hover:underline">Weighted Grade Calculator</Link> to combine several assignments or categories. Change the three inputs above to compare what-if final scenarios instantly.</p> },
+  { title: 'Percentages, Weights and Points', body: <p>This tool uses percentage grades and one final-exam weight. If your course uses raw points earned and total possible points, use the <Link href="/education/grade-calculator" className="font-semibold text-primary hover:underline">Grade Calculator</Link> instead.</p> },
 ];
 
 export default function FinalGradeCalculatorPage() {
@@ -48,3 +50,4 @@ export default function FinalGradeCalculatorPage() {
     <div className="border-t border-border/60"><RelatedEducationTools currentSlug="final-grade-calculator" /></div>
   </main><SiteFooter /></div>;
 }
+
