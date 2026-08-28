@@ -17,13 +17,13 @@ const path = '/work-time/salary-to-hourly-calculator';
 export const metadata: Metadata = { title: { absolute: title }, description, alternates: { canonical: path }, openGraph: { title, description, url: path, type: 'website' } };
 
 const faqs = [
-  { question: 'How do I convert annual salary to hourly pay?', answer: 'Divide annual salary by total working hours per year. Total annual hours equal hours per day multiplied by days per week and weeks worked per year.' },
-  { question: 'What is the hourly rate for a $52,000 salary?', answer: 'Using 8 hours per day, 5 days per week and 52 weeks per year, $52,000 is $25 per hour before tax and deductions.' },
-  { question: 'How do I convert monthly salary to hourly pay?', answer: 'Multiply monthly salary by 12, then divide the annual amount by your total working hours per year.' },
-  { question: 'How do I calculate annual salary from an hourly rate?', answer: 'Multiply the hourly rate by hours per day, days per week and weeks worked per year.' },
-  { question: 'Should I use 52 weeks per year?', answer: 'Use 52 when salary continues through paid leave. Reduce the value when estimating work that includes unpaid weeks away.' },
-  { question: 'Does the result include overtime or bonuses?', answer: 'No. Results are straight gross-pay equivalents and do not include overtime, bonuses, commissions, taxes, deductions or benefits.' },
-  { question: 'Can I use a work schedule other than 40 hours per week?', answer: 'Yes. Hours per day, days per week and weeks per year are all editable so the estimate can reflect part-time or alternative schedules.' },
+  { question: 'How do I convert salary to an hourly rate?', answer: 'Divide annual gross salary by annual working hours. Annual working hours equal hours per day multiplied by days per week and weeks worked per year.' },
+  { question: 'How do I convert monthly salary to hourly pay?', answer: 'Select Monthly salary in the calculator. It multiplies the monthly amount by 12, then divides that annual salary by the annual working hours entered.' },
+  { question: 'How many working hours are in a year?', answer: 'A common full-time assumption is 2,080 hours: 8 hours per day × 5 days per week × 52 weeks. Your actual schedule may be different.' },
+  { question: 'Does the hourly rate include tax?', answer: 'No. The result converts gross salary before taxes and deductions. It does not estimate take-home pay, benefits, overtime, bonuses or commissions.' },
+  { question: 'What if I work fewer than 40 hours per week?', answer: 'Enter your actual hours per day and days per week. With the same salary, fewer annual working hours produce a higher hourly equivalent.' },
+  { question: 'Should I use 52 weeks per year?', answer: 'Use 52 if salary continues through paid leave. Use fewer weeks when the salary amount excludes unpaid weeks away from work.' },
+  { question: 'Is a salary-to-hourly conversion exact?', answer: 'It is an estimate based on the pay period and work schedule entered. Actual payroll rates can differ because of rounding, paid leave, overtime, bonuses and employer rules.' },
 ];
 
 const jsonLd = [
@@ -33,10 +33,10 @@ const jsonLd = [
 ];
 
 const guides = [
-  { title: 'How to Convert Salary to Hourly Pay', body: <p>Annualize the salary, then divide it by annual working hours. For a standard schedule, <strong>hours per year = 8 × 5 × 52 = 2,080</strong>. A $52,000 annual salary therefore equals $25 per hour.</p> },
-  { title: 'How to Convert Hourly Pay to Annual Salary', body: <p>Multiply the hourly rate by hours per day, days per week and weeks per year. At $25 per hour on an 8 × 5 × 52 schedule, estimated annual gross salary is $52,000.</p> },
-  { title: 'Monthly and Weekly Salary Conversions', body: <p>Monthly salary is annual salary divided by 12. Weekly pay reflects your schedule and weeks worked. When converting a weekly salary, the calculator multiplies it by your chosen weeks per year.</p> },
-  { title: 'Why Your Work Schedule Matters', body: <p>The same salary produces a different hourly equivalent when annual hours change. Use the <Link href="/work-time/work-hours-calculator" className="font-semibold text-primary hover:underline">Work Hours Calculator</Link> to total shifts and breaks, or estimate extra pay with the <Link href="/work-time/overtime-calculator" className="font-semibold text-primary hover:underline">Overtime Calculator</Link>.</p> },
+  { title: 'How to Convert Salary to Hourly', body: <><p><strong>Hourly rate = annual salary ÷ (hours per day × days per week × weeks per year).</strong></p><p className="mt-3">For example: 50,000 ÷ (8 × 5 × 52) = 50,000 ÷ 2,080 = <strong>24.04 per hour</strong>.</p></> },
+  { title: 'Monthly Salary to Hourly', body: <><p>First convert monthly salary to annual salary by multiplying it by 12. Then divide by annual working hours.</p><p className="mt-3">For example: 2,800 × 12 = 33,600. Using 2,080 annual hours, 33,600 ÷ 2,080 = <strong>16.15 per hour</strong>.</p></> },
+  { title: 'Why Your Work Schedule Matters', body: <p>The equivalent hourly rate changes when your hours or weeks change. Use 52 weeks when salary continues through paid leave, or reduce it when the salary excludes unpaid time away. The result is a gross-pay estimate before taxes and deductions.</p> },
+  { title: 'Useful Next Steps', body: <p>Use the <Link href="/work-time/work-hours-calculator" className="font-semibold text-primary hover:underline">Work Hours Calculator</Link> to total shifts and breaks, or estimate extra-hours pay with the <Link href="/work-time/overtime-calculator" className="font-semibold text-primary hover:underline">Overtime Calculator</Link>.</p> },
 ];
 
 export default function SalaryToHourlyCalculatorPage() {
@@ -49,3 +49,4 @@ export default function SalaryToHourlyCalculatorPage() {
     <div className="border-t border-border/60"><RelatedWorkTimeTools currentSlug="salary-to-hourly-calculator" /></div>
   </main><SiteFooter /></div>;
 }
+
