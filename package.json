@@ -8,11 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy": "node scripts/deploy-production.mjs",
     "typecheck": "tsc --noEmit",
     "indexnow": "node scripts/submit-indexnow.mjs",
     "indexnow:dry-run": "node scripts/submit-indexnow.mjs --dry-run",
-    "test:indexnow": "node --test scripts/indexnow.test.mjs"
+    "test:indexnow": "node --test scripts/indexnow.test.mjs scripts/indexnow-deployment.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

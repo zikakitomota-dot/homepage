@@ -54,5 +54,5 @@ test('submission uses the IndexNow endpoint and JSON content type', async () => 
   assert.equal(request.init.method, 'POST');
   assert.equal(request.init.headers['Content-Type'], 'application/json; charset=utf-8');
   assert.deepEqual(JSON.parse(request.init.body).urlList, ['https://zaleastudio.com/freebies']);
-  assert.deepEqual(result, { count: 1, status: 202, statusText: 'Accepted' });
+  assert.deepEqual(result, { count: 1, status: 202, statusText: 'Accepted', responseBody: '' });
 });
