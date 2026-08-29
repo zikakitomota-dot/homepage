@@ -17,12 +17,14 @@ const path = '/education/weighted-grade-calculator';
 export const metadata: Metadata = { title: { absolute: title }, description, alternates: { canonical: path }, openGraph: { title, description, url: path, type: 'website' } };
 
 const faqs = [
+  { question: 'What is a weighted grade?', answer: 'A weighted grade gives assignments or categories different levels of influence. A final exam worth 40% affects the overall grade more than homework worth 10%.' },
   { question: 'How do I calculate a weighted grade?', answer: 'Multiply each grade by its percentage weight expressed as a decimal, then add all of the weighted contributions.' },
-  { question: 'What if my course weights do not add up to 100% yet?', answer: 'If only part of the course has been graded, the calculator divides the contribution earned so far by the completed course weight to show a normalized current grade.' },
+  { question: 'How do I calculate grades with different percentages?', answer: 'Enter each grade and its assigned percentage weight. The calculator multiplies them to find each contribution, then combines the contributions into the weighted result.' },
+  { question: 'What if my weights do not add up to 100%?', answer: 'Below 100%, the calculator shows both your normalized grade across entered work and its contribution toward the final course grade. Above 100%, it shows a warning instead of a primary grade.' },
+  { question: 'Can I use assignment weights instead of category weights?', answer: 'Yes. The same calculation works for individual assignments or broader categories as long as every item has a defined percentage weight.' },
+  { question: 'Is a weighted grade the same as an average?', answer: 'It is a weighted average, so larger weights have more influence. A simple average treats every grade equally and can produce a different result.' },
+  { question: 'What if one assignment is worth 40% of my grade?', answer: 'Multiply that assignment grade by 0.40. For example, a grade of 85% on an assignment worth 40% contributes 34 percentage points toward the final grade.' },
   { question: 'Can grades be higher than 100%?', answer: 'Yes. Some courses allow extra credit, so this calculator supports grades above 100% without capping them.' },
-  { question: 'What happens if my weights add up to more than 100%?', answer: 'The weights should be reviewed because most grading systems total 100%. The calculator warns you and does not present a misleading primary grade.' },
-  { question: 'Is a weighted grade different from a regular grade?', answer: 'Yes. Regular point-based grading divides earned points by possible points, while weighted grading gives categories or assignments different percentages of importance.' },
-  { question: 'Can I use this for assignments instead of categories?', answer: 'Yes. You can enter individual assignments as long as every assignment has a defined percentage weight.' },
 ];
 
 const jsonLd = [
@@ -32,10 +34,11 @@ const jsonLd = [
 ];
 
 const guides = [
-  { title: 'How to Calculate a Weighted Grade', body: <><p><strong>Weighted Grade = Σ(Grade × Weight)</strong>, with each weight converted to decimal form.</p><p className="mt-3">For example: 85% × 20% = 17, 78% × 20% = 15.6, 82% × 25% = 20.5 and 90% × 35% = 31.5. Together: 17 + 15.6 + 20.5 + 31.5 = <strong>84.6%</strong>.</p></> },
+  { title: 'How Weighted Grades Work', body: <><p><strong>Weighted contribution = Grade × Weight</strong>, with the weight written as a decimal. The complete weighted grade is the sum of all contributions.</p><p className="mt-3">For example, 90% × 20% = <strong>18 percentage points</strong>.</p></> },
   { title: 'What Is a Weighted Grade?', body: <p>A weighted grading system gives some assignments or categories more influence than others. A final exam worth 40% affects the course grade more than homework worth 10%.</p> },
+  { title: 'Verified Weighted Grade Example', body: <><p>Homework: 92% × 20% = 18.4. Quizzes: 85% × 20% = 17.0. Midterm: 78% × 25% = 19.5. Final: 88% × 35% = 30.8.</p><p className="mt-3">Overall: 18.4 + 17.0 + 19.5 + 30.8 = <strong>85.7%</strong>.</p></> },
   { title: 'Calculate Your Current Grade Before the Course Is Finished', body: <><p>When only part of a course is graded, use <strong>Current Grade = Weighted Contribution ÷ Total Completed Weight × 100</strong>.</p><p className="mt-3">A 53.10 contribution across 65% completed weight gives 53.10 ÷ 65 × 100 = <strong>81.69%</strong>.</p></> },
-  { title: 'Why Weights Usually Total 100%', body: <p>Most weighted systems assign the whole course across categories totaling 100%. Homework 20%, quizzes 20%, midterm 25% and final 35% total 100%, although institutions may use different structures.</p> },
+  { title: 'Partial Weight vs Final Contribution', body: <p>With less than 100% entered, the normalized current grade describes performance across completed work. The contribution total shows how many percentage points that work currently adds to the full course grade.</p> },
   { title: 'Weighted Grade vs Regular Grade Calculator', body: <p>A regular <Link href="/education/grade-calculator" className="font-semibold text-primary hover:underline">Grade Calculator</Link> divides total earned points by total possible points. This calculator instead multiplies each grade by its assigned percentage weight.</p> },
   { title: 'Weighted Grade vs Final Grade Calculator', body: <p>Use this tool when several categories have different weights. Use the <Link href="/education/final-grade-calculator" className="font-semibold text-primary hover:underline">Final Grade Calculator</Link> to find the score needed on one final exam to reach a target course grade.</p> },
 ];
