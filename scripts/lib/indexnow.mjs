@@ -112,5 +112,6 @@ export async function submitIndexNowUrls(urls, { fetchImpl = globalThis.fetch, k
     count: payload.urlList.length,
     status: response.status,
     statusText: response.statusText,
+    responseBody,
   };
 }
