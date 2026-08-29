@@ -19,6 +19,12 @@ export function StandardDeviationCalculator() {
 
   const calculate = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!input.trim()) {
+      setResult(null);
+      setError('Enter at least one number to calculate standard deviation.');
+      return;
+    }
+
     try {
       setResult(calculateStandardDeviation(parseStandardDeviationInput(input)));
       setError(null);
@@ -32,8 +38,8 @@ export function StandardDeviationCalculator() {
 
   return <Card className="overflow-hidden border-border/60 shadow-lg">
     <CardHeader className="border-b border-border/60 bg-card">
-      <h2 className="flex items-center gap-2 text-2xl font-semibold leading-none tracking-tight"><ChartNoAxesCombined className="h-6 w-6 text-primary" aria-hidden="true" />Calculate standard deviation</h2>
-      <p className="mt-2 text-sm text-muted-foreground">Enter one dataset to compare population and sample results. Your values stay in your browser.</p>
+      <h2 className="flex items-center gap-2 text-2xl font-semibold leading-none tracking-tight"><ChartNoAxesCombined className="h-6 w-6 text-primary" aria-hidden="true" />Enter your dataset</h2>
+      <p className="mt-2 text-sm text-muted-foreground">Enter one set of values to compare sample and population results. Your data stays in your browser.</p>
     </CardHeader>
     <CardContent className="p-4 sm:p-6">
       <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">
@@ -53,13 +59,13 @@ export function StandardDeviationCalculator() {
 function ResultPanel({ result }: { result: StandardDeviationStatistics | null }) {
   return <section className="rounded-2xl bg-blue-50/70 p-5 sm:p-6" aria-labelledby="standard-deviation-result" aria-live="polite">
     <p className="text-sm font-semibold uppercase tracking-wider text-primary">Result</p>
-    <h3 id="standard-deviation-result" className="mt-2 text-xl font-bold">Standard Deviation Results</h3>
-    {!result ? <p className="mt-4 leading-relaxed text-muted-foreground">Enter one or more valid numbers, then select Calculate to see both population and sample results.</p> : <>
+    <h3 id="standard-deviation-result" className="mt-2 text-xl font-bold">Sample and Population Results</h3>
+    {!result ? <p className="mt-4 leading-relaxed text-muted-foreground">Enter one or more valid numbers, then select Calculate. Sample standard deviation requires at least two values.</p> : <>
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        <PrimaryResult label="Population Standard Deviation (σ)" value={formatStatistic(result.populationStandardDeviation)} description="Use when the values represent the entire population." />
         <PrimaryResult label="Sample Standard Deviation (s)" value={formatNullable(result.sampleStandardDeviation)} description={result.sampleStandardDeviation === null ? 'At least two values are required to calculate sample standard deviation.' : 'Use when the values are a sample from a larger population.'} />
+        <PrimaryResult label="Population Standard Deviation (σ)" value={formatStatistic(result.populationStandardDeviation)} description="Use when the values represent the entire population." />
       </div>
-      <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3"><ResultItem label="Population Variance (σ²)" value={formatStatistic(result.populationVariance)} /><ResultItem label="Sample Variance (s²)" value={formatNullable(result.sampleVariance)} /><ResultItem label="Mean" value={formatStatistic(result.mean)} /><ResultItem label="Sum" value={formatStatistic(result.sum)} /><ResultItem label="Count" value={result.count.toLocaleString()} /><ResultItem label="Minimum" value={formatStatistic(result.minimum)} /><ResultItem label="Maximum" value={formatStatistic(result.maximum)} /></dl>
+      <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3"><ResultItem label="Sample Variance (s²)" value={formatNullable(result.sampleVariance)} /><ResultItem label="Population Variance (σ²)" value={formatStatistic(result.populationVariance)} /><ResultItem label="Mean" value={formatStatistic(result.mean)} /><ResultItem label="Count" value={result.count.toLocaleString()} /><ResultItem label="Sum" value={formatStatistic(result.sum)} /><ResultItem label="Minimum" value={formatStatistic(result.minimum)} /><ResultItem label="Maximum" value={formatStatistic(result.maximum)} /></dl>
       <CalculationSteps result={result} />
       <div className="mt-5 rounded-xl border border-primary/15 bg-background p-4"><h4 className="font-semibold">Which result should I use?</h4><p className="mt-2 text-sm leading-relaxed text-muted-foreground"><strong className="text-foreground">Population:</strong> every member of the group is included. <strong className="text-foreground">Sample:</strong> the data represents only part of a larger group.</p></div>
     </>}
