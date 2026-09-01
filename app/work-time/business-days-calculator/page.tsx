@@ -121,7 +121,6 @@ export default function BusinessDaysCalculatorPage() {
     </div>
   );
 }
-
 function InfoCard({ title, children }: { title: string; children: React.ReactNode }) {
   return <Card className="border-border/60 shadow-sm"><CardHeader><span className="mb-2 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary"><CalendarCheck2 className="h-6 w-6" aria-hidden="true" /></span><CardTitle className="text-xl">{title}</CardTitle></CardHeader><CardContent className="leading-relaxed text-muted-foreground">{children}</CardContent></Card>;
 }

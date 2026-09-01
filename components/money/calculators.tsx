@@ -231,18 +231,24 @@ export function FuelCostCalculator() {
   const [currency, setCurrency] = useState<CurrencyCode>('RM');
   const distanceValue = nonNegativeNumber(distance);
   const efficiencyValue = nonNegativeNumber(efficiency);
+  const fuelPriceValue = nonNegativeNumber(fuelPrice);
   const fuelNeeded = efficiencyValue > 0 ? mode === 'l100km' ? distanceValue * efficiencyValue / 100 : distanceValue / efficiencyValue : 0;
-  const tripCost = fuelNeeded * nonNegativeNumber(fuelPrice);
+  const tripCost = fuelNeeded * fuelPriceValue;
+  const costPerKm = distanceValue > 0 ? tripCost / distanceValue : null;
+  const distanceLabel = new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(distanceValue);
 
   return <CalculatorFrame onReset={() => { setDistance('100'); setEfficiency('7.5'); setFuelPrice('2.05'); setMode('l100km'); setCurrency('RM'); }} inputs={<>
     <CurrencySelect value={currency} onChange={setCurrency} />
-    <NumberField id="distance" label="Distance (km)" value={distance} onChange={setDistance} />
-    <div className="space-y-2"><Label htmlFor="efficiency-mode">Fuel efficiency format</Label><select id="efficiency-mode" value={mode} onChange={(event) => setMode(event.target.value as 'l100km' | 'kml')} className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><option value="l100km">L/100km</option><option value="kml">km/L</option></select></div>
-    <NumberField id="fuel-efficiency" label={`Fuel efficiency (${mode === 'l100km' ? 'L/100km' : 'km/L'})`} value={efficiency} onChange={setEfficiency} />
+    <NumberField id="distance" label="Trip distance (km)" value={distance} onChange={setDistance} />
+    <div className="space-y-2"><Label htmlFor="efficiency-mode">Fuel economy format</Label><select id="efficiency-mode" value={mode} onChange={(event) => setMode(event.target.value as 'l100km' | 'kml')} aria-describedby="fuel-efficiency-help" className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><option value="l100km">Litres per 100 km (L/100 km)</option><option value="kml">Kilometres per litre (km/L)</option></select><p id="fuel-efficiency-help" className="text-sm leading-relaxed text-muted-foreground">{mode === 'l100km' ? 'Lower L/100 km means less fuel is used.' : 'Higher km/L means the vehicle travels farther on each litre.'}</p></div>
+    <NumberField id="fuel-efficiency" label={mode === 'l100km' ? 'Fuel consumption (L/100 km)' : 'Fuel efficiency (km/L)'} value={efficiency} onChange={setEfficiency} />
     <NumberField id="fuel-price" label="Fuel price per litre" value={fuelPrice} onChange={setFuelPrice} />
-  </>} results={efficiencyValue === 0 ? <ResultRow label="Fuel efficiency needed" value="Enter a value greater than zero." emphasis /> : <>
-    <ResultRow label="Estimated fuel needed" value={`${fuelNeeded.toFixed(2)} L`} />
-    <ResultRow label="Estimated trip cost" value={formatMoney(tripCost, currency)} emphasis />
+  </>} results={distanceValue === 0 ? <ResultRow label="Trip distance needed" value="Enter a distance greater than zero." emphasis /> : efficiencyValue === 0 ? <ResultRow label="Fuel economy needed" value="Enter a value greater than zero." emphasis /> : <>
+    <ResultRow label="Estimated Fuel Cost" value={formatMoney(tripCost, currency)} emphasis />
+    <ResultRow label="Trip distance" value={`${distanceLabel} km`} />
+    <ResultRow label="Estimated fuel used" value={`${fuelNeeded.toFixed(2)} L`} />
+    <ResultRow label="Fuel price" value={`${formatMoney(fuelPriceValue, currency)} per litre`} />
+    {costPerKm !== null && <ResultRow label="Fuel cost per km" value={`${formatMoney(costPerKm, currency)} per km`} />}
   </>} />;
 }
 
