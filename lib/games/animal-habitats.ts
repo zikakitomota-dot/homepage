@@ -30,7 +30,7 @@ export type HabitatQuestion = {
 type RandomSource = () => number;
 
 export const habitats: readonly Habitat[] = [
-  { id: 'forest', name: 'Forest', imagePath: '/games/animal-habitats/habitats/forest.webp', emoji: '🌲', palette: 'bg-[#e7f0df] border-[#91aa79] text-[#29422c]' },
+  { id: 'forest', name: 'Forest', imagePath: '/games/animal-habitats/habitats/forest.webp', emoji: '🌲', palette: 'bg-white border-[#91aa79] text-[#29422c]' },
   { id: 'desert', name: 'Desert', imagePath: '/games/animal-habitats/habitats/desert.webp', emoji: '🏜️', palette: 'bg-[#f8e8c8] border-[#d5aa65] text-[#5b3b1e]' },
   { id: 'ocean', name: 'Ocean', imagePath: '/games/animal-habitats/habitats/ocean.webp', emoji: '🌊', palette: 'bg-[#dceef0] border-[#73aeb8] text-[#173e49]' },
   { id: 'ice-and-snow', name: 'Ice & Snow', imagePath: '/games/animal-habitats/habitats/ice-and-snow.webp', emoji: '❄️', palette: 'bg-[#edf3f5] border-[#9db8c2] text-[#294653]' },
