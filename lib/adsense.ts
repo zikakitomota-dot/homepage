@@ -25,11 +25,6 @@ const ADSENSE_ELIGIBLE_PATHS = new Set([
   '/math/ratio-calculator',
   '/math/average-calculator',
   '/math/standard-deviation-calculator',
-  '/games',
-  '/games/english',
-  '/english-games-for-kids',
-  '/grammar-games-for-kids',
-  '/vocabulary-games-for-kids',
 ]);
 
 function normalizePathname(pathname: string) {
