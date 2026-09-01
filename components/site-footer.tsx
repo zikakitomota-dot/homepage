@@ -4,7 +4,7 @@ import { ABOUT_ROUTE, CONTACT_ROUTE, HEALTH_TOOLS_URL } from '@/lib/site';
 
 const footerLinks = [
   { label: 'Home', href: '/', external: false },
-  { label: 'Tools', href: HEALTH_TOOLS_URL, external: true },
+  { label: 'Health Calculators', href: HEALTH_TOOLS_URL, external: true },
   { label: 'Games', href: '/games', external: false },
   { label: 'Shop', href: '/shop', external: false },
   { label: 'About', href: ABOUT_ROUTE, external: false },

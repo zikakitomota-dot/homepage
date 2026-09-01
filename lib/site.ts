@@ -24,7 +24,7 @@ export const navLinks = [
 ] as const;
 
 export const toolLinks = [
-  { label: 'Health', href: HEALTH_TOOLS_URL, external: true },
+  { label: 'Health Calculators', href: HEALTH_TOOLS_URL, external: true },
   { label: 'Finance', href: '/finance', external: false },
   { label: 'Work & Time', href: '/work-time', external: false },
   { label: 'Education', href: '/education', external: false },

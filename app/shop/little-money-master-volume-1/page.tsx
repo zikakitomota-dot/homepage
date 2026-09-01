@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Award, BookOpen, CheckCircle2, Gamepad2, Users } from 'lucide-react';
 import { SiteFooter } from '@/components/site-footer';
@@ -90,12 +91,16 @@ export default function LittleMoneyMasterPage() {
                 </a>
               </Button>
             </div>
-            <div className="flex min-h-80 items-center justify-center rounded-3xl bg-gradient-to-br from-blue-100 to-blue-50 p-8" aria-label="Product image placeholder">
-              <div className="flex aspect-[4/3] w-full max-w-md flex-col items-center justify-center rounded-2xl border border-dashed border-primary/30 bg-white/80 p-8 text-center shadow-sm">
-                <Gamepad2 className="h-16 w-16 text-primary" aria-hidden="true" />
-                <p className="mt-4 text-xl font-semibold">Little Money Master™</p>
-                <p className="mt-2 text-sm text-muted-foreground">Product image can be added here</p>
-              </div>
+            <div className="flex min-h-80 items-center justify-center rounded-3xl bg-gradient-to-br from-blue-100 to-blue-50 p-4 sm:p-8">
+              <Image
+                src="/images/Cover.webp"
+                alt="Little Money Master Volume 1 Needs or Wants product cover"
+                width={1587}
+                height={2245}
+                priority
+                sizes="(min-width: 1024px) 384px, (min-width: 640px) 55vw, 85vw"
+                className="h-auto w-full max-w-sm rounded-2xl object-contain shadow-lg"
+              />
             </div>
           </div>
         </section>

@@ -121,6 +121,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/games/math/addition-level-1`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/games/science/animal-habitats`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     ...[
       '/english-games-for-kids',
       '/grammar-games-for-kids',

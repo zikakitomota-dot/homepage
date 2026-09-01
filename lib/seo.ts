@@ -25,7 +25,7 @@ type EducationalMetadata = {
   title: string;
   description: string;
   path: string;
-  image?: typeof ENGLISH_GAMES_SOCIAL_IMAGE | typeof ACADEMY_SOCIAL_IMAGE;
+  image?: typeof ENGLISH_GAMES_SOCIAL_IMAGE | typeof ACADEMY_SOCIAL_IMAGE | null;
 };
 
 export function createEducationalMetadata({
@@ -43,13 +43,13 @@ export function createEducationalMetadata({
       description,
       url: path,
       type: 'website',
-      images: [image, ENGLISH_GAMES_PINTEREST_IMAGE],
+      images: image ? [image, ENGLISH_GAMES_PINTEREST_IMAGE] : [],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: image ? 'summary_large_image' : 'summary',
       title,
       description,
-      images: [image.url],
+      images: image ? [image.url] : [],
     },
   };
 }

@@ -185,13 +185,13 @@ export function BusinessDaysCalculator() {
 
         <div className="mt-6">
           {mode === 'count' && <section role="tabpanel" id="count-panel" aria-labelledby="count-tab" className="rounded-2xl border border-border/60 p-4 sm:p-5">
-            <h2 className="text-xl font-bold">Count Business Days</h2>
-            <p className="mt-2 text-sm text-muted-foreground">Count eligible working days between two calendar dates.</p>
+            <h2 className="text-xl font-bold">Count business days between two dates</h2>
+            <p className="mt-2 text-sm text-muted-foreground">Enter a start date and end date to count the working days in the range. With the default Monday–Friday week, Saturdays and Sundays are excluded automatically.</p>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
               <DateField id="business-start" label="Start Date" value={startDate} onChange={setStartDate} />
               <DateField id="business-end" label="End Date" value={endDate} onChange={setEndDate} />
             </div>
-            <fieldset className="mt-5"><legend className="text-sm font-semibold">Include boundaries</legend><div className="mt-3 flex flex-wrap gap-3"><CheckOption id="include-start" label="Include start date" checked={includeStart} onChange={setIncludeStart} /><CheckOption id="include-end" label="Include end date" checked={includeEnd} onChange={setIncludeEnd} /></div><p className="mt-2 text-xs text-muted-foreground">Both dates are included by default. Turn either option off to exclude that boundary from the count.</p></fieldset>
+            <fieldset className="mt-5"><legend className="text-sm font-semibold">Include dates in the count</legend><div className="mt-3 flex flex-wrap gap-3"><CheckOption id="include-start" label="Include start date" checked={includeStart} onChange={setIncludeStart} /><CheckOption id="include-end" label="Include end date" checked={includeEnd} onChange={setIncludeEnd} /></div><p className="mt-2 text-xs text-muted-foreground">Both dates are included by default when they are working days. Turn either option off to exclude that boundary from the range.</p></fieldset>
             {countError && <p role="alert" className="mt-4 text-sm font-medium text-destructive">{countError}</p>}
           </section>}
 
@@ -227,7 +227,7 @@ export function BusinessDaysCalculator() {
           </section>
 
           <section className="rounded-2xl border border-border/60 p-4 sm:p-5" aria-labelledby="excluded-heading">
-            <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start"><div><h2 id="excluded-heading" className="text-xl font-bold">Exclude Holidays / Dates <span className="text-sm font-normal text-muted-foreground">(Optional)</span></h2><p className="mt-2 text-sm text-muted-foreground">These dates are skipped in all three modes.</p></div><Button type="button" variant="outline" size="sm" onClick={addExclusion} disabled={exclusions.length >= 25}><Plus className="mr-2 h-4 w-4" aria-hidden="true" />Add excluded date</Button></div>
+            <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start"><div><h2 id="excluded-heading" className="text-xl font-bold">Exclude Holidays / Dates <span className="text-sm font-normal text-muted-foreground">(Optional)</span></h2><p className="mt-2 text-sm text-muted-foreground">Public holidays are not added automatically. Enter any holidays or closure dates you want skipped in all three modes.</p></div><Button type="button" variant="outline" size="sm" onClick={addExclusion} disabled={exclusions.length >= 25}><Plus className="mr-2 h-4 w-4" aria-hidden="true" />Add excluded date</Button></div>
             <div className="mt-4 space-y-3">{exclusions.length === 0 ? <p className="rounded-lg bg-secondary/50 p-3 text-sm text-muted-foreground">No excluded dates added.</p> : exclusions.map((item, index) => <div key={item.id} className="grid gap-3 rounded-xl bg-secondary/40 p-3 sm:grid-cols-[1fr_1fr_auto] sm:items-end"><DateField id={`excluded-date-${item.id}`} label={`Excluded date ${index + 1}`} value={item.date} onChange={(value) => updateExclusion(item.id, 'date', value)} /><div className="space-y-2"><Label htmlFor={`excluded-label-${item.id}`}>Label <span className="font-normal text-muted-foreground">(optional)</span></Label><Input id={`excluded-label-${item.id}`} value={item.label ?? ''} maxLength={80} onChange={(event) => updateExclusion(item.id, 'label', event.target.value)} placeholder="e.g. National Day" className="h-11 text-base" /></div><Button type="button" variant="ghost" size="icon" onClick={() => removeExclusion(item.id)} aria-label={`Remove excluded date ${index + 1}`}><Trash2 className="h-5 w-5" aria-hidden="true" /></Button></div>)}</div>
             {duplicateDates && <p role="status" className="mt-3 text-sm text-amber-700">Duplicate dates are counted only once.</p>}
           </section>
@@ -265,7 +265,7 @@ function NumberOfDaysField({ id, value, error, onChange }: { id: string; value: 
 
 function CountResult({ result, startDate, endDate }: { result: ReturnType<typeof countBusinessDays>; startDate: string; endDate: string }) {
   if (!result) return <p className="text-lg font-semibold text-muted-foreground">Enter a valid date range to see the result.</p>;
-  return <><h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{result.businessDays} Business {result.businessDays === 1 ? 'Day' : 'Days'}</h2><p className="mt-2 text-muted-foreground">{formatShortCalendarDate(startDate)} to {formatShortCalendarDate(endDate)}</p><div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"><ResultItem label="Calendar days" value={result.calendarDays} /><ResultItem label="Business days" value={result.businessDays} /><ResultItem label="Weekend / non-working" value={result.nonWorkingDays} /><ResultItem label="Excluded dates" value={result.excludedDays} /></div></>;
+  return <><h2 className="text-lg font-semibold text-foreground">Business Days</h2><p className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">{result.businessDays} working {result.businessDays === 1 ? 'day' : 'days'}</p><p className="mt-2 text-muted-foreground">{formatShortCalendarDate(startDate)} to {formatShortCalendarDate(endDate)}</p><div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"><ResultItem label="Calendar days in range" value={result.calendarDays} /><ResultItem label="Business days" value={result.businessDays} /><ResultItem label="Weekend / non-working days" value={result.nonWorkingDays} /><ResultItem label="Holidays / dates excluded" value={result.excludedDays} /></div></>;
 }
 
 function ShiftResult({ date, amount, direction, startDate, fromToday }: { date: string | null; amount: number | null; direction: Direction; startDate: string; fromToday: boolean }) {
