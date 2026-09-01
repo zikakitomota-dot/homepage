@@ -24,6 +24,12 @@ function run(command, args) {
   });
 }
 
+function runNpm(args) {
+  const npmCli = process.env.npm_execpath;
+  if (npmCli) return run(process.execPath, [npmCli, ...args]);
+  return run(process.platform === 'win32' ? 'npm.cmd' : 'npm', args);
+}
+
 async function readPreviousDeploymentManifest() {
   try {
     const url = `${INDEXNOW_DEPLOYMENT_MANIFEST_URL}?read=${Date.now()}`;
@@ -52,9 +58,8 @@ async function main() {
 
   await mkdir(publicManifestDirectory, { recursive: true });
   await writeFile(publicManifestPath, `${JSON.stringify(currentManifest)}\n`, 'utf8');
-  const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
   try {
-    await run(npm, ['exec', '--', 'opennextjs-cloudflare', 'build']);
+    await runNpm(['exec', '--', 'opennextjs-cloudflare', 'build']);
   } finally {
     if (manifestExisted) await writeFile(publicManifestPath, originalManifest);
     else {
@@ -63,7 +68,7 @@ async function main() {
     }
   }
 
-  await run(npm, ['exec', '--', 'opennextjs-cloudflare', 'deploy']);
+  await runNpm(['exec', '--', 'opennextjs-cloudflare', 'deploy']);
   const deploymentCompletedAt = new Date().toISOString();
   console.log(`[Deploy] Production deployment completed successfully at ${deploymentCompletedAt}.`);
 
