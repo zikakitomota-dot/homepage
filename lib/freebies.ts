@@ -286,7 +286,7 @@ export const freebies: readonly Freebie[] = [
     title: 'Early Learning Skills & Observation Tracker',
     shortTitle: 'Early Learning Tracker',
     description: 'Keep track of growing skills, interests and next steps as learning happens.',
-    category: 'school-study',
+    category: 'kids-early-learning',
     audience: 'Teachers & Parents',
     ageRange: 'Ages 3–6',
     pageCount: 4,
