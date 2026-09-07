@@ -6,6 +6,8 @@ const nextConfig = {
   images: { unoptimized: true },
   async redirects() {
     return [
+      { source: '/images/english-games-social', destination: '/images/english-games-social.png', permanent: true },
+      { source: '/images/english-games-pinterest', destination: '/images/english-games-pinterest.png', permanent: true },
       { source: '/privacy', destination: '/privacy-policy', permanent: true },
       { source: '/terms', destination: '/terms-of-use', permanent: true },
       { source: '/money', destination: '/finance', permanent: true },
