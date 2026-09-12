@@ -6,6 +6,7 @@ const footerLinks = [
   { label: 'Home', href: '/', external: false },
   { label: 'Health Calculators', href: HEALTH_TOOLS_URL, external: true },
   { label: 'Games', href: '/games', external: false },
+  { label: 'Guides', href: '/guides', external: false },
   { label: 'Shop', href: '/shop', external: false },
   { label: 'About', href: ABOUT_ROUTE, external: false },
   { label: 'Contact', href: CONTACT_ROUTE, external: false },

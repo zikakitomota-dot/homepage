@@ -357,7 +357,9 @@ export const freebies: readonly Freebie[] = [
     ],
     whoItsFor: 'Made for parents, preschool teachers and early learners ages 3–5 who want simple, low-pressure tracing practice.',
     relatedFreebies: ['fine-motor-activity-cards', 'scissor-skills-practice', 'first-phonics-activities'],
-    relatedLinks: [],
+    relatedLinks: [
+      { label: 'Pre-Writing Skills and Activities', href: '/guides/pre-writing-skills-activities', description: 'Explore practical, low-pressure ways to build mark-making and hand control through play.' },
+    ],
     seoTitle: 'Pre-Writing & Pencil Control | Zalea Studio',
     seoDescription: 'Try simple line, pattern, shape and path tracing activities for ages 3–5, provided in printable A4 and US Letter sizes for home or preschool use.',
   },
@@ -406,7 +408,9 @@ export const freebies: readonly Freebie[] = [
     ],
     whoItsFor: 'Made for parents and preschool teachers looking for varied, low-pressure fine motor play ideas for children ages 3–5.',
     relatedFreebies: ['pre-writing-pencil-control', 'scissor-skills-practice'],
-    relatedLinks: [],
+    relatedLinks: [
+      { label: 'Pre-Writing Skills and Activities', href: '/guides/pre-writing-skills-activities', description: 'See how playful hand activities can support later pencil and mark-making control.' },
+    ],
     seoTitle: 'Free Fine Motor Activity Cards | Zalea Studio',
     seoDescription: 'Download 48 printable fine motor activity cards for ages 3–5, with playful ideas using playdough, tongs, threading, paper and everyday materials.',
     notice: 'Close adult supervision is required. Use child-safe scissors and large, age-appropriate materials, and consider choking, allergy and sensory needs before each activity.',
@@ -510,7 +514,9 @@ export const freebies: readonly Freebie[] = [
     ],
     whoItsFor: 'Made for parents and preschool teachers supervising early cutting practice with children ages 3–5.',
     relatedFreebies: ['pre-writing-pencil-control', 'fine-motor-activity-cards'],
-    relatedLinks: [],
+    relatedLinks: [
+      { label: 'Pre-Writing Skills and Activities', href: '/guides/pre-writing-skills-activities', description: 'Combine supervised cutting with other early hand-control and mark-making activities.' },
+    ],
     seoTitle: 'Free Scissor Skills Practice | Zalea Studio',
     seoDescription: 'Download 20 printable scissor skills pages for ages 3–5, progressing from simple snips and lines to shapes, turns and cut-and-paste activities.',
     notice: 'Grown-up supervision is required. Use child-safe scissors and teach children to keep blades pointed away from the body and to walk with scissors closed.',

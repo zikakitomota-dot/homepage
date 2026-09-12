@@ -5,48 +5,39 @@ import { publishedFreebies } from '@/lib/freebies';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
-  const lastModified = new Date('2026-08-14');
-
   return [
     {
       url: baseUrl,
-      lastModified,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${baseUrl}/shop`,
-      lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/shop/little-money-master-volume-1`,
-      lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/freebies`,
-      lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     ...publishedFreebies.map((freebie) => ({
       url: `${baseUrl}/freebies/${freebie.slug}`,
-      lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
@@ -60,7 +51,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/finance/cashback-calculator",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
-      lastModified,
       changeFrequency: "monthly" as const,
       priority: path === "/finance" ? 0.9 : 0.8,
     })),
@@ -73,7 +63,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/work-time/salary-to-hourly-calculator",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
-      lastModified,
       changeFrequency: "monthly" as const,
       priority: path === "/work-time" ? 0.9 : 0.8,
     })),
@@ -86,7 +75,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/education/test-grade-calculator",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
-      lastModified,
       changeFrequency: "monthly" as const,
       priority: path === "/education" ? 0.9 : 0.8,
     })),
@@ -99,37 +87,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/math/standard-deviation-calculator",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
-      lastModified,
       changeFrequency: "monthly" as const,
       priority: path === "/math" ? 0.9 : 0.8,
     })),
+    ...[
+      '/guides',
+      '/guides/how-to-set-a-realistic-savings-goal',
+      '/guides/pre-writing-skills-activities',
+      '/guides/equal-vs-unequal-bill-splitting',
+      '/guides/percentage-points-vs-percentage-change',
+    ].map((path) => ({
+      url: `${baseUrl}${path}`,
+      changeFrequency: 'monthly' as const,
+      priority: path === '/guides' ? 0.8 : 0.7,
+    })),
     {
       url: `${baseUrl}/games`,
-      lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/games/english`,
-      lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/games/english/academy`,
-      lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/games/math/addition-level-1`,
-      lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/games/science/animal-habitats`,
-      lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -139,25 +132,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       '/vocabulary-games-for-kids',
     ].map((path) => ({
       url: `${baseUrl}${path}`,
-      lastModified,
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     })),
     ...englishGames.map((game) => ({
       url: `${baseUrl}/games/english/${game.slug}`,
-      lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
     {
       url: `${baseUrl}/privacy-policy`,
-      lastModified,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: `${baseUrl}/terms-of-use`,
-      lastModified,
       changeFrequency: "yearly",
       priority: 0.5,
     },

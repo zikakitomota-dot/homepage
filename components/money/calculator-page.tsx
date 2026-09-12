@@ -11,12 +11,17 @@ type CalculatorPageProps = {
   description: string;
   calculator: ReactNode;
   whatItDoes: string;
+  whenToUse?: string;
   howToUse: string[];
   formula: string;
   example: string;
+  resultExplanation?: string;
   assumptions: string[];
   limitations: string[];
+  commonMistakes?: string[];
+  practicalTips?: string[];
   faqs: { question: string; answer: string }[];
+  relatedLinks?: { label: string; href: string; description: string }[];
 };
 
 export function CalculatorPage({
@@ -24,12 +29,17 @@ export function CalculatorPage({
   description,
   calculator,
   whatItDoes,
+  whenToUse,
   howToUse,
   formula,
   example,
+  resultExplanation,
   assumptions,
   limitations,
+  commonMistakes = [],
+  practicalTips = [],
   faqs,
+  relatedLinks = [],
 }: CalculatorPageProps) {
   return (
     <div className="min-h-screen bg-background">
@@ -58,6 +68,7 @@ export function CalculatorPage({
             <InfoCard icon={<BookOpen className="h-6 w-6" aria-hidden="true" />} title="What this calculator does">
               <p>{whatItDoes}</p>
             </InfoCard>
+            {whenToUse ? <InfoCard title="When to use it"><p>{whenToUse}</p></InfoCard> : null}
             <InfoCard icon={<Lightbulb className="h-6 w-6" aria-hidden="true" />} title="How to use it">
               <ol className="list-decimal space-y-2 pl-5">
                 {howToUse.map((step) => <li key={step}>{step}</li>)}
@@ -69,6 +80,7 @@ export function CalculatorPage({
             <InfoCard title="Simple example">
               <p>{example}</p>
             </InfoCard>
+            {resultExplanation ? <InfoCard title="How to read the result"><p>{resultExplanation}</p></InfoCard> : null}
             <InfoCard title="Assumptions used">
               <ul className="list-disc space-y-2 pl-5">
                 {assumptions.map((assumption) => <li key={assumption}>{assumption}</li>)}
@@ -79,10 +91,33 @@ export function CalculatorPage({
                 {limitations.map((limitation) => <li key={limitation}>{limitation}</li>)}
               </ul>
             </InfoCard>
+            {commonMistakes.length ? <InfoCard title="Common mistakes to avoid">
+              <ul className="list-disc space-y-2 pl-5">
+                {commonMistakes.map((mistake) => <li key={mistake}>{mistake}</li>)}
+              </ul>
+            </InfoCard> : null}
+            {practicalTips.length ? <InfoCard title="Practical tips">
+              <ul className="list-disc space-y-2 pl-5">
+                {practicalTips.map((tip) => <li key={tip}>{tip}</li>)}
+              </ul>
+            </InfoCard> : null}
           </div>
         </section>
 
-        <section className="mx-auto max-w-[800px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="faq-heading">
+        {relatedLinks.length ? <section className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="related-resources-heading">
+          <h2 id="related-resources-heading" className="text-3xl font-bold tracking-tight">Related tools and guides</h2>
+          <div className="mt-7 grid gap-4 sm:grid-cols-2">
+            {relatedLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="rounded-2xl border border-border/60 bg-card p-5 outline-none transition hover:border-primary/60 hover:shadow-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                <h3 className="font-bold text-primary">{link.label}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{link.description}</p>
+              </Link>
+            ))}
+          </div>
+        </section> : null}
+
+        <section className="border-t border-border/60 bg-secondary/20" aria-labelledby="faq-heading">
+          <div className="mx-auto max-w-[800px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="text-center">
             <CircleHelp className="mx-auto h-9 w-9 text-primary" aria-hidden="true" />
             <h2 id="faq-heading" className="mt-4 text-3xl font-bold tracking-tight">Frequently Asked Questions</h2>
@@ -94,6 +129,7 @@ export function CalculatorPage({
                 <p className="mt-2 leading-relaxed text-muted-foreground">{faq.answer}</p>
               </div>
             ))}
+          </div>
           </div>
         </section>
       </main>
