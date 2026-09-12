@@ -22,6 +22,7 @@ type CalculatorPageProps = {
   practicalTips?: string[];
   faqs: { question: string; answer: string }[];
   relatedLinks?: { label: string; href: string; description: string }[];
+  decisionContext?: ReactNode;
 };
 
 export function CalculatorPage({
@@ -40,6 +41,7 @@ export function CalculatorPage({
   practicalTips = [],
   faqs,
   relatedLinks = [],
+  decisionContext,
 }: CalculatorPageProps) {
   return (
     <div className="min-h-screen bg-background">
@@ -103,6 +105,10 @@ export function CalculatorPage({
             </InfoCard> : null}
           </div>
         </section>
+
+        {decisionContext ? <section className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+          {decisionContext}
+        </section> : null}
 
         {relatedLinks.length ? <section className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="related-resources-heading">
           <h2 id="related-resources-heading" className="text-3xl font-bold tracking-tight">Related tools and guides</h2>

@@ -18,6 +18,21 @@ import { PAYHIP_ACADEMY_URL, SITE_URL } from '@/lib/site';
 
 type Props = { params: Promise<{ slug: string }> };
 
+const pageSpecificPlayGuidance: Partial<Record<string, { heading: string; text: string; academyHeading: string; academyDescription: string }>> = {
+  'one-or-many': {
+    heading: 'Count first, then choose',
+    text: 'Choose a difficulty and start the game. Before looking at the answer buttons, ask the child to count or notice the number clue. After choosing one or many, read the completed phrase aloud. The ten-question session keeps a separate best score for each difficulty on this device.',
+    academyHeading: 'Continue from number clues to sentence clues',
+    academyDescription: 'The free game practises singular and plural recognition. Zalea English Academy adds broader grammar and themed vocabulary activities when the learner is ready to apply words in more sentence contexts.',
+  },
+  'can-or-cant': {
+    heading: 'Think about the action before the word',
+    text: 'Choose a difficulty and start the game. Read the subject and action together, decide whether the action is possible in the sentence, then choose can or can’t. Ask the learner to say the complete answer aloud before continuing. The ten-question session explains each answer and stores scores only on this device.',
+    academyHeading: 'Build from ability sentences to wider language practice',
+    academyDescription: 'This free activity focuses narrowly on can and can’t. The Academy collection adds new grammar patterns and themed vocabulary for learners who want a broader set of short practice games.',
+  },
+};
+
 // Academy routes read an HttpOnly entitlement cookie on every request.
 export const dynamic = 'force-dynamic';
 
@@ -79,6 +94,7 @@ export default async function EnglishGamePage({ params }: Props) {
   if (!guide) notFound();
   const currentIndex = englishGames.findIndex(({ slug }) => slug === game.slug);
   const nextGame = englishGames[(currentIndex + 1) % englishGames.length];
+  const playGuidance = pageSpecificPlayGuidance[game.slug];
   const gameUrl = `${SITE_URL}/games/english/${game.slug}`;
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -117,7 +133,7 @@ export default async function EnglishGamePage({ params }: Props) {
     </div></section>
     <section className="bg-blue-50/40 px-3 py-8 sm:px-6 sm:py-12"><GameEngine game={game} nextGame={nextGame} /></section>
     <EducationalGuide guide={guide} gameTitle={game.title} />
-    <section className="mx-auto max-w-[1000px] px-4 pb-14 sm:px-6 lg:px-8 lg:pb-20"><div className="rounded-2xl border border-border/60 bg-secondary/40 p-6 sm:p-8"><h2 className="text-2xl font-bold">How to play</h2><p className="mt-4 leading-relaxed text-muted-foreground">Choose Easy, Medium or Hard, press Start Game, then read each question and tap the answer that fits best. A session contains 10 questions, explains each answer and keeps a separate best score for each difficulty on this device.</p><div className="mt-6 flex flex-wrap gap-x-6 gap-y-3"><Link href="/games/english" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">All free English games<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link><Link href="/grammar-games-for-kids" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Grammar learning guide<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link><Link href="/english-games-for-kids" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">English learning guide<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link></div></div><div className="mt-10"><AcademyDiscoveryCard /></div></section>
+    <section className="mx-auto max-w-[1000px] px-4 pb-14 sm:px-6 lg:px-8 lg:pb-20"><div className="rounded-2xl border border-border/60 bg-secondary/40 p-6 sm:p-8"><h2 className="text-2xl font-bold">{playGuidance?.heading ?? 'How to play'}</h2><p className="mt-4 leading-relaxed text-muted-foreground">{playGuidance?.text ?? 'Choose Easy, Medium or Hard, press Start Game, then read each question and tap the answer that fits best. A session contains 10 questions, explains each answer and keeps a separate best score for each difficulty on this device.'}</p><div className="mt-6 flex flex-wrap gap-x-6 gap-y-3"><Link href="/games/english" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">All free English games<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link><Link href="/grammar-games-for-kids" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">Grammar learning guide<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link><Link href="/english-games-for-kids" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">English learning guide<ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link></div></div><div className="mt-10"><AcademyDiscoveryCard heading={playGuidance?.academyHeading} description={playGuidance?.academyDescription} /></div></section>
   </main><SiteFooter /></div>;
 }
 

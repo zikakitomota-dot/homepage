@@ -33,6 +33,7 @@ export default function Page() {
       'Separate personal items first, then divide only shared dishes, delivery charges or other common costs.',
       'Keep the receipt visible while settling so the group can confirm tax, service charges and any discounts.',
     ]}
+    decisionContext={<div className="rounded-2xl border border-blue-200 bg-blue-50/50 p-6 sm:p-8"><h2 className="text-2xl font-bold">Decide what is shared before dividing</h2><p className="mt-4 leading-relaxed text-muted-foreground">An equal split is simple when spending is similar. When one person ordered a much more expensive item, a clearer method is to total personal items first, divide only genuinely shared dishes and charges, then add each person&apos;s share. The calculator intentionally handles only the equal-split case, so the group&apos;s agreement comes before the arithmetic.</p><p className="mt-4 leading-relaxed text-muted-foreground">For example, four people can split a RM40 shared appetiser equally at RM10 each while paying for their own main courses. Tax or service charges can then be assigned in the same proportion as the items, or divided equally if everyone agrees.</p></div>}
     faqs={[
       { question: 'Can I split a bill without a tip?', answer: 'Yes. Enter 0 or leave the tip at zero and the original bill will be divided between the group.' },
       { question: 'Does the calculator round each person’s share?', answer: 'The displayed result is rounded to two decimal places. For cash payments, your group may need to adjust the smallest difference.' },

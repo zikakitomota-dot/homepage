@@ -20,8 +20,14 @@ export function AcademyResultsCta({ gameSlug, score }: { gameSlug: string; score
   </aside>;
 }
 
-export function AcademyDiscoveryCard() {
+export function AcademyDiscoveryCard({
+  heading = 'Want more English games?',
+  description = 'Grammar Level 1 is just the beginning. Continue learning with Grammar Level 2 and Vocabulary Level 1 in Zalea English Academy – Lifetime Access.',
+}: {
+  heading?: string;
+  description?: string;
+} = {}) {
   return <aside className="rounded-2xl border border-violet-200 bg-violet-50/70 p-6 sm:p-8" aria-labelledby="academy-discovery-title">
-    <div className="grid items-center gap-6 md:grid-cols-[1fr_auto]"><div><p className="text-sm font-bold uppercase tracking-wider text-violet-700">Zalea English Academy</p><h2 id="academy-discovery-title" className="mt-2 text-2xl font-bold text-violet-950">Want more English games?</h2><p className="mt-3 max-w-2xl leading-relaxed text-violet-900">Grammar Level 1 is just the beginning. Continue learning with Grammar Level 2 and Vocabulary Level 1 in Zalea English Academy – Lifetime Access.</p></div><Button asChild variant="outline" className="min-h-12 h-auto w-full whitespace-normal border-violet-300 bg-white py-3 text-violet-800 hover:bg-violet-100 hover:text-violet-900 md:w-auto"><Link href="/games/english/academy" data-ga-event="cta_click" data-ga-label="academy_discovery">See What&apos;s Inside<ArrowRight className="ml-2 h-5 w-5 shrink-0" aria-hidden="true" /></Link></Button></div>
+    <div className="grid items-center gap-6 md:grid-cols-[1fr_auto]"><div><p className="text-sm font-bold uppercase tracking-wider text-violet-700">Zalea English Academy</p><h2 id="academy-discovery-title" className="mt-2 text-2xl font-bold text-violet-950">{heading}</h2><p className="mt-3 max-w-2xl leading-relaxed text-violet-900">{description}</p></div><Button asChild variant="outline" className="min-h-12 h-auto w-full whitespace-normal border-violet-300 bg-white py-3 text-violet-800 hover:bg-violet-100 hover:text-violet-900 md:w-auto"><Link href="/games/english/academy" data-ga-event="cta_click" data-ga-label="academy_discovery">See What&apos;s Inside<ArrowRight className="ml-2 h-5 w-5 shrink-0" aria-hidden="true" /></Link></Button></div>
   </aside>;
 }
