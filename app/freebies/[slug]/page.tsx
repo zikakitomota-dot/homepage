@@ -86,6 +86,7 @@ export default async function FreebiePage({ params }: Props) {
             </div>
           </aside>
         </section>
+        {freebie.workedExample ? <section className="border-y border-border/60 bg-secondary/25" aria-labelledby="worked-example-heading"><div className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20"><p className="text-sm font-bold uppercase tracking-[0.14em] text-primary">Filled-in illustration</p><h2 id="worked-example-heading" className="mt-2 text-3xl font-bold tracking-tight">{freebie.workedExample.title}</h2><p className="mt-4 max-w-3xl leading-7 text-muted-foreground">{freebie.workedExample.situation}</p><ul className="mt-6 grid gap-3 sm:grid-cols-2">{freebie.workedExample.entries.map((entry) => <li key={entry} className="rounded-2xl border border-border/60 bg-white p-4 font-medium">{entry}</li>)}</ul><p className="mt-6 rounded-2xl border border-primary/20 bg-primary/5 p-5 leading-7"><strong>Why this helps:</strong> {freebie.workedExample.takeaway}</p></div></section> : null}
         <section className="border-y border-border/60 bg-background" aria-labelledby="helps-heading">
           <div className="mx-auto grid max-w-[1100px] gap-12 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-20">
             <div>

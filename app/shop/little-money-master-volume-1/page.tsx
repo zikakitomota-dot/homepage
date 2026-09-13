@@ -144,6 +144,19 @@ export default function LittleMoneyMasterPage() {
           </div>
         </section>
 
+        <section className="border-y border-border/60 bg-secondary/30" aria-labelledby="sample-conversation-heading">
+          <div className="mx-auto max-w-[1000px] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">Representative activity flow</p>
+            <h2 id="sample-conversation-heading" className="mt-3 text-3xl font-bold tracking-tight">What a needs-or-wants conversation can sound like</h2>
+            <div className="mt-7 grid gap-5 md:grid-cols-3">
+              <div className="rounded-2xl border border-border/60 bg-white p-6"><h3 className="font-bold">1. Make a choice</h3><p className="mt-3 leading-relaxed text-muted-foreground">The child decides whether an everyday example is something essential or something enjoyable but optional.</p></div>
+              <div className="rounded-2xl border border-border/60 bg-white p-6"><h3 className="font-bold">2. Give a reason</h3><p className="mt-3 leading-relaxed text-muted-foreground">An adult can ask, “What might happen if we did not have it?” The reason is more useful than memorising a label.</p></div>
+              <div className="rounded-2xl border border-border/60 bg-white p-6"><h3 className="font-bold">3. Notice context</h3><p className="mt-3 leading-relaxed text-muted-foreground">A basic coat may be a need in cold weather, while a second fashion coat may be a want. The discussion allows for circumstances.</p></div>
+            </div>
+            <p className="mt-6 max-w-3xl leading-relaxed text-muted-foreground">The product centres on this single Volume 1 topic and includes the interactive game, adult guide and completion certificate shown above. It is an educational activity, not a promise that every spending choice has one universal answer.</p>
+          </div>
+        </section>
+
         <section className="border-y border-border/60 bg-blue-50/60">
           <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
             <BookOpen className="mx-auto h-10 w-10 text-primary" aria-hidden="true" />

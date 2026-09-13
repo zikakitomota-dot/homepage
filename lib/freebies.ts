@@ -50,6 +50,12 @@ export type Freebie = {
   seoTitle: string;
   seoDescription: string;
   notice?: string;
+  workedExample?: {
+    title: string;
+    situation: string;
+    entries: readonly string[];
+    takeaway: string;
+  };
 };
 
 const downloadRoot = '/downloads/freebies';
@@ -233,6 +239,12 @@ export const freebies: readonly Freebie[] = [
       'Put the most time-sensitive exam topics first on the revision page.',
       'Keep each session realistic enough to finish in the time available.',
     ],
+    workedExample: {
+      title: 'Example: turning “revise science” into a usable session',
+      situation: 'A student has a ecosystems quiz on Friday and 35 minutes available on Tuesday.',
+      entries: ['Focus: food chains and energy flow', 'Materials: class notes, one practice sheet and a timer', 'Plan: 10 minutes review, 15 minutes practice, 10 minutes checking mistakes'],
+      takeaway: 'The page records one finishable session rather than a vague subject name. Anything unfinished can become the first task in the next session.',
+    },
     whoItsFor: 'Made for students who prefer planning on paper and want separate pages for weekly organisation, individual study sessions and exam revision.',
     relatedFreebies: ['grade-tracker'],
     relatedLinks: [
@@ -274,6 +286,12 @@ export const freebies: readonly Freebie[] = [
       'Record strengths as well as areas that may need more support.',
       'Use dates consistently so changes can be viewed in sequence.',
     ],
+    workedExample: {
+      title: 'Example: recording an observation without a label',
+      situation: 'During a fraction task, a student used a drawing to solve three of four questions and asked for help on unlike denominators.',
+      entries: ['Date and context: fraction practice, small-group lesson', 'Observed strength: represented equal parts clearly in a drawing', 'Next step: model one unlike-denominator example, then check another independently'],
+      takeaway: 'The note separates what was observed from interpretation, making the next teaching action easier to understand later.',
+    },
     whoItsFor: 'Created for teachers, tutors and parents who need an informal educational record of scores, strengths and learning observations.',
     relatedFreebies: ['early-learning-skills-observation-tracker'],
     relatedLinks: [],
@@ -314,6 +332,12 @@ export const freebies: readonly Freebie[] = [
       'Focus on what you can see and hear rather than making assumptions.',
       'Keep observations educational and share health or developmental concerns with an appropriate qualified professional.',
     ],
+    workedExample: {
+      title: 'Example: connecting an interest to a next activity',
+      situation: 'A child grouped toy animals by colour during free play and explained where each group belonged.',
+      entries: ['Observation: sorted independently into three colour groups', 'Interest or strength: sustained interest in animals and sorting', 'Gentle next step: invite sorting by habitat or size on another day'],
+      takeaway: 'The next step grows from a real interest. It does not turn one play moment into a developmental judgement.',
+    },
     whoItsFor: 'Designed for teachers and parents supporting children ages 3–6 through informal, everyday learning observations.',
     relatedFreebies: ['student-progress-tracker'],
     relatedLinks: [],
@@ -460,6 +484,12 @@ export const freebies: readonly Freebie[] = [
       'Say the sound cleanly without adding a strong extra vowel sound.',
       'Return to familiar sounds whenever a matching or blending activity feels difficult.',
     ],
+    workedExample: {
+      title: 'Example: a short first-sound routine',
+      situation: 'An adult introduces the sound /s/ with the sun picture before using the matching page.',
+      entries: ['Say /s/ clearly and name sun together', 'Find one more picture beginning with /s/', 'Trace the letter once while repeating the sound', 'Stop or repeat later before adding a new sound'],
+      takeaway: 'The routine links a spoken sound, a meaningful picture and a written letter without requiring the whole pack in one sitting.',
+    },
     whoItsFor: 'Designed for parents and preschool teachers introducing early phonics practice to children ages 3–5.',
     relatedFreebies: ['pre-writing-pencil-control', 'fine-motor-activity-cards'],
     relatedLinks: [
@@ -594,6 +624,12 @@ export const freebies: readonly Freebie[] = [
       'Leave room for price changes or costs that are not confirmed yet.',
       'Revisit the plan before committing to check whether the timing and priorities still make sense.',
     ],
+    workedExample: {
+      title: 'Example: checking the full cost of a laptop',
+      situation: 'The advertised laptop is RM2,800, but the purchase also needs a RM120 adapter and RM50 delivery.',
+      entries: ['Headline price: RM2,800', 'Relevant extras: RM170', 'Estimated total: RM2,970', 'Already saved: RM1,200; remaining amount: RM1,770'],
+      takeaway: 'Planning from RM2,970 avoids reaching the headline price and then discovering that the purchase is still short.',
+    },
     whoItsFor: 'For anyone who wants to think through and save toward a larger planned purchase without being told which product to buy.',
     relatedFreebies: ['savings-goal-tracker'],
     relatedLinks: [
@@ -635,6 +671,12 @@ export const freebies: readonly Freebie[] = [
       'A smaller first milestone can make a larger long-term target easier to approach.',
       'Common ranges discussed elsewhere are general examples only; your target is a personal planning choice.',
     ],
+    workedExample: {
+      title: 'Example: setting a personal first milestone',
+      situation: 'A household lists RM2,100 of essential monthly expenses and already has RM450 set aside.',
+      entries: ['Longer-term reference: one month of listed essentials, RM2,100', 'First milestone chosen: RM1,000', 'Gap to first milestone: RM550', 'Review point: after any change to essential bills'],
+      takeaway: 'The worksheet can separate a reachable first milestone from a longer-term reference instead of presenting one universal target as correct.',
+    },
     whoItsFor: 'For anyone who wants an educational worksheet to organise an emergency-savings target and track gradual progress.',
     relatedFreebies: ['savings-goal-tracker'],
     relatedLinks: [

@@ -19,12 +19,12 @@ export function SiteFooter() {
     <footer id="contact" className="border-t border-border/60 bg-secondary/30">
       <div className="mx-auto max-w-[1200px] px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <Link href="/" className="flex items-center gap-2">
+          <div className="max-w-sm text-center md:text-left"><Link href="/" className="inline-flex items-center gap-2">
             <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
               <Calculator className="h-4 w-4" aria-hidden="true" />
             </span>
             <span className="text-base font-semibold text-foreground">Zalea Studio</span>
-          </Link>
+          </Link><p className="mt-3 text-sm leading-6 text-muted-foreground">Explained calculators, learning activities, practical guides and original printables for everyday tasks.</p></div>
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3" aria-label="Footer navigation">
             {footerLinks.map((link) =>
               link.external ? (
