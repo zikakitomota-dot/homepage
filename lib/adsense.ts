@@ -1,5 +1,4 @@
 const ADSENSE_ELIGIBLE_PATHS = new Set([
-  '/',
   '/finance',
   '/finance/discount-calculator',
   '/finance/split-bill-calculator',

@@ -58,6 +58,9 @@ export const englishGameGuides: Record<string, EnglishGameGuide> = {
       title: 'Count real objects',
       text: 'Place one pencil on a table and say “one pencil.” Add two more and say “three pencils.” Repeat with cups, blocks or picture cards, letting the child say both the number and noun.',
     },
+    relatedGames: [
+      { title: 'This, That, These or Those?', href: '/games/english/this-that-these-those', note: 'Use the one-or-many clue together with distance words.' },
+    ],
   },
   'he-she-it': {
     heading: 'Replacing a name with he, she or it',
@@ -103,6 +106,7 @@ export const englishGameGuides: Record<string, EnglishGameGuide> = {
     },
     relatedGames: [
       { title: 'He, She, It', href: '/games/english/he-she-it', note: 'Review the singular pronouns that use is.' },
+      { title: 'Has or Have?', href: '/games/english/has-or-have', note: 'Use the same subject-checking habit to choose has or have.' },
     ],
   },
   'can-or-cant': {

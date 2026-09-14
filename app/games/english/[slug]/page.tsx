@@ -18,6 +18,22 @@ import { PAYHIP_ACADEMY_URL, SITE_URL } from '@/lib/site';
 
 type Props = { params: Promise<{ slug: string }> };
 
+const pageSpecificMetadata: Partial<Record<string, { title: string; description: string }>> = {
+  'has-or-have': {
+    title: 'Has or Have? Free Grammar Game for Kids | Zalea Studio',
+    description: 'Play 10 has-or-have questions with instant feedback. Practise using has with he, she and it, and have with I, you, we, they and plural subjects.',
+  },
+  'this-that-these-those': {
+    title: 'This, That, These or Those? Game for Kids | Zalea Studio',
+    description: 'Play a free this, that, these and those game. Use near or far and one or many clues, with immediate feedback after each answer.',
+  },
+};
+
+const pageSpecificIntroRules: Partial<Record<string, string>> = {
+  'has-or-have': 'Use “has” with he, she and it. Use “have” with I, you, we, they and plural subjects.',
+  'this-that-these-those': '“This” and “that” are singular and go with “is”; “these” and “those” are plural and go with “are”.',
+};
+
 const pageSpecificPlayGuidance: Partial<Record<string, { heading: string; text: string; academyHeading: string; academyDescription: string }>> = {
   'a-or-an': {
     heading: 'Say the noun and listen for its first sound',
@@ -116,9 +132,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   if (!game) return {};
-  const title = `${game.title} Grammar Game for Kids | Zalea Studio`;
+  const metadataOverride = pageSpecificMetadata[game.slug];
+  const title = metadataOverride?.title ?? `${game.title} Grammar Game for Kids | Zalea Studio`;
+  const description = metadataOverride?.description ?? game.seoDescription;
   const url = `/games/english/${game.slug}`;
-  return createEducationalMetadata({ title, description: game.seoDescription, path: url });
+  return createEducationalMetadata({ title, description, path: url });
 }
 
 export default async function EnglishGamePage({ params }: Props) {
@@ -178,6 +196,7 @@ export default async function EnglishGamePage({ params }: Props) {
       <nav className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground" aria-label="Breadcrumb"><Link href="/" className="hover:text-foreground">Home</Link><ChevronRight className="h-4 w-4" aria-hidden="true" /><Link href="/games" className="hover:text-foreground">Games</Link><ChevronRight className="h-4 w-4" aria-hidden="true" /><Link href="/games/english" className="hover:text-foreground">English Games</Link><ChevronRight className="h-4 w-4" aria-hidden="true" /><span aria-current="page">{game.title}</span></nav>
       <h1 className="mt-7 text-balance text-3xl font-bold tracking-tight sm:text-4xl">{game.title} – Free English Grammar Game</h1>
       <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">{game.shortDescription} Play 10 random questions and get friendly feedback after every answer.</p>
+      {pageSpecificIntroRules[game.slug] && <p className="mt-3 max-w-2xl font-medium leading-relaxed text-foreground">{pageSpecificIntroRules[game.slug]}</p>}
     </div></section>
     <section className="bg-blue-50/40 px-3 py-8 sm:px-6 sm:py-12"><GameEngine game={game} nextGame={nextGame} /></section>
     <EducationalGuide guide={guide} gameTitle={game.title} />
