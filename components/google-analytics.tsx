@@ -77,11 +77,17 @@ function AnalyticsEvents() {
       const configuredEvent = configuredElement?.dataset.gaEvent;
       const configuredLabel = configuredElement?.dataset.gaLabel;
       const configuredFormat = configuredElement?.dataset.gaFormat;
+      const configuredCategory = configuredElement?.dataset.gaCategory;
+      const configuredPlacement = configuredElement?.dataset.gaPlacement;
 
       if (configuredEvent && isAnalyticsEventName(configuredEvent)) {
         const labelKey =
           configuredEvent === 'product_click'
             ? 'product_name'
+            : configuredEvent === 'etsy_click' || configuredEvent === 'payhip_click'
+              ? 'product_id'
+              : configuredEvent === 'category_filter'
+                ? 'category'
             : configuredEvent === 'game_launch'
               ? 'game_slug'
               : configuredEvent === 'freebie_download'
@@ -90,6 +96,8 @@ function AnalyticsEvents() {
         trackEvent(configuredEvent, {
           ...(configuredLabel ? { [labelKey]: configuredLabel } : {}),
           ...(configuredEvent === 'freebie_download' && configuredFormat ? { format: configuredFormat } : {}),
+          ...(configuredCategory ? { category: configuredCategory } : {}),
+          ...(configuredPlacement ? { placement: configuredPlacement } : {}),
           page_path: pagePath,
         });
       }
@@ -99,7 +107,7 @@ function AnalyticsEvents() {
         const destination = new URL(anchor.href, window.location.href);
         const isSameOrigin = destination.origin === window.location.origin;
 
-        if (/(^|\.)payhip\.com$/i.test(destination.hostname)) {
+        if (/(^|\.)payhip\.com$/i.test(destination.hostname) && configuredEvent !== 'payhip_click') {
           trackEvent('payhip_click', {
             destination_domain: destination.hostname,
             page_path: pagePath,

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, BookOpen, CircleHelp, Lightbulb } from 'lucide-react';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
+import { ContentAccountability } from '@/components/content-accountability';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -138,6 +139,7 @@ export function CalculatorPage({
           </div>
           </div>
         </section>
+        <ContentAccountability context="calculator" />
       </main>
       <SiteFooter />
     </div>

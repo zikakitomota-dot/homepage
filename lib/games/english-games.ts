@@ -211,7 +211,7 @@ const games: EnglishGame[] = [
     id: 'grammar-a-or-an', slug: 'a-or-an', title: 'A or An?', shortDescription: 'Choose the correct article before a noun.',
     seoDescription: 'Practise using “a” and “an” with this free interactive English grammar game for children. Play 10 fun questions on any device.',
     category: 'Grammar', level: 1, access: 'free', icon: '🍎', instructions: 'Choose “a” or “an” to complete each phrase.',
-    whatItTeaches: 'Children practise choosing the indefinite articles “a” and “an” by listening to the beginning sound of a familiar noun. The question bank uses simple objects, animals, foods, and people suitable for early primary learners.',
+    whatItTeaches: 'Children practise choosing the indefinite articles “a” and “an” by listening to the beginning sound of a familiar noun. The question bank uses simple objects, animals, foods and people with clear opening sounds.',
     learningObjective: 'By the end of a session, learners should recognise that “a” comes before a consonant sound and “an” comes before a vowel sound. Each answer includes a short reminder so mistakes become useful practice.',
     parentTip: 'Say each phrase aloud together. Stretch the first sound of the noun and ask whether it begins with a vowel sound. Focus on sound rather than asking children to memorise a list.',
     questions: articleGameQuestions,
@@ -227,7 +227,7 @@ const games: EnglishGame[] = [
   },
   {
     id: 'grammar-he-she-it', slug: 'he-she-it', title: 'He, She, It', shortDescription: 'Choose the correct personal pronoun.',
-    seoDescription: 'Practise he, she, and it with a free mobile-friendly English pronoun game for children ages 5–8.',
+    seoDescription: 'Practise he, she and it with a free mobile-friendly English pronoun game using clear people, animal and object references.',
     category: 'Grammar', level: 1, access: 'free', icon: '👧', instructions: 'Read the sentence and choose “he”, “she”, or “it”.',
     whatItTeaches: 'Children replace a simple person, animal, object, or place with the matching pronoun. Names and contexts are kept clear so every question has one expected Level 1 answer.',
     learningObjective: 'Learners identify “he” for a boy or man, “she” for a girl or woman, and “it” for an animal or object when no personal gender is given.',
@@ -254,7 +254,7 @@ const games: EnglishGame[] = [
   },
   {
     id: 'grammar-who', slug: 'who-is-it', title: 'Who Is It?', shortDescription: 'Practise I, you, he, she, it, we, and they.',
-    seoDescription: 'Practise English personal pronouns with a free Who Is It game for early primary children.',
+    seoDescription: 'Practise I, you, he, she, it, we and they with a free English personal-pronoun game using speaker, listener and group clues.',
     category: 'Grammar', level: 1, access: 'free', icon: '👥', instructions: 'Choose the pronoun that best replaces the person or group.',
     whatItTeaches: 'This game expands pronoun practice to I, you, he, she, it, we, and they. Short contexts show whether the speaker means themselves, the listener, one person, one thing, or a group.',
     learningObjective: 'Learners choose personal pronouns based on who is speaking and how many people or things are being discussed.',

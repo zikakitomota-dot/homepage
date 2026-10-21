@@ -39,12 +39,18 @@ export type Freebie = {
   usLetterDownload: string;
   bundleDownload: string;
   bundleFormat: 'ZIP';
+  fileVerification: {
+    a4Bytes: number;
+    usLetterBytes: number;
+    bundleBytes: number;
+  };
   includedPages: readonly string[];
   helpsTitle: string;
   helpsWith: readonly string[];
   howToUse: readonly string[];
   practicalTips: readonly string[];
   whoItsFor: string;
+  limitation: string;
   relatedFreebies: readonly string[];
   relatedLinks: readonly FreebieRelatedLink[];
   seoTitle: string;
@@ -77,6 +83,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/shapes-and-colours-activity-pack/Zalea_Shapes_and_Colours_Activity_Pack_20_Pages_US_Letter.pdf`,
     bundleDownload: `${downloadRoot}/shapes-and-colours-activity-pack/Zalea_Shapes_and_Colours_Activity_Pack_20_Pages.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 93358, usLetterBytes: 90140, bundleBytes: 151618 },
     includedPages: [
       'Cover',
       'Before You Begin Guide',
@@ -104,12 +111,19 @@ export const freebies: readonly Freebie[] = [
       'Invite the child to find the same shape or colour around the room.',
       'Supervise the final cut-and-paste activity and use child-safe scissors.',
     ],
+    workedExample: {
+      title: 'Example: use one shape across three activities',
+      situation: 'A child starts with the circle page before revisiting the same shape in later matching and cut-and-paste tasks.',
+      entries: ['Trace the circle and find the other circles', 'Match the circle outline to the filled circle', 'Cut out the red circle and paste it on the matching outline'],
+      takeaway: 'The pack returns to the same shape through tracing, visual matching and a supervised hands-on task instead of presenting one isolated worksheet.',
+    },
     whoItsFor: 'Designed for parents and preschool teachers introducing familiar shapes, colours, matching and simple patterns to children ages 3–5.',
+    limitation: 'The pack provides guided recognition, tracing, matching and pattern practice. It does not assess colour vision, diagnose a learning need or replace hands-on play with real objects.',
     relatedFreebies: ['numbers-1-10-activity-pack', 'pre-writing-pencil-control', 'scissor-skills-practice'],
     relatedLinks: [],
     seoTitle: 'Free Shapes & Colours Activity Pack | Zalea Studio',
     seoDescription: 'Download 20 printable shapes and colours activities for ages 3–5, with tracing, matching, patterns and a supervised cut-and-paste activity.',
-    notice: 'Grown-up supervision is required for the cut-and-paste page. Use child-safe scissors and provide help appropriate to the child’s experience.',
+    notice: 'The final shapes page asks children to cut out coloured shapes and match them to outlines. A grown-up should provide child-safe scissors and supervise that activity.',
   },
   {
     slug: 'numbers-1-10-activity-pack',
@@ -127,6 +141,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/numbers-1-10-activity-pack/Zalea_Numbers_1-10_Activity_Pack_20_Pages_US_Letter.pdf`,
     bundleDownload: `${downloadRoot}/numbers-1-10-activity-pack/Zalea_Numbers_1-10_Activity_Pack_20_Pages.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 125342, usLetterBytes: 121044, bundleBytes: 202685 },
     includedPages: [
       'Cover',
       'Before You Begin Guide',
@@ -155,14 +170,21 @@ export const freebies: readonly Freebie[] = [
       'Encourage careful one-to-one counting before focusing on speed.',
       'Supervise the final cut-and-paste activity and use child-safe scissors.',
     ],
+    workedExample: {
+      title: 'Example: connect the numeral 3 to a quantity',
+      situation: 'The Number 3 page places the written numeral, the word THREE and a group of three flowers on the same activity page.',
+      entries: ['Trace the numeral 3', 'Touch and count the three flowers once each', 'Colour three circles', 'Later match 3 to a group with the same amount'],
+      takeaway: 'The activity links the symbol to a spoken count and a visible quantity before the review pages ask for matching or comparison.',
+    },
     whoItsFor: 'Designed for parents and preschool teachers introducing number recognition, counting and quantities from 1 to 10 to children ages 3–5.',
+    limitation: 'The pages practise numbers 1–10 and simple quantity comparisons. They are not a formal numeracy assessment and do not cover calculation beyond the activities shown.',
     relatedFreebies: ['shapes-and-colours-activity-pack', 'pre-writing-pencil-control'],
     relatedLinks: [
       { label: 'Addition Level 1', href: '/games/math/addition-level-1', description: 'Continue with a free browser game for children ready to practise simple addition.' },
     ],
     seoTitle: 'Free Numbers 1–10 Activity Pack | Zalea Studio',
     seoDescription: 'Download 20 printable number activities for ages 3–5, with tracing, counting, quantity matching, ten frames and simple number comparisons.',
-    notice: 'Grown-up supervision is required for the cut-and-paste page. Use child-safe scissors and provide help appropriate to the child’s experience.',
+    notice: 'The final numbers page includes cut-out numerals to match with quantities. A grown-up should provide child-safe scissors and supervise that activity.',
   },
   {
     slug: 'grade-tracker',
@@ -179,6 +201,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/grade-tracker/Zalea_Studio_Grade_Tracker_US_Letter_Final.pdf`,
     bundleDownload: `${downloadRoot}/grade-tracker/Zalea_Studio_Grade_Tracker.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 15979, usLetterBytes: 15832, bundleBytes: 15922 },
     includedPages: ['Cover', 'Grade Tracker', 'Assignment Tracker', 'Final Grade Planner'],
     helpsTitle: 'What This Tracker Helps With',
     helpsWith: [
@@ -196,7 +219,14 @@ export const freebies: readonly Freebie[] = [
       'Record scores exactly as they are returned so later calculations use consistent information.',
       'Keep the current sheet at the front of a subject folder or study binder.',
     ],
+    workedExample: {
+      title: 'Example: carry one assessment through the set',
+      situation: 'A student records a science test consistently rather than leaving its score, deadline and final-grade effect in separate places.',
+      entries: ['Assignment Tracker: science test, due date and weight', 'Grade Tracker: returned score and current average', 'Final Grade Planner: desired final grade and final-exam weight'],
+      takeaway: 'The three planning pages serve different jobs: upcoming work, recorded results and the remaining final-grade target.',
+    },
     whoItsFor: 'Designed for students who want a simple paper record of assignments, scores and final-grade goals. Teachers or families can also use it when helping a student review their workload.',
+    limitation: 'This is a manual paper record. It does not import marks, sync with a school portal or calculate weighted and final grades automatically; the linked calculators handle that arithmetic separately.',
     relatedFreebies: ['study-planner'],
     relatedLinks: [
       { label: 'Grade Calculator', href: '/education/grade-calculator', description: 'Calculate an overall grade from assignment scores.' },
@@ -222,6 +252,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/study-planner/Zalea_Studio_Study_Planner_US_Letter_Final.pdf`,
     bundleDownload: `${downloadRoot}/study-planner/Zalea_Studio_Study_Planner.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 19177, usLetterBytes: 19116, bundleBytes: 19020 },
     includedPages: ['Cover', 'Weekly Study Planner', 'Study Session Planner', 'Exam Revision Planner'],
     helpsTitle: 'What This Planner Helps With',
     helpsWith: [
@@ -246,6 +277,7 @@ export const freebies: readonly Freebie[] = [
       takeaway: 'The page records one finishable session rather than a vague subject name. Anything unfinished can become the first task in the next session.',
     },
     whoItsFor: 'Made for students who prefer planning on paper and want separate pages for weekly organisation, individual study sessions and exam revision.',
+    limitation: 'The planner does not send reminders, schedule tasks automatically or judge how long revision will take. Dates, priorities, confidence and completion marks must be updated by hand.',
     relatedFreebies: ['grade-tracker'],
     relatedLinks: [
       { label: 'Grade Calculator', href: '/education/grade-calculator', description: 'Keep track of your current overall grade.' },
@@ -269,6 +301,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/student-progress-tracker/Zalea_Studio_Student_Progress_Tracker_US_Letter_Final.pdf`,
     bundleDownload: `${downloadRoot}/student-progress-tracker/Zalea_Studio_Student_Progress_Tracker.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 17650, usLetterBytes: 17574, bundleBytes: 17568 },
     includedPages: ['Cover', 'Student Progress Overview', 'Assessment & Score Tracker', 'Learning Observation Notes'],
     helpsTitle: 'What This Tracker Helps Record',
     helpsWith: [
@@ -293,6 +326,7 @@ export const freebies: readonly Freebie[] = [
       takeaway: 'The note separates what was observed from interpretation, making the next teaching action easier to understand later.',
     },
     whoItsFor: 'Created for teachers, tutors and parents who need an informal educational record of scores, strengths and learning observations.',
+    limitation: 'This manual tracker does not replace official school records, curriculum reporting or professional assessment. It records what an adult observed and must be updated by hand.',
     relatedFreebies: ['early-learning-skills-observation-tracker'],
     relatedLinks: [],
     seoTitle: 'Student Progress Tracker | Zalea Studio',
@@ -315,6 +349,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/early-learning-skills-observation-tracker/Zalea_Studio_Early_Learning_Skills_Observation_Tracker_US_Letter.pdf`,
     bundleDownload: `${downloadRoot}/early-learning-skills-observation-tracker/Zalea_Studio_Early_Learning_Skills_Observation_Tracker.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 70436, usLetterBytes: 70929, bundleBytes: 35053 },
     includedPages: ['Cover', 'Early Learning Skills Overview', 'Learning Observation Notes', 'Interests, Strengths & Next Steps'],
     helpsTitle: 'What This Observation Tracker Helps With',
     helpsWith: [
@@ -339,6 +374,7 @@ export const freebies: readonly Freebie[] = [
       takeaway: 'The next step grows from a real interest. It does not turn one play moment into a developmental judgement.',
     },
     whoItsFor: 'Designed for teachers and parents supporting children ages 3–6 through informal, everyday learning observations.',
+    limitation: 'The overview and notes capture informal observations only. They are not a developmental checklist, screening instrument, diagnosis or substitute for advice from a qualified professional.',
     relatedFreebies: ['student-progress-tracker'],
     relatedLinks: [],
     seoTitle: 'Early Learning Observation Tracker | Zalea Studio',
@@ -362,6 +398,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/pre-writing-pencil-control/Zalea_Studio_Pre_Writing_Pencil_Control_US_Letter_Final.pdf`,
     bundleDownload: `${downloadRoot}/pre-writing-pencil-control/Zalea_Studio_Pre_Writing_Pencil_Control.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 20170, usLetterBytes: 20106, bundleBytes: 29843 },
     includedPages: ['Cover', 'Straight Lines', 'Curves & Waves', 'Zigzags & Patterns', 'Shape Tracing', 'Follow the Path'],
     helpsTitle: 'What These Activities Help Children Practise',
     helpsWith: [
@@ -379,7 +416,14 @@ export const freebies: readonly Freebie[] = [
       'Keep the paper steady and let the child choose a comfortable hand position.',
       'Encourage effort and exploration rather than neatness or perfection.',
     ],
+    workedExample: {
+      title: 'Example: move from a path to an independent shape',
+      situation: 'A learner first follows a printed start-to-finish path, then uses the empty box on the Shape Tracing page.',
+      entries: ['Begin at the green dot', 'Trace slowly toward the star', 'Trace the printed circle', 'Try drawing one circle in the empty box'],
+      takeaway: 'The pages provide a supported line first and a small optional space to try the movement independently without treating neatness as a test.',
+    },
     whoItsFor: 'Made for parents, preschool teachers and early learners ages 3–5 who want simple, low-pressure tracing practice.',
+    limitation: 'These five tracing activities offer pencil-path practice only. They do not assess handwriting readiness, teach letter formation or require a child to stay perfectly inside every path.',
     relatedFreebies: ['fine-motor-activity-cards', 'scissor-skills-practice', 'first-phonics-activities'],
     relatedLinks: [
       { label: 'Pre-Writing Skills and Activities', href: '/guides/pre-writing-skills-activities', description: 'Explore practical, low-pressure ways to build mark-making and hand control through play.' },
@@ -403,6 +447,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/fine-motor-activity-cards/Zalea_Fine_Motor_Activity_Cards_48_Cards_US_Letter.pdf`,
     bundleDownload: `${downloadRoot}/fine-motor-activity-cards/Zalea_Fine_Motor_Activity_Cards_48_Cards.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 109659, usLetterBytes: 105541, bundleBytes: 177379 },
     includedPages: [
       'Cover',
       'Grown-Up Guide',
@@ -430,7 +475,14 @@ export const freebies: readonly Freebie[] = [
       'Keep sessions short and finish while the activity is still enjoyable.',
       'Stay beside the child whenever an activity uses scissors, water, cords or small objects.',
     ],
+    workedExample: {
+      title: 'Example: fill the Pick 3 Today page',
+      situation: 'An adult chooses one activity from three different card groups for a short session.',
+      entries: ['Warm up: Card 1, Pinch Little Pieces', 'Focus: Card 9, Pom-Pom Transfer', 'Finish: Card 45, Twist the Lids', 'Observation: note which movement the child wanted to repeat'],
+      takeaway: 'The planning page turns the 48-card library into a manageable three-activity session rather than a checklist to finish in order.',
+    },
     whoItsFor: 'Made for parents and preschool teachers looking for varied, low-pressure fine motor play ideas for children ages 3–5.',
+    limitation: 'The observation page is a gentle activity record, not an occupational-therapy assessment. Adults must choose safe materials and adapt or stop activities for the individual child.',
     relatedFreebies: ['pre-writing-pencil-control', 'scissor-skills-practice'],
     relatedLinks: [
       { label: 'Pre-Writing Skills and Activities', href: '/guides/pre-writing-skills-activities', description: 'See how playful hand activities can support later pencil and mark-making control.' },
@@ -455,6 +507,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/first-phonics-activities/Zalea_First_Phonics_Activities_20_Pages_US_Letter.pdf`,
     bundleDownload: `${downloadRoot}/first-phonics-activities/Zalea_First_Phonics_Activities_20_Pages.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 109348, usLetterBytes: 105284, bundleBytes: 176914 },
     includedPages: [
       'Cover',
       'Before You Begin Guide',
@@ -491,6 +544,7 @@ export const freebies: readonly Freebie[] = [
       takeaway: 'The routine links a spoken sound, a meaningful picture and a written letter without requiring the whole pack in one sitting.',
     },
     whoItsFor: 'Designed for parents and preschool teachers introducing early phonics practice to children ages 3–5.',
+    limitation: 'The pack introduces six sounds and a small set of short words. It is not a complete phonics programme, reading assessment or guarantee that a learner is ready to progress.',
     relatedFreebies: ['pre-writing-pencil-control', 'fine-motor-activity-cards'],
     relatedLinks: [
       { label: 'English Games for Kids', href: '/english-games-for-kids', description: 'Explore more language-learning ideas and free browser activities.' },
@@ -514,6 +568,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/scissor-skills-practice/Zalea_Scissor_Skills_Practice_20_Pages_US_Letter.pdf`,
     bundleDownload: `${downloadRoot}/scissor-skills-practice/Zalea_Scissor_Skills_Practice_20_Pages.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 99216, usLetterBytes: 96706, bundleBytes: 161711 },
     includedPages: [
       'Cover',
       'Before You Begin Guide',
@@ -542,7 +597,14 @@ export const freebies: readonly Freebie[] = [
       'Print another copy of a favourite page when extra practice would be enjoyable.',
       'Praise careful handling and effort rather than expecting perfectly cut lines.',
     ],
+    workedExample: {
+      title: 'Example: choose the next cutting path',
+      situation: 'A child completes short snips comfortably but finds turns tiring.',
+      entries: ['Begin with Snip, Snip! and stop at each dot', 'Try Short Straight Lines next', 'Leave Zigzag Paths for another session', 'Return to an easier strip when hands become tired'],
+      takeaway: 'The sequence supports moving from short snips to longer paths gradually; it does not require all 17 activity pages to be completed in one order or sitting.',
+    },
     whoItsFor: 'Made for parents and preschool teachers supervising early cutting practice with children ages 3–5.',
+    limitation: 'The sequence provides supervised paper-cutting practice, not a motor-skills assessment. It does not remove the need for close adult supervision or child-safe equipment.',
     relatedFreebies: ['pre-writing-pencil-control', 'fine-motor-activity-cards'],
     relatedLinks: [
       { label: 'Pre-Writing Skills and Activities', href: '/guides/pre-writing-skills-activities', description: 'Combine supervised cutting with other early hand-control and mark-making activities.' },
@@ -566,6 +628,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/savings-goal-tracker/Zalea_Studio_Savings_Goal_Tracker_US_Letter_Final.pdf`,
     bundleDownload: `${downloadRoot}/savings-goal-tracker/Zalea_Studio_Savings_Goal_Tracker.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 7724, usLetterBytes: 7738, bundleBytes: 11707 },
     includedPages: ['Cover', 'Savings Goal Tracker'],
     helpsTitle: 'What This Savings Tracker Helps With',
     helpsWith: [
@@ -583,7 +646,14 @@ export const freebies: readonly Freebie[] = [
       'Use milestones that suit your own income and timing rather than copying someone else’s plan.',
       'If circumstances change, revise the target or timeline instead of abandoning the tracker.',
     ],
+    workedExample: {
+      title: 'Example: set up one visible savings goal',
+      situation: 'A person wants to save RM1,000 and already has RM250 available.',
+      entries: ['Goal amount: RM1,000', 'Starting amount: RM250', 'Amount left: RM750', 'Savings Log: record each date, amount saved and updated total'],
+      takeaway: 'The worksheet keeps the target, starting point, remaining amount, milestones and deposits together; calculations still need to be updated manually.',
+    },
     whoItsFor: 'Useful for anyone who wants a simple visual record while building one personal savings goal at a time.',
+    limitation: 'The tracker records a goal, milestones and deposits manually. It does not connect to a bank, calculate interest or returns, adjust for inflation or provide financial advice.',
     relatedFreebies: ['big-purchase-planner', 'emergency-fund-planner'],
     relatedLinks: [
       { label: 'Savings Goal Calculator', href: '/finance/savings-goal-calculator', description: 'Estimate regular contributions for a savings target.' },
@@ -607,6 +677,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/big-purchase-planner/Zalea_Studio_Big_Purchase_Planner_US_Letter_Final.pdf`,
     bundleDownload: `${downloadRoot}/big-purchase-planner/Zalea_Studio_Big_Purchase_Planner.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 6794, usLetterBytes: 6802, bundleBytes: 10200 },
     includedPages: ['Cover', 'Big Purchase Planner'],
     helpsTitle: 'What This Purchase Planner Helps With',
     helpsWith: [
@@ -631,6 +702,7 @@ export const freebies: readonly Freebie[] = [
       takeaway: 'Planning from RM2,970 avoids reaching the headline price and then discovering that the purchase is still short.',
     },
     whoItsFor: 'For anyone who wants to think through and save toward a larger planned purchase without being told which product to buy.',
+    limitation: 'The worksheet helps compare known costs and savings by hand. It does not verify prices, recommend a product, assess affordability or include financing interest unless the user records it.',
     relatedFreebies: ['savings-goal-tracker'],
     relatedLinks: [
       { label: 'Savings Goal Calculator', href: '/finance/savings-goal-calculator', description: 'Explore a contribution plan for the amount you want to save.' },
@@ -654,6 +726,7 @@ export const freebies: readonly Freebie[] = [
     usLetterDownload: `${downloadRoot}/emergency-fund-planner/Zalea_Studio_Emergency_Fund_Planner_US_Letter_Final.pdf`,
     bundleDownload: `${downloadRoot}/emergency-fund-planner/Zalea_Studio_Emergency_Fund_Planner.zip`,
     bundleFormat: 'ZIP',
+    fileVerification: { a4Bytes: 7496, usLetterBytes: 7486, bundleBytes: 11330 },
     includedPages: ['Cover', 'Emergency Fund Planner'],
     helpsTitle: 'What an Emergency Fund Plan Can Clarify',
     helpsWith: [
@@ -678,6 +751,7 @@ export const freebies: readonly Freebie[] = [
       takeaway: 'The worksheet can separate a reachable first milestone from a longer-term reference instead of presenting one universal target as correct.',
     },
     whoItsFor: 'For anyone who wants an educational worksheet to organise an emergency-savings target and track gradual progress.',
+    limitation: 'The planner does not prescribe a universal emergency-fund amount, connect to financial accounts or account automatically for changing expenses, interest or inflation.',
     relatedFreebies: ['savings-goal-tracker'],
     relatedLinks: [
       { label: 'Savings Goal Calculator', href: '/finance/savings-goal-calculator', description: 'Estimate contributions toward a personal savings target.' },

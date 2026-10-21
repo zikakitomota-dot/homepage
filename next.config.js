@@ -1,9 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  turbopack: { root: __dirname },
   images: { unoptimized: true },
+  async rewrites() {
+    return {
+      afterFiles: [
+        { source: '/health', destination: '/health/index.html' },
+        { source: '/health/:path+', destination: '/health/:path+/index.html' },
+      ],
+    };
+  },
   async redirects() {
     return [
       { source: '/images/english-games-social', destination: '/images/english-games-social.png', permanent: true },

@@ -22,6 +22,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/editorial-standards`,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
+    ...[
+      '/health',
+      '/health/disclaimer',
+      '/health/calculators/bmi',
+      '/health/calculators/bmr',
+      '/health/calculators/tdee',
+      '/health/calculators/ideal-weight',
+      '/health/calculators/calorie-deficit',
+      '/health/calculators/water-intake',
+      '/health/calculators/walking-calories',
+    ].map((path) => ({
+      url: `${baseUrl}${path}`,
+      changeFrequency: 'monthly' as const,
+      priority: path === '/health' ? 0.9 : 0.8,
+    })),
+    {
       url: `${baseUrl}/shop`,
       changeFrequency: "weekly",
       priority: 0.9,
@@ -123,6 +143,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/games/science/animal-habitats`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/games/geography`,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/games/geography/continent-explorer`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/games/geography/ocean-explorer`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/games/geography/flag-detective`,
       changeFrequency: "monthly",
       priority: 0.8,
     },

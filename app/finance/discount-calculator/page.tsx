@@ -2,12 +2,12 @@ import { CalculatorPage } from '@/components/money/calculator-page';
 import { DiscountCalculator } from '@/components/money/calculators';
 import { createMoneyMetadata } from '@/lib/money-tools';
 
-const description = 'Calculate a discount amount, final sale price, and how much you save with this free discount calculator.';
+const description = 'Check a percentage discount, final sale price, consecutive offers, and how the checkout price compares with amount-off or cashback deals.';
 export const metadata = createMoneyMetadata('Discount Calculator', description, '/finance/discount-calculator');
 
 export default function Page() {
   return <CalculatorPage title="Discount Calculator" description={description} calculator={<DiscountCalculator />}
-    whatItDoes="This calculator turns a percentage discount into a clear saving amount and final price, helping you check sale offers before buying."
+    whatItDoes="This calculator turns one percentage discount into a saving amount and final price. A fixed amount-off offer needs direct subtraction instead: RM15 off RM100 ends at RM85, while this calculator expects a percentage rate."
     whenToUse="Use it to check an advertised sale, compare a percentage offer with a fixed-price deal, or confirm the reduced price before checkout. It is especially helpful when two shops show the same product with different original prices or when a second discount is applied after the first."
     howToUse={['Choose your preferred currency.', 'Enter the original price.', 'Enter the advertised discount percentage. Results update instantly.']}
     formula="Discount amount = original price × discount percentage ÷ 100. Final price = original price − discount amount."
@@ -33,7 +33,7 @@ export default function Page() {
       'For two consecutive discounts, calculate the first sale price and enter that result as the starting price for the second.',
       'Check whether a coupon excludes sale items or changes eligibility for free delivery before relying on the estimated total.',
     ]}
-    decisionContext={<div><h2 className="text-3xl font-bold tracking-tight">Compare the amount paid, not the size of the sale badge</h2><div className="mt-6 grid gap-5 md:grid-cols-3"><div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Different starting prices</h3><p className="mt-3 leading-relaxed text-muted-foreground">A 30% discount on RM150 ends at RM105; a 20% discount on RM120 ends at RM96. The smaller advertised discount produces the lower checkout price.</p></div><div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Consecutive discounts</h3><p className="mt-3 leading-relaxed text-muted-foreground">For 20% off followed by 10% off, reduce the price twice. The combined reduction is 28%, because the second 10% applies to the remaining 80%.</p></div><div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Extra charges</h3><p className="mt-3 leading-relaxed text-muted-foreground">Delivery, tax or a required membership can reverse a comparison. Add those amounts only after checking how the retailer applies them.</p></div></div></div>}
+    decisionContext={<div><h2 className="text-3xl font-bold tracking-tight">Compare the amount paid, not the size of the sale badge</h2><div className="mt-6 grid gap-5 md:grid-cols-2"><div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Worked example: different starting prices</h3><p className="mt-3 leading-relaxed text-muted-foreground">A 30% discount on RM150 saves RM45 and ends at RM105. A 20% discount on RM120 saves RM24 and ends at RM96. The smaller advertised discount produces the lower checkout price.</p></div><div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Worked example: consecutive discounts</h3><p className="mt-3 leading-relaxed text-muted-foreground">On RM200, 20% off reduces the price to RM160. A further 10% removes RM16, leaving RM144. The combined saving is RM56, or 28%—not 30%.</p></div><div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Instant discount or later cashback?</h3><p className="mt-3 leading-relaxed text-muted-foreground">A RM20 discount on RM200 charges RM180 now. Ten percent cashback may also be worth RM20, but usually charges RM200 first and can depend on eligibility, approval and a cap.</p></div><div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Charges and comparison prices</h3><p className="mt-3 leading-relaxed text-muted-foreground">Delivery, tax or a required membership can reverse a comparison. Also check whether the “original” price is a price the seller commonly charged rather than relying on the percentage badge alone.</p></div></div></div>}
     faqs={[
       { question: 'Can I calculate discounts in different currencies?', answer: 'Yes. Choose RM, USD, SGD, GBP, EUR, or AUD. The calculation stays the same; only the displayed currency changes.' },
       { question: 'Does this include tax or delivery fees?', answer: 'No. It calculates the discount on the price entered. Add tax or delivery separately if they are not included in the original price.' },
@@ -45,6 +45,7 @@ export default function Page() {
       { label: 'Percentage Calculator', href: '/math/percentage-calculator', description: 'Work with percentage change, reverse percentages and other percentage questions.' },
       { label: 'Percentage Points vs Percentage Change', href: '/guides/percentage-points-vs-percentage-change', description: 'Learn why a change in a percentage rate is not always the same as a percentage change.' },
       { label: 'Unit Price Calculator', href: '/finance/unit-price-calculator', description: 'Compare package value after deciding which prices should be used.' },
+      { label: 'Cashback Calculator', href: '/finance/cashback-calculator', description: 'Compare an immediate price reduction with a capped reward received after purchase.' },
     ]} />;
 }
 

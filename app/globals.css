@@ -48,4 +48,10 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  [data-ga-event='etsy_click'],
+  [data-ga-event='category_filter'],
+  [data-ga-event='payhip_click'] {
+    min-height: 44px;
+  }
 }

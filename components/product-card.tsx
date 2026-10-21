@@ -2,7 +2,18 @@ import Image from 'next/image';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import type { ShopProduct } from '@/lib/shop-products';
+
+type ShopProduct = {
+  title: string;
+  description: string;
+  price: string;
+  features: readonly string[];
+  image: string;
+  imageAlt: string;
+  href: string;
+  external: boolean;
+  cta: string;
+};
 
 type ProductCardProps = {
   product: ShopProduct;

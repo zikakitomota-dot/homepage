@@ -84,6 +84,7 @@ export default async function FreebiePage({ params }: Props) {
               <DownloadLink href={freebie.a4Download} slug={freebie.slug} format="a4_pdf" label="A4 PDF" note="International" />
               <DownloadLink href={freebie.usLetterDownload} slug={freebie.slug} format="us_letter_pdf" label="US Letter PDF" note="US & Canada" />
             </div>
+            <div className="mt-6 border-t border-border/60 pt-5"><h3 className="font-bold">Verified files in this download</h3><dl className="mt-3 space-y-3 text-xs text-muted-foreground"><FileProof label="A4 PDF" href={freebie.a4Download} bytes={freebie.fileVerification.a4Bytes} /><FileProof label="US Letter PDF" href={freebie.usLetterDownload} bytes={freebie.fileVerification.usLetterBytes} /><FileProof label="ZIP bundle" href={freebie.bundleDownload} bytes={freebie.fileVerification.bundleBytes} /></dl><p className="mt-4 text-xs leading-5 text-muted-foreground">The ZIP contains the two PDFs listed above. The stated page count includes the cover page.</p></div>
           </aside>
         </section>
         {freebie.workedExample ? <section className="border-y border-border/60 bg-secondary/25" aria-labelledby="worked-example-heading"><div className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20"><p className="text-sm font-bold uppercase tracking-[0.14em] text-primary">Filled-in illustration</p><h2 id="worked-example-heading" className="mt-2 text-3xl font-bold tracking-tight">{freebie.workedExample.title}</h2><p className="mt-4 max-w-3xl leading-7 text-muted-foreground">{freebie.workedExample.situation}</p><ul className="mt-6 grid gap-3 sm:grid-cols-2">{freebie.workedExample.entries.map((entry) => <li key={entry} className="rounded-2xl border border-border/60 bg-white p-4 font-medium">{entry}</li>)}</ul><p className="mt-6 rounded-2xl border border-primary/20 bg-primary/5 p-5 leading-7"><strong>Why this helps:</strong> {freebie.workedExample.takeaway}</p></div></section> : null}
@@ -112,6 +113,7 @@ export default async function FreebiePage({ params }: Props) {
             <h2 className="mt-4 text-2xl font-bold tracking-tight">Who It&apos;s For</h2>
             <p className="mt-5 leading-7 text-muted-foreground">{freebie.whoItsFor}</p>
             <p className="mt-5 text-sm font-semibold text-sage-foreground">{freebie.ageRange ? `${freebie.ageRange} • ` : ''}{freebie.audience}</p>
+            <div className="mt-6 border-t border-border/60 pt-5"><h3 className="font-bold">What this resource does not do</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{freebie.limitation}</p></div>
           </div>
         </section>
         {relatedFreebies.length ? <section className="border-y border-border/60 bg-background"><div className="mx-auto max-w-[1100px] px-4 py-14 sm:px-6 lg:px-8"><h2 className="text-2xl font-bold tracking-tight">You Might Also Like</h2><div className="mt-7 grid gap-5 sm:grid-cols-2">{relatedFreebies.map((related) => <Link key={related.slug} href={`/freebies/${related.slug}`} className="group rounded-2xl border border-border/60 bg-secondary/30 p-6 outline-none transition hover:border-primary/60 hover:shadow-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"><p className="text-xs font-semibold uppercase tracking-[0.14em] text-sage-foreground">{freebieCategories[related.category].label}</p><h3 className="mt-2 text-xl font-bold">{related.title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{related.description}</p><span className="mt-4 inline-flex items-center gap-2 font-semibold text-primary">View freebie <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden="true" /></span></Link>)}</div></div></section> : null}
@@ -124,4 +126,13 @@ export default async function FreebiePage({ params }: Props) {
 
 function DownloadLink({ href, slug, format, label, note }: { href: string; slug: string; format: string; label: string; note: string }) {
   return <a href={href} download data-ga-event="freebie_download" data-ga-label={slug} data-ga-format={format} className="flex min-h-12 items-center gap-3 rounded-xl border border-input px-4 py-3 outline-none transition hover:border-primary/70 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"><FileText className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" /><span><strong className="block text-sm">{label}</strong><span className="block text-xs text-muted-foreground">{note}</span></span></a>;
+}
+
+function FileProof({ label, href, bytes }: { label: string; href: string; bytes: number }) {
+  const filename = decodeURIComponent(href.split('/').at(-1) ?? href);
+  return <div><dt className="font-semibold text-foreground">{label} · {formatBytes(bytes)}</dt><dd className="mt-0.5 break-all">{filename}</dd></div>;
+}
+
+function formatBytes(bytes: number) {
+  return `${(bytes / 1024).toFixed(1)} KB`;
 }

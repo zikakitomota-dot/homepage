@@ -9,7 +9,7 @@ import { safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 
 const title = 'Zalea Freebies | Zalea Studio';
-const description = 'Explore free Zalea Studio printables, trackers and early learning activities for students, parents, teachers and kids in A4 and US Letter sizes.';
+const description = 'Choose free Zalea Studio printables by task, audience and format, with clear page lists for study, early learning and money planning.';
 const path = '/freebies';
 
 export const metadata: Metadata = {
@@ -38,10 +38,11 @@ export default function FreebiesPage() {
             <div className="mt-8 max-w-3xl">
               <p className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-primary"><Sparkles className="h-4 w-4" aria-hidden="true" /> Zalea Freebies</p>
               <h1 className="mt-4 text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Free Printables &amp; Downloads</h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">A growing collection of simple printables, trackers and activities made to download, print and use.</p>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Choose a printable by the job it needs to do: organise study, support one early skill, or make a money plan visible. Every item on this page is free, with A4 and US Letter files.</p>
             </div>
           </div>
         </section>
+        <section className="border-y border-border/60 bg-secondary/25" aria-labelledby="inside-download-heading"><div className="mx-auto max-w-[1100px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20"><p className="text-sm font-semibold text-primary">Check before you print</p><h2 id="inside-download-heading" className="mt-2 text-3xl font-bold tracking-tight">See what is actually inside</h2><p className="mt-4 max-w-3xl leading-7 text-muted-foreground">The collection is not a set of mystery download buttons. Each freebie page identifies its audience, exact page count, included pages, paper sizes and any supervision or educational notice. Where a worked example is available, it shows how the sheet can be filled in before you download it.</p><div className="mt-8 grid gap-5 md:grid-cols-3"><ProofCard href="/freebies/fine-motor-activity-cards" title="48 activity cards in a 20-page pack" detail="The contents list also identifies the grown-up guide, materials guide, planning sheet and observation pages." /><ProofCard href="/freebies/grade-tracker" title="Four clearly named study pages" detail="Cover, Grade Tracker, Assignment Tracker and Final Grade Planner—so students can check the scope before printing." /><ProofCard href="/freebies/big-purchase-planner" title="A filled planning example" detail="The landing page uses a laptop example to distinguish headline price, relevant extras, total cost and the amount still needed." /></div><p className="mt-6 max-w-3xl text-sm leading-6 text-muted-foreground">The PDFs and combined ZIP files are free. The separate <Link href="/shop" className="font-semibold text-primary hover:underline">Zalea Shop</Link> contains paid digital products; visiting or buying from the shop is not required to use these downloads.</p></div></section>
         <section className="mx-auto max-w-[1200px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="browse-freebies">
           <div className="mb-8 flex items-end justify-between gap-6">
             <div><p className="text-sm font-semibold text-primary">Ready when you are</p><h2 id="browse-freebies" className="mt-2 text-3xl font-bold tracking-tight">Browse the collection</h2></div>
@@ -102,4 +103,8 @@ function CollectionCard({ icon: Icon, title, children }: { icon: LucideIcon; tit
 
 function ExploreLink({ href, icon: Icon, title, children }: { href: string; icon: LucideIcon; title: string; children: React.ReactNode }) {
   return <Link href={href} className="group rounded-2xl border border-border/60 bg-secondary/30 p-5 outline-none transition hover:border-primary/60 hover:shadow-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"><Icon className="h-6 w-6 text-primary" aria-hidden={true} /><h3 className="mt-4 font-bold">{title}</h3><p className="mt-1 text-sm text-muted-foreground">{children}</p><span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">Explore <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden="true" /></span></Link>;
+}
+
+function ProofCard({ href, title, detail }: { href: string; title: string; detail: string }) {
+  return <article className="rounded-2xl border border-border/60 bg-white p-6"><h3 className="text-xl font-bold">{title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{detail}</p><Link href={href} className="mt-5 inline-flex items-center gap-1 font-semibold text-primary hover:underline">Inspect this freebie <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></article>;
 }

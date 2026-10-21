@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
+import { ContentAccountability } from '@/components/content-accountability';
 import { safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
 
@@ -64,6 +65,7 @@ export function GuidePage({ title, description, path, eyebrow, children, related
         <article className="mx-auto max-w-[900px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           {children}
         </article>
+        <ContentAccountability context="guide" />
 
         <section className="border-y border-border/60 bg-secondary/30" aria-labelledby="related-guide-resources">
           <div className="mx-auto max-w-[1000px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">

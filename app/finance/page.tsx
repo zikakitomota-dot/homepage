@@ -8,12 +8,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { moneyTools } from '@/lib/money-tools';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Everyday Money Tools | Zalea Studio' },
-  description: 'Use six free money calculators to compare prices, split bills, plan savings, estimate fuel costs, and understand cashback.',
+  title: { absolute: 'Everyday Finance Calculators and Decision Guide | Zalea Studio' },
+  description: 'Choose the right calculator for a discount, unit-price comparison, shared bill, savings timeline, fuel estimate, or cashback offer.',
   alternates: { canonical: '/finance' },
   openGraph: {
-    title: 'Everyday Money Tools | Zalea Studio',
-    description: 'Simple free calculators for everyday spending, savings, and smarter buying decisions.',
+    title: 'Everyday Finance Calculators and Decision Guide | Zalea Studio',
+    description: 'Match an everyday money decision to the right calculator before comparing the result.',
     url: '/finance',
     type: 'website',
   },
@@ -37,7 +37,7 @@ export default function MoneyToolsPage() {
           <div className="mx-auto max-w-[1200px] px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-24">
             <Badge variant="secondary" className="border-primary/20 bg-primary/10 text-primary">Free everyday calculators</Badge>
             <h1 className="mx-auto mt-5 max-w-4xl text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Everyday Money Tools</h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">Simple calculators to help you compare prices, save smarter and understand everyday spending.</p>
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">Start with the decision you need to make: compare two offers, divide a real expense, test a savings timeline, or estimate a trip. Each tool answers a different question, so choosing the right one matters as much as entering the numbers.</p>
           </div>
         </section>
 
@@ -67,10 +67,13 @@ export default function MoneyToolsPage() {
         <section className="border-y border-border/60 bg-secondary/30">
           <div className="mx-auto max-w-[1100px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
             <div className="max-w-3xl"><p className="text-sm font-semibold uppercase tracking-wider text-primary">Choose by decision</p><h2 className="mt-2 text-3xl font-bold tracking-tight">What are you trying to compare or plan?</h2><p className="mt-4 leading-relaxed text-muted-foreground">The tools are grouped around everyday decisions rather than financial products. You can check a price before buying, divide a shared expense, or estimate the time and cost involved in a future goal.</p></div>
-            <div className="mt-8 grid gap-5 md:grid-cols-3">
-              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Check a purchase</h3><p className="mt-3 leading-relaxed text-muted-foreground">Use the <Link href="/finance/discount-calculator" className="font-semibold text-primary hover:underline">Discount Calculator</Link> to check a sale price, the <Link href="/finance/unit-price-calculator" className="font-semibold text-primary hover:underline">Unit Price Calculator</Link> to compare package value, or the <Link href="/finance/cashback-calculator" className="font-semibold text-primary hover:underline">Cashback Calculator</Link> to understand a reward cap.</p></div>
-              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Share an expense</h3><p className="mt-3 leading-relaxed text-muted-foreground">The <Link href="/finance/split-bill-calculator" className="font-semibold text-primary hover:underline">Split Bill Calculator</Link> divides a total between people and can include a tip. Review the original receipt and any individual items before treating an equal split as fair.</p></div>
-              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Plan ahead</h3><p className="mt-3 leading-relaxed text-muted-foreground">Use the <Link href="/finance/savings-goal-calculator" className="font-semibold text-primary hover:underline">Savings Goal Calculator</Link> to compare monthly contributions, or estimate a journey with the <Link href="/finance/fuel-cost-calculator" className="font-semibold text-primary hover:underline">Fuel Cost Calculator</Link>.</p></div>
+            <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">What will I pay after a sale?</h3><p className="mt-3 leading-relaxed text-muted-foreground">Use the <Link href="/finance/discount-calculator" className="font-semibold text-primary hover:underline">Discount Calculator</Link> when the offer reduces today&apos;s price by a percentage.</p></div>
+              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Which pack is cheaper for the amount?</h3><p className="mt-3 leading-relaxed text-muted-foreground">Use the <Link href="/finance/unit-price-calculator" className="font-semibold text-primary hover:underline">Unit Price Calculator</Link> when package sizes or multipacks differ.</p></div>
+              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">What reward will I receive later?</h3><p className="mt-3 leading-relaxed text-muted-foreground">Use the <Link href="/finance/cashback-calculator" className="font-semibold text-primary hover:underline">Cashback Calculator</Link> for eligible spend, percentage rewards and caps.</p></div>
+              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">How should we settle this bill?</h3><p className="mt-3 leading-relaxed text-muted-foreground">Use the <Link href="/finance/split-bill-calculator" className="font-semibold text-primary hover:underline">Split Bill Calculator</Link> only after deciding that an equal split is appropriate.</p></div>
+              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">How long could this savings goal take?</h3><p className="mt-3 leading-relaxed text-muted-foreground">Use the <Link href="/finance/savings-goal-calculator" className="font-semibold text-primary hover:underline">Savings Goal Calculator</Link> to test current savings and sustainable monthly contributions.</p></div>
+              <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">What might this journey cost in fuel?</h3><p className="mt-3 leading-relaxed text-muted-foreground">Use the <Link href="/finance/fuel-cost-calculator" className="font-semibold text-primary hover:underline">Fuel Cost Calculator</Link> with distance, vehicle efficiency and price per litre.</p></div>
             </div>
           </div>
         </section>

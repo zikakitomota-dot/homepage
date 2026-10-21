@@ -32,6 +32,10 @@ export default function Page() {
       { question: 'Will the actual trip cost be exactly the same?', answer: 'It is an estimate. Traffic, speed, weather, load, tyre pressure, and driving style can change actual fuel use.' },
       { question: 'Should I enter one-way or round-trip distance?', answer: 'Enter the total distance you expect to drive. For a return journey, include both directions plus any planned detours.' },
       { question: 'How much does one mile cost in fuel?', answer: 'This calculator does not accept miles or mpg directly. Convert the distance to kilometres and fuel economy to L/100 km or km/L before calculating, then convert the per-kilometre result if needed.' },
+    ]}
+    relatedLinks={[
+      { label: 'Split Bill Calculator', href: '/finance/split-bill-calculator', description: 'Divide an agreed trip expense equally after estimating the total fuel cost.' },
+      { label: 'All Finance Tools', href: '/finance', description: 'Choose another calculator for a purchase, savings plan, shared bill, or reward offer.' },
     ]} />;
 }
 

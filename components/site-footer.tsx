@@ -4,11 +4,12 @@ import { ABOUT_ROUTE, CONTACT_ROUTE, HEALTH_TOOLS_URL } from '@/lib/site';
 
 const footerLinks = [
   { label: 'Home', href: '/', external: false },
-  { label: 'Health Calculators', href: HEALTH_TOOLS_URL, external: true },
+  { label: 'Health Calculators', href: HEALTH_TOOLS_URL, external: false },
   { label: 'Games', href: '/games', external: false },
   { label: 'Guides', href: '/guides', external: false },
   { label: 'Shop', href: '/shop', external: false },
   { label: 'About', href: ABOUT_ROUTE, external: false },
+  { label: 'Editorial Standards', href: '/editorial-standards', external: false },
   { label: 'Contact', href: CONTACT_ROUTE, external: false },
   { label: 'Privacy Policy', href: '/privacy-policy', external: false },
   { label: 'Terms of Use', href: '/terms-of-use', external: false },
@@ -40,6 +41,7 @@ export function SiteFooter() {
           </nav>
         </div>
         <div className="mt-8 border-t border-border/60 pt-6 text-center">
+          <p className="mb-2 text-sm text-muted-foreground">Published and maintained by Zalea Studio · <Link href="/editorial-standards" className="font-semibold text-primary hover:underline">How content is prepared</Link> · <Link href="/contact" className="font-semibold text-primary hover:underline">Report an issue</Link></p>
           <p className="text-sm text-muted-foreground">© 2026 Zalea Studio. All rights reserved.</p>
         </div>
       </div>

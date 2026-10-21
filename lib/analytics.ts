@@ -4,6 +4,8 @@ export const analyticsEventNames = [
   'calculator_used',
   'product_click',
   'payhip_click',
+  'etsy_click',
+  'category_filter',
   'game_launch',
   'game_started',
   'difficulty_selected',

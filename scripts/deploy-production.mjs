@@ -59,6 +59,8 @@ async function main() {
   await mkdir(publicManifestDirectory, { recursive: true });
   await writeFile(publicManifestPath, `${JSON.stringify(currentManifest)}\n`, 'utf8');
   try {
+    console.log(`[Deploy] Verified authoritative main working directory: ${projectRoot}`);
+    await runNpm(['run', 'build:health']);
     await runNpm(['exec', '--', 'opennextjs-cloudflare', 'build']);
   } finally {
     if (manifestExisted) await writeFile(publicManifestPath, originalManifest);

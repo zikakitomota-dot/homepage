@@ -1,295 +1,49 @@
-import {
-  PAYHIP_MONEY_MILESTONE_USD_URL,
-  PAYHIP_NO_SPEND_COLLECTION_URL,
-} from '@/lib/site';
+import { PAYHIP_ACADEMY_URL } from '@/lib/site';
+
+export const ETSY_SHOP_URL = 'https://www.etsy.com/shop/ZaleaStudioCo';
 
 export const SHOP_CATEGORIES = [
-  {
-    id: 'business-tools',
-    title: 'Business Tools',
-    description: 'Spreadsheets, calculators and practical business templates.',
-    icon: 'briefcase',
-  },
-  {
-    id: 'kids-learning',
-    title: 'Kids & Learning',
-    description: 'Games and learning resources designed to make practice more engaging.',
-    icon: 'graduation-cap',
-  },
-  {
-    id: 'printables-templates',
-    title: 'Printables & Templates',
-    description: 'Printable challenges, trackers and editable templates for everyday use.',
-    icon: 'files',
-  },
+  { id: 'business-templates', title: 'Business Templates', description: 'Excel tools for clearer day-to-day business records and decisions.' },
+  { id: 'bundles-collections', title: 'Bundles & Collections', description: 'Coordinated templates collected into one practical download.' },
 ] as const;
 
 export type ShopCategoryId = (typeof SHOP_CATEGORIES)[number]['id'];
+export type EtsyAvailability = 'active';
 
-export type ShopProduct = {
+export type EtsyProduct = {
   id: string;
-  shopCategory: ShopCategoryId;
-  category: string;
-  badge?: string;
   title: string;
-  description: string;
-  price: string;
-  features: readonly string[];
-  formats: readonly string[];
-  image: string;
+  shortDescription: string;
+  category: ShopCategoryId;
+  imagePath: string;
   imageAlt: string;
-  href: string;
-  cta: string;
-  external: boolean;
+  etsyUrl: string;
+  availability: EtsyAvailability;
+  featured: boolean;
+  popularityRank?: number;
+  lastVerifiedDate: string;
+  formats: readonly string[];
 };
 
-export const SHOP_PRODUCTS: readonly ShopProduct[] = [
-  {
-    id: 'mobile-car-detailing-business-toolkit',
-    shopCategory: 'business-tools',
-    category: 'Business operations',
-    title: 'Mobile Car Detailing Business Toolkit',
-    description: 'An Excel manager and editable forms for organizing pricing, customers, jobs and business finances.',
-    price: 'USD 14.99',
-    features: ['Excel business manager', 'Customer and job organization', 'Editable business forms'],
-    formats: ['XLSX', 'DOCX', 'PDF'],
-    image: '/images/shop/mobile-car-detailing-toolkit.webp',
-    imageAlt: 'Mobile Car Detailing Business Toolkit product cover',
-    href: 'https://payhip.com/b/bdj7p',
-    cta: 'View Product',
-    external: true,
-  },
-  {
-    id: 'zalea-english-academy',
-    shopCategory: 'kids-learning',
-    category: 'English learning',
-    badge: 'Founding Member',
-    title: 'Zalea English Academy™ – Founding Member Lifetime Access',
-    description: 'Interactive English games that help children practise grammar and vocabulary through play.',
-    price: 'USD 14.99',
-    features: ['Grammar Level 2', 'Vocabulary Level 1', 'Future Academy updates included'],
-    formats: ['Digital game'],
-    image: '/images/shop/zalea-english-academy.jpg',
-    imageAlt: 'Zalea English Academy Lifetime Access product cover',
-    href: '/games/english/academy',
-    cta: 'Explore Academy',
-    external: false,
-  },
-  {
-    id: 'little-money-master-volume-1',
-    shopCategory: 'kids-learning',
-    category: 'Financial literacy for kids',
-    title: 'Little Money Master™ Volume 1 – Needs or Wants?',
-    description: 'A playful financial literacy game that helps children aged 5–8 understand needs and wants.',
-    price: 'USD 5.99',
-    features: ['Interactive learning game', 'Parent & Teacher Guide', 'Completion certificate'],
-    formats: ['Digital game'],
-    image: '/images/Cover.webp',
-    imageAlt: 'Little Money Master Volume 1 Needs or Wants product cover',
-    href: '/shop/little-money-master-volume-1',
-    cta: 'View Game',
-    external: false,
-  },
-  {
-    id: 'pet-waste-removal-business-toolkit',
-    shopCategory: 'business-tools',
-    category: 'Service business toolkit',
-    title: 'Pet Waste Removal Business Toolkit',
-    description: 'A practical system for tracking customers, service visits, routes, payments and expenses.',
-    price: 'USD 17.99',
-    features: ['Excel business manager', 'Customer and route tracking', 'Printable business forms'],
-    formats: ['XLSX', 'DOCX', 'PDF'],
-    image: '/images/shop/pet-waste-removal-toolkit.webp',
-    imageAlt: 'Pet Waste Removal Business Toolkit product cover',
-    href: 'https://payhip.com/b/cNCuL',
-    cta: 'View Product',
-    external: true,
-  },
-  {
-    id: 'first-a-z-english-words',
-    shopCategory: 'kids-learning',
-    category: 'Alphabet worksheets',
-    title: 'My First A–Z English Words – Color & Learn',
-    description: 'Printable alphabet worksheets for ages 3–6 with coloring, letter tracing and simple English words.',
-    price: 'USD 4.99',
-    features: ['A–Z alphabet practice', 'Coloring activities', 'Letter tracing'],
-    formats: ['PDF'],
-    image: '/images/shop/first-a-z-english-words.webp',
-    imageAlt: 'My First A to Z English Words printable workbook cover',
-    href: 'https://payhip.com/b/1qtoW',
-    cta: 'View Product',
-    external: true,
-  },
-  {
-    id: 'no-spend-collection',
-    shopCategory: 'printables-templates',
-    category: 'Money challenge',
-    title: 'The Do-It Challenge™ – No Spend Collection',
-    description: 'Printable challenges designed to make cutting unnecessary spending feel simple, visual and motivating.',
-    price: 'USD 4.99',
-    features: ['Four no-spend challenge lengths', 'Reflection pages', 'Reward planner'],
-    formats: ['Printable'],
-    image: '/images/shop/no-spend-collection.jpg',
-    imageAlt: 'The Do-It Challenge No Spend Collection printable bundle cover',
-    href: PAYHIP_NO_SPEND_COLLECTION_URL,
-    cta: 'View Collection',
-    external: true,
-  },
-  {
-    id: 'money-milestone-usd',
-    shopCategory: 'printables-templates',
-    category: 'Savings challenge',
-    title: 'The Do-It Challenge™ – Money Milestone (USD)',
-    description: 'A printable savings tracker that turns your money goals into visible milestones worth celebrating.',
-    price: 'USD 4.99',
-    features: ['$500 to $10,000 goals', 'Five printable challenges', '50-envelope tracking format'],
-    formats: ['Printable'],
-    image: '/images/shop/money-milestone-usd.jpg',
-    imageAlt: 'The Do-It Challenge Money Milestone USD printable savings bundle cover',
-    href: PAYHIP_MONEY_MILESTONE_USD_URL,
-    cta: 'View Challenge',
-    external: true,
-  },
-  {
-    id: 'pregnancy-announcement-neutral-beige',
-    shopCategory: 'printables-templates',
-    category: 'Editable announcement',
-    title: 'Minimalist Pregnancy Announcement – Neutral Beige',
-    description: 'A simple neutral pregnancy announcement template that can be personalized in Canva.',
-    price: 'USD 3.99',
-    features: ['Editable Canva template', 'Neutral beige design'],
-    formats: ['Canva', 'PDF'],
-    image: '/images/shop/pregnancy-announcement-neutral-beige.webp',
-    imageAlt: 'Minimalist neutral beige pregnancy announcement template',
-    href: 'https://payhip.com/b/gV1n5',
-    cta: 'View Product',
-    external: true,
-  },
-  {
-    id: 'pregnancy-announcement-terracotta',
-    shopCategory: 'printables-templates',
-    category: 'Editable announcement',
-    title: 'Pregnancy Announcement Canva Template – Terracotta',
-    description: 'A minimalist terracotta pregnancy announcement template that can be personalized in Canva.',
-    price: 'USD 3.99',
-    features: ['Editable Canva template', 'Terracotta design'],
-    formats: ['Canva', 'PDF'],
-    image: '/images/shop/pregnancy-announcement-terracotta.webp',
-    imageAlt: 'Minimalist terracotta pregnancy announcement Canva template',
-    href: 'https://payhip.com/b/3WwOF',
-    cta: 'View Product',
-    external: true,
-  },
-  {
-    id: 'pregnancy-announcement-blush-pink',
-    shopCategory: 'printables-templates',
-    category: 'Editable announcement',
-    title: 'Pregnancy Announcement Canva Template – Blush Pink',
-    description: 'A minimalist blush pink pregnancy announcement template that can be personalized in Canva.',
-    price: 'USD 3.99',
-    features: ['Editable Canva template', 'Blush pink design'],
-    formats: ['Canva', 'PDF'],
-    image: '/images/shop/pregnancy-announcement-blush-pink.webp',
-    imageAlt: 'Minimalist blush pink pregnancy announcement Canva template',
-    href: 'https://payhip.com/b/D1zt5',
-    cta: 'View Product',
-    external: true,
-  },
-  {
-    id: 'pregnancy-announcement-dusty-blue',
-    shopCategory: 'printables-templates',
-    category: 'Editable announcement',
-    title: 'Pregnancy Announcement Canva Template – Dusty Blue',
-    description: 'A minimalist dusty blue pregnancy announcement template that can be personalized in Canva.',
-    price: 'USD 3.99',
-    features: ['Editable Canva template', 'Dusty blue design'],
-    formats: ['Canva', 'PDF'],
-    image: '/images/shop/pregnancy-announcement-dusty-blue.webp',
-    imageAlt: 'Minimalist dusty blue pregnancy announcement Canva template',
-    href: 'https://payhip.com/b/7CtN0',
-    cta: 'View Product',
-    external: true,
-  },
-  {
-    id: 'pregnancy-announcement-sage-green',
-    shopCategory: 'printables-templates',
-    category: 'Editable announcement',
-    title: 'Pregnancy Announcement Canva Template – Sage Green',
-    description: 'A minimalist sage green pregnancy announcement template that can be personalized in Canva.',
-    price: 'USD 3.99',
-    features: ['Editable Canva template', 'Sage green design'],
-    formats: ['Canva', 'PDF'],
-    image: '/images/shop/pregnancy-announcement-sage-green.webp',
-    imageAlt: 'Minimalist sage green pregnancy announcement Canva template',
-    href: 'https://payhip.com/b/ROJGj',
-    cta: 'View Product',
-    external: true,
-  },
-  {
-    id: 'baby-birth-announcement-neutral-beige',
-    shopCategory: 'printables-templates',
-    category: 'Editable announcement',
-    title: 'Minimalist Baby Birth Announcement – Neutral Beige',
-    description: 'An editable neutral template for sharing a baby’s birth details in a clean minimalist style.',
-    price: 'USD 3.99',
-    features: ['Editable Canva template', 'Neutral beige design'],
-    formats: ['Canva', 'PDF'],
-    image: '/images/shop/baby-birth-announcement-neutral-beige.webp',
-    imageAlt: 'Minimalist neutral beige baby birth announcement template',
-    href: 'https://payhip.com/b/XNaM6',
-    cta: 'View Product',
-    external: true,
-  },
-  {
-    id: 'baby-shower-invitation-neutral-beige',
-    shopCategory: 'printables-templates',
-    category: 'Editable invitation',
-    title: 'Minimalist Baby Shower Invitation – Neutral Beige',
-    description: 'A warm neutral baby shower invitation with editable event and RSVP details in Canva.',
-    price: 'USD 3.99',
-    features: ['Editable Canva template', 'Neutral botanical design'],
-    formats: ['Canva', 'PDF'],
-    image: '/images/shop/baby-shower-invitation-neutral-beige.webp',
-    imageAlt: 'Minimalist neutral beige baby shower invitation template',
-    href: 'https://payhip.com/b/yP4gk',
-    cta: 'View Product',
-    external: true,
-  },
-  {
-    id: 'gender-reveal-invitation-neutral-beige',
-    shopCategory: 'printables-templates',
-    category: 'Editable invitation',
-    title: 'Minimalist Gender Reveal Invitation – Neutral Beige',
-    description: 'A warm neutral gender reveal invitation with editable event and RSVP details in Canva.',
-    price: 'USD 3.99',
-    features: ['Editable Canva template', 'Neutral ribbon design'],
-    formats: ['Canva', 'PDF'],
-    image: '/images/shop/gender-reveal-invitation-neutral-beige.webp',
-    imageAlt: 'Minimalist neutral beige gender reveal invitation template',
-    href: 'https://payhip.com/b/LyPrv',
-    cta: 'View Product',
-    external: true,
-  },
-  {
-    id: 'first-birthday-invitation-neutral-beige',
-    shopCategory: 'printables-templates',
-    category: 'Editable invitation',
-    title: 'Minimalist First Birthday Invitation – Neutral Beige',
-    description: 'A warm neutral first birthday invitation with editable event details in Canva.',
-    price: 'USD 3.99',
-    features: ['Editable Canva template', 'Neutral first birthday design'],
-    formats: ['Canva', 'PDF'],
-    image: '/images/shop/first-birthday-invitation-neutral-beige.webp',
-    imageAlt: 'Minimalist neutral beige first birthday invitation template',
-    href: 'https://payhip.com/b/2Uf4Q',
-    cta: 'View Product',
-    external: true,
-  },
+export const ETSY_PRODUCTS: readonly EtsyProduct[] = [
+  { id: 'expiry-renewal-tracker', title: 'Expiry Date Spreadsheet', shortDescription: 'Track licences, insurance, certificates, permits and renewals with automatic status alerts inside Excel.', category: 'business-templates', imagePath: '/images/shop/etsy/expiry-renewal-tracker.webp', imageAlt: 'Expiry and Renewal Tracker showing upcoming dates, days remaining and status alerts', etsyUrl: 'https://www.etsy.com/listing/4579610091/expiry-date-spreadsheet-licence', availability: 'active', featured: true, popularityRank: 1, lastVerifiedDate: '2026-10-20', formats: ['Excel', 'Digital download'] },
+  { id: 'quote-follow-up-tracker', title: 'Quote Follow-Up Spreadsheet', shortDescription: 'Organize quotes, calculate follow-up dates and see which prospective customers need attention.', category: 'business-templates', imagePath: '/images/shop/etsy/quote-follow-up-tracker.webp', imageAlt: 'Quote and Estimate Follow-Up Tracker showing follow-up dates, statuses and open quote value', etsyUrl: 'https://www.etsy.com/listing/4581575519/quote-follow-up-spreadsheet-estimate', availability: 'active', featured: true, popularityRank: 2, lastVerifiedDate: '2026-10-20', formats: ['Excel', 'Digital download'] },
+  { id: 'small-business-excel-bundle', title: 'Small Business Excel Bundle', shortDescription: 'Four practical workbooks for invoices, income and expenses, sales, and client follow-ups.', category: 'bundles-collections', imagePath: '/images/shop/etsy/small-business-excel-bundle.webp', imageAlt: 'Small Business Excel Bundle showing four spreadsheet dashboards', etsyUrl: 'https://www.etsy.com/listing/4572683633/small-business-excel-bundle-finance', availability: 'active', featured: false, lastVerifiedDate: '2026-10-20', formats: ['Excel', 'ZIP download'] },
+  { id: 'invoice-payment-tracker', title: 'Invoice & Payment Tracker', shortDescription: 'Create invoices, monitor due dates and payments, and review outstanding balances from one workbook.', category: 'business-templates', imagePath: '/images/shop/etsy/invoice-payment-tracker.webp', imageAlt: 'Invoice and Payment Tracker showing its dashboard, invoice tracker, invoice template and setup sheets', etsyUrl: 'https://www.etsy.com/listing/4571805526/invoice-payment-tracker-spreadsheet', availability: 'active', featured: false, lastVerifiedDate: '2026-10-20', formats: ['Excel', 'Digital download'] },
+  { id: 'income-expense-tracker', title: 'Small Business Income & Expense Tracker', shortDescription: 'Record income and expenses, review monthly profit, and see a clear business-finance dashboard.', category: 'business-templates', imagePath: '/images/shop/etsy/income-expense-tracker.webp', imageAlt: 'Small Business Income and Expense Tracker with dashboard, transaction sheets and monthly summary', etsyUrl: 'https://www.etsy.com/listing/4571938547/small-business-income-expense-tracker', availability: 'active', featured: false, lastVerifiedDate: '2026-10-20', formats: ['Excel', 'Digital download'] },
+  { id: 'sales-tracker', title: 'Small Business Sales Tracker', shortDescription: 'Track sales and payment status while reviewing monthly revenue, customers and products.', category: 'business-templates', imagePath: '/images/shop/etsy/sales-tracker.webp', imageAlt: 'Small Business Sales Tracker with sales dashboard, monthly summary and payment status views', etsyUrl: 'https://www.etsy.com/listing/4572370903/small-business-sales-spreadsheet-excel', availability: 'active', featured: false, lastVerifiedDate: '2026-10-20', formats: ['Excel', 'Digital download'] },
+  { id: 'seasonal-order-fulfillment-planner', title: 'Seasonal Order & Fulfillment Planner', shortDescription: 'Plan seasonal orders, shipping, inventory and profit from one organized spreadsheet.', category: 'business-templates', imagePath: '/images/shop/etsy/seasonal-order-fulfillment-planner.webp', imageAlt: 'Seasonal Order and Fulfillment Planner spreadsheet cover', etsyUrl: 'https://www.etsy.com/listing/4576557255/seasonal-order-fulfillment-planner', availability: 'active', featured: false, lastVerifiedDate: '2026-10-20', formats: ['Excel', 'Digital download'] },
+  { id: 'black-friday-profit-planner', title: 'Black Friday & Cyber Monday Profit Planner', shortDescription: 'Compare discounts, inventory, marketing costs and projected profit before a major sales event.', category: 'business-templates', imagePath: '/images/shop/etsy/black-friday-profit-planner.webp', imageAlt: 'Black Friday and Cyber Monday Profit Planner spreadsheet cover', etsyUrl: 'https://www.etsy.com/listing/4575832635/black-friday-profit-planner-cyber-monday', availability: 'active', featured: false, lastVerifiedDate: '2026-10-20', formats: ['Excel', 'Digital download'] },
 ];
 
-export const FEATURED_PRODUCT_IDS = [
-  'mobile-car-detailing-business-toolkit',
-  'zalea-english-academy',
-  'little-money-master-volume-1',
-  'money-milestone-usd',
-] as const;
+// Ordered manually from seller-provided merchandising information. Sales counts are not public copy.
+export const POPULAR_PICK_IDS: readonly EtsyProduct['id'][] = [
+  'expiry-renewal-tracker',
+  'quote-follow-up-tracker',
+];
+
+export const ACADEMY_SHOP_PRODUCT = {
+  id: 'zalea-english-academy', title: 'Zalea English Academy — Founding Member Lifetime Access',
+  description: 'Twenty paid English learning games covering Grammar Level 2 and Vocabulary Level 1, with future Academy updates included.',
+  price: 'USD 9.99', imagePath: '/images/shop/zalea-english-academy.jpg', imageAlt: 'Zalea English Academy Lifetime Access product cover', payhipUrl: PAYHIP_ACADEMY_URL,
+} as const;

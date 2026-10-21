@@ -79,7 +79,7 @@ export default function TermsOfUsePage() {
       </LegalSection>
 
       <LegalSection title="12. Changes to these terms">
-        <p>These terms may be updated when features, providers or legal requirements change. The automatically generated Last Updated date at the top identifies the version produced with the current site build. If one provision is unenforceable, the remaining provisions continue to apply.</p>
+        <p>These terms may be updated when features, providers or legal requirements change. The Last Updated date at the top changes only when these terms are actually reviewed or revised; routine site builds do not change it. If one provision is unenforceable, the remaining provisions continue to apply.</p>
       </LegalSection>
 
       <LegalSection title="13. Contact">

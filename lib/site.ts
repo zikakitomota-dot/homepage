@@ -1,5 +1,5 @@
 export const SITE_URL = 'https://zaleastudio.com';
-export const HEALTH_TOOLS_URL = 'https://health.zaleastudio.com/';
+export const HEALTH_TOOLS_URL = '/health';
 export const ABOUT_ROUTE = '/about';
 export const CONTACT_ROUTE = '/contact';
 
@@ -24,7 +24,7 @@ export const navLinks = [
 ] as const;
 
 export const toolLinks = [
-  { label: 'Health Calculators', href: HEALTH_TOOLS_URL, external: true },
+  { label: 'Health Calculators', href: HEALTH_TOOLS_URL, external: false },
   { label: 'Finance', href: '/finance', external: false },
   { label: 'Work & Time', href: '/work-time', external: false },
   { label: 'Education', href: '/education', external: false },
