@@ -16,7 +16,11 @@
     "indexnow:dry-run": "node scripts/submit-indexnow.mjs --dry-run",
     "test:indexnow": "node --test scripts/indexnow.test.mjs scripts/indexnow-deployment.test.mjs",
     "test:health-redirects": "node scripts/validate-health-legacy-redirects.mjs",
-    "test:public-holidays": "node --test scripts/public-holidays.test.mjs scripts/business-days-holiday-audit.test.mjs"
+    "test:public-holidays": "node --test scripts/public-holidays.test.mjs scripts/business-days-holiday-audit.test.mjs",
+    "test:landmark-explorer": "node scripts/validate-landmark-explorer.mjs",
+    "test:subtraction-adventure": "node scripts/validate-subtraction-adventure.mjs",
+    "test:living-or-non-living": "node scripts/validate-living-or-non-living.mjs",
+    "test:learning-journey": "node --test scripts/learning-journey.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

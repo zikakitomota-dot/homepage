@@ -34,7 +34,7 @@ export function GameRoadmap() {
                     <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${styles.iconBox}`}><SubjectIcon className="h-6 w-6" aria-hidden="true" /></span>
                     <div><h3 id={`roadmap-${subjectId}`} className="text-2xl font-bold">{subjectName}</h3><p className="text-sm text-muted-foreground">Level 1 · {available} {available === 1 ? 'game' : 'games'} ready</p></div>
                   </div>
-                  {subjectId === 'geography' && <p className="rounded-full bg-white/80 px-3 py-1.5 text-sm font-semibold text-sky-800">3 of 4 games ready</p>}
+                  {subjectId === 'geography' && <p className="rounded-full bg-white/80 px-3 py-1.5 text-sm font-semibold text-sky-800">4 of 4 games ready</p>}
                 </div>
 
                 <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { generateAdditionRound, type AdditionDifficulty, type AdditionQuestion } from '@/lib/games/addition-level-one';
 import { getDifficultyProgress, readPreferredDifficulty, readProgress, recordGameResult, writePreferredDifficulty } from '@/lib/games/progress';
+import { useLearningSession } from '@/hooks/use-learning-session';
 
 type Phase = 'intro' | 'playing' | 'results';
 
@@ -20,6 +21,7 @@ const difficultyDetails: Record<AdditionDifficulty, { label: string; icon: strin
 const correctMessages = ['Great job!', 'Correct!', 'Nice work!'];
 
 export function AdditionGameEngine() {
+  const { startLearningSession, completeLearningSession } = useLearningSession(GAME_SLUG);
   const [phase, setPhase] = useState<Phase>('intro');
   const [questions, setQuestions] = useState<AdditionQuestion[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -47,6 +49,7 @@ export function AdditionGameEngine() {
     setSelectedAnswer(null);
     setScore(0);
     setPhase('playing');
+    startLearningSession();
   };
 
   const selectAnswer = (answer: number) => {
@@ -58,6 +61,7 @@ export function AdditionGameEngine() {
   const nextQuestion = () => {
     if (questionIndex === questions.length - 1) {
       recordGameResult(GAME_SLUG, difficulty, score);
+      completeLearningSession(score, questions.length);
       setBestScores((current) => ({ ...current, [difficulty]: Math.max(current[difficulty], score) }));
       setPhase('results');
       return;

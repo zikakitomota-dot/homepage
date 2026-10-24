@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { trackEvent } from '@/lib/analytics';
 import { continentMapPaths } from '@/lib/games/continent-map-paths';
 import { continents, generateContinentRound, getContinent, type ContinentId, type ContinentQuestion } from '@/lib/games/continent-explorer';
+import { useLearningSession } from '@/hooks/use-learning-session';
 
 type Phase = 'intro' | 'playing' | 'results';
 
@@ -42,6 +43,7 @@ function WorldMap({ target, selected, resolved, interactive, onSelect }: { targe
 }
 
 export function ContinentExplorerGame() {
+  const { startLearningSession, completeLearningSession } = useLearningSession('continent-explorer');
   const [phase, setPhase] = useState<Phase>('intro');
   const [questions, setQuestions] = useState<ContinentQuestion[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -62,6 +64,7 @@ export function ContinentExplorerGame() {
     setSelected(null);
     setScore(0);
     setPhase('playing');
+    startLearningSession();
     trackEvent(eventName, { game: GAME_ID, difficulty: 'level_1', questions: String(round.length) });
   };
 
@@ -77,6 +80,7 @@ export function ContinentExplorerGame() {
   const nextQuestion = () => {
     if (questionIndex === questions.length - 1) {
       const finalScore = score;
+      completeLearningSession(finalScore, questions.length);
       setPhase('results');
       trackEvent('game_completed', { game: GAME_ID, difficulty: 'level_1', correct: String(finalScore), questions: String(questions.length) });
       return;

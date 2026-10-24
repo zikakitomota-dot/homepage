@@ -16,6 +16,7 @@ export default defineConfig([
   globalIgnores([
     '.next/**',
     '.open-next/**',
+    '.wrangler/**',
     'public/health/**',
     'qa/**',
     'artifacts/**',

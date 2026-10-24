@@ -15,6 +15,11 @@ export const analyticsEventNames = [
   'cta_click',
   'freebie_download',
   'page_view',
+  'learning_journey_view',
+  'progress_export',
+  'progress_import',
+  'achievement_earned',
+  'recommended_game_click',
 ] as const;
 
 export type AnalyticsEventName = (typeof analyticsEventNames)[number];

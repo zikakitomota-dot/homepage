@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { trackEvent } from '@/lib/analytics';
 import { generateFlagRound, getFlagCountry, type FlagQuestion } from '@/lib/games/flag-detective';
+import { useLearningSession } from '@/hooks/use-learning-session';
 
 type Phase = 'intro' | 'playing' | 'results';
 const GAME_ID = 'flag_detective';
@@ -22,6 +23,7 @@ function FlagPicture({ countryId, concealedName = false, priority = false }: { c
 }
 
 export function FlagDetectiveGame() {
+  const { startLearningSession, completeLearningSession } = useLearningSession('flag-detective');
   const [phase, setPhase] = useState<Phase>('intro');
   const [questions, setQuestions] = useState<FlagQuestion[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -38,6 +40,7 @@ export function FlagDetectiveGame() {
   const startGame = (eventName: 'game_started' | 'play_again' = 'game_started') => {
     const round = generateFlagRound();
     setQuestions(round); setQuestionIndex(0); setSelected(null); setScore(0); setPhase('playing');
+    startLearningSession();
     trackEvent(eventName, { game: GAME_ID, difficulty: 'level_1', questions: String(round.length) });
   };
 
@@ -52,6 +55,7 @@ export function FlagDetectiveGame() {
 
   const nextQuestion = () => {
     if (questionIndex === questions.length - 1) {
+      completeLearningSession(score, questions.length);
       setPhase('results');
       trackEvent('game_completed', { game: GAME_ID, difficulty: 'level_1', correct: String(score), questions: String(questions.length) });
       return;

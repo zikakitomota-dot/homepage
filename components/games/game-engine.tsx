@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { AcademyResultsCta } from '@/components/games/academy-cta';
 import { getDifficultyProgress, readPreferredDifficulty, readProgress, recordGameResult, writePreferredDifficulty } from '@/lib/games/progress';
 import { gameDifficulties, type EnglishGame, type GameDifficulty, type GameQuestion } from '@/lib/games/types';
+import { useLearningSession } from '@/hooks/use-learning-session';
 
 type Phase = 'intro' | 'playing' | 'results';
 const difficultyLabels: Record<GameDifficulty, string> = { easy: 'Easy', normal: 'Medium', challenge: 'Hard' };
@@ -23,6 +24,7 @@ function shuffled<T>(items: readonly T[]) {
 }
 
 export function GameEngine({ game, nextGame }: { game: EnglishGame; nextGame?: Pick<EnglishGame, 'slug' | 'title'> }) {
+  const { startLearningSession, completeLearningSession } = useLearningSession(game.slug);
   const [phase, setPhase] = useState<Phase>('intro');
   const [questions, setQuestions] = useState<GameQuestion[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -56,6 +58,7 @@ export function GameEngine({ game, nextGame }: { game: EnglishGame; nextGame?: P
     setScore(0);
     setWordOrder([]);
     setPhase('playing');
+    startLearningSession();
   };
 
   const selectAnswer = (answer: string) => {
@@ -67,6 +70,7 @@ export function GameEngine({ game, nextGame }: { game: EnglishGame; nextGame?: P
   const nextQuestion = () => {
     if (questionIndex === questions.length - 1) {
       recordGameResult(game.slug, difficulty, score);
+      completeLearningSession(score, questions.length);
       setBestScores((current) => ({ ...current, [difficulty]: Math.max(current[difficulty], score) }));
       setPhase('results');
       return;

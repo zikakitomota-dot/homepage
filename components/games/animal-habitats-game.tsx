@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { trackEvent } from '@/lib/analytics';
 import { generateHabitatRound, type Animal, type Habitat, type HabitatDifficulty, type HabitatQuestion } from '@/lib/games/animal-habitats';
+import { useLearningSession } from '@/hooks/use-learning-session';
 
 type Phase = 'intro' | 'playing' | 'results';
 
@@ -31,6 +32,7 @@ function Artwork({ src, alt, emoji, habitat = false }: { src: string; alt: strin
 }
 
 export function AnimalHabitatsGame() {
+  const { startLearningSession, completeLearningSession } = useLearningSession('animal-habitats');
   const [phase, setPhase] = useState<Phase>('intro');
   const [difficulty, setDifficulty] = useState<HabitatDifficulty>('easy');
   const [questions, setQuestions] = useState<HabitatQuestion[]>([]);
@@ -69,6 +71,7 @@ export function AnimalHabitatsGame() {
     setCorrectAnswers(0);
     setFirstAttemptCorrect(0);
     setPhase('playing');
+    startLearningSession();
     trackEvent(eventName, { game: 'animal_habitats', difficulty, questions: String(round.length) });
   };
 
@@ -95,6 +98,7 @@ export function AnimalHabitatsGame() {
 
   const nextQuestion = () => {
     if (questionIndex === questions.length - 1) {
+      completeLearningSession(correctAnswers, questions.length);
       setPhase('results');
       trackEvent('game_completed', { game: 'animal_habitats', difficulty, correct: String(correctAnswers), first_attempt_correct: String(firstAttemptCorrect), questions: String(questions.length) });
       return;

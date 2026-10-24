@@ -127,6 +127,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/games/my-learning-journey`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/games/english`,
       changeFrequency: "weekly",
       priority: 0.9,
@@ -137,12 +142,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/games/math`,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/games/math/addition-level-1`,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/games/math/subtraction-level-1`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/games/science`,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/games/science/animal-habitats`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/games/science/living-or-non-living`,
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -163,6 +188,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/games/geography/flag-detective`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/games/geography/landmark-explorer`,
       changeFrequency: "monthly",
       priority: 0.8,
     },
