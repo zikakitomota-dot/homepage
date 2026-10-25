@@ -20,6 +20,9 @@ export const analyticsEventNames = [
   'progress_import',
   'achievement_earned',
   'recommended_game_click',
+  'worksheet_generated',
+  'worksheet_printed',
+  'worksheet_pdf_downloaded',
 ] as const;
 
 export type AnalyticsEventName = (typeof analyticsEventNames)[number];

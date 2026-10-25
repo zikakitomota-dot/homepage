@@ -20,7 +20,8 @@
     "test:landmark-explorer": "node scripts/validate-landmark-explorer.mjs",
     "test:subtraction-adventure": "node scripts/validate-subtraction-adventure.mjs",
     "test:living-or-non-living": "node scripts/validate-living-or-non-living.mjs",
-    "test:learning-journey": "node --test scripts/learning-journey.test.mjs"
+    "test:learning-journey": "node --test scripts/learning-journey.test.mjs",
+    "test:worksheets": "node --test scripts/worksheet-generation.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
