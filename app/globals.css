@@ -108,4 +108,28 @@
     break-after: auto;
     page-break-after: auto;
   }
+
+  body:has(.mission-certificate) > * {
+    visibility: visible;
+  }
+
+  body:has(.mission-certificate) header,
+  body:has(.mission-certificate) footer,
+  body:has(.mission-certificate) main > *:not(:has(.mission-certificate)),
+  body:has(.mission-certificate) main section:has(.mission-certificate) > *:not(.mission-certificate),
+  .mission-print-button {
+    display: none !important;
+  }
+
+  .mission-certificate {
+    position: fixed;
+    inset: 15mm;
+    min-height: 267mm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
 }

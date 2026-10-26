@@ -136,6 +136,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    ...[
+      '/games/missions',
+      '/games/missions/maths-explorer',
+      '/games/missions/world-explorer',
+      '/games/missions/science-detective',
+      '/games/missions/english-adventurer',
+    ].map((path) => ({
+      url: `${baseUrl}${path}`,
+      changeFrequency: 'monthly' as const,
+      priority: path === '/games/missions' ? 0.8 : 0.7,
+    })),
     {
       url: `${baseUrl}/games/english`,
       changeFrequency: "weekly",

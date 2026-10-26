@@ -1,6 +1,6 @@
 import { gameRegistry, type GameRegistryEntry } from './registry';
 
-export const LEARNING_JOURNEY_VERSION = 1 as const;
+export const LEARNING_JOURNEY_VERSION = 2 as const;
 export const LEARNING_JOURNEY_STORAGE_KEY = 'zalea-learning-journey-v1';
 export const LEARNING_JOURNEY_EVENT = 'zalea-learning-journey-changed';
 export const MAX_IMPORT_BYTES = 256 * 1024;
@@ -27,6 +27,7 @@ export type JourneyGameProgress = {
 
 export type EarnedAchievement = { id: AchievementId; earnedAt: string };
 export type RecordedSession = { id: string; gameId: string; completed: boolean };
+export type MissionEvidence = { id: string; completedAt: string };
 
 export type LearningJourney = {
   version: typeof LEARNING_JOURNEY_VERSION;
@@ -34,6 +35,7 @@ export type LearningJourney = {
   games: Record<string, JourneyGameProgress>;
   achievements: EarnedAchievement[];
   recordedSessions: RecordedSession[];
+  missionEvidence: MissionEvidence[];
 };
 
 export type AchievementId = 'first-adventure' | 'curious-explorer' | 'subject-explorer' | 'perfect-round' | 'keep-practising' | 'world-explorer';
@@ -54,8 +56,10 @@ const availableGames = gameRegistry.filter((game) => game.status === 'available'
 const availableById = new Map(availableGames.map((game) => [game.gameId, game]));
 
 export function createEmptyJourney(now = new Date().toISOString()): LearningJourney {
-  return { version: LEARNING_JOURNEY_VERSION, updatedAt: now, games: {}, achievements: [], recordedSessions: [] };
+  return { version: LEARNING_JOURNEY_VERSION, updatedAt: now, games: {}, achievements: [], recordedSessions: [], missionEvidence: [] };
 }
+
+const allowedMissionEvidence = new Set(['maths-explorer:worksheet']);
 
 function finiteInteger(value: unknown, max = 1_000_000) {
   return typeof value === 'number' && Number.isFinite(value) && value >= 0 ? Math.min(max, Math.floor(value)) : 0;
@@ -93,9 +97,9 @@ export function sanitizeJourney(value: unknown): LearningJourney | null {
         lastPlayedAt: null, firstCompletedAt: null,
       }]];
     }));
-    return sanitizeJourney({ version: LEARNING_JOURNEY_VERSION, updatedAt: source.updatedAt, games: migratedGames, achievements: [], recordedSessions: [] });
+    return sanitizeJourney({ version: LEARNING_JOURNEY_VERSION, updatedAt: source.updatedAt, games: migratedGames, achievements: [], recordedSessions: [], missionEvidence: [] });
   }
-  if (source.version !== LEARNING_JOURNEY_VERSION || !source.games || typeof source.games !== 'object' || Array.isArray(source.games)) return null;
+  if (source.version !== 1 && source.version !== LEARNING_JOURNEY_VERSION || !source.games || typeof source.games !== 'object' || Array.isArray(source.games)) return null;
   const now = new Date().toISOString();
   const games: Record<string, JourneyGameProgress> = {};
   for (const [gameId, raw] of Object.entries(source.games as Record<string, unknown>)) {
@@ -131,7 +135,13 @@ export function sanitizeJourney(value: unknown): LearningJourney | null {
       ? [{ id: item.id, gameId: item.gameId, completed: item.completed }]
       : [];
   }).slice(-250) : [];
-  const result: LearningJourney = { version: LEARNING_JOURNEY_VERSION, updatedAt: validDate(source.updatedAt) ?? now, games, achievements, recordedSessions };
+  const missionEvidence = Array.isArray(source.missionEvidence) ? source.missionEvidence.flatMap((raw) => {
+    if (!raw || typeof raw !== 'object') return [];
+    const item = raw as Record<string, unknown>;
+    const completedAt = validDate(item.completedAt);
+    return typeof item.id === 'string' && allowedMissionEvidence.has(item.id) && completedAt ? [{ id: item.id, completedAt }] : [];
+  }).filter((entry, index, all) => all.findIndex((candidate) => candidate.id === entry.id) === index) : [];
+  const result: LearningJourney = { version: LEARNING_JOURNEY_VERSION, updatedAt: validDate(source.updatedAt) ?? now, games, achievements, recordedSessions, missionEvidence };
   const verifiedAchievements = new Set(getEarnedAchievementIds({ ...result, achievements: [] }));
   result.achievements = result.achievements.filter((entry) => verifiedAchievements.has(entry.id));
   return result;
@@ -239,6 +249,18 @@ export function clearLearningJourney(storage?: StorageLike) {
   return saveJourney(createEmptyJourney(), storage);
 }
 
+export function setMissionEvidence(id: string, completed: boolean, storage?: StorageLike, now = new Date().toISOString()) {
+  if (!allowedMissionEvidence.has(id)) return null;
+  const progress = readLearningJourney(storage);
+  const exists = progress.missionEvidence.some((entry) => entry.id === id);
+  if (exists === completed) return { progress, saved: true };
+  progress.missionEvidence = completed
+    ? [...progress.missionEvidence, { id, completedAt: now }]
+    : progress.missionEvidence.filter((entry) => entry.id !== id);
+  progress.updatedAt = now;
+  return { progress, saved: saveJourney(progress, storage) };
+}
+
 export function exportLearningJourney(progress: LearningJourney) {
   return JSON.stringify(sanitizeJourney(progress) ?? createEmptyJourney(), null, 2);
 }
@@ -276,6 +298,8 @@ export function mergeLearningJourneys(current: LearningJourney, incoming: Learni
   const earnedAt = new Map([...current.achievements, ...incoming.achievements].map((entry) => [entry.id, entry.earnedAt]));
   merged.achievements = getEarnedAchievementIds(merged).map((id) => ({ id, earnedAt: earnedAt.get(id) ?? now }));
   merged.recordedSessions = [...current.recordedSessions, ...incoming.recordedSessions].filter((entry, index, all) => all.findIndex((candidate) => candidate.id === entry.id) === index).slice(-250);
+  merged.missionEvidence = [...current.missionEvidence, ...incoming.missionEvidence]
+    .filter((entry, index, all) => all.findIndex((candidate) => candidate.id === entry.id) === index);
   return merged;
 }
 

@@ -23,6 +23,11 @@ export const analyticsEventNames = [
   'worksheet_generated',
   'worksheet_printed',
   'worksheet_pdf_downloaded',
+  'mission_viewed',
+  'mission_started',
+  'mission_completed',
+  'mission_activity_clicked',
+  'mission_certificate_printed',
 ] as const;
 
 export type AnalyticsEventName = (typeof analyticsEventNames)[number];

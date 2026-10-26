@@ -8,12 +8,13 @@ import test from 'node:test';
 
 const output = mkdtempSync(join(tmpdir(), 'zalea-learning-journey-'));
 const compile = spawnSync(process.execPath, [
-  'node_modules/typescript/bin/tsc', 'lib/games/learning-journey.ts', 'lib/games/registry.ts',
+  'node_modules/typescript/bin/tsc', 'lib/games/learning-journey.ts', 'lib/games/registry.ts', 'lib/games/missions.ts',
   '--module', 'commonjs', '--target', 'es2022', '--outDir', output, '--esModuleInterop', '--skipLibCheck',
 ], { cwd: process.cwd(), encoding: 'utf8' });
 if (compile.status !== 0) throw new Error(`Test compilation failed:\n${compile.stdout}\n${compile.stderr}`);
 const require = createRequire(import.meta.url);
 const journey = require(join(output, 'learning-journey.js'));
+const missionData = require(join(output, 'missions.js'));
 process.on('exit', () => rmSync(output, { recursive: true, force: true }));
 
 class MemoryStorage {
@@ -25,8 +26,9 @@ class MemoryStorage {
 
 test('first-time visitor has no invented progress', () => {
   const progress = journey.readLearningJourney(new MemoryStorage());
-  assert.equal(progress.version, 1);
+  assert.equal(progress.version, journey.LEARNING_JOURNEY_VERSION);
   assert.deepEqual(progress.games, {});
+  assert.deepEqual(progress.missionEvidence, []);
 });
 
 test('a started and completed game records reliable totals', () => {
@@ -112,7 +114,7 @@ test('unavailable and quota-limited storage do not throw', () => {
 
 test('version 0 data migrates without inventing answer totals', () => {
   const migrated = journey.sanitizeJourney({ version: 0, updatedAt: '2026-01-01T00:00:00Z', games: { 'a-or-an': { plays: 3, completions: 2, bestCorrect: 9, bestQuestions: 10 } } });
-  assert.equal(migrated.version, 1);
+  assert.equal(migrated.version, journey.LEARNING_JOURNEY_VERSION);
   assert.equal(migrated.games['a-or-an'].sessionCount, 3);
   assert.equal(migrated.games['a-or-an'].totalQuestionsAttempted, 0);
   assert.equal(migrated.games['a-or-an'].personalBest.percentage, 90);
@@ -134,6 +136,37 @@ test('merge is idempotent and does not double imported counters', () => {
   const current = journey.readLearningJourney(storage);
   const merged = journey.mergeLearningJourneys(current, current);
   assert.equal(merged.games['a-or-an'].completedSessionCount, 1);
+});
+
+test('version 1 data migrates with empty mission evidence', () => {
+  const migrated = journey.sanitizeJourney({ version: 1, updatedAt: '2026-01-01T00:00:00Z', games: {}, achievements: [], recordedSessions: [] });
+  assert.equal(migrated.version, journey.LEARNING_JOURNEY_VERSION);
+  assert.deepEqual(migrated.missionEvidence, []);
+});
+
+test('worksheet evidence is allowlisted, undoable and included in import/export', () => {
+  const storage = new MemoryStorage();
+  assert.equal(journey.setMissionEvidence('invented:evidence', true, storage), null);
+  journey.setMissionEvidence('maths-explorer:worksheet', true, storage, '2026-02-01T00:00:00Z');
+  let progress = journey.readLearningJourney(storage);
+  assert.equal(progress.missionEvidence[0].id, 'maths-explorer:worksheet');
+  assert.equal(journey.parseLearningJourneyImport(journey.exportLearningJourney(progress)).missionEvidence.length, 1);
+  journey.setMissionEvidence('maths-explorer:worksheet', false, storage);
+  progress = journey.readLearningJourney(storage);
+  assert.deepEqual(progress.missionEvidence, []);
+});
+
+test('mission completion uses completed sessions rather than starts or scores', () => {
+  const storage = new MemoryStorage();
+  const mission = missionData.getMission('science-detective');
+  journey.recordLearningSessionStart('animal-habitats', 'started-only', storage);
+  assert.equal(missionData.getMissionProgress(mission, journey.readLearningJourney(storage)).state, 'not-started');
+  journey.recordLearningSessionCompletion('animal-habitats', 'started-only', 1, 10, storage);
+  assert.equal(missionData.getMissionProgress(mission, journey.readLearningJourney(storage)).state, 'in-progress');
+  journey.recordLearningSessionStart('living-or-non-living', 'second', storage);
+  journey.recordLearningSessionCompletion('living-or-non-living', 'second', 0, 10, storage);
+  const result = missionData.getMissionProgress(mission, journey.readLearningJourney(storage));
+  assert.deepEqual([result.state, result.completed, result.total], ['completed', 2, 2]);
 });
 
 test('clear resets only the journey storage value', () => {

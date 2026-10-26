@@ -2,7 +2,7 @@
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Download, Eraser, Gamepad2, RotateCcw, Sparkles, Upload } from 'lucide-react';
+import { ArrowRight, Compass, Download, Eraser, Gamepad2, Sparkles, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { trackEvent } from '@/lib/analytics';
@@ -135,6 +135,8 @@ export function LearningJourneyDashboard() {
     </>}
 
     {suggested?.route && <section className="rounded-3xl border border-violet-200 bg-violet-50/60 p-6 sm:p-8" aria-labelledby="suggested-game"><p className="text-sm font-bold uppercase tracking-wider text-violet-700">A simple suggestion</p><h2 id="suggested-game" className="mt-2 text-2xl font-bold">Try {suggested.title} next</h2><p className="mt-3 max-w-2xl text-muted-foreground">{suggested.description} Suggestions prioritise an untried game in your most recently played subject, then other untried Level 1 games.</p><Button asChild className="mt-5"><Link href={suggested.route} onClick={() => trackEvent('recommended_game_click', { game: suggested.gameId })}>Play {suggested.title}<ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link></Button></section>}
+
+    <section className="rounded-3xl border border-blue-200 bg-blue-50/50 p-6 sm:p-8" aria-labelledby="journey-missions"><Compass className="h-7 w-7 text-blue-700" aria-hidden="true" /><h2 id="journey-missions" className="mt-3 text-2xl font-bold">Continue with a Learning Mission</h2><p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground">Mission paths use the same verified completed game sessions shown here, so your existing progress counts automatically.</p><Button asChild className="mt-5"><Link href="/games/missions">View Learning Missions<ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link></Button></section>
 
     <section aria-labelledby="achievements"><h2 id="achievements" className="text-3xl font-bold tracking-tight">Achievements</h2><p className="mt-3 text-muted-foreground">Achievements celebrate completed sessions and genuine exploration. They are not rankings or formal assessments.</p><div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{achievementDefinitions.map((achievement) => <Card key={achievement.id} className={earned.has(achievement.id) ? 'border-amber-300 bg-amber-50/60' : 'border-border/60 bg-secondary/20'}><CardContent className="p-5"><span className={`text-3xl ${earned.has(achievement.id) ? '' : 'grayscale opacity-40'}`} aria-hidden="true">{achievement.icon}</span><h3 className="mt-3 font-bold">{achievement.name}</h3><p className="mt-1 text-sm text-muted-foreground">{achievement.description}</p><p className="mt-3 text-xs font-bold uppercase tracking-wide">{earned.has(achievement.id) ? 'Earned' : 'Not earned yet'}</p></CardContent></Card>)}</div></section>
 
