@@ -23,7 +23,7 @@ import {
 const initialConfig: WorksheetConfig = { topic: 'addition', layout: 'classic', range: 10, questionCount: 10, seed: 'zalea-maths-1' };
 
 function configurationDimensions(config: WorksheetConfig) {
-  return { topic: config.topic, layout: config.layout, question_count: String(config.questionCount), number_range: String(config.range) };
+  return { subject: 'mathematics', topic: config.topic, layout: config.layout, question_count: String(config.questionCount), number_range: String(config.range) };
 }
 
 export function MathematicsWorksheetStudio() {
@@ -59,7 +59,7 @@ export function MathematicsWorksheetStudio() {
   };
 
   return <div className="grid gap-8 xl:grid-cols-[350px_minmax(0,1fr)]">
-    <aside className="h-fit rounded-3xl border border-blue-200 bg-white p-5 shadow-sm sm:p-6 xl:sticky xl:top-24" aria-labelledby="worksheet-settings">
+    <aside className="min-w-0 h-fit rounded-3xl border border-blue-200 bg-white p-5 shadow-sm sm:p-6 xl:sticky xl:top-24" aria-labelledby="worksheet-settings">
       <div className="flex items-center gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700"><Sparkles className="h-5 w-5" aria-hidden="true" /></span><div><p className="text-sm font-bold uppercase tracking-wider text-blue-700">Mathematics · Level 1</p><h2 id="worksheet-settings" className="text-2xl font-bold">Worksheet settings</h2></div></div>
       <div className="mt-6 space-y-5">
         <SelectField id="worksheet-topic" label="Topic" value={config.topic} onChange={(value) => update('topic', value as WorksheetTopic)} options={[['addition','Addition'],['subtraction','Subtraction'],['mixed','Mixed addition and subtraction']]} />
@@ -73,7 +73,7 @@ export function MathematicsWorksheetStudio() {
       <p className="mt-5 min-h-12 text-sm leading-5 text-muted-foreground" role="status" aria-live="polite">{message}</p>
     </aside>
 
-    <section aria-labelledby="worksheet-preview-heading"><div className="mb-4 flex flex-wrap items-center justify-between gap-3"><div><p className="text-sm font-bold uppercase tracking-wider text-blue-700">Interactive preview</p><h2 id="worksheet-preview-heading" className="text-2xl font-bold sm:text-3xl">Your printable worksheet</h2></div><span className="rounded-full border bg-white px-3 py-1 text-xs font-semibold text-muted-foreground">A4 portrait · {worksheetPages.length} worksheet page{worksheetPages.length === 1 ? '' : 's'}</span></div>
+    <section className="min-w-0" aria-labelledby="worksheet-preview-heading"><div className="mb-4 flex flex-wrap items-center justify-between gap-3"><div><p className="text-sm font-bold uppercase tracking-wider text-blue-700">Interactive preview</p><h2 id="worksheet-preview-heading" className="text-2xl font-bold sm:text-3xl">Your printable worksheet</h2></div><span className="rounded-full border bg-white px-3 py-1 text-xs font-semibold text-muted-foreground">A4 portrait · {worksheetPages.length} worksheet page{worksheetPages.length === 1 ? '' : 's'}</span></div>
       <div className="worksheet-print-root space-y-6" data-worksheet-id={worksheet.id}>
         {worksheetPages.map((questions, pageIndex) => <WorksheetPage key={`${worksheet.id}-${pageIndex}`} worksheet={worksheet} questions={questions} pageIndex={pageIndex} pageTotal={worksheetPages.length} />)}
         {showAnswers && <AnswerKey worksheet={worksheet} />}

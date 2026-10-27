@@ -109,6 +109,17 @@
     page-break-after: auto;
   }
 
+  .worksheet-page[aria-label^='English'] {
+    height: auto !important;
+    min-height: 297mm;
+    overflow: visible;
+  }
+
+  .worksheet-page[aria-label^='English'] li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
   body:has(.mission-certificate) > * {
     visibility: visible;
   }
