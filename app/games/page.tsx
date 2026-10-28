@@ -1,3 +1,4 @@
+import { ResourceFinderLink } from '@/components/resources/resource-finder-link';
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Compass, Globe2, GraduationCap, Languages, Leaf, Plus, Trophy } from 'lucide-react';
 import { SiteFooter } from '@/components/site-footer';
@@ -20,7 +21,7 @@ export default function GamesPage() {
       <Badge className="bg-green-100 text-green-800 hover:bg-green-100">No login required</Badge>
       <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight sm:text-5xl">Free Learning Games for Kids</h1>
       <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">Choose a short English, Math, Science or Geography activity by what the learner is ready to recognise, recall or explain. The free games work on phones, tablets and computers.</p>
-    </div></section>
+    </div></section><ResourceFinderLink />
     <section className="mx-auto max-w-[1000px] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <div className="grid gap-5 md:grid-cols-2">
         <Card className="border-blue-200 shadow-md"><CardHeader><span className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-primary"><BookOpen className="h-6 w-6" aria-hidden="true" /></span><CardTitle className="text-2xl">English Games</CardTitle></CardHeader><CardContent><p className="max-w-2xl leading-relaxed text-muted-foreground">Practise articles, pronouns, plurals, verbs, prepositions, and more with 10 completely free Grammar Level 1 games.</p><Button asChild size="lg" className="mt-6 min-h-12"><Link href="/games/english">Explore English Games<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Link></Button></CardContent></Card>

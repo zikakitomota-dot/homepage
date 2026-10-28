@@ -28,6 +28,9 @@ export const analyticsEventNames = [
   'mission_completed',
   'mission_activity_clicked',
   'mission_certificate_printed',
+  'resource_filter_selected',
+  'resource_result_clicked',
+  'resource_type_selected',
 ] as const;
 
 export type AnalyticsEventName = (typeof analyticsEventNames)[number];

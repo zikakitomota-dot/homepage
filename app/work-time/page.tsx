@@ -1,3 +1,4 @@
+import { ResourceFinderLink } from '@/components/resources/resource-finder-link';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, BadgeDollarSign, Banknote, CalendarDays, Clock3, Timer } from 'lucide-react';
@@ -32,7 +33,7 @@ export default function WorkTimeToolsPage() {
             <h1 className="mx-auto mt-5 max-w-4xl text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Work &amp; Time Tools</h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">Free work and time calculators for working hours, timesheets, schedules, pay and everyday work planning.</p>
           </div>
-        </section>
+        </section><ResourceFinderLink />
 
         <section className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 lg:px-8 lg:py-24" aria-labelledby="work-calculators-heading">
           <div className="mb-10">

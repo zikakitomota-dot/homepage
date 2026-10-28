@@ -132,6 +132,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/resources`,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/games/my-learning-journey`,
       changeFrequency: "monthly",
       priority: 0.7,

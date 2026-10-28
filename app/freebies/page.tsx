@@ -1,3 +1,4 @@
+import { ResourceFinderLink } from '@/components/resources/resource-finder-link';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Calculator, Download, FileText, Gamepad2, GraduationCap, PencilRuler, ShoppingBag, Sparkles, WalletCards, type LucideIcon } from 'lucide-react';
@@ -41,7 +42,7 @@ export default function FreebiesPage() {
               <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Choose a printable by the job it needs to do: organise study, support one early skill, or make a money plan visible. Every item on this page is free, with A4 and US Letter files.</p>
             </div>
           </div>
-        </section>
+        </section><ResourceFinderLink />
         <section className="border-y border-border/60 bg-secondary/25" aria-labelledby="inside-download-heading"><div className="mx-auto max-w-[1100px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20"><p className="text-sm font-semibold text-primary">Check before you print</p><h2 id="inside-download-heading" className="mt-2 text-3xl font-bold tracking-tight">See what is actually inside</h2><p className="mt-4 max-w-3xl leading-7 text-muted-foreground">The collection is not a set of mystery download buttons. Each freebie page identifies its audience, exact page count, included pages, paper sizes and any supervision or educational notice. Where a worked example is available, it shows how the sheet can be filled in before you download it.</p><div className="mt-8 grid gap-5 md:grid-cols-3"><ProofCard href="/freebies/fine-motor-activity-cards" title="48 activity cards in a 20-page pack" detail="The contents list also identifies the grown-up guide, materials guide, planning sheet and observation pages." /><ProofCard href="/freebies/grade-tracker" title="Four clearly named study pages" detail="Cover, Grade Tracker, Assignment Tracker and Final Grade Planner—so students can check the scope before printing." /><ProofCard href="/freebies/big-purchase-planner" title="A filled planning example" detail="The landing page uses a laptop example to distinguish headline price, relevant extras, total cost and the amount still needed." /></div><p className="mt-6 max-w-3xl text-sm leading-6 text-muted-foreground">The PDFs and combined ZIP files are free. The separate <Link href="/shop" className="font-semibold text-primary hover:underline">Zalea Shop</Link> contains paid digital products; visiting or buying from the shop is not required to use these downloads.</p></div></section>
         <section className="mx-auto max-w-[1200px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="browse-freebies">
           <div className="mb-8 flex items-end justify-between gap-6">

@@ -25,6 +25,7 @@ export const navLinks = [
 ] as const;
 
 export const toolLinks = [
+  { label: 'Resource Finder', href: '/resources', external: false },
   { label: 'Health Calculators', href: HEALTH_TOOLS_URL, external: false },
   { label: 'Finance', href: '/finance', external: false },
   { label: 'Work & Time', href: '/work-time', external: false },
