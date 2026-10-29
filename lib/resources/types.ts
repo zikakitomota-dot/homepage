@@ -1,6 +1,6 @@
 export const resourceTypes = { game: 'Game', mission: 'Mission', worksheet: 'Worksheet', freebie: 'Freebie', guide: 'Guide', calculator: 'Calculator' } as const;
 export const resourceCategories = {
-  english: 'English', mathematics: 'Mathematics', science: 'Science', geography: 'Geography',
+  english: 'English', mathematics: 'Mathematics', science: 'Science', geography: 'Geography', logic: 'Logic & Brain Games',
   finance: 'Finance', 'work-time': 'Work & Time', education: 'Study & Education', 'early-learning': 'Early Learning', health: 'Health',
 } as const;
 export type ResourceType = keyof typeof resourceTypes;

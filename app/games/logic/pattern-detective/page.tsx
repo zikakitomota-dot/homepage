@@ -1,0 +1,20 @@
+import Link from 'next/link';
+import { PatternDetectiveGame } from '@/components/games/pattern-detective-game';
+import { SiteHeader } from '@/components/site-header';
+import { SiteFooter } from '@/components/site-footer';
+import { createEducationalMetadata, safeJsonLd } from '@/lib/seo';
+import { SITE_URL } from '@/lib/site';
+
+const path = '/games/logic/pattern-detective';
+export const metadata = createEducationalMetadata({ title: 'Pattern Detective — Level 1 | Free Logic Game', description: 'Solve ten visual puzzles about repeating patterns, growing groups, odd items and simple grids. Free beginner logic practice with explanations and no timer.', path });
+const jsonLd = { '@context': 'https://schema.org', '@graph': [
+  { '@type': ['LearningResource', 'WebApplication'], name: 'Pattern Detective — Level 1', url: `${SITE_URL}${path}`, applicationCategory: 'EducationalApplication', operatingSystem: 'Any modern web browser', educationalLevel: 'Beginner', isAccessibleForFree: true, learningResourceType: 'Interactive game', teaches: ['Repeating patterns', 'Visual sequencing', 'Observation', 'Growing groups', 'Row and column reasoning'] },
+  { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL }, { '@type': 'ListItem', position: 2, name: 'Games', item: `${SITE_URL}/games` }, { '@type': 'ListItem', position: 3, name: 'Logic & Brain Games', item: `${SITE_URL}/games/logic` }, { '@type': 'ListItem', position: 4, name: 'Pattern Detective', item: `${SITE_URL}${path}` }] },
+] };
+export default function PatternDetectivePage() {
+  return <div className="min-h-screen bg-background"><SiteHeader /><main><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
+    <section className="border-b border-purple-200 bg-purple-50/60"><div className="mx-auto max-w-[1000px] px-4 py-10 sm:px-6 lg:px-8"><nav aria-label="Breadcrumb" className="flex flex-wrap gap-2 text-sm text-muted-foreground"><Link href="/" className="underline">Home</Link><span aria-hidden="true">/</span><Link href="/games" className="underline">Games</Link><span aria-hidden="true">/</span><Link href="/games/logic" className="underline">Logic &amp; Brain Games</Link><span aria-hidden="true">/</span><span aria-current="page">Pattern Detective</span></nav><p className="mt-6 text-sm font-bold text-purple-800">Free Logic Game · Level 1</p><h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">Pattern Detective — Level 1</h1><p className="mt-4 max-w-2xl text-lg leading-8 text-muted-foreground">Notice what repeats, what grows, and what belongs. Follow a clear visual rule and explain your choice.</p></div></section>
+    <div className="bg-purple-50/30 px-3 py-8 sm:px-6 sm:py-12"><PatternDetectiveGame /></div>
+    <section className="mx-auto max-w-[1000px] px-4 py-12 sm:px-6 lg:px-8"><h2 className="text-2xl font-bold">Four ways to find a clue</h2><dl className="mt-5 grid gap-5 sm:grid-cols-2">{[['Repeating patterns', 'Find a group such as AB, AAB, ABB or ABC, then continue it.'], ['Growing or turning sequences', 'Count what is added each time, or follow a quarter-turn arrow.'], ['Odd one out', 'Compare shape, object count or direction. Only one feature differs.'], ['Pattern grids', 'Read across rows and down columns to fill one missing cell.']].map(([title, description]) => <div key={title} className="rounded-xl border bg-white p-5"><dt className="font-bold">{title}</dt><dd className="mt-2 leading-7 text-muted-foreground">{description}</dd></div>)}</dl><p className="mt-6 max-w-3xl leading-7 text-muted-foreground">Each ten-puzzle session includes three repeating patterns, three growing or turning sequences, two odd-one-out puzzles and two grids. Pictures have text equivalents, and all answers work with keyboard, mouse or touch. This is introductory practice, not an intelligence assessment.</p><p className="mt-4 leading-7 text-muted-foreground">Only aggregate game-start and game-completion events are sent by this game. Answers, scores, puzzle histories and Learning Journey records stay in this browser.</p></section>
+  </main><SiteFooter /></div>;
+}

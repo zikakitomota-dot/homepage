@@ -1,0 +1,20 @@
+import Link from 'next/link';
+import { MemoryMatchGame } from '@/components/games/memory-match-game';
+import { SiteHeader } from '@/components/site-header';
+import { SiteFooter } from '@/components/site-footer';
+import { createEducationalMetadata, safeJsonLd } from '@/lib/seo';
+import { SITE_URL } from '@/lib/site';
+
+const path = '/games/logic/memory-match';
+export const metadata = createEducationalMetadata({ title: 'Memory Match — Level 1 | Free Picture Pairs Game', description: 'Find matching picture pairs in a friendly memory game. Choose 4, 6 or 8 pairs, adjustable reveal time and keyboard-accessible play. Free, with no timer score.', path });
+const jsonLd = { '@context': 'https://schema.org', '@graph': [
+  { '@type': ['LearningResource', 'WebApplication'], name: 'Memory Match — Level 1', url: `${SITE_URL}${path}`, isAccessibleForFree: true, applicationCategory: 'EducationalApplication', operatingSystem: 'Any modern web browser', educationalLevel: 'Beginner', learningResourceType: 'Interactive game', teaches: ['Visual memory', 'Attention', 'Comparison', 'Recall'] },
+  { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL }, { '@type': 'ListItem', position: 2, name: 'Games', item: `${SITE_URL}/games` }, { '@type': 'ListItem', position: 3, name: 'Logic & Brain Games', item: `${SITE_URL}/games/logic` }, { '@type': 'ListItem', position: 4, name: 'Memory Match', item: `${SITE_URL}${path}` }] },
+] };
+export default function MemoryMatchPage() {
+  return <div className="min-h-screen bg-background"><SiteHeader /><main><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
+    <section className="border-b border-purple-200 bg-purple-50/60"><div className="mx-auto max-w-[1000px] px-4 py-10 sm:px-6 lg:px-8"><nav aria-label="Breadcrumb" className="flex flex-wrap gap-2 text-sm text-muted-foreground"><Link href="/" className="underline">Home</Link><span aria-hidden="true">/</span><Link href="/games" className="underline">Games</Link><span aria-hidden="true">/</span><Link href="/games/logic" className="underline">Logic &amp; Brain Games</Link><span aria-hidden="true">/</span><span aria-current="page">Memory Match</span></nav><p className="mt-6 text-sm font-bold text-purple-800">Free Logic Game · Level 1</p><h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">Memory Match — Level 1</h1><p className="mt-4 max-w-2xl text-lg leading-8 text-muted-foreground">Look, remember and find the pairs. Choose a board that feels right for you.</p></div></section>
+    <div className="bg-purple-50/30 px-3 py-8 sm:px-6 sm:py-12"><MemoryMatchGame /></div>
+    <section className="mx-auto max-w-[1000px] px-4 py-12 sm:px-6 lg:px-8"><h2 className="text-2xl font-bold">A little practice, one pair at a time</h2><p className="mt-4 max-w-3xl leading-7 text-muted-foreground">Easy has four pairs, Medium has six and Challenge has eight. All are Level 1. Pictures are selected from 24 original local vector symbols. Colour is a helpful accent, while each symbol has its own shape.</p><p className="mt-4 max-w-3xl leading-7 text-muted-foreground">An attempt means revealing two different unmatched cards. Completed boards count as completed sessions in My Learning Journey. Matching accuracy is pairs found divided by attempts; it is not a timer-based score or a measure of intelligence.</p><p className="mt-4 max-w-3xl leading-7 text-muted-foreground">Face-down cards announce only their position and state. Revealed cards announce their picture, and matched cards keep their picture and matched status. Choose a longer reveal time or wait for your own Continue action. Individual card choices, attempts and progress records are not sent to analytics by this game.</p><Link href="/games/logic/pattern-detective" className="mt-5 inline-flex min-h-12 items-center rounded font-semibold text-purple-800 underline focus-visible:ring-2 focus-visible:ring-purple-700">Next, look for patterns in Pattern Detective</Link></section>
+  </main><SiteFooter /></div>;
+}

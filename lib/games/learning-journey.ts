@@ -1,4 +1,4 @@
-import { gameRegistry, type GameRegistryEntry } from './registry';
+import { gameRegistry, subjectOrder, type GameRegistryEntry } from './registry';
 
 export const LEARNING_JOURNEY_VERSION = 2 as const;
 export const LEARNING_JOURNEY_STORAGE_KEY = 'zalea-learning-journey-v1';
@@ -177,7 +177,7 @@ export function getEarnedAchievementIds(progress: LearningJourney): AchievementI
   const tried = Object.values(progress.games).filter((game) => game.sessionCount > 0);
   const completed = Object.values(progress.games).filter((game) => game.completedSessionCount > 0);
   const totalCompleted = completed.reduce((sum, game) => sum + game.completedSessionCount, 0);
-  const wholeSubjectTried = (['english', 'mathematics', 'science', 'geography'] as SubjectId[]).some((subjectId) => {
+  const wholeSubjectTried = subjectOrder.some((subjectId) => {
     const available = availableGames.filter((game) => game.subjectId === subjectId);
     return available.length > 0 && available.every((game) => progress.games[game.gameId]?.sessionCount > 0);
   });

@@ -1,7 +1,7 @@
 export type GameStatus = 'available' | 'coming-soon' | 'planned';
 
 export type GameRegistryEntry = {
-  subjectId: 'english' | 'mathematics' | 'science' | 'geography';
+  subjectId: 'english' | 'mathematics' | 'science' | 'geography' | 'logic';
   subjectName: string;
   gameId: string;
   title: string;
@@ -13,6 +13,7 @@ export type GameRegistryEntry = {
   releaseDate?: string;
   isNew?: boolean;
   icon: string;
+  searchKeywords?: readonly string[];
 };
 
 export const gameRegistry: readonly GameRegistryEntry[] = [
@@ -34,9 +35,11 @@ export const gameRegistry: readonly GameRegistryEntry[] = [
   { subjectId: 'geography', subjectName: 'Geography', gameId: 'ocean-explorer', title: 'Ocean Explorer', level: 1, description: 'Find five oceans and use nearby continents as clues.', route: '/games/geography/ocean-explorer', status: 'available', displayOrder: 2, isNew: true, icon: '🌊' },
   { subjectId: 'geography', subjectName: 'Geography', gameId: 'flag-detective', title: 'Flag Detective', level: 1, description: 'Use colours, symbols and patterns to recognise national flags.', route: '/games/geography/flag-detective', status: 'available', displayOrder: 3, isNew: true, icon: '🚩' },
   { subjectId: 'geography', subjectName: 'Geography', gameId: 'landmark-explorer', title: 'Landmark Explorer', level: 1, description: 'Recognise famous landmarks and connect them with countries and continents.', route: '/games/geography/landmark-explorer', status: 'available', displayOrder: 4, isNew: true, icon: '🏛️' },
+  { subjectId: 'logic', subjectName: 'Logic & Brain Games', gameId: 'pattern-detective', title: 'Pattern Detective — Level 1', level: 1, description: 'Solve repeating patterns, growing sequences, odd-one-out puzzles and visual grids with explained clues.', route: '/games/logic/pattern-detective', status: 'available', displayOrder: 1, isNew: true, icon: '🧩', searchKeywords: ['pattern', 'puzzle', 'sequence', 'brain', 'reasoning', 'observation', 'logic'] },
+  { subjectId: 'logic', subjectName: 'Logic & Brain Games', gameId: 'memory-match', title: 'Memory Match — Level 1', level: 1, description: 'Reveal picture cards and find matching pairs to practise visual memory, attention and recall.', route: '/games/logic/memory-match', status: 'available', displayOrder: 2, isNew: true, icon: '🃏', searchKeywords: ['memory', 'matching', 'pairs', 'cards', 'recall', 'brain'] },
 ];
 
-export const subjectOrder = ['english', 'mathematics', 'science', 'geography'] as const;
+export const subjectOrder = ['english', 'mathematics', 'science', 'geography', 'logic'] as const;
 
 export function getRoadmapBySubject() {
   return subjectOrder.map((subjectId) => ({

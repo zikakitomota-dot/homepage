@@ -19,8 +19,8 @@ const ids=entries=>entries.map(entry=>entry.id);
 
 test('published free inventory is complete, unique and valid',()=>{
   assert.deepEqual(validateResourceCatalogue(resources),[]);
-  assert.equal(resources.length,68);
-  assert.deepEqual(Object.fromEntries(['game','mission','worksheet','freebie','guide','calculator'].map(type=>[type,resources.filter(r=>r.type===type).length])),{game:18,mission:4,worksheet:1,freebie:13,guide:4,calculator:28});
+  assert.equal(resources.length,70);
+  assert.deepEqual(Object.fromEntries(['game','mission','worksheet','freebie','guide','calculator'].map(type=>[type,resources.filter(r=>r.type===type).length])),{game:20,mission:4,worksheet:1,freebie:13,guide:4,calculator:28});
   assert.ok(resources.every(r=>r.access==='free'&&r.status==='available'));
   assert.ok(resources.every(r=>!r.href.includes('academy')&&!r.href.startsWith('/shop')));
   assert.equal(resources.filter(r=>r.href==='/worksheets').length,1);

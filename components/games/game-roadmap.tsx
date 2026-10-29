@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Calculator, FlaskConical, Globe2 } from 'lucide-react';
+import { ArrowRight, BookOpen, Calculator, FlaskConical, Globe2, Brain } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getRoadmapBySubject, type GameStatus } from '@/lib/games/registry';
 
@@ -8,6 +8,7 @@ const subjectStyles = {
   mathematics: { icon: Calculator, panel: 'border-amber-200 bg-amber-50/45', iconBox: 'bg-amber-100 text-amber-800' },
   science: { icon: FlaskConical, panel: 'border-emerald-200 bg-emerald-50/45', iconBox: 'bg-emerald-100 text-emerald-800' },
   geography: { icon: Globe2, panel: 'border-sky-200 bg-sky-50/45', iconBox: 'bg-sky-100 text-sky-700' },
+  logic: { icon: Brain, panel: 'border-purple-200 bg-purple-50/45', iconBox: 'bg-purple-100 text-purple-800' },
 } as const;
 
 const statusLabel: Record<GameStatus, string> = { available: 'Available', 'coming-soon': 'Coming Soon', planned: 'Planned' };

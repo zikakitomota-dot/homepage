@@ -4,12 +4,12 @@ import { useCallback, useRef } from 'react';
 import { trackEvent } from '@/lib/analytics';
 import { createSessionId, recordLearningSessionCompletion, recordLearningSessionStart } from '@/lib/games/learning-journey';
 
-export function useLearningSession(gameId: string) {
+export function useLearningSession(gameId: string, { trackAchievementEvents = true }: { trackAchievementEvents?: boolean } = {}) {
   const sessionId = useRef<string | null>(null);
 
   const announceAchievements = useCallback((ids: string[]) => {
-    ids.forEach((achievement) => trackEvent('achievement_earned', { achievement }));
-  }, []);
+    if (trackAchievementEvents) ids.forEach((achievement) => trackEvent('achievement_earned', { achievement }));
+  }, [trackAchievementEvents]);
 
   const startLearningSession = useCallback(() => {
     if (sessionId.current) return sessionId.current;
@@ -31,5 +31,8 @@ export function useLearningSession(gameId: string) {
     return true;
   }, [announceAchievements, gameId]);
 
-  return { startLearningSession, completeLearningSession };
+  // Keep the started record as an unfinished attempt, but allow a genuinely new
+  // board to start its own session. Existing games need not use this operation.
+  const abandonLearningSession = useCallback(() => { sessionId.current = null; }, []);
+  return { startLearningSession, completeLearningSession, abandonLearningSession };
 }

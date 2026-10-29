@@ -20,6 +20,7 @@ import {
 } from '@/lib/games/learning-journey';
 
 const subjectStyles = {
+  logic: { label: 'Logic & Brain Games', bar: 'bg-purple-600', panel: 'border-purple-200 bg-purple-50/50' },
   english: { label: 'English', bar: 'bg-blue-600', panel: 'border-blue-200 bg-blue-50/50' },
   mathematics: { label: 'Mathematics', bar: 'bg-amber-600', panel: 'border-amber-200 bg-amber-50/50' },
   science: { label: 'Science', bar: 'bg-emerald-600', panel: 'border-emerald-200 bg-emerald-50/50' },
@@ -116,7 +117,7 @@ export function LearningJourneyDashboard() {
       <section aria-labelledby="journey-summary"><h2 id="journey-summary" className="text-3xl font-bold tracking-tight">Your journey so far</h2><div className="mt-6 grid gap-4 sm:grid-cols-3">
         <SummaryCard value={summary.tried} label="Games tried" note={`of ${availableGames.length} available`} />
         <SummaryCard value={summary.completed} label="Completed sessions" note="finished through the result screen" />
-        <SummaryCard value={summary.questions} label="Questions answered" note="from completed sessions" />
+        <SummaryCard value={summary.questions} label="Questions / pair attempts" note="from completed sessions" />
       </div></section>
 
       <section aria-labelledby="subject-progress"><h2 id="subject-progress" className="text-3xl font-bold tracking-tight">Subject progress</h2><div className="mt-6 grid gap-4 md:grid-cols-2">

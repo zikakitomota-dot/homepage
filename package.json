@@ -22,7 +22,9 @@
     "test:living-or-non-living": "node scripts/validate-living-or-non-living.mjs",
     "test:learning-journey": "node --test scripts/learning-journey.test.mjs",
     "test:worksheets": "node --test scripts/worksheet-generation.test.mjs scripts/english-worksheet.test.mjs",
-    "test:resources": "node --test scripts/resources.test.mjs"
+    "test:resources": "node --test scripts/resources.test.mjs",
+    "test:pattern-detective": "node --test scripts/pattern-detective.test.mjs",
+    "test:memory-match": "node --test scripts/memory-match.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

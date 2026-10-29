@@ -152,6 +152,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: path === '/games/missions' ? 0.8 : 0.7,
     })),
+    ...['/games/logic', '/games/logic/pattern-detective', '/games/logic/memory-match'].map(path => ({ url: `${baseUrl}${path}`, changeFrequency: 'monthly' as const, priority: 0.8 })),
     {
       url: `${baseUrl}/games/english`,
       changeFrequency: "weekly",

@@ -1,6 +1,6 @@
 import { ResourceFinderLink } from '@/components/resources/resource-finder-link';
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Compass, Globe2, GraduationCap, Languages, Leaf, Plus, Trophy } from 'lucide-react';
+import { ArrowRight, BookOpen, Brain, Compass, Globe2, GraduationCap, Languages, Leaf, Plus, Trophy } from 'lucide-react';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { GameRoadmap } from '@/components/games/game-roadmap';
@@ -11,7 +11,7 @@ import { createEducationalMetadata } from '@/lib/seo';
 
 export const metadata = createEducationalMetadata({
   title: 'Free Learning Games for Kids | Zalea Studio',
-  description: 'Choose a free English, Math, Science or Geography game by subject, practice type and the clues a learner is ready to use. No login required.',
+  description: 'Choose a free English, Math, Science, Geography or Logic game by subject, practice type and the clues a learner is ready to use. No login required.',
   path: '/games',
 });
 
@@ -20,7 +20,7 @@ export default function GamesPage() {
     <section className="border-b border-border/60 bg-blue-50/70"><div className="mx-auto max-w-[1000px] px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-24">
       <Badge className="bg-green-100 text-green-800 hover:bg-green-100">No login required</Badge>
       <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight sm:text-5xl">Free Learning Games for Kids</h1>
-      <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">Choose a short English, Math, Science or Geography activity by what the learner is ready to recognise, recall or explain. The free games work on phones, tablets and computers.</p>
+      <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">Choose a short English, Math, Science, Geography or Logic activity by what the learner is ready to recognise, recall or explain. The free games work on phones, tablets and computers.</p>
     </div></section><ResourceFinderLink />
     <section className="mx-auto max-w-[1000px] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <div className="grid gap-5 md:grid-cols-2">
@@ -28,6 +28,7 @@ export default function GamesPage() {
         <Card className="border-blue-200 shadow-md"><CardHeader><span className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-primary"><Plus className="h-7 w-7" aria-hidden="true" /></span><CardTitle className="text-2xl">Math Games</CardTitle></CardHeader><CardContent><p className="max-w-2xl leading-relaxed text-muted-foreground">Practise joining and taking away with free Level 1 addition and subtraction games for young learners.</p><Button asChild size="lg" className="mt-6 min-h-12"><Link href="/games/math">Explore Mathematics<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Link></Button></CardContent></Card>
         <Card className="border-[#c9d8bd] shadow-md"><CardHeader><span className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-[#e7f0df] text-[#52704d]"><Leaf className="h-7 w-7" aria-hidden="true" /></span><CardTitle className="text-2xl">Science Games</CardTitle></CardHeader><CardContent><p className="max-w-2xl leading-relaxed text-muted-foreground">Explore animal habitats, then classify living things, objects and once-living materials.</p><Button asChild size="lg" className="mt-6 min-h-12 bg-[#52704d] hover:bg-[#435e40]"><Link href="/games/science">Explore Science Games<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Link></Button></CardContent></Card>
         <Card className="border-sky-200 shadow-md"><CardHeader><span className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-700"><Globe2 className="h-7 w-7" aria-hidden="true" /></span><CardTitle className="text-2xl">Geography Games</CardTitle></CardHeader><CardContent><p className="max-w-2xl leading-relaxed text-muted-foreground">Explore the seven continents on an interactive world map and connect familiar countries with their continents.</p><Button asChild size="lg" className="mt-6 min-h-12 bg-sky-700 hover:bg-sky-800"><Link href="/games/geography">Explore Geography<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Link></Button></CardContent></Card>
+        <Card className="border-purple-200 shadow-md"><CardHeader><span className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100 text-purple-800"><Brain className="h-7 w-7" aria-hidden="true" /></span><CardTitle className="text-2xl">Logic &amp; Brain Games</CardTitle></CardHeader><CardContent><p className="max-w-2xl leading-relaxed text-muted-foreground">Explore patterns, sequences and clever visual puzzles that build observation and problem-solving skills.</p><Button asChild size="lg" className="mt-6 min-h-12 bg-purple-800 hover:bg-purple-900"><Link href="/games/logic">Explore Logic Games<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Link></Button></CardContent></Card>
       </div>
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <Card className="border-border/60"><CardHeader><GraduationCap className="h-7 w-7 text-primary" aria-hidden="true" /><CardTitle className="pt-2 text-xl">English learning guide</CardTitle></CardHeader><CardContent><p className="leading-relaxed text-muted-foreground">See how the free games and Academy learning areas fit together for children, parents and teachers.</p><Link href="/english-games-for-kids" className="mt-4 inline-flex min-h-11 items-center font-semibold text-primary hover:underline">English games for kids<ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link></CardContent></Card>
