@@ -101,10 +101,10 @@ test('200 seeded sessions preserve meaning, distribution, novelty and shuffled p
   }
   assert.equal(seen.size, 60); assert.equal(sequences.size, 200); assert.equal(correctPositions.size, 4);
 });
-test('fifth subject safely extends the original 18 games and leaves four Missions intact', () => {
-  assert.equal(gameRegistry.filter(g => g.status === 'available').length, 20);
-  assert.equal(gameRegistry.filter(g => g.subjectId !== 'logic').length, 18);
-  assert.deepEqual(subjectOrder, ['english', 'mathematics', 'science', 'geography', 'logic']);
+test('Logic remains intact after the sixth subject and leaves four Missions unchanged', () => {
+  assert.equal(gameRegistry.filter(g => g.status === 'available').length, 22);
+  assert.equal(gameRegistry.filter(g => !['logic', 'life-skills'].includes(g.subjectId)).length, 18);
+  assert.deepEqual(subjectOrder, ['english', 'mathematics', 'science', 'geography', 'logic', 'life-skills']);
   assert.deepEqual(missions.map(m => m.id), ['maths-explorer', 'world-explorer', 'science-detective', 'english-adventurer']);
   assert.ok(missions.every(m => m.activities.every(a => a.gameId !== p.PATTERN_GAME_ID)));
 });
@@ -144,7 +144,7 @@ test('old four-subject imports merge without erasing Logic or changing Mission e
   const roundTrip = j.parseLearningJourneyImport(j.exportLearningJourney(restored)); assert.deepEqual(roundTrip, restored);
 });
 test('Logic is searchable, has two static source routes and no ad expansion', () => {
-  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 70);
+  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 72);
   for (const query of ['pattern', 'puzzle', 'sequence', 'brain', 'reasoning', 'logic']) {
     const results = searchResources(resourceCatalogue, { query, type: 'game', category: 'logic', sort: 'relevance' });
     assert.ok(results.some(result => result.href === '/games/logic/pattern-detective'));

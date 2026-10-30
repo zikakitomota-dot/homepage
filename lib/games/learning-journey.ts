@@ -26,7 +26,8 @@ export type JourneyGameProgress = {
 };
 
 export type EarnedAchievement = { id: AchievementId; earnedAt: string };
-export type RecordedSession = { id: string; gameId: string; completed: boolean };
+export type SessionContext = { currency?: string; mode?: string };
+export type RecordedSession = { id: string; gameId: string; completed: boolean; context?: SessionContext };
 export type MissionEvidence = { id: string; completedAt: string };
 
 export type LearningJourney = {
@@ -76,6 +77,14 @@ function sanitizeBestScore(value: unknown): BestScore | null {
   const correct = Math.min(questions, finiteInteger(source.correct, 10_000));
   if (questions < 1) return null;
   return { correct, questions, percentage: Math.round((correct / questions) * 100) };
+}
+
+function sanitizeSessionContext(value: unknown): SessionContext | undefined {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return undefined;
+  const source = value as Record<string, unknown>; const context: SessionContext = {};
+  if (typeof source.currency === 'string' && /^[A-Z]{3}$/.test(source.currency)) context.currency = source.currency;
+  if (typeof source.mode === 'string' && /^[a-z0-9-]{1,24}$/.test(source.mode)) context.mode = source.mode;
+  return context.currency || context.mode ? context : undefined;
 }
 
 export function sanitizeJourney(value: unknown): LearningJourney | null {
@@ -131,8 +140,9 @@ export function sanitizeJourney(value: unknown): LearningJourney | null {
   const recordedSessions = Array.isArray(source.recordedSessions) ? source.recordedSessions.flatMap((raw) => {
     if (!raw || typeof raw !== 'object') return [];
     const item = raw as Record<string, unknown>;
+    const context = sanitizeSessionContext(item.context);
     return typeof item.id === 'string' && item.id.length <= 100 && typeof item.gameId === 'string' && availableById.has(item.gameId) && typeof item.completed === 'boolean'
-      ? [{ id: item.id, gameId: item.gameId, completed: item.completed }]
+      ? [{ id: item.id, gameId: item.gameId, completed: item.completed, ...(context ? { context } : {}) }]
       : [];
   }).slice(-250) : [];
   const missionEvidence = Array.isArray(source.missionEvidence) ? source.missionEvidence.flatMap((raw) => {
@@ -203,7 +213,7 @@ export function createSessionId() {
   return `session-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
 
-export function recordLearningSessionStart(gameId: string, sessionId: string, storage?: StorageLike, now = new Date().toISOString()): MutationResult | null {
+export function recordLearningSessionStart(gameId: string, sessionId: string, storage?: StorageLike, now = new Date().toISOString(), context?: SessionContext): MutationResult | null {
   const registryGame = availableById.get(gameId);
   if (!registryGame || !sessionId || sessionId.length > 100) return null;
   const progress = readLearningJourney(storage);
@@ -213,7 +223,8 @@ export function recordLearningSessionStart(gameId: string, sessionId: string, st
     totalQuestionsAttempted: 0, personalBest: null, lastPlayedAt: null, firstCompletedAt: null,
   };
   progress.games[gameId] = { ...current, sessionCount: current.sessionCount + 1, lastPlayedAt: now };
-  progress.recordedSessions = [...progress.recordedSessions, { id: sessionId, gameId, completed: false }].slice(-250);
+  const safeContext = sanitizeSessionContext(context);
+  progress.recordedSessions = [...progress.recordedSessions, { id: sessionId, gameId, completed: false, ...(safeContext ? { context: safeContext } : {}) }].slice(-250);
   progress.updatedAt = now;
   const newlyEarned = applyAchievements(progress, now);
   return { progress, newlyEarned, saved: saveJourney(progress, storage) };

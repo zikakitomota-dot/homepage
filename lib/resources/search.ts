@@ -8,6 +8,7 @@ const synonyms: Record<string, string> = {
   games: 'game', missions: 'mission', guides: 'guide', calculators: 'calculator', freebies: 'freebie',
   articles: 'article', nouns: 'noun', verbs: 'verb', possessives: 'possessive',
   prepositions: 'preposition', demonstratives: 'demonstrative',
+  clocks: 'clock', hours: 'hour', minutes: 'minute', analog: 'analogue', currencies: 'currency', dollars: 'dollar', coins: 'coin', banknotes: 'banknote',
 };
 export function normaliseResourceQuery(value: string) {
   return value.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');

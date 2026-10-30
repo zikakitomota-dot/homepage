@@ -19,8 +19,8 @@ const ids=entries=>entries.map(entry=>entry.id);
 
 test('published free inventory is complete, unique and valid',()=>{
   assert.deepEqual(validateResourceCatalogue(resources),[]);
-  assert.equal(resources.length,70);
-  assert.deepEqual(Object.fromEntries(['game','mission','worksheet','freebie','guide','calculator'].map(type=>[type,resources.filter(r=>r.type===type).length])),{game:20,mission:4,worksheet:1,freebie:13,guide:4,calculator:28});
+  assert.equal(resources.length,72);
+  assert.deepEqual(Object.fromEntries(['game','mission','worksheet','freebie','guide','calculator'].map(type=>[type,resources.filter(r=>r.type===type).length])),{game:22,mission:4,worksheet:1,freebie:13,guide:4,calculator:28});
   assert.ok(resources.every(r=>r.access==='free'&&r.status==='available'));
   assert.ok(resources.every(r=>!r.href.includes('academy')&&!r.href.startsWith('/shop')));
   assert.equal(resources.filter(r=>r.href==='/worksheets').length,1);
@@ -83,6 +83,18 @@ test('combined filters, deterministic sorting, clearing and zero results',()=>{
   assert.deepEqual(alpha,[...alpha].sort((a,b)=>a.localeCompare(b,'en')));
   assert.deepEqual(search(''),search(''));
   assert.equal(search('',{category:'finance'}).filter(r=>r.type==='calculator').length,6);
+});
+test('time and clock searches find the Life Skills game without unrelated calculators',()=>{
+  for(const query of ['time detective','clock','analogue','quarter past','minutes']) {
+    const results=search(query,{type:'game',category:'life-skills'});
+    assert.deepEqual(ids(results),['game:time-detective'],query);
+  }
+});
+test('money and currency searches find Money Match within Life Skills',()=>{
+  for(const query of ['money match','coins','banknotes','ringgit','MYR','dollars','USD','exact payment','change']) {
+    const results=search(query,{type:'game',category:'life-skills'});
+    assert.equal(results[0]?.id,'game:money-match',query);
+  }
 });
 test('Finder keeps raw searches out of storage, URL state, network and analytics',()=>{
   const source=readFileSync('components/resources/resource-finder.tsx','utf8');

@@ -115,10 +115,10 @@ test('old exports merge without erasing either Logic game or original subjects',
   const result = j.readLearningJourney(storage); assert.equal(Object.keys(result.games).length, 3); assert.equal(result.games[m.MEMORY_GAME_ID].personalBest.percentage, 80);
   assert.deepEqual(j.parseLearningJourneyImport(j.exportLearningJourney(result)), result);
 });
-test('two Logic games, 70 registry-backed resources, route and sitemap are integrated without ads', () => {
-  assert.equal(gameRegistry.filter(g => g.status === 'available').length, 20);
+test('two Logic games remain intact with the sixth subject and registry-backed resources', () => {
+  assert.equal(gameRegistry.filter(g => g.status === 'available').length, 22);
   assert.deepEqual(gameRegistry.filter(g => g.subjectId === 'logic').map(g => g.gameId), ['pattern-detective', 'memory-match']);
-  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 70);
+  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 72);
   for (const query of ['memory', 'matching', 'pairs', 'cards', 'recall']) assert.ok(searchResources(resourceCatalogue, { query, type: 'game', category: 'logic', sort: 'relevance' }).some(r => r.href === '/games/logic/memory-match'));
   assert.ok(existsSync('app/games/logic/memory-match/page.tsx')); assert.ok(readFileSync('app/sitemap.ts', 'utf8').includes("'/games/logic/memory-match'"));
   assert.ok(!readFileSync('lib/adsense.ts', 'utf8').includes('/games/logic'));

@@ -153,6 +153,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: path === '/games/missions' ? 0.8 : 0.7,
     })),
     ...['/games/logic', '/games/logic/pattern-detective', '/games/logic/memory-match'].map(path => ({ url: `${baseUrl}${path}`, changeFrequency: 'monthly' as const, priority: 0.8 })),
+    ...['/games/life-skills', '/games/life-skills/time-detective', '/games/life-skills/money-match'].map(path => ({ url: `${baseUrl}${path}`, changeFrequency: 'monthly' as const, priority: 0.8 })),
     {
       url: `${baseUrl}/games/english`,
       changeFrequency: "weekly",

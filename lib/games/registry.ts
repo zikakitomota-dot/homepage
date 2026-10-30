@@ -1,7 +1,7 @@
 export type GameStatus = 'available' | 'coming-soon' | 'planned';
 
 export type GameRegistryEntry = {
-  subjectId: 'english' | 'mathematics' | 'science' | 'geography' | 'logic';
+  subjectId: 'english' | 'mathematics' | 'science' | 'geography' | 'logic' | 'life-skills';
   subjectName: string;
   gameId: string;
   title: string;
@@ -37,9 +37,13 @@ export const gameRegistry: readonly GameRegistryEntry[] = [
   { subjectId: 'geography', subjectName: 'Geography', gameId: 'landmark-explorer', title: 'Landmark Explorer', level: 1, description: 'Recognise famous landmarks and connect them with countries and continents.', route: '/games/geography/landmark-explorer', status: 'available', displayOrder: 4, isNew: true, icon: '🏛️' },
   { subjectId: 'logic', subjectName: 'Logic & Brain Games', gameId: 'pattern-detective', title: 'Pattern Detective — Level 1', level: 1, description: 'Solve repeating patterns, growing sequences, odd-one-out puzzles and visual grids with explained clues.', route: '/games/logic/pattern-detective', status: 'available', displayOrder: 1, isNew: true, icon: '🧩', searchKeywords: ['pattern', 'puzzle', 'sequence', 'brain', 'reasoning', 'observation', 'logic'] },
   { subjectId: 'logic', subjectName: 'Logic & Brain Games', gameId: 'memory-match', title: 'Memory Match — Level 1', level: 1, description: 'Reveal picture cards and find matching pairs to practise visual memory, attention and recall.', route: '/games/logic/memory-match', status: 'available', displayOrder: 2, isNew: true, icon: '🃏', searchKeywords: ['memory', 'matching', 'pairs', 'cards', 'recall', 'brain'] },
+  { subjectId: 'life-skills', subjectName: 'Life Skills', gameId: 'time-detective', title: 'Time Detective — Level 1', level: 1, description: 'Read and set analogue clocks through full hours, half hours, quarter hours and five-minute times.', route: '/games/life-skills/time-detective', status: 'available', displayOrder: 1, isNew: true, icon: '🕰️', searchKeywords: ['time', 'clock', 'analogue', 'digital', 'hour', 'minute', 'quarter past', 'quarter to', 'daily routine'] },
+  { subjectId: 'life-skills', subjectName: 'Life Skills', gameId: 'money-match', title: 'Money Match — Level 1', level: 1, description: 'Recognise coins and notes, count money, match prices, pay exact amounts and calculate simple change in MYR or USD.', route: '/games/life-skills/money-match', status: 'available', displayOrder: 2, isNew: true, icon: '🪙', searchKeywords: ['money', 'currency', 'coins', 'banknotes', 'notes', 'ringgit', 'MYR', 'dollar', 'USD', 'price', 'payment', 'change'] },
+  { subjectId: 'life-skills', subjectName: 'Life Skills', gameId: 'daily-routine-builder', title: 'Daily Routine Builder', level: 1, description: 'Explore how activities can be ordered into a clear, flexible routine.', status: 'planned', displayOrder: 3, icon: '📋' },
+  { subjectId: 'life-skills', subjectName: 'Life Skills', gameId: 'needs-vs-wants', title: 'Needs vs Wants', level: 1, description: 'Use simple scenarios to discuss needs, wants and thoughtful choices.', status: 'planned', displayOrder: 4, icon: '💭' },
 ];
 
-export const subjectOrder = ['english', 'mathematics', 'science', 'geography', 'logic'] as const;
+export const subjectOrder = ['english', 'mathematics', 'science', 'geography', 'logic', 'life-skills'] as const;
 
 export function getRoadmapBySubject() {
   return subjectOrder.map((subjectId) => ({

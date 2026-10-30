@@ -2,7 +2,7 @@
 
 import { useCallback, useRef } from 'react';
 import { trackEvent } from '@/lib/analytics';
-import { createSessionId, recordLearningSessionCompletion, recordLearningSessionStart } from '@/lib/games/learning-journey';
+import { createSessionId, recordLearningSessionCompletion, recordLearningSessionStart, type SessionContext } from '@/lib/games/learning-journey';
 
 export function useLearningSession(gameId: string, { trackAchievementEvents = true }: { trackAchievementEvents?: boolean } = {}) {
   const sessionId = useRef<string | null>(null);
@@ -11,10 +11,10 @@ export function useLearningSession(gameId: string, { trackAchievementEvents = tr
     if (trackAchievementEvents) ids.forEach((achievement) => trackEvent('achievement_earned', { achievement }));
   }, [trackAchievementEvents]);
 
-  const startLearningSession = useCallback(() => {
+  const startLearningSession = useCallback((context?: SessionContext) => {
     if (sessionId.current) return sessionId.current;
     const id = createSessionId();
-    const result = recordLearningSessionStart(gameId, id);
+    const result = recordLearningSessionStart(gameId, id, undefined, undefined, context);
     if (result) {
       sessionId.current = id;
       announceAchievements(result.newlyEarned);
