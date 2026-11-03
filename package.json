@@ -26,7 +26,8 @@
     "test:pattern-detective": "node --test scripts/pattern-detective.test.mjs",
     "test:memory-match": "node --test scripts/memory-match.test.mjs",
     "test:time-detective": "node --test scripts/time-detective.test.mjs",
-    "test:money-match": "node --test scripts/money-match.test.mjs"
+    "test:money-match": "node --test scripts/money-match.test.mjs",
+    "test:shapes-and-geometry": "node --test scripts/shapes-and-geometry.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

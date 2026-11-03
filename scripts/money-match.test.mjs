@@ -137,10 +137,10 @@ test('Journey records optional currency/mode context without changing score or l
 });
 
 test('registry, Finder, Missions, sitemap and AdSense safeguards are integrated', () => {
-  assert.equal(gameRegistry.filter(game => game.status === 'available').length, 22);
+  assert.equal(gameRegistry.filter(game => game.status === 'available').length, 23);
   assert.deepEqual(missions.map(mission => mission.id), ['maths-explorer', 'world-explorer', 'science-detective', 'english-adventurer']);
   assert.ok(missions.every(mission => mission.activities.every(activity => activity.gameId !== money.MONEY_GAME_ID)));
-  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 72); assert.equal(resourceCatalogue.filter(resource => resource.type === 'game').length, 22);
+  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 73); assert.equal(resourceCatalogue.filter(resource => resource.type === 'game').length, 23);
   for (const query of ['money', 'coins', 'banknotes', 'ringgit', 'MYR', 'dollar', 'USD', 'exact payment', 'change']) {
     const results = searchResources(resourceCatalogue, { query, type: 'game', category: 'life-skills', sort: 'relevance' });
     assert.equal(results[0]?.href, '/games/life-skills/money-match', query);

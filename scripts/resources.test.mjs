@@ -19,8 +19,8 @@ const ids=entries=>entries.map(entry=>entry.id);
 
 test('published free inventory is complete, unique and valid',()=>{
   assert.deepEqual(validateResourceCatalogue(resources),[]);
-  assert.equal(resources.length,72);
-  assert.deepEqual(Object.fromEntries(['game','mission','worksheet','freebie','guide','calculator'].map(type=>[type,resources.filter(r=>r.type===type).length])),{game:22,mission:4,worksheet:1,freebie:13,guide:4,calculator:28});
+  assert.equal(resources.length,73);
+  assert.deepEqual(Object.fromEntries(['game','mission','worksheet','freebie','guide','calculator'].map(type=>[type,resources.filter(r=>r.type===type).length])),{game:23,mission:4,worksheet:1,freebie:13,guide:4,calculator:28});
   assert.ok(resources.every(r=>r.access==='free'&&r.status==='available'));
   assert.ok(resources.every(r=>!r.href.includes('academy')&&!r.href.startsWith('/shop')));
   assert.equal(resources.filter(r=>r.href==='/worksheets').length,1);
@@ -94,6 +94,12 @@ test('money and currency searches find Money Match within Life Skills',()=>{
   for(const query of ['money match','coins','banknotes','ringgit','MYR','dollars','USD','exact payment','change']) {
     const results=search(query,{type:'game',category:'life-skills'});
     assert.equal(results[0]?.id,'game:money-match',query);
+  }
+});
+test('shape and geometry searches find the Mathematics game',()=>{
+  for(const query of ['shape','shapes','geometry','sides','corners','symmetry','maths','math']) {
+    const results=search(query,{type:'game',category:'mathematics'});
+    assert.ok(ids(results).includes('game:shapes-and-geometry'),query);
   }
 });
 test('Finder keeps raw searches out of storage, URL state, network and analytics',()=>{

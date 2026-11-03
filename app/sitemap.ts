@@ -180,6 +180,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/games/math/shapes-and-geometry`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/games/science`,
       changeFrequency: "weekly",
       priority: 0.9,

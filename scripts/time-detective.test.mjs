@@ -88,9 +88,9 @@ test('200 seeded sessions per mode are deterministic, distinct and progressive',
   }
 });
 
-test('the sixth subject preserves 20 existing games, four Missions and previous progress', () => {
+test('the sixth subject preserves every existing game, four Missions and previous progress', () => {
   const available = gameRegistry.filter(game => game.status === 'available');
-  assert.equal(available.length, 22); assert.equal(available.filter(game => game.gameId !== time.TIME_GAME_ID).length, 21);
+  assert.equal(available.length, 23); assert.equal(available.filter(game => game.gameId !== time.TIME_GAME_ID).length, 22);
   assert.deepEqual(subjectOrder, ['english', 'mathematics', 'science', 'geography', 'logic', 'life-skills']);
   assert.deepEqual(missions.map(mission => mission.id), ['maths-explorer', 'world-explorer', 'science-detective', 'english-adventurer']);
   assert.ok(missions.every(mission => mission.activities.every(activity => activity.gameId !== time.TIME_GAME_ID)));
@@ -120,8 +120,8 @@ test('legacy exports merge without losing old subjects or new Time Detective pro
 });
 
 test('Life Skills routes, Finder, sitemap and ad safeguards are integrated', () => {
-  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 72);
-  assert.equal(resourceCatalogue.filter(resource => resource.type === 'game').length, 22);
+  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 73);
+  assert.equal(resourceCatalogue.filter(resource => resource.type === 'game').length, 23);
   for (const query of ['time', 'clock', 'analogue', 'quarter past', 'daily routine']) {
     const results = searchResources(resourceCatalogue, { query, type: 'game', category: 'life-skills', sort: 'relevance' });
     assert.ok(results.some(result => result.href === '/games/life-skills/time-detective'), query);
