@@ -3,7 +3,7 @@ import { ArrowRight, ChevronRight } from 'lucide-react';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { GameLaunchLink } from '@/components/games/game-launch-link';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { createEducationalMetadata, safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
@@ -22,5 +22,5 @@ export default function ScienceGamesPage() {
 }
 
 function GameCard({ icon, title, description, href, label, badge }: { icon: string; title: string; description: string; href: string; label: string; badge: string }) {
-  return <Card className="overflow-hidden border-[#cad6bd] shadow-md"><div className="flex min-h-44 items-center justify-center bg-gradient-to-br from-[#e7f0df] to-[#f5eaca] p-8 text-8xl" role="img" aria-label={`${title} illustration`}>{icon}</div><CardContent className="p-6 sm:p-8"><Badge variant="secondary">{badge}</Badge><CardTitle className="mt-4 text-3xl">{title}</CardTitle><p className="mt-4 leading-relaxed text-muted-foreground">{description}</p><Button asChild size="lg" className="mt-7 min-h-12 bg-[#52704d] hover:bg-[#435e40]"><Link href={href} data-ga-event="game_launch" data-ga-label={href.split('/').pop()}>{label}<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Link></Button></CardContent></Card>;
+  return <Card className="flex flex-col overflow-hidden border-[#cad6bd] shadow-md"><div className="flex min-h-44 items-center justify-center bg-gradient-to-br from-[#e7f0df] to-[#f5eaca] p-8 text-8xl" role="img" aria-label={`${title} illustration`}>{icon}</div><CardContent className="flex flex-1 flex-col items-start p-6 sm:p-8"><Badge variant="secondary">{badge}</Badge><CardTitle className="mt-4 text-3xl">{title}</CardTitle><p className="mt-4 flex-1 leading-relaxed text-muted-foreground">{description}</p><GameLaunchLink subject="science" href={href} data-ga-event="game_launch" data-ga-label={href.split('/').pop()}>{label}<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></GameLaunchLink></CardContent></Card>;
 }

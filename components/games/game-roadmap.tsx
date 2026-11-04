@@ -5,7 +5,7 @@ import { getRoadmapBySubject, type GameStatus } from '@/lib/games/registry';
 
 const subjectStyles = {
   english: { icon: BookOpen, panel: 'border-blue-200 bg-blue-50/45', iconBox: 'bg-blue-100 text-blue-700' },
-  mathematics: { icon: Calculator, panel: 'border-amber-200 bg-amber-50/45', iconBox: 'bg-amber-100 text-amber-800' },
+  mathematics: { icon: Calculator, panel: 'border-rose-200 bg-rose-50/45', iconBox: 'bg-rose-100 text-rose-800' },
   science: { icon: FlaskConical, panel: 'border-emerald-200 bg-emerald-50/45', iconBox: 'bg-emerald-100 text-emerald-800' },
   geography: { icon: Globe2, panel: 'border-sky-200 bg-sky-50/45', iconBox: 'bg-sky-100 text-sky-700' },
   logic: { icon: Brain, panel: 'border-purple-200 bg-purple-50/45', iconBox: 'bg-purple-100 text-purple-800' },

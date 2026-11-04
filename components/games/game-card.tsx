@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, LockKeyhole, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { GameLaunchLink } from '@/components/games/game-launch-link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { getOverallBestScore, readProgress } from '@/lib/games/progress';
 import type { GameSummary } from '@/lib/games/types';
@@ -25,7 +26,7 @@ export function GameCard({ game, unlocked = false }: { game: GameSummary; unlock
         <CardTitle className="pt-3 text-xl">{game.title}</CardTitle>
       </CardHeader>
       <CardContent className="flex-1"><p className="leading-relaxed text-muted-foreground">{game.shortDescription}</p>{premium && <><div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold"><span className="rounded-full bg-violet-50 px-2.5 py-1 text-violet-800">{game.category}</span><span className="rounded-full bg-secondary px-2.5 py-1 text-secondary-foreground">Level {game.level}</span><span className="rounded-full bg-secondary px-2.5 py-1 text-secondary-foreground">{difficulty}</span></div><p className="mt-4 text-sm leading-relaxed text-muted-foreground"><span className="font-semibold text-foreground">Learning objective:</span> {game.learningObjective}</p></>}{(game.access === 'free' || unlocked) && bestScore > 0 && <p className="mt-4 text-sm font-semibold text-green-700">Best score: {bestScore}/10</p>}</CardContent>
-      <CardFooter><Button asChild variant={premium && !unlocked ? 'outline' : 'default'} className={premium && !unlocked ? 'min-h-11 w-full border-violet-300 text-violet-800 hover:bg-violet-50 hover:text-violet-900' : 'min-h-11 w-full'}><Link href={`/games/english/${game.slug}`} data-ga-event="game_launch" data-ga-label={game.slug}>{premium && !unlocked ? 'View Academy Game' : 'Play'}<ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link></Button></CardFooter>
+      <CardFooter>{!premium ? <GameLaunchLink subject="english" href={`/games/english/${game.slug}`} className="mt-0" data-ga-event="game_launch" data-ga-label={game.slug}>Play<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></GameLaunchLink> : <Button asChild variant={premium && !unlocked ? 'outline' : 'default'} className={premium && !unlocked ? 'min-h-11 w-full border-violet-300 text-violet-800 hover:bg-violet-50 hover:text-violet-900' : 'min-h-11 w-full'}><Link href={`/games/english/${game.slug}`} data-ga-event="game_launch" data-ga-label={game.slug}>{premium && !unlocked ? 'View Academy Game' : 'Play'}<ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link></Button>}</CardFooter>
     </Card>
   );
 }

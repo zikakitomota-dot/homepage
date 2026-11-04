@@ -21,7 +21,7 @@ import {
   type SymmetryMark,
 } from '@/lib/games/shapes-and-geometry';
 
-const focusClass = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2';
+const focusClass = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-700 focus-visible:ring-offset-2';
 const eventDimensions = { game: GEOMETRY_GAME_ID, subject: 'mathematics', level: '1' };
 
 export function ShapesAndGeometryGame() {
@@ -73,53 +73,53 @@ export function ShapesAndGeometryGame() {
     } else setIndex(current => current + 1);
   };
 
-  if (phase === 'intro') return <section className="mx-auto max-w-3xl rounded-3xl border border-blue-200 bg-white p-5 shadow-sm sm:p-8" aria-labelledby="geometry-welcome" data-geometry-phase="intro">
-    <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-blue-800"><Shapes className="h-8 w-8" aria-hidden="true" /></span>
-    <p className="mt-5 text-sm font-bold uppercase tracking-wider text-blue-800">Mathematics · Level 1 · Free</p>
+  if (phase === 'intro') return <section className="mx-auto max-w-3xl rounded-3xl border border-rose-200 bg-white p-5 shadow-sm sm:p-8" aria-labelledby="geometry-welcome" data-geometry-phase="intro">
+    <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-100 text-rose-800"><Shapes className="h-8 w-8" aria-hidden="true" /></span>
+    <p className="mt-5 text-sm font-bold uppercase tracking-wider text-rose-800">Mathematics · Level 1 · Free</p>
     <h2 id="geometry-welcome" className="mt-2 text-balance text-3xl font-extrabold sm:text-4xl">Ready to explore shapes?</h2>
     <p className="mt-4 max-w-2xl leading-7">Name familiar 2D shapes, count straight sides and corners, match objects to their main outlines, and find figures with matching halves. Every session has ten questions and no timer or penalty.</p>
-    <div className="mt-6 grid grid-cols-4 gap-2 rounded-2xl bg-blue-50 p-4" aria-hidden="true">{(['circle', 'triangle', 'square', 'heart'] as const).map(shape => <ShapePicture key={shape} shape={shape} decorative compact />)}</div>
+    <div className="mt-6 grid grid-cols-4 gap-2 rounded-2xl bg-rose-50 p-4" aria-hidden="true">{(['circle', 'triangle', 'square', 'heart'] as const).map(shape => <ShapePicture key={shape} shape={shape} decorative compact />)}</div>
     <ol className="mt-6 list-decimal space-y-2 pl-5 leading-7"><li>Look at the outline or everyday object.</li><li>Choose one answer using touch, mouse or keyboard.</li><li>Read the short explanation before continuing.</li></ol>
-    <Button onClick={start} className="mt-7 min-h-12 w-full bg-blue-800 hover:bg-blue-900 sm:w-auto">Start geometry session<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Button>
+    <Button onClick={start} className="mt-7 min-h-[44px] shrink-0 w-full bg-rose-800 hover:bg-rose-900 sm:w-auto">Start geometry session<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Button>
     <p className="mt-4 text-sm leading-6 text-muted-foreground">Use Tab to reach every answer and Enter or Space to choose. Your completed score stays in My Learning Journey on this browser.</p>
   </section>;
 
-  if (phase === 'results') return <section className="mx-auto max-w-3xl rounded-3xl border border-blue-200 bg-white p-5 shadow-sm sm:p-8" aria-labelledby="geometry-results" data-geometry-phase="results">
+  if (phase === 'results') return <section className="mx-auto max-w-3xl rounded-3xl border border-rose-200 bg-white p-5 shadow-sm sm:p-8" aria-labelledby="geometry-results" data-geometry-phase="results">
     <Trophy className="h-12 w-12 text-amber-500" aria-hidden="true" />
     <h2 id="geometry-results" ref={resultsHeading} tabIndex={-1} className="mt-4 scroll-mt-24 text-3xl font-extrabold outline-none">Geometry session complete</h2>
     <p className="mt-4 text-2xl font-bold">You solved {score} of 10 shape challenges.</p>
     <p className="mt-3 leading-7">Each outline, object and symmetry clue is useful practice. The score records this session; it is not a formal assessment.</p>
     <h3 className="mt-6 text-xl font-bold">Skills you practised</h3>
-    <ul className="mt-3 grid gap-2 sm:grid-cols-2">{Object.values(geometryMechanicLabels).map(label => <li key={label} className="rounded-lg bg-blue-50 p-3">{label}</li>)}</ul>
-    <div className="mt-6 flex flex-wrap gap-3"><Button onClick={start} className="min-h-12 bg-blue-800 hover:bg-blue-900"><RotateCcw className="mr-2 h-5 w-5" aria-hidden="true" />Play a new session</Button><Button asChild variant="outline" className="min-h-12"><Link href="/games/my-learning-journey">My Learning Journey</Link></Button></div>
-    <nav aria-label="Continue learning" className="mt-5 flex flex-wrap gap-4"><Link href="/games/math" className={`inline-flex min-h-12 items-center rounded font-semibold text-blue-800 underline ${focusClass}`}>Mathematics Games</Link><Link href="/games/math/addition-level-1" className={`inline-flex min-h-12 items-center rounded font-semibold text-blue-800 underline ${focusClass}`}>Play Addition Level 1</Link><Link href="/games/math/subtraction-level-1" className={`inline-flex min-h-12 items-center rounded font-semibold text-blue-800 underline ${focusClass}`}>Play Subtraction Adventure</Link></nav>
+    <ul className="mt-3 grid gap-2 sm:grid-cols-2">{Object.values(geometryMechanicLabels).map(label => <li key={label} className="rounded-lg bg-rose-50 p-3">{label}</li>)}</ul>
+    <div className="mt-6 flex flex-wrap gap-3"><Button onClick={start} className="min-h-[44px] shrink-0 bg-rose-800 hover:bg-rose-900"><RotateCcw className="mr-2 h-5 w-5" aria-hidden="true" />Play a new session</Button><Button asChild variant="outline" className="min-h-[44px] shrink-0"><Link href="/games/my-learning-journey">My Learning Journey</Link></Button></div>
+    <nav aria-label="Continue learning" className="mt-5 flex flex-wrap gap-4"><Link href="/games/math" className={`inline-flex min-h-12 items-center rounded font-semibold text-rose-800 underline ${focusClass}`}>Mathematics Games</Link><Link href="/games/math/addition-level-1" className={`inline-flex min-h-12 items-center rounded font-semibold text-rose-800 underline ${focusClass}`}>Play Addition Level 1</Link><Link href="/games/math/subtraction-level-1" className={`inline-flex min-h-12 items-center rounded font-semibold text-rose-800 underline ${focusClass}`}>Play Subtraction Adventure</Link></nav>
   </section>;
 
   const correct = selected === question.correctChoiceId;
   const correctChoice = question.choices.find(choice => choice.id === question.correctChoiceId)!;
-  return <section className="mx-auto max-w-3xl min-w-0 rounded-3xl border border-blue-200 bg-white p-4 shadow-sm sm:p-7" aria-labelledby="geometry-question" data-geometry-phase="playing" data-challenge-id={question.id} data-mechanic={question.mechanic}>
+  return <section className="mx-auto max-w-3xl min-w-0 rounded-3xl border border-rose-200 bg-white p-4 shadow-sm sm:p-7" aria-labelledby="geometry-question" data-geometry-phase="playing" data-challenge-id={question.id} data-mechanic={question.mechanic}>
     <div className="flex flex-wrap justify-between gap-2 text-sm font-semibold"><span>Question {index + 1} of 10</span><span>Score: {score}</span></div>
-    <div role="progressbar" aria-label={`Question ${index + 1} of 10`} aria-valuemin={0} aria-valuemax={10} aria-valuenow={index + 1} className="mt-3 h-3 overflow-hidden rounded-full bg-blue-100"><div className="h-full rounded-full bg-blue-700 motion-safe:transition-[width]" style={{ width: `${(index + 1) * 10}%` }} /></div>
-    <p className="mt-5 text-sm font-bold uppercase tracking-wider text-blue-800">{geometryMechanicLabels[question.mechanic]}</p>
+    <div role="progressbar" aria-label={`Question ${index + 1} of 10`} aria-valuemin={0} aria-valuemax={10} aria-valuenow={index + 1} className="mt-3 h-3 overflow-hidden rounded-full bg-rose-100"><div className="h-full rounded-full bg-rose-700 motion-safe:transition-[width]" style={{ width: `${(index + 1) * 10}%` }} /></div>
+    <p className="mt-5 text-sm font-bold uppercase tracking-wider text-rose-800">{geometryMechanicLabels[question.mechanic]}</p>
     <h2 id="geometry-question" ref={questionHeading} tabIndex={-1} className="mt-2 scroll-mt-24 text-balance text-2xl font-extrabold outline-none sm:text-3xl">{question.prompt}</h2>
     <p id="geometry-instruction" className="mt-3 leading-7">{question.instruction}</p>
     <QuestionVisual question={question} />
     <fieldset className="mt-6" aria-describedby="geometry-instruction"><legend className="sr-only">Choose one answer</legend><div className={`grid gap-3 ${question.mechanic === 'symmetry' ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2'}`}>{question.choices.map((choice, choiceIndex) => {
       const right = selected !== null && choice.id === question.correctChoiceId;
       const wrong = selected === choice.id && !right;
-      return <button key={choice.id} type="button" data-choice-id={choice.id} disabled={selected !== null} aria-pressed={selected === choice.id} aria-label={choice.figure ? `${choice.label}. ${describeSymmetryFigure(choice.figure)}` : `Choose ${choice.label}`} onClick={() => choose(choice.id)} className={`min-h-20 min-w-0 rounded-2xl border-2 p-3 text-center ${focusClass} disabled:opacity-100 ${right ? 'border-emerald-700 bg-emerald-50' : wrong ? 'border-orange-700 bg-orange-50' : 'border-blue-200 bg-white hover:border-blue-700 hover:bg-blue-50/40'}`}>
+      return <button key={choice.id} type="button" data-choice-id={choice.id} disabled={selected !== null} aria-pressed={selected === choice.id} aria-label={choice.figure ? `${choice.label}. ${describeSymmetryFigure(choice.figure)}` : `Choose ${choice.label}`} onClick={() => choose(choice.id)} className={`min-h-20 min-w-0 rounded-2xl border-2 p-3 text-center ${focusClass} disabled:opacity-100 ${right ? 'border-emerald-700 bg-emerald-50' : wrong ? 'border-orange-700 bg-orange-50' : 'border-rose-200 bg-white hover:border-rose-700 hover:bg-rose-50/40'}`}>
         <ChoicePicture choice={choice} index={choiceIndex} /><span className="mt-2 block text-lg font-bold">{choice.label}</span>{right && <span className="mt-2 block text-sm font-bold text-emerald-900"><Check className="mr-1 inline h-4 w-4" aria-hidden="true" />Correct answer</span>}{wrong && <span className="mt-2 block text-sm font-bold text-orange-900"><X className="mr-1 inline h-4 w-4" aria-hidden="true" />Your choice</span>}
       </button>;
     })}</div></fieldset>
     <div role="status" aria-live="polite" aria-atomic="true" className="mt-5">{selected && <div className={`rounded-2xl border p-4 ${correct ? 'border-emerald-300 bg-emerald-50' : 'border-orange-300 bg-orange-50'}`}><p className="font-bold">{correct ? 'That geometry clue matches!' : `Good try. The matching answer is ${correctChoice.label}.`}</p><p className="mt-2 leading-7">{question.explanation}</p></div>}</div>
-    {selected && <Button ref={nextButton} onClick={next} className="mt-4 min-h-12 w-full scroll-mt-24 bg-blue-800 hover:bg-blue-900 sm:w-auto">{index === 9 ? 'See results' : 'Next question'}<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Button>}
+    {selected && <Button ref={nextButton} onClick={next} className="mt-4 min-h-[44px] shrink-0 w-full scroll-mt-24 bg-rose-800 hover:bg-rose-900 sm:w-auto">{index === 9 ? 'See results' : 'Next question'}<ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Button>}
   </section>;
 }
 
 function QuestionVisual({ question }: { question: GeometryChallenge }) {
-  if (question.visual.kind === 'shape') return <div className="mx-auto mt-5 max-w-xs rounded-2xl border border-blue-200 bg-blue-50/40 p-5"><ShapePicture shape={question.visual.shape} label={question.mechanic === 'name' ? shapeFacts[question.visual.shape].description : `A ${question.visual.shape} outline`} /></div>;
-  if (question.visual.kind === 'object') return <div className="mx-auto mt-5 max-w-xs rounded-2xl border border-blue-200 bg-blue-50/40 p-5"><ObjectPicture object={question.visual.object} /></div>;
-  return <div className="mt-5 rounded-2xl border border-blue-200 bg-blue-50/40 p-4 text-center"><Sparkles className="mx-auto h-8 w-8 text-blue-700" aria-hidden="true" /><p className="mt-2 font-semibold">Compare both sides of the dotted line in each answer.</p></div>;
+  if (question.visual.kind === 'shape') return <div className="mx-auto mt-5 max-w-xs rounded-2xl border border-rose-200 bg-rose-50/40 p-5"><ShapePicture shape={question.visual.shape} label={question.mechanic === 'name' ? shapeFacts[question.visual.shape].description : `A ${question.visual.shape} outline`} /></div>;
+  if (question.visual.kind === 'object') return <div className="mx-auto mt-5 max-w-xs rounded-2xl border border-rose-200 bg-rose-50/40 p-5"><ObjectPicture object={question.visual.object} /></div>;
+  return <div className="mt-5 rounded-2xl border border-rose-200 bg-rose-50/40 p-4 text-center"><Sparkles className="mx-auto h-8 w-8 text-rose-700" aria-hidden="true" /><p className="mt-2 font-semibold">Compare both sides of the dotted line in each answer.</p></div>;
 }
 
 function ChoicePicture({ choice, index }: { choice: GeometryChoice; index: number }) {

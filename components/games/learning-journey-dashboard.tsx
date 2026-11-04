@@ -22,7 +22,7 @@ import {
 const subjectStyles = {
   logic: { label: 'Logic & Brain Games', bar: 'bg-purple-600', panel: 'border-purple-200 bg-purple-50/50' },
   english: { label: 'English', bar: 'bg-blue-600', panel: 'border-blue-200 bg-blue-50/50' },
-  mathematics: { label: 'Mathematics', bar: 'bg-amber-600', panel: 'border-amber-200 bg-amber-50/50' },
+  mathematics: { label: 'Mathematics', bar: 'bg-rose-600', panel: 'border-rose-200 bg-rose-50/50' },
   science: { label: 'Science', bar: 'bg-emerald-600', panel: 'border-emerald-200 bg-emerald-50/50' },
   geography: { label: 'Geography', bar: 'bg-sky-600', panel: 'border-sky-200 bg-sky-50/50' },
   'life-skills': { label: 'Life Skills', bar: 'bg-orange-600', panel: 'border-orange-200 bg-orange-50/50' },
