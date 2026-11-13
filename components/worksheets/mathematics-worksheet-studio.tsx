@@ -26,9 +26,10 @@ function configurationDimensions(config: WorksheetConfig) {
   return { subject: 'mathematics', topic: config.topic, layout: config.layout, question_count: String(config.questionCount), number_range: String(config.range) };
 }
 
-export function MathematicsWorksheetStudio() {
-  const [config, setConfig] = useState<WorksheetConfig>(initialConfig);
-  const [worksheet, setWorksheet] = useState(() => generateMathematicsWorksheet(initialConfig));
+export function MathematicsWorksheetStudio({ initialTopic = 'addition' }: { initialTopic?: WorksheetTopic }) {
+  const startingConfig = { ...initialConfig, topic: initialTopic };
+  const [config, setConfig] = useState<WorksheetConfig>(startingConfig);
+  const [worksheet, setWorksheet] = useState(() => generateMathematicsWorksheet(startingConfig));
   const [showAnswers, setShowAnswers] = useState(false);
   const [variation, setVariation] = useState(1);
   const [message, setMessage] = useState('A starter worksheet is ready. Change the settings and generate when you are ready.');

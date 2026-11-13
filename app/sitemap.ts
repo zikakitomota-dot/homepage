@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { curriculumRoutes } from '@/lib/learning/curriculum';
 import { englishGames } from '@/lib/games/english-games';
 import { SITE_URL } from '@/lib/site';
 import { publishedFreebies } from '@/lib/freebies';
@@ -6,6 +7,7 @@ import { publishedFreebies } from '@/lib/freebies';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
   return [
+    ...curriculumRoutes.map(path => ({ url: baseUrl + path, changeFrequency: 'monthly' as const, priority: 0.7 })),
     {
       url: baseUrl,
       changeFrequency: "weekly",
@@ -179,7 +181,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    {
+{
       url: `${baseUrl}/games/math/shapes-and-geometry`,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -194,7 +196,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    {
+{
       url: `${baseUrl}/games/science/living-or-non-living`,
       changeFrequency: "monthly",
       priority: 0.8,

@@ -1,0 +1,448 @@
+{
+  "version": 1,
+  "reviewer": "Zalea Studio owner",
+  "reviewedAt": "2026-11-13",
+  "evidence": "Explicit owner response in this release chat",
+  "declaration": "Yes—all 73 clips reviewed and approved",
+  "scope": "All 10 environmental recordings and all 63 speech/rhythm recordings; this records the owner attestation, not an independent agent listening assessment.",
+  "approvedAudio": [
+    {
+      "game": "detektif-bunyi",
+      "id": "cat",
+      "path": "/audio/detektif-bunyi/cat.wav",
+      "sha256": "0dca0c6d335611d8d93b6c8a77681279d1a8908cdb805b3bed2ffb9771312065"
+    },
+    {
+      "game": "detektif-bunyi",
+      "id": "rooster",
+      "path": "/audio/detektif-bunyi/rooster.wav",
+      "sha256": "c919753c7ee50ffe969951e0ef14f3503425445bb97f9d34ac3cebb23f6dd263"
+    },
+    {
+      "game": "detektif-bunyi",
+      "id": "cow",
+      "path": "/audio/detektif-bunyi/cow.wav",
+      "sha256": "9ac0709d7d9812d8ab2bfd5527efd1576ee2a0b10d47cb3221584579130304ef"
+    },
+    {
+      "game": "detektif-bunyi",
+      "id": "dog",
+      "path": "/audio/detektif-bunyi/dog.wav",
+      "sha256": "7cdcc673139888d08cb284208d2bdfc4707d917688cae861d720aa07dc31acfe"
+    },
+    {
+      "game": "detektif-bunyi",
+      "id": "rain",
+      "path": "/audio/detektif-bunyi/rain.wav",
+      "sha256": "e48086d064a263179874d7f1cec34d3f841deb9bd0ff1b9ec6e6f9b2d39d4bc8"
+    },
+    {
+      "game": "detektif-bunyi",
+      "id": "water",
+      "path": "/audio/detektif-bunyi/water.wav",
+      "sha256": "86d5a8d839b411c4d761be810fc769222eddeefd42efa48c7e44cbfe722daa03"
+    },
+    {
+      "game": "detektif-bunyi",
+      "id": "bell",
+      "path": "/audio/detektif-bunyi/bell.wav",
+      "sha256": "833ec26bb91f8a7158d671a6bd6c041d5821635215f8df340c141d0d44b8abe2"
+    },
+    {
+      "game": "detektif-bunyi",
+      "id": "tick",
+      "path": "/audio/detektif-bunyi/tick.wav",
+      "sha256": "3096f95c1651c480ef6040952d3931468aa0a23f48d0bb2c4cfba997b27f09ce"
+    },
+    {
+      "game": "detektif-bunyi",
+      "id": "wind",
+      "path": "/audio/detektif-bunyi/wind.wav",
+      "sha256": "ac584bbd422b1fc0380ebd2ab709e0a02142b2c2725614c23d9080b5ff993301"
+    },
+    {
+      "game": "detektif-bunyi",
+      "id": "waves",
+      "path": "/audio/detektif-bunyi/waves.wav",
+      "sha256": "38f50f6536dcf8d9ef92a2430b2dad03d657cc820ae152fb4ee9fb78d8d9377f"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-a",
+      "path": "/audio/dengar-sebut-pilih/letter-a.wav",
+      "sha256": "cec150752468cc34336743e66021ea47fc05e3c1dfd4d6e9d9b6958a020db6fb"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-b",
+      "path": "/audio/dengar-sebut-pilih/letter-b.wav",
+      "sha256": "579ef61278bf576e59f34a40538222ebbd3cc7117700150f7da917fcd549100e"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-c",
+      "path": "/audio/dengar-sebut-pilih/letter-c.wav",
+      "sha256": "9be4b839b9e82c4c5fa9f4d66690bebc8d7ff56c4eaedbe8a7f5ab429833653e"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-d",
+      "path": "/audio/dengar-sebut-pilih/letter-d.wav",
+      "sha256": "d3901a1b0e16486182344a2d2620a95926d6f12e32bcfc492d24547fef409202"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-e",
+      "path": "/audio/dengar-sebut-pilih/letter-e.wav",
+      "sha256": "9d6ad72f4aae19c09b76c08cb57092006041367318ccc0b0e1150787914cbb9e"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-g",
+      "path": "/audio/dengar-sebut-pilih/letter-g.wav",
+      "sha256": "e203c32db6d580704e47701218d30667f858b22e5e24182e0ba80472894476fe"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-i",
+      "path": "/audio/dengar-sebut-pilih/letter-i.wav",
+      "sha256": "c63c92034e2eeed2e8f9ff3328100083138523345b4d4299bbd3177a6bc91caf"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-k",
+      "path": "/audio/dengar-sebut-pilih/letter-k.wav",
+      "sha256": "dbab7025e1bd7e4bbfd5fc5d325f2f709c9ea454beb21421324b6432a26be32e"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-m",
+      "path": "/audio/dengar-sebut-pilih/letter-m.wav",
+      "sha256": "b3cf09db7e3d155344c857f0003cce89726e1ae523339e9f12ef3f8aef68d95f"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-n",
+      "path": "/audio/dengar-sebut-pilih/letter-n.wav",
+      "sha256": "7201bed7f6b50fa1146916fa0b4cc23b76cead752507db49d41358734e3fec4e"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-o",
+      "path": "/audio/dengar-sebut-pilih/letter-o.wav",
+      "sha256": "60e9db522579f2caa16fa3df44820727cbf6e15251998f4668f3a0177d645223"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-p",
+      "path": "/audio/dengar-sebut-pilih/letter-p.wav",
+      "sha256": "01e700adb3e9f4aed5ba63c2c5d0ca8eaa35168f8671765376407f4e0028b39e"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-r",
+      "path": "/audio/dengar-sebut-pilih/letter-r.wav",
+      "sha256": "64c34c2ac0d64ed408230c02ac7c4bdfd1bf437f1130648ae889404547994a89"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-s",
+      "path": "/audio/dengar-sebut-pilih/letter-s.wav",
+      "sha256": "80e3b0a069056a971c34687a5cbe1b0bb07119c07dd099e995fc14189d32c770"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "letter-u",
+      "path": "/audio/dengar-sebut-pilih/letter-u.wav",
+      "sha256": "736f795910d1f50b62bf7baf0f6efcc299722fb2a2d608da012f124f3ebfde27"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-ba",
+      "path": "/audio/dengar-sebut-pilih/syllable-ba.wav",
+      "sha256": "e5e4c3b03550fc1635099c7ccfc44c1b162527e3a2d267ab6e73c1360e737283"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-bi",
+      "path": "/audio/dengar-sebut-pilih/syllable-bi.wav",
+      "sha256": "23444d9ef5931fec5ffefc9766eeb399013a425db3d8bf23d7e97be88493adda"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-bu",
+      "path": "/audio/dengar-sebut-pilih/syllable-bu.wav",
+      "sha256": "46e6c8b94734da926b07c5fca4b6a690daa9f738d3146bb517355f051bfb4c54"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-ca",
+      "path": "/audio/dengar-sebut-pilih/syllable-ca.wav",
+      "sha256": "ad1b2384b87bed304ad1954d56fe240e716d56e8da07f29b6c5fb3e5cc1df194"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-ci",
+      "path": "/audio/dengar-sebut-pilih/syllable-ci.wav",
+      "sha256": "e45b921944ab89e4c9973a3fd2b9d6e0ca1175f5420a575479335641520c9d6d"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-cu",
+      "path": "/audio/dengar-sebut-pilih/syllable-cu.wav",
+      "sha256": "9d9fb992f4409e189a246a5d5620ecd3aca497a2399b588c6db1a0fc4c91990f"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-da",
+      "path": "/audio/dengar-sebut-pilih/syllable-da.wav",
+      "sha256": "03accd26ded33f8c6f36f684643dc7272601440c10bb6fd298b4f43c531a9a9f"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-di",
+      "path": "/audio/dengar-sebut-pilih/syllable-di.wav",
+      "sha256": "a4d5a1b5b506c03acf6d2735e90f5b65ed598ead9159becad14f129b716136aa"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-du",
+      "path": "/audio/dengar-sebut-pilih/syllable-du.wav",
+      "sha256": "e992564e5516aea1a0eaeaab1eebaca6fc5787fb156185776b0c5699b0a561a9"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-ka",
+      "path": "/audio/dengar-sebut-pilih/syllable-ka.wav",
+      "sha256": "202e3d11e72b26e24a8d6cf72b9e30faeea5c6408644e8700913753cff6f0112"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-ki",
+      "path": "/audio/dengar-sebut-pilih/syllable-ki.wav",
+      "sha256": "46179e9ec35e1c8e7749d7da682d92f0bad08fe235745beedca5740fb462a081"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-ku",
+      "path": "/audio/dengar-sebut-pilih/syllable-ku.wav",
+      "sha256": "3f3c503d5c404c3d5fd40ac8b357b9d6203ec6697f8ecc537071b66517a14287"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-ma",
+      "path": "/audio/dengar-sebut-pilih/syllable-ma.wav",
+      "sha256": "5d66939373cd1a3c45488282517f58135a0bbd7224eff9fadbda79e365549dd4"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-mi",
+      "path": "/audio/dengar-sebut-pilih/syllable-mi.wav",
+      "sha256": "7c647bab0817e98ad99cad2d3f583fdfd384b58957a554e4c5efcbf83c6e720c"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-mu",
+      "path": "/audio/dengar-sebut-pilih/syllable-mu.wav",
+      "sha256": "5317404a2b43af4b47d7fd64c0204f53ccc97b0680c7a40547172c93e667ab9e"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-pa",
+      "path": "/audio/dengar-sebut-pilih/syllable-pa.wav",
+      "sha256": "89b9638dd571f5cb3be2d008783cb7f4a56736e0b407391abad04ea76532dc00"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-pi",
+      "path": "/audio/dengar-sebut-pilih/syllable-pi.wav",
+      "sha256": "abfff9e7dbda335051eef1fb1a3a678e5cc1f800aca46db27aec17bc41a82f92"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-pu",
+      "path": "/audio/dengar-sebut-pilih/syllable-pu.wav",
+      "sha256": "fa4d2fa3b8eb8c8cc226e3f046e2b263bb7262b46836294fc9bcc59a12c06186"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-sa",
+      "path": "/audio/dengar-sebut-pilih/syllable-sa.wav",
+      "sha256": "0d3ba6523100dd7530c7fcde357bc27a3c174488405bbadb4e8a548db8724ba7"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "syllable-su",
+      "path": "/audio/dengar-sebut-pilih/syllable-su.wav",
+      "sha256": "3a49b4252ce5dca74fb7e7c87578871158b971ca35131a9d163a27d3832b7800"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-buku",
+      "path": "/audio/dengar-sebut-pilih/word-buku.wav",
+      "sha256": "5952a45460f3081192524d7902e98a5b50e47b357409109c60958b0e8b1f6531"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-baju",
+      "path": "/audio/dengar-sebut-pilih/word-baju.wav",
+      "sha256": "c2a37d59e0813ac4b9e417bbaf44937fe28d3cb62048e83123145dd7859ccd88"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-bola",
+      "path": "/audio/dengar-sebut-pilih/word-bola.wav",
+      "sha256": "afc652efc00d610f65cad3a5158fd80297717fc38a9b600612097333686d9faa"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-batu",
+      "path": "/audio/dengar-sebut-pilih/word-batu.wav",
+      "sha256": "92edb5aaa42d4582301cedf61e6dd66ca16f56993616dc2bcaefd392e882625b"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-mata",
+      "path": "/audio/dengar-sebut-pilih/word-mata.wav",
+      "sha256": "321bc281a88e82b9aa7f540bd5bd0dda11febeae683b28c3469b4a50faf473a9"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-kaki",
+      "path": "/audio/dengar-sebut-pilih/word-kaki.wav",
+      "sha256": "0006e6bc6eeef064b9ed5bd6afb1962fa4b3aa56db65fa51067eae2b7150ed46"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-susu",
+      "path": "/audio/dengar-sebut-pilih/word-susu.wav",
+      "sha256": "76e8d2dd4108d96e94479be983b4aa40af63da98b1ad46656ca62da15fffeb4c"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-meja",
+      "path": "/audio/dengar-sebut-pilih/word-meja.wav",
+      "sha256": "9dfe4b5dc411ca4768c1afb00a0dbc0b9afb13126211be2b68274165012fbca6"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-nasi",
+      "path": "/audio/dengar-sebut-pilih/word-nasi.wav",
+      "sha256": "386037b49f85a53fbc94151adb9c9b225ff7c2cc40bb7eaf16b559f4caf2e822"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-roti",
+      "path": "/audio/dengar-sebut-pilih/word-roti.wav",
+      "sha256": "882a3840fdae84af3b45092335dcdc25b2918bb5ab2278eefcdef28eb3758854"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-ibu",
+      "path": "/audio/dengar-sebut-pilih/word-ibu.wav",
+      "sha256": "0ba991eeaa2627679943dceb277fd123da9b2d3101fe7075ba973ada7f63a175"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-adik",
+      "path": "/audio/dengar-sebut-pilih/word-adik.wav",
+      "sha256": "5ce96d9719675b3d3a5fda1d535749f61cbad27048b888fc3608d6bd4cd6622e"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-rumah",
+      "path": "/audio/dengar-sebut-pilih/word-rumah.wav",
+      "sha256": "3333e5da49c4d7aeed8bcce6ea860b6a56d96570aa5b76c9aece34e279c8b155"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-makan",
+      "path": "/audio/dengar-sebut-pilih/word-makan.wav",
+      "sha256": "07bf73d8576dee1d8dfa972e74447a03e854fbc3652b20ddee002ccca36ca457"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "word-tidur",
+      "path": "/audio/dengar-sebut-pilih/word-tidur.wav",
+      "sha256": "19dd00e82522559d423ac29c31ca5787fca58f07093ba58df24c61ce16222b1d"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "utterance-ibu-saya",
+      "path": "/audio/dengar-sebut-pilih/utterance-ibu-saya.wav",
+      "sha256": "160f39101f0be260a11cd55e8565022b5e6853917ed6ce94393f78844b3db465"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "utterance-buku-biru",
+      "path": "/audio/dengar-sebut-pilih/utterance-buku-biru.wav",
+      "sha256": "a2fd0f9587fff59009a1ad5c953bd967034ae75e82a8865751c179f784444136"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "utterance-adik-kecil",
+      "path": "/audio/dengar-sebut-pilih/utterance-adik-kecil.wav",
+      "sha256": "09a3a0424c6ccc25341416f83d5a106d950c18c51c6fa9e6aa6fab1cc940cb66"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "utterance-selamat-pagi",
+      "path": "/audio/dengar-sebut-pilih/utterance-selamat-pagi.wav",
+      "sha256": "d5ca82ada75025b6eefb168d633005ba0fa0034c84a70e5d28dc621aff0e4348"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "utterance-apa-khabar",
+      "path": "/audio/dengar-sebut-pilih/utterance-apa-khabar.wav",
+      "sha256": "08dc226330846578115afe717f0b3138d1beb76b47f771e86c08372cf4153948"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "utterance-terima-kasih",
+      "path": "/audio/dengar-sebut-pilih/utterance-terima-kasih.wav",
+      "sha256": "f45b257f7c71b10e7cd20cdd949d5f17adb06fe4399555ee0392128816f1585c"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "utterance-ini-buku-saya",
+      "path": "/audio/dengar-sebut-pilih/utterance-ini-buku-saya.wav",
+      "sha256": "bd3e6fadc67f837a9731da9820ae83e746e8c3f9e38aa7a4fe1a444683e11c3e"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "utterance-di-mana-ibu",
+      "path": "/audio/dengar-sebut-pilih/utterance-di-mana-ibu.wav",
+      "sha256": "189feaca2c7f0a5c17d77e4e86969ee27e85ef41c4869d9f5a0482fbf7975c7b"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "utterance-tolong-buka-pintu",
+      "path": "/audio/dengar-sebut-pilih/utterance-tolong-buka-pintu.wav",
+      "sha256": "f4ea15f42fa246db1b81dd8cbba9425d0f9130a392f5ec0b06d04e646af661fe"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "utterance-sila-duduk",
+      "path": "/audio/dengar-sebut-pilih/utterance-sila-duduk.wav",
+      "sha256": "7c85285fb78c9eac28482eb5fdee18857b85b1b2cd1cbc70be9bccad4c134852"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "intonation-buku-question",
+      "path": "/audio/dengar-sebut-pilih/intonation-buku-question.wav",
+      "sha256": "5cd347dabbc3daf02ce1b0e1ea1d30025645b99318e3e5cdd334528128a5f23e"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "intonation-ini-question",
+      "path": "/audio/dengar-sebut-pilih/intonation-ini-question.wav",
+      "sha256": "914ae679d05291aebaef53c62d3ac7ae598e04023b700e066a58e144ce04bd27"
+    },
+    {
+      "game": "dengar-sebut-pilih",
+      "id": "chant-ba-bi-bu",
+      "path": "/audio/dengar-sebut-pilih/chant-ba-bi-bu.wav",
+      "sha256": "00cd117f09d300b13e95f3356b4c4e2337c62777040de91ea04a0d42cad54ca3"
+    }
+  ]
+}

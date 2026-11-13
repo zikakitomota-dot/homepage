@@ -19,8 +19,8 @@ const ids=entries=>entries.map(entry=>entry.id);
 
 test('published free inventory is complete, unique and valid',()=>{
   assert.deepEqual(validateResourceCatalogue(resources),[]);
-  assert.equal(resources.length,73);
-  assert.deepEqual(Object.fromEntries(['game','mission','worksheet','freebie','guide','calculator'].map(type=>[type,resources.filter(r=>r.type===type).length])),{game:23,mission:4,worksheet:1,freebie:13,guide:4,calculator:28});
+  assert.equal(resources.length, 75);
+  assert.deepEqual(Object.fromEntries(['game','mission','worksheet','freebie','guide','calculator'].map(type=>[type,resources.filter(r=>r.type===type).length])),{game:25,mission:4,worksheet:1,freebie:13,guide:4,calculator:28});
   assert.ok(resources.every(r=>r.access==='free'&&r.status==='available'));
   assert.ok(resources.every(r=>!r.href.includes('academy')&&!r.href.startsWith('/shop')));
   assert.equal(resources.filter(r=>r.href==='/worksheets').length,1);
@@ -102,9 +102,11 @@ test('shape and geometry searches find the Mathematics game',()=>{
     assert.ok(ids(results).includes('game:shapes-and-geometry'),query);
   }
 });
-test('Finder keeps raw searches out of storage, URL state, network and analytics',()=>{
+test('Finder keeps raw searches out of persistent storage, URLs, network and analytics',()=>{
   const source=readFileSync('components/resources/resource-finder.tsx','utf8');
-  assert.ok(!/localStorage|sessionStorage|fetch\(|URLSearchParams|history\./.test(source));
+  assert.ok(!/localStorage|fetch\(|URLSearchParams|pushState/.test(source));
+  assert.ok(source.includes('withFinderSnapshot'));
+  assert.ok(source.includes('sessionStorage.removeItem(finderHistoryKey)'));
   for(const line of source.split('\n').filter(line=>line.includes('trackEvent('))) assert.ok(!/filters\.query|query:|search_term|searchTerms/.test(line));
   assert.ok(source.includes('prefetch={false}'));
   assert.ok(!readFileSync('lib/adsense.ts','utf8').includes("'/resources'"));

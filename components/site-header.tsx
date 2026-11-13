@@ -1,112 +1,101 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Calculator, ChevronDown, Menu } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { HEALTH_TOOLS_URL, navLinks, toolLinks } from '@/lib/site';
+import { usePathname } from 'next/navigation';
+import { Calculator, Check, ChevronDown, Menu } from 'lucide-react';
+import { activeNavigationKey, currentNavigationValue, navigation, navigationDecorations } from '@/lib/navigation';
+import './site-navigation.css';
 
-type NavigationLink =
-  | (typeof navLinks)[number]
-  | (typeof toolLinks)[number];
-
-function NavItem({
-  href,
-  label,
-  external,
-}: NavigationLink) {
-  const className =
-    'text-sm font-medium text-muted-foreground transition-colors hover:text-foreground';
-
-  return external ? (
-    <a href={href} className={className}>
-      {label}
-    </a>
-  ) : (
-    <Link href={href} className={className}>
-      {label}
-    </Link>
-  );
+function MenuItems({ group, pathname }: { group: 'tools' | 'learning'; pathname: string }) {
+  return <div className="zalea-menu-panel">
+    <span className="zalea-menu-heading">{group === 'tools' ? 'Calculators' : 'Learning paths'}</span>
+    {navigation[group].map(link => {
+      const decoration = navigationDecorations[link.href];
+      const current = currentNavigationValue(pathname, link.href);
+      return <Link key={link.href} href={link.href} className="zalea-menu-link" aria-current={current}>
+        <span className="zalea-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{decoration.paths.map((d, i) => <path key={i} d={d} />)}</svg></span>
+        <span><span className="zalea-menu-label">{link.label}</span>{decoration.description && <span className="zalea-menu-description">{decoration.description}</span>}</span>
+        {current && <Check className="zalea-menu-current" aria-hidden="true" />}
+      </Link>;
+    })}
+  </div>;
 }
 
-function DesktopToolsMenu() {
-  return (
-    <details className="group relative">
-      <summary className="flex cursor-pointer list-none items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
-        Tools
-        <ChevronDown
-          className="h-4 w-4 transition-transform group-open:rotate-180"
-          aria-hidden="true"
-        />
-      </summary>
-      <div className="absolute left-1/2 top-full z-50 mt-3 w-44 -translate-x-1/2 rounded-xl border border-border/60 bg-background p-2 shadow-xl">
-        {toolLinks.map((link) => (
-          <div key={link.label} className="rounded-lg px-3 py-2 hover:bg-accent">
-            <NavItem {...link} />
-          </div>
-        ))}
-      </div>
-    </details>
-  );
-}
-
-function MobileToolsMenu() {
-  return (
-    <details>
-      <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium text-muted-foreground transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
-        Tools
-        <ChevronDown className="h-4 w-4" aria-hidden="true" />
-      </summary>
-      <div className="mt-3 flex flex-col gap-3 border-l border-border pl-4">
-        {toolLinks.map((link) => (
-          <NavItem key={link.label} {...link} />
-        ))}
-      </div>
-    </details>
-  );
+function NavigationItems({ pathname }: { pathname: string }) {
+  const active = activeNavigationKey(pathname);
+  return <>{navigation.primary.map(item => {
+    const key = item.group ?? item.href;
+    const className = 'zalea-nav-item' + (active === key ? ' is-active' : '');
+    return item.href ? <Link key={key} href={item.href} aria-label={item.accessibleLabel} aria-current={currentNavigationValue(pathname, item.href)} className={className} data-navigation-key={key}>{item.label}</Link> :
+      <details key={key} className="zalea-menu">
+        <summary className={className} aria-current={active === key ? 'location' : undefined} data-navigation-key={key}>{item.label}<ChevronDown className="zalea-chevron" aria-hidden="true" /></summary>
+        <MenuItems group={item.group as 'tools' | 'learning'} pathname={pathname} />
+      </details>;
+  })}</>;
 }
 
 export function SiteHeader() {
-  return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2" aria-label="Zalea Studio home">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-            <Calculator className="h-5 w-5" aria-hidden="true" />
-          </span>
-          <span className="text-lg font-semibold tracking-tight text-foreground">
-            Zalea Studio
-          </span>
-        </Link>
+  const pathname = usePathname();
+  const root = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const header = root.current;
+    if (!header) return;
+    header.querySelectorAll('details').forEach(details => {
+      details.querySelector(':scope > summary')?.setAttribute('aria-expanded', String(details.open));
+    });
+    const setClosed = (details: Element) => {
+      details.removeAttribute('open');
+      details.querySelector(':scope > summary')?.setAttribute('aria-expanded', 'false');
+    };
+    const close = () => header.querySelectorAll('details[open]').forEach(setClosed);
+    const outside = (event: PointerEvent) => { if (!header.contains(event.target as Node)) close(); };
+    const escape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      const details = (event.target as Element).closest('details[open]') as HTMLDetailsElement | null;
+      if (details && header.contains(details)) {
+        event.preventDefault(); event.stopPropagation(); setClosed(details);
+        details.querySelector<HTMLElement>(':scope > summary')?.focus();
+      }
+    };
+    const click = (event: MouseEvent) => { if ((event.target as Element).closest('a')) close(); };
+    const focus = (event: FocusEvent) => {
+      header.querySelectorAll('details[open]').forEach(details => {
+        if (!details.contains(event.relatedTarget as Node)) setClosed(details);
+      });
+    };
+    const toggle = (event: Event) => {
+      const opened = event.target as HTMLDetailsElement;
+      opened.querySelector(':scope > summary')?.setAttribute('aria-expanded', String(opened.open));
+      if (!opened.open) return;
+      opened.parentElement?.querySelectorAll(':scope > details[open]').forEach(other => {
+        if (other !== opened) setClosed(other);
+      });
+    };
+    document.addEventListener('pointerdown', outside);
+    header.addEventListener('keydown', escape);
+    header.addEventListener('click', click);
+    header.addEventListener('focusout', focus);
+    header.addEventListener('toggle', toggle, true);
+    return () => {
+      document.removeEventListener('pointerdown', outside);
+      header.removeEventListener('keydown', escape);
+      header.removeEventListener('click', click);
+      header.removeEventListener('focusout', focus);
+      header.removeEventListener('toggle', toggle, true);
+    };
+  }, []);
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
-          <NavItem {...navLinks[0]} />
-          <DesktopToolsMenu />
-          {navLinks.slice(1).map((link) => (
-            <NavItem key={link.label} {...link} />
-          ))}
+  return <header ref={root} className="zalea-header">
+    <div className="zalea-header-inner">
+      <Link href="/" className="zalea-brand" aria-label="Zalea Studio home"><span className="zalea-brand-icon"><Calculator aria-hidden="true" /></span><span>Zalea Studio</span></Link>
+      <nav className="zalea-desktop-nav" aria-label="Main navigation"><NavigationItems pathname={pathname} /></nav>
+      <details className="zalea-mobile-navigation">
+        <summary className="zalea-mobile-toggle" aria-label="Navigation menu"><Menu aria-hidden="true" /><span>Menu</span></summary>
+        <nav className="zalea-mobile-panel" aria-label="Mobile navigation">
+          <NavigationItems pathname={pathname} /><div className="zalea-nav-utility">{navigation.utility.map(link => <Link key={link.href} href={link.href} className="zalea-nav-item" aria-current={currentNavigationValue(pathname, link.href)}>{link.label}</Link>)}</div>
         </nav>
-
-        <div className="hidden lg:block">
-          <Button asChild size="sm">
-            <Link href={HEALTH_TOOLS_URL} data-ga-event="cta_click" data-ga-label="header_explore_tools">Explore Health Calculators</Link>
-          </Button>
-        </div>
-
-        <details className="group relative lg:hidden">
-          <summary className="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-lg text-muted-foreground hover:bg-accent [&::-webkit-details-marker]:hidden">
-            <span className="sr-only">Open navigation menu</span>
-            <Menu className="h-5 w-5" aria-hidden="true" />
-          </summary>
-          <nav
-            className="absolute right-0 top-12 flex w-52 flex-col gap-4 rounded-xl border border-border/60 bg-background p-5 shadow-xl"
-            aria-label="Mobile navigation"
-          >
-            <NavItem {...navLinks[0]} />
-            <MobileToolsMenu />
-            {navLinks.slice(1).map((link) => (
-              <NavItem key={link.label} {...link} />
-            ))}
-          </nav>
-        </details>
-      </div>
-    </header>
-  );
+      </details>
+    </div>
+  </header>;
 }

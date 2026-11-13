@@ -120,8 +120,8 @@ test('legacy exports merge without losing old subjects or new Time Detective pro
 });
 
 test('Life Skills routes, Finder, sitemap and ad safeguards are integrated', () => {
-  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 73);
-  assert.equal(resourceCatalogue.filter(resource => resource.type === 'game').length, 23);
+  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 75);
+  assert.equal(resourceCatalogue.filter(resource => resource.type === 'game').length, 25);
   for (const query of ['time', 'clock', 'analogue', 'quarter past', 'daily routine']) {
     const results = searchResources(resourceCatalogue, { query, type: 'game', category: 'life-skills', sort: 'relevance' });
     assert.ok(results.some(result => result.href === '/games/life-skills/time-detective'), query);

@@ -144,7 +144,7 @@ test('old four-subject imports merge without erasing Logic or changing Mission e
   const roundTrip = j.parseLearningJourneyImport(j.exportLearningJourney(restored)); assert.deepEqual(roundTrip, restored);
 });
 test('Logic is searchable, has two static source routes and no ad expansion', () => {
-  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 73);
+  assert.deepEqual(validateResourceCatalogue(resourceCatalogue), []); assert.equal(resourceCatalogue.length, 75);
   for (const query of ['pattern', 'puzzle', 'sequence', 'brain', 'reasoning', 'logic']) {
     const results = searchResources(resourceCatalogue, { query, type: 'game', category: 'logic', sort: 'relevance' });
     assert.ok(results.some(result => result.href === '/games/logic/pattern-detective'));

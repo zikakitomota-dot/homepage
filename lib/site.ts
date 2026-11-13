@@ -14,25 +14,6 @@ export const PAYHIP_LITTLE_MONEY_MASTER_URL = 'https://payhip.com/b/h2vaZ';
 export const PAYHIP_NO_SPEND_COLLECTION_URL = 'https://payhip.com/b/VZjpT';
 export const PAYHIP_MONEY_MILESTONE_USD_URL = 'https://payhip.com/b/tvpjN';
 
-export const navLinks = [
-  { label: 'Home', href: '/', external: false },
-  { label: 'Games', href: '/games', external: false },
-  { label: 'Worksheets', href: '/worksheets', external: false },
-  { label: 'Freebies', href: '/freebies', external: false },
-  { label: 'Shop', href: '/shop', external: false },
-  { label: 'About', href: ABOUT_ROUTE, external: false },
-  { label: 'Contact', href: CONTACT_ROUTE, external: false },
-] as const;
-
-export const toolLinks = [
-  { label: 'Resource Finder', href: '/resources', external: false },
-  { label: 'Health Calculators', href: HEALTH_TOOLS_URL, external: false },
-  { label: 'Finance', href: '/finance', external: false },
-  { label: 'Work & Time', href: '/work-time', external: false },
-  { label: 'Education', href: '/education', external: false },
-  { label: 'Math', href: '/math', external: false },
-] as const;
-
 export const littleMoneyMaster = {
   name: 'Little Money Master™ Volume 1 – Needs or Wants?',
   shortName: 'Little Money Master™ Volume 1',

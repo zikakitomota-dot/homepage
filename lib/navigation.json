@@ -1,0 +1,28 @@
+{
+  "primary": [
+    { "label": "Home", "href": "/" },
+    { "label": "Tools", "group": "tools" },
+    { "label": "Finder", "href": "/resources", "accessibleLabel": "Resource Finder" },
+    { "label": "Games", "href": "/games" },
+    { "label": "Worksheets", "href": "/worksheets" },
+    { "label": "Learning", "group": "learning" },
+    { "label": "Freebies", "href": "/freebies" },
+    { "label": "Shop", "href": "/shop" }
+  ],
+  "tools": [
+    { "label": "Health Calculators", "href": "/health" },
+    { "label": "Finance Calculators", "href": "/finance" },
+    { "label": "Work & Time Calculators", "href": "/work-time" },
+    { "label": "Grade Calculators", "href": "/education" },
+    { "label": "Math Calculators", "href": "/math" }
+  ],
+  "learning": [
+    { "label": "Learning Missions", "href": "/games/missions" },
+    { "label": "My Learning Journey", "href": "/games/my-learning-journey" },
+    { "label": "Malaysia School Curriculum", "href": "/learning/malaysia/curriculum" }
+  ],
+  "utility": [
+    { "label": "About", "href": "/about" },
+    { "label": "Contact", "href": "/contact" }
+  ]
+}

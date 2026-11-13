@@ -2,6 +2,7 @@
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
+import { CurriculumProgressPanel } from '@/components/learning/progress-panel';
 import { ArrowRight, Compass, Download, Eraser, Gamepad2, Sparkles, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -109,6 +110,7 @@ export function LearningJourneyDashboard() {
   };
 
   return <div className="space-y-12">
+    <CurriculumProgressPanel />
     {summary.tried === 0 ? <section className="rounded-3xl border border-blue-200 bg-blue-50/60 p-6 text-center sm:p-10" aria-labelledby="empty-journey-heading">
       <Sparkles className="mx-auto h-10 w-10 text-amber-500" aria-hidden="true" />
       <h2 id="empty-journey-heading" className="mt-4 text-2xl font-bold">Your next adventure starts here</h2>

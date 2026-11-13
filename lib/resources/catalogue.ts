@@ -1,4 +1,5 @@
 import { gameRegistry } from '../games/registry';
+import { detektifBunyi, dengarSebutPilih } from '../learning/curriculum';
 import { missions } from '../games/missions';
 import { publishedFreebies, freebieCategories } from '../freebies';
 import { guides } from '../guides';
@@ -49,6 +50,8 @@ const calculators = [
 ];
 
 export const resourceCatalogue: readonly Resource[] = [
+  resource('game', 1, dengarSebutPilih.activityId, 'Dengar, Sebut dan Pilih — Bahasa Melayu Tahun 1 (SK)', 'Listen to letter names, syllables, Malay words and utterances, follow an original rhythmic chant, then practise repeating aloud. Includes locally hosted audio reviewed by Zalea Studio and an A4 companion.', dengarSebutPilih.route, ['bahasa-melayu', 'curriculum'], ['Bahasa Melayu', 'Tahun 1', 'Dengar Sebut Pilih', 'KP2027', 'Malaysia', 'SK', 'abjad', 'huruf', 'suku kata', 'perkataan', 'ujaran', 'intonasi', 'mendengar', 'bertutur', 'rentak', 'chant', 'listening', 'speaking', 'printable', 'A4']),
+  resource('game', 0, detektifBunyi.activityId, 'Detektif Bunyi — Bahasa Melayu Tahun 1 (SK)', 'Identify real environmental sounds, practise imitation and download the A4 companion. Provisional KP2027 alignment; speaking accuracy is not automatically assessed.', detektifBunyi.route, ['bahasa-melayu', 'curriculum'], ['Bahasa Melayu', 'Tahun 1', 'Detektif Bunyi', 'KP2027', 'Malaysia', 'SK', 'bunyi persekitaran', 'mendengar', 'bertutur', 'haiwan', 'persekitaran', 'listening', 'speaking', 'printable', 'A4']),
   resource('worksheet', 0, 'studio', 'Custom Worksheet Studio', 'Generate Mathematics or English Level 1 practice, then print or download an A4 worksheet with a matching answer key.', '/worksheets', ['mathematics', 'english'], ['addition', 'subtraction', 'missing number', 'grammar', 'articles', 'plurals', 'pronouns', 'verbs', 'possessives', 'prepositions', 'demonstratives', 'printable']),
   ...gameRegistry.filter(game => game.status === 'available' && game.route).map((game, index) => resource('game', index, game.gameId, game.title, game.description, game.route!, [game.subjectId], game.subjectId === 'english' ? ['grammar', game.gameId, ...(englishTopics[game.gameId] ?? [])] : [game.gameId, ...(game.searchKeywords ?? [])])),
   ...missions.map((mission, index) => resource('mission', index, mission.id, mission.title, mission.shortDescription, `/games/missions/${mission.id}`, [mission.subject.toLowerCase() as ResourceCategory], mission.activities.flatMap(activity => [activity.title, activity.description]))),

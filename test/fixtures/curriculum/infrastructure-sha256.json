@@ -1,0 +1,10 @@
+{
+  "wrangler.jsonc": "4d922accdc5475247248ef1b5d60aa8d19dbefa30f803707bf9787e44c5d0bab",
+  "lib/adsense.ts": "5b9403d163e66495c44db38854a8fe5a28805d7d9577f6b8d009ef3ce4a0135f",
+  "next.config.js": "76ee0d9ffe27ab118d8c5cca17611801f21549fe94f8860dda0ba9d8fc5f8e63",
+  "package-lock.json": "37d2e2028a7ca954eb79033086ff8a262ee92b206c524cb2bd02a50eda3ec134",
+  "lib/games/learning-journey.ts": "de754f36007d1a843cb5ba894d37c00ece0b90011d4af5e215f2292ba41fdb75",
+  "lib/games/missions.ts": "a278e6ad796f739e04acc3a3b2bf6781a773a2f5ff2a1ac70ba46a4e75107740",
+  "lib/analytics.ts": "a608d807997237c1fbd9ebe505d5999f5a4cf5c44f8c181fc35510c20d0fc90d",
+  "components/google-analytics.tsx": "9a872c1c7ec12d4f76d3c3ae07ed2b71b762af73c75fe8eccaced4f21fa42887"
+}
