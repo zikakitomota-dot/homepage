@@ -36,7 +36,7 @@ test('worksheet intent allowlists subjects and operations and rejects duplicates
 });
 test('Model C is shallow, has no future links and retains Health',()=>{
   const nav=JSON.parse(readFileSync('lib/navigation.json','utf8'));
-  assert.deepEqual(nav.primary.map(x=>x.label),['Home','Tools','Finder','Games','Worksheets','Learning','Freebies','Shop']);
+  assert.deepEqual(nav.primary.map(x=>x.label),['Home','Tools','Search','Games','Worksheets','Learning','Freebies','Shop']);
   assert.deepEqual(nav.learning.map(x=>x.href),['/games/missions','/games/my-learning-journey','/learning/malaysia/curriculum']);
   assert.ok(nav.tools.some(x=>x.href==='/health'));
   assert.ok(!JSON.stringify(nav).includes('/learning/malaysia-curriculum'));
