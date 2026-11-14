@@ -26,11 +26,11 @@ export default function NotFound() {
           <p className="text-sm font-bold uppercase tracking-wider text-primary">Error 404</p>
           <h1 className="mt-3 text-balance text-4xl font-bold tracking-tight sm:text-5xl">We couldn&apos;t find that page</h1>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            The link may be old or mistyped. Search the free collection, or jump to one of the popular sections below.
+            The link may be old or mistyped. Use the Resource Finder to search the free collection, or jump to one of the popular sections below.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button asChild size="lg" className="min-h-12">
-              <Link href="/resources"><Search className="mr-2 h-5 w-5" aria-hidden="true" />Search resources</Link>
+              <Link href="/resources"><Search className="mr-2 h-5 w-5" aria-hidden="true" />Open the Resource Finder</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="min-h-12">
               <Link href="/">Go to the homepage</Link>

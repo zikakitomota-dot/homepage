@@ -2,7 +2,7 @@
   "primary": [
     { "label": "Home", "href": "/" },
     { "label": "Tools", "group": "tools" },
-    { "label": "Search", "href": "/resources", "accessibleLabel": "Search all resources" },
+    { "label": "Finder", "href": "/resources", "accessibleLabel": "Resource Finder" },
     { "label": "Games", "href": "/games" },
     { "label": "Worksheets", "href": "/worksheets" },
     { "label": "Learning", "group": "learning" },
