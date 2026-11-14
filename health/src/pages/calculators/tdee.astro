@@ -1,0 +1,149 @@
+---
+import CalculatorLayout from "@/layouts/CalculatorLayout.astro"
+import BodyFields from "@/components/BodyFields.astro"
+
+const faqs = [
+  {
+    q: "What does TDEE mean?",
+    a: "TDEE stands for Total Daily Energy Expenditure. It estimates the total calories your body uses in a day through basic functions, daily movement, and exercise.",
+  },
+  {
+    q: "What is the difference between BMR and TDEE?",
+    a: "BMR estimates the energy your body needs at rest for essential functions. TDEE starts with BMR and applies an activity factor to estimate your total daily calorie needs.",
+  },
+  {
+    q: "Is TDEE the same as maintenance calories?",
+    a: "TDEE is commonly used as an estimate of maintenance calories: the daily intake that may help you maintain your current weight. Your actual maintenance intake can differ from the estimate.",
+  },
+  {
+    q: "How should I choose an activity level?",
+    a: "Choose the option that best reflects both your usual daily movement and planned exercise across a typical week. A realistic selection produces a more useful estimate than choosing based on your most active day.",
+  },
+  {
+    q: "Why is a TDEE calculation only an estimate?",
+    a: "The equation cannot fully account for differences in body composition, metabolism, health, or day-to-day movement. Use the result as a starting reference and consider your real-world weight trend over time.",
+  },
+  {
+    q: "When is a TDEE calculator useful?",
+    a: "A TDEE calculator can provide a starting point for understanding daily calorie needs, estimating maintenance calories, or planning a gradual weight goal. It is not a personalised nutrition prescription.",
+  },
+]
+---
+
+<CalculatorLayout
+  title="TDEE Calculator — Total Daily Energy Expenditure"
+  description="Calculate your Total Daily Energy Expenditure (TDEE) and estimated maintenance calories from your BMR and activity level. Free metric and imperial calculator."
+  heading="TDEE Calculator"
+  intro="Calculate your Total Daily Energy Expenditure (TDEE) — an estimate of your daily calorie needs and maintenance calories based on your BMR and activity level."
+  slug="tdee"
+  faqs={faqs}
+  relatedSlugs={["bmr", "calorie-deficit", "bmi", "ideal-weight"]}
+  sources={[
+    {
+      label: "Mifflin et al. (1990) — Resting energy expenditure equation",
+      href: "https://pubmed.ncbi.nlm.nih.gov/2305711/",
+      note: "documents the resting-energy equation used as the first step.",
+    },
+    {
+      label: "National Academies (2023) — Dietary Reference Intakes for Energy",
+      href: "https://www.nationalacademies.org/read/26818/chapter/6",
+      note: "explains that total energy expenditure includes resting metabolism, food-related thermogenesis, and physical activity.",
+    },
+  ]}
+  reviewedDate="28 September 2026"
+>
+  <div slot="tool" class="tool">
+    <div class="unit-toggle" role="group" aria-label="Measurement system">
+      <button type="button" data-unit="metric" aria-pressed="true">Metric</button>
+      <button type="button" data-unit="imperial" aria-pressed="false">Imperial</button>
+    </div>
+
+    <form novalidate data-calc>
+      <BodyFields />
+      <div class="field">
+        <label for="activity">Activity level</label>
+        <select id="activity" name="activity">
+          <option value="sedentary">Sedentary — little or no exercise</option>
+          <option value="light">Lightly active — 1–3 days/week</option>
+          <option value="moderate" selected>Moderately active — 3–5 days/week</option>
+          <option value="active">Very active — 6–7 days/week</option>
+          <option value="athlete">Extra active — hard training / physical job</option>
+        </select>
+        <span class="hint">Choose the level that best reflects your usual daily movement and exercise across a typical week. A realistic choice gives you a more useful TDEE estimate.</span>
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Calculate TDEE</button>
+        <button type="reset" class="btn btn-ghost">Reset</button>
+      </div>
+    </form>
+
+    <div class="result" data-result hidden aria-live="polite">
+      <p class="result-label">Estimated TDEE</p>
+      <p class="result-value" data-value>—</p>
+      <p class="result-summary">This is your estimated maintenance calorie intake — approximately the number of calories your body needs each day to maintain your current weight at your selected activity level.</p>
+      <p class="result-note">Based on <strong data-activity>—</strong>. Estimated resting energy (BMR): <strong data-bmr>—</strong>.</p>
+      <p class="result-next-step"><strong>Maintain weight:</strong> use this as a reference intake.</p>
+      <nav class="result-next-steps" aria-label="Next steps after your TDEE result">
+        <a href="/health/calculators/calorie-deficit">Plan weight loss</a>
+        <a href="/health/calculators/bmr">Understand resting energy needs</a>
+      </nav>
+      <p class="result-caution">TDEE is an estimate. Actual energy needs vary between individuals and from day to day.</p>
+    </div>
+  </div>
+
+  <Fragment slot="content">
+    <section class="prose" aria-labelledby="what-is-tdee-heading">
+      <h2 id="what-is-tdee-heading">What Is TDEE?</h2>
+      <p><strong>TDEE stands for Total Daily Energy Expenditure.</strong> It is an estimate of all the energy your body uses in a day, including energy for essential body functions, everyday movement, and planned exercise.</p>
+      <p>Many people use TDEE as a starting estimate of their <strong>maintenance calories</strong> — roughly the daily calorie intake that may maintain their current weight.</p>
+    </section>
+
+    <section class="prose" aria-labelledby="how-tdee-calculated-heading">
+      <h2 id="how-tdee-calculated-heading">How Is TDEE Calculated?</h2>
+      <p>This calculator first estimates your Basal Metabolic Rate (BMR) with the Mifflin–St Jeor equation. It then multiplies that result by the activity factor that matches your selection.</p>
+      <p class="formula">TDEE = BMR × activity factor</p>
+      <p>The activity factors used are sedentary 1.2, lightly active 1.375, moderately active 1.55, very active 1.725, and extra active 1.9. This five-step ladder is a convenient estimation convention, not an individually measured physical-activity level and not part of the original Mifflin–St Jeor paper. Daily movement, work, exercise, and variation between days make the selected level an important source of uncertainty.</p>
+      <div class="example-box">
+        <p><strong>Example:</strong> A person with a BMR of 1,700 kcal/day selects moderately active, which uses a factor of 1.55.</p>
+        <p class="formula">1,700 × 1.55 = 2,635 kcal/day</p>
+        <p>Their estimated TDEE, and therefore their starting estimate for maintenance calories, is <strong>2,635 kcal/day</strong>.</p>
+      </div>
+    </section>
+
+    <section class="prose" aria-labelledby="bmr-vs-tdee-heading">
+      <h2 id="bmr-vs-tdee-heading">BMR vs TDEE: What Is the Difference?</h2>
+      <p><a href="/health/calculators/bmr">BMR</a> estimates the calories your body needs at rest to support essential functions such as breathing and circulation. TDEE includes that resting energy plus an allowance for daily activity, so it is the more useful estimate when considering total calorie needs.</p>
+      <p>BMR and TDEE calculations use related numbers, but they answer different questions: BMR estimates resting needs, while TDEE estimates full-day energy expenditure.</p>
+    </section>
+
+    <section class="prose" aria-labelledby="using-tdee-heading">
+      <h2 id="using-tdee-heading">How to Use Your Maintenance Calorie Estimate</h2>
+      <p>Use your result as a starting reference rather than an exact target. It can help you understand your approximate maintenance intake or provide context for a gradual weight goal. If you are planning weight loss, the <a href="/health/calculators/calorie-deficit">Calorie Deficit Calculator</a> can turn this estimate into a conservative goal-based starting point.</p>
+      <p>TDEE can vary with body composition, health, routine, and day-to-day movement. Comparing your estimated intake with your weight trend over several weeks can provide more useful context than relying on a single calculated number.</p>
+    </section>
+
+    <section class="prose" aria-labelledby="related-health-context-heading">
+      <h2 id="related-health-context-heading">Other Useful Health Estimates</h2>
+      <p>TDEE describes energy use, not body size or a recommended weight. For separate context, use the <a href="/health/calculators/bmi">BMI Calculator</a> for an adult height-and-weight screening estimate or the <a href="/health/calculators/ideal-weight">Reference Weight Calculator</a> to compare historical height-based formulas.</p>
+    </section>
+  </Fragment>
+
+  <Fragment slot="decision">
+    <section class="prose" aria-labelledby="tdee-calibration-heading">
+      <h2 id="tdee-calibration-heading">Use the Activity Multiplier as a Starting Hypothesis</h2>
+      <p>The activity labels compress work, exercise, and everyday movement into one multiplier. A job with long periods of standing and three workouts a week may not match a neat label, so the first result is best treated as a hypothesis to check.</p>
+      <ol>
+        <li>Choose the description closest to a typical week, not your busiest day.</li>
+        <li>Keep the estimate separate from what a tracker reports as “calories burned.”</li>
+        <li>If you use the number for planning, compare it with a multi-week pattern rather than one day.</li>
+        <li>Recalculate when weight or routine changes materially.</li>
+      </ol>
+      <p>Agreement with a short-term scale change does not prove the multiplier is exact; water balance and intake estimates also vary.</p>
+    </section>
+  </Fragment>
+</CalculatorLayout>
+
+<script>
+  import { setupTdee } from "@/scripts/tdee"
+  setupTdee()
+</script>

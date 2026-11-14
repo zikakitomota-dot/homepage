@@ -18,6 +18,7 @@ export default defineConfig([
     '.open-next/**',
     '.wrangler/**',
     'public/health/**',
+    'health/**',
     'qa/**',
     'artifacts/**',
     'next-env.d.ts',

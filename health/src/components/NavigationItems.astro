@@ -1,0 +1,18 @@
+---
+import { activeNavigationKey, currentNavigationValue, navigation, navigationDecorations } from "../../../lib/navigation";
+const { pathname } = Astro.props;
+const active = activeNavigationKey(pathname);
+const groups = { tools: navigation.tools, learning: navigation.learning };
+const primary = navigation.primary;
+---
+{primary.map(item => item.href ? <a href={item.href} aria-label={item.accessibleLabel} aria-current={currentNavigationValue(pathname, item.href)} class:list={["zalea-nav-item", {"is-active": active === item.href}]} data-navigation-key={item.href}>{item.label}</a> :
+        <details class="zalea-menu">
+          <summary class:list={["zalea-nav-item", {"is-active": active === item.group}]} aria-current={active === item.group ? "location" : undefined} data-navigation-key={item.group}>{item.label}<svg class="zalea-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
+          <div class="zalea-menu-panel"><span class="zalea-menu-heading">{item.group === "tools" ? "Calculators" : "Learning paths"}</span>
+            {groups[item.group as keyof typeof groups].map(link => <a href={link.href} class="zalea-menu-link" aria-current={currentNavigationValue(pathname, link.href)}>
+              <span class="zalea-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">{navigationDecorations[link.href].paths.map(d => <path d={d}></path>)}</svg></span>
+              <span><span class="zalea-menu-label">{link.label}</span>{navigationDecorations[link.href].description && <span class="zalea-menu-description">{navigationDecorations[link.href].description}</span>}</span>
+              {currentNavigationValue(pathname, link.href) && <svg class="zalea-menu-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 12 4 4 8-8"></path></svg>}
+            </a>)}
+          </div>
+        </details>)}

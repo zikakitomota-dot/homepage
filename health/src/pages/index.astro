@@ -1,0 +1,87 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import AdSlot from "@/components/AdSlot.astro"
+import { calculators } from "@/data/calculators"
+
+const title = "Health Calculators — Free BMI, BMR, TDEE & More"
+const description =
+  "Calculate BMI, BMR, TDEE, reference weight, calorie deficit, water intake, and walking calories with free, private tools that run in your browser."
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Health Calculators",
+  itemListElement: calculators.map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.name,
+    url: `https://zaleastudio.com/health/calculators/${c.slug}`,
+  })),
+}
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <section class="hub-hero">
+    <div class="hub-hero-inner">
+    <p class="section-badge">Free adult health calculators</p>
+    <h1>Health &amp; fitness calculators that run in your browser</h1>
+    <p class="lead">
+      Compare adult BMI, resting and daily energy, reference-weight formulas,
+      total-water planning and walking estimates. Every calculation happens on
+      your device &mdash; nothing you enter is uploaded, stored, or shared.
+    </p>
+    </div>
+  </section>
+
+  <section id="calculators" class="hub-calculators" aria-labelledby="all-heading">
+    <div class="section-heading"><p class="eyebrow">Choose a calculator</p><h2 id="all-heading">Seven explained health tools</h2></div>
+    <div class="card-grid">
+      {
+        calculators.map((c) => (
+          <a class="calc-card" href={`/health/calculators/${c.slug}`}>
+            <span class="card-icon" aria-hidden="true">{c.category === "Body" ? "◇" : c.category === "Energy" ? "↯" : c.category === "Nutrition" ? "○" : "↗"}</span>
+            <h3>{c.name}<span class="card-arrow" aria-hidden="true">→</span></h3>
+            <p>{c.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <AdSlot variant="horizontal" label="Advertisement space (responsive)" />
+
+  <section class="hub-information hub-information-alt" aria-labelledby="choose-heading"><div class="hub-information-inner">
+    <h2 id="choose-heading">Choose the estimate that matches your question</h2>
+    <p>A formula predicts from the values entered; it does not measure your body or diagnose health. Start with the question you are trying to answer, then read the method and limitations on that calculator before interpreting the number.</p>
+    <ul>
+      <li><strong>Current weight relative to height:</strong> BMI is an adult screening measure, not a body-composition test.</li>
+      <li><strong>Resting versus full-day energy:</strong> BMR predicts resting energy; TDEE adds an activity multiplier and therefore adds more uncertainty.</li>
+      <li><strong>A mathematical weight-loss scenario:</strong> Calorie Deficit subtracts a selected deficit from estimated TDEE. It is not a diet prescription.</li>
+      <li><strong>Historical height-based formulas:</strong> Reference Weight compares three traditional equations; it does not identify a perfect or medically required weight.</li>
+      <li><strong>Activity or hydration context:</strong> Walking Calories uses MET values, while Water Intake provides a rough total-water planning estimate. Both vary substantially between individuals.</li>
+    </ul>
+  </div></section>
+
+  <section class="hub-information" aria-labelledby="method-heading"><div class="hub-information-inner">
+    <h2 id="method-heading">How methods and sources are handled</h2>
+    <p>
+      Zalea Studio publishes and maintains this Health Calculators collection.
+      Calculator pages identify the equation or reference method, link to
+      primary research, government guidance, or established reference works
+      where available, and state when a familiar multiplier or conversion is
+      only a practical convention.
+    </p>
+    <p>
+      Review dates show when the explanation, source links, and implementation
+      were last checked editorially. They do not mean the page was medically
+      reviewed. If a result or explanation appears wrong, use the
+      <a href="/contact">Zalea Studio contact page</a> and include the page, inputs,
+      received result, and expected result without sending medical records.
+    </p>
+    <p class="disclaimer-note">
+      These calculators provide general estimates for educational purposes only
+      and are not medical advice. Always consult a qualified healthcare
+      professional for guidance about your health.
+    </p>
+  </div></section>
+</BaseLayout>

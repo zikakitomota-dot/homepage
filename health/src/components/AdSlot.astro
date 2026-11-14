@@ -1,0 +1,23 @@
+---
+import { HEALTH_ADVERTISING_ENABLED } from "@/config/advertising"
+
+// This component intentionally renders nothing until a real advertising
+// provider is enabled and implemented.
+interface Props {
+  variant?: "box" | "horizontal"
+  label?: string
+}
+const { variant = "box", label = "Advertisement space" } = Astro.props
+---
+
+{
+  HEALTH_ADVERTISING_ENABLED && (
+    <aside
+      class={`ad-slot ${variant === "horizontal" ? "ad-slot--horizontal" : ""}`}
+      aria-hidden="true"
+      data-ad-slot
+    >
+      <span>{label}</span>
+    </aside>
+  )
+}

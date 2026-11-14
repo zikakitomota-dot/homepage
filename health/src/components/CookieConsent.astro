@@ -1,0 +1,57 @@
+---
+// Cookie consent area. The default Consent Mode state is set in BaseLayout
+// before Google Analytics loads; these controls update that state.
+---
+
+<div
+  class="cookie-banner"
+  role="dialog"
+  aria-modal="false"
+  aria-labelledby="cookie-title"
+  data-cookie-banner
+  hidden
+>
+  <p id="cookie-title">
+    We use cookies for basic analytics and to support this site. You can accept
+    or decline non-essential cookies. See the Zalea Studio <a href="/privacy-policy">Privacy Policy</a>.
+  </p>
+  <div class="actions">
+    <button class="btn btn-ghost" data-cookie-decline>Decline</button>
+    <button class="btn btn-primary" data-cookie-accept>Accept</button>
+  </div>
+</div>
+
+<script>
+  const KEY = "cookie-consent"
+  const banner = document.querySelector("[data-cookie-banner]")
+  if (banner) {
+    const stored = localStorage.getItem(KEY)
+    if (!stored) banner.removeAttribute("hidden")
+
+    const decide = (value: "accepted" | "declined") => {
+      localStorage.setItem(KEY, value)
+      const analyticsWindow = window as Window & {
+        gtag?: (...args: unknown[]) => void
+      }
+      analyticsWindow.gtag?.("consent", "update", {
+        analytics_storage: value === "accepted" ? "granted" : "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      })
+      document.documentElement.dataset.analyticsConsent =
+        value === "accepted" ? "granted" : "denied"
+      banner.setAttribute("hidden", "")
+      document.dispatchEvent(
+        new CustomEvent("cookie-consent", { detail: value }),
+      )
+    }
+
+    banner
+      .querySelector("[data-cookie-accept]")
+      ?.addEventListener("click", () => decide("accepted"))
+    banner
+      .querySelector("[data-cookie-decline]")
+      ?.addEventListener("click", () => decide("declined"))
+  }
+</script>

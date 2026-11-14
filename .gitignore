@@ -3,6 +3,8 @@ node_modules/
 .next/
 .open-next/
 tsconfig.tsbuildinfo
+health/.astro/
+health/dist/
 
 # Local logs
 *.log

@@ -1,0 +1,189 @@
+---
+import CalculatorLayout from "@/layouts/CalculatorLayout.astro"
+
+const faqs = [
+  {
+    q: "Can I calculate BMI using kg and cm?",
+    a: "Yes. Choose Metric, enter your weight in kilograms and height in centimetres, and the calculator will convert height to metres before calculating your BMI.",
+  },
+  {
+    q: "Can I calculate BMI using pounds and feet?",
+    a: "Yes. Choose Imperial, then enter your weight in pounds and your height in feet and inches. The result is equivalent to using the same measurements in metric units.",
+  },
+  {
+    q: "Is BMI calculated differently for men and women?",
+    a: "No. The adult BMI formula is the same for men and women. However, BMI does not account for individual differences in body composition, age or muscle mass.",
+  },
+  {
+    q: "What is considered a healthy BMI?",
+    a: "For most adults, a BMI from 18.5 to 24.9 is commonly classified as the healthy-weight range. It is a screening range rather than a diagnosis.",
+  },
+  {
+    q: "Does BMI measure body fat?",
+    a: "No. BMI uses only height and weight, so it cannot directly measure body fat or distinguish fat from muscle. It should be considered alongside other health information.",
+  },
+  {
+    q: "Can children use the same BMI categories as adults?",
+    a: "No. BMI for children and teenagers is interpreted using age- and sex-specific percentile charts, not the fixed adult categories shown here. A qualified healthcare professional can help interpret a child's growth measurements.",
+  },
+]
+---
+
+<CalculatorLayout
+  title="BMI Calculator – Metric & Imperial (kg, cm, lb, ft) | Zalea Studio"
+  description="Calculate your BMI using metric units (kg and cm) or imperial units (pounds, feet and inches). Get an instant result with adult BMI categories."
+  heading="BMI Calculator"
+  intro="Calculate your BMI with metric measurements in kilograms and centimetres or imperial measurements in pounds, feet and inches. Choose your preferred unit system below for an instant adult BMI estimate."
+  slug="bmi"
+  faqs={faqs}
+  canonical="https://zaleastudio.com/health/calculators/bmi"
+  breadcrumbLabel="BMI Calculator"
+  relatedSlugs={["ideal-weight", "bmr", "tdee", "calorie-deficit"]}
+  sources={[
+    {
+      label: "CDC — Adult BMI Calculator",
+      href: "https://www.cdc.gov/bmi/adult-calculator/index.html",
+      note: "documents the adult categories used here and describes BMI as a screening measure rather than a diagnosis.",
+    },
+    {
+      label: "CDC — Calculating BMI",
+      href: "https://www.cdc.gov/growth-chart-training/hcp/using-bmi/calculating-bmi.html",
+      note: "provides the metric and US customary formulas used by the calculator.",
+    },
+  ]}
+  reviewedDate="28 September 2026"
+>
+  <div slot="tool" class="tool">
+    <div class="unit-toggle" role="group" aria-label="Measurement system">
+      <button type="button" data-unit="metric" aria-pressed="true">Metric</button>
+      <button type="button" data-unit="imperial" aria-pressed="false">Imperial</button>
+    </div>
+
+    <form novalidate data-calc>
+      <div data-metric>
+        <div class="field-row">
+          <div class="field">
+            <label for="height-cm">Height (cm)</label>
+            <input id="height-cm" name="heightCm" type="number" inputmode="decimal" min="50" max="272" step="0.1" />
+            <span class="error" data-error-for="height-cm" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="weight-kg">Weight (kg)</label>
+            <input id="weight-kg" name="weightKg" type="number" inputmode="decimal" min="10" max="500" step="0.1" />
+            <span class="error" data-error-for="weight-kg" role="alert"></span>
+          </div>
+        </div>
+      </div>
+
+      <div data-imperial hidden>
+        <div class="field-row">
+          <div class="field">
+            <label for="height-ft">Height (ft)</label>
+            <input id="height-ft" name="heightFt" type="number" inputmode="numeric" min="1" max="8" step="1" />
+            <span class="error" data-error-for="height-ft" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="height-in">Height (in)</label>
+            <input id="height-in" name="heightIn" type="number" inputmode="decimal" min="0" max="11.9" step="0.1" />
+            <span class="error" data-error-for="height-in" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="weight-lb">Weight (lb)</label>
+            <input id="weight-lb" name="weightLb" type="number" inputmode="decimal" min="20" max="1100" step="0.1" />
+            <span class="error" data-error-for="weight-lb" role="alert"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Calculate BMI</button>
+        <button type="reset" class="btn btn-ghost">Reset</button>
+      </div>
+    </form>
+
+    <div class="result" data-result hidden aria-live="polite">
+      <p class="result-label">Your BMI</p>
+      <p class="result-value" data-value>—</p>
+      <p><span class="badge" data-category></span></p>
+      <p class="result-summary" data-interpretation></p>
+      <p class="result-note">BMI is a screening measure based on height and weight. It does not directly measure body fat or diagnose a health condition.</p>
+      <nav class="result-next-steps" aria-label="Next steps after your BMI result">
+        <a href="/health/calculators/ideal-weight">Check a reference weight range</a>
+        <a href="/health/calculators/bmr">Calculate BMR</a>
+        <a href="/health/calculators/tdee">Calculate TDEE</a>
+        <a href="/health/calculators/calorie-deficit">Plan a calorie deficit</a>
+      </nav>
+    </div>
+  </div>
+
+  <Fragment slot="content">
+    <section class="prose" aria-labelledby="how-to-use-heading">
+      <h2 id="how-to-use-heading">How to Use the BMI Calculator</h2>
+      <ol>
+        <li>Choose <strong>Metric</strong> for kilograms and centimetres, or <strong>Imperial</strong> for pounds, feet and inches.</li>
+        <li>Enter your height and weight in the labelled fields.</li>
+        <li>Select <strong>Calculate BMI</strong> to see your result and adult BMI category.</li>
+      </ol>
+    </section>
+
+    <section class="prose" aria-labelledby="metric-bmi-heading">
+      <h2 id="metric-bmi-heading">BMI Calculator Using kg and cm</h2>
+      <p>A metric BMI calculation uses weight in kilograms and height in metres. If your height is in centimetres, divide it by 100 before applying the formula.</p>
+      <p class="formula">BMI = weight in kilograms ÷ height in metres²</p>
+      <div class="example-box">
+        <p><strong>Example:</strong> A person who weighs 68 kg and is 170 cm tall has a height of 1.70 m.</p>
+        <p class="formula">68 ÷ (1.70 × 1.70) = 23.5</p>
+        <p>A BMI of 23.5 is within the common healthy-weight range for adults.</p>
+      </div>
+    </section>
+
+    <section class="prose" aria-labelledby="imperial-bmi-heading">
+      <h2 id="imperial-bmi-heading">BMI Calculator Using Pounds, Feet and Inches</h2>
+      <p>The Imperial option accepts weight in pounds and height in feet and inches. Convert the full height to inches, then use the imperial BMI formula.</p>
+      <p class="formula">BMI = 703 × weight in pounds ÷ height in inches²</p>
+      <div class="example-box">
+        <p><strong>Example:</strong> A person who weighs 140 lb and is 5 ft 6 in tall has a total height of 66 inches.</p>
+        <p class="formula">703 × 140 ÷ (66 × 66) = 22.6</p>
+        <p>The equivalent metric measurements produce the same BMI result.</p>
+      </div>
+    </section>
+
+    <section class="prose" aria-labelledby="bmi-categories-heading">
+      <h2 id="bmi-categories-heading">BMI Categories</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Adult BMI categories table">
+        <table class="bmi-table">
+          <caption>Common BMI categories for adults</caption>
+          <thead>
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">BMI range</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Underweight</th><td>Below 18.5</td></tr>
+            <tr><th scope="row">Healthy weight</th><td>18.5–24.9</td></tr>
+            <tr><th scope="row">Overweight</th><td>25.0–29.9</td></tr>
+            <tr><th scope="row">Obesity</th><td>30.0 and above</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="disclaimer-note"><strong>BMI is a screening tool and does not diagnose health conditions.</strong> Individual health assessment should consider other factors in addition to BMI.</p>
+    </section>
+
+    <section class="prose" aria-labelledby="calculation-heading">
+      <h2 id="calculation-heading">How Is BMI Calculated?</h2>
+      <p>BMI compares body weight with height squared. Squaring height helps adjust the weight measurement for differences in body size, producing one number that can be compared with standard adult screening ranges. Because the formula uses only height and weight, it does not describe body composition.</p>
+    </section>
+
+    <section class="prose" aria-labelledby="units-heading">
+      <h2 id="units-heading">Metric vs Imperial BMI</h2>
+      <p>A metric BMI calculator uses kilograms and metres or centimetres, while an imperial BMI calculator uses pounds and total inches. Both systems produce the same BMI when equivalent measurements are entered; only the units and conversion step differ.</p>
+      <p>For additional context, compare your result with a <a href="/health/calculators/ideal-weight">Reference Weight Calculator</a>, calculate resting energy needs with the <a href="/health/calculators/bmr">BMR Calculator</a>, estimate daily energy needs with the <a href="/health/calculators/tdee">TDEE Calculator</a>, or explore a goal-based estimate with the <a href="/health/calculators/calorie-deficit">Calorie Deficit Calculator</a>.</p>
+    </section>
+  </Fragment>
+</CalculatorLayout>
+
+<script>
+  import { setupBmi } from "@/scripts/bmi"
+  setupBmi()
+</script>

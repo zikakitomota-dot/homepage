@@ -1,0 +1,175 @@
+---
+import CalculatorLayout from "@/layouts/CalculatorLayout.astro"
+
+const faqs = [
+  {
+    q: "What does this reference weight calculator estimate?",
+    a: "It compares historical height-based equations, often called ideal-weight formulas, using your height and sex. The result is a general reference range, not a medically required weight or personal health target.",
+  },
+  {
+    q: "What is a healthy weight for my height?",
+    a: "Height is useful for estimating reference weights, but it cannot determine health by itself. Body composition, muscle mass, frame size, medical context, and other factors also matter. A BMI calculation can provide a separate height-and-weight screening measure.",
+  },
+  {
+    q: "Why do the reference-weight formulas give different results?",
+    a: "Robinson, Devine, and Miller use different starting weights and adjustments for each inch above 5 feet. Their estimates therefore vary slightly, which is why the calculator presents the lowest and highest results as a reference range.",
+  },
+  {
+    q: "Does age affect this reference-weight calculation?",
+    a: "No. These traditional formulas are based primarily on height and sex rather than age, so this calculator does not adjust its result directly for age. Age can still be relevant to an individual health assessment.",
+  },
+  {
+    q: "Is a reference-weight estimate the same as BMI?",
+    a: "No. These historical formulas estimate a reference weight from height and sex. BMI uses both your current weight and height to produce a separate adult weight-status screening value.",
+  },
+  {
+    q: "Is there one perfect weight?",
+    a: "No. There is no universally perfect weight for everyone of the same height. Treat the displayed range as an educational reference rather than a single correct target.",
+  },
+  {
+    q: "Should I use kilograms or pounds?",
+    a: "Use whichever measurement system is most familiar. Metric mode shows results in kilograms, while imperial mode shows the same formula estimates converted to pounds.",
+  },
+]
+---
+
+<CalculatorLayout
+  title="Reference Weight Calculator — Historical Formula Comparison"
+  description="Compare historical Robinson, Devine, and Miller reference-weight estimates by height and sex. The range is not a medically required weight or personal health target."
+  heading="Reference Weight Calculator"
+  intro="Compare three historical height-based reference equations, sometimes called “ideal weight” formulas. The range is not a medically required weight, personal health target, or diagnosis."
+  slug="ideal-weight"
+  faqs={faqs}
+  relatedSlugs={["bmi", "bmr", "tdee", "calorie-deficit"]}
+  sources={[
+    {
+      label: "Robinson et al. (1983) — Ideal body weight for drug-dosage calculations",
+      href: "https://pubmed.ncbi.nlm.nih.gov/6869387/",
+      note: "documents the origin and intended drug-dosage context of the Robinson equation.",
+    },
+    {
+      label: "Peterson et al. (2016) — Universal equation for estimating ideal body weight",
+      href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4841935/",
+      note: "compares historical Devine, Robinson, and Miller equations and explains their origins and limitations.",
+    },
+    {
+      label: "Pai and Paloucek (2000) — The origin of the “ideal” body weight equations",
+      href: "https://pubmed.ncbi.nlm.nih.gov/10981254/",
+      note: "provides historical context and clarifies that ideal body weight is not the same as lean body weight.",
+    },
+  ]}
+  reviewedDate="28 September 2026"
+>
+  <div slot="tool" class="tool">
+    <div class="unit-toggle" role="group" aria-label="Measurement system">
+      <button type="button" data-unit="metric" aria-pressed="true">Metric</button>
+      <button type="button" data-unit="imperial" aria-pressed="false">Imperial</button>
+    </div>
+
+    <form novalidate data-calc>
+      <div class="field">
+        <label for="sex">Sex</label>
+        <select id="sex" name="sex">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
+      <div data-metric>
+        <div class="field">
+          <label for="height-cm">Height (cm)</label>
+          <input id="height-cm" name="heightCm" type="number" inputmode="decimal" min="120" max="250" step="0.1" />
+          <span class="error" data-error-for="height-cm" role="alert"></span>
+        </div>
+      </div>
+
+      <div data-imperial hidden>
+        <div class="field-row">
+          <div class="field">
+            <label for="height-ft">Height (ft)</label>
+            <input id="height-ft" name="heightFt" type="number" inputmode="numeric" min="4" max="8" step="1" />
+            <span class="error" data-error-for="height-ft" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="height-in">Height (in)</label>
+            <input id="height-in" name="heightIn" type="number" inputmode="decimal" min="0" max="11.9" step="0.1" />
+            <span class="error" data-error-for="height-in" role="alert"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Calculate reference weight</button>
+        <button type="reset" class="btn btn-ghost">Reset</button>
+      </div>
+    </form>
+
+    <div class="result" data-result hidden aria-live="polite">
+      <p class="result-label">Estimated reference weight</p>
+      <p class="result-value" data-value>—</p>
+      <p class="result-summary">This is a height-based reference estimate, not a single medically prescribed or “perfect” weight.</p>
+      <ul data-list aria-label="Formula estimates"></ul>
+      <p class="result-note">Different formulas use slightly different assumptions, so their estimates can vary. Metric results are shown in kilograms; imperial results are shown in pounds.</p>
+      <p class="result-caution">These estimates do not directly account for muscle mass, body composition, frame size, pregnancy, medical conditions, or your individual health context.</p>
+    </div>
+  </div>
+
+  <Fragment slot="content">
+    <section class="prose" aria-labelledby="reference-weight-heading">
+      <h2 id="reference-weight-heading">What a Reference-Weight Estimate Means</h2>
+      <p>A reference weight calculator provides a <strong>historical height-based estimate</strong>, not a definitive health target. These equations are often described as “ideal weight” formulas in search and reference material, but they originated in actuarial height–weight tables and drug-dosage work. They were not designed to identify one medically required or personally ideal weight for every adult. This tool compares three traditional formulas and displays the lowest and highest estimates as a range.</p>
+      <p>Terms such as “ideal,” “healthy,” and “perfect” weight are sometimes used interchangeably, but no single number can describe the right weight for every person. The result is best used as a starting point for context.</p>
+    </section>
+
+    <section class="prose" aria-labelledby="height-weight-heading">
+      <h2 id="height-weight-heading">How Height Is Used to Estimate Reference Weight</h2>
+      <p>Height is the main driver in all three formulas. Each starts with a base weight at 5 feet (152.4 cm) and adjusts that estimate for additional height, with separate constants for the male and female selections.</p>
+      <p>Height alone does not determine health. The formulas do not directly measure body composition, muscle mass, or frame size, so their results should not be treated as a diagnosis or prescribed weight goal.</p>
+    </section>
+
+    <section class="prose" aria-labelledby="formula-heading">
+      <h2 id="formula-heading">How the Historical Reference-Weight Formulas Work</h2>
+      <p>The calculator uses three established reference methods. Their different base weights and height adjustments explain why the results are not identical:</p>
+      <p class="formula">Robinson: 52 kg (men) / 49 kg (women) + 1.9 / 1.7 kg per inch over 5 ft</p>
+      <p class="formula">Devine: 50 kg (men) / 45.5 kg (women) + 2.3 kg per inch over 5 ft</p>
+      <p class="formula">Miller: 56.2 kg (men) / 53.1 kg (women) + 1.41 / 1.36 kg per inch over 5 ft</p>
+      <p>All calculations are performed in kilograms. Imperial mode converts each result to pounds for display without changing the underlying formula.</p>
+    </section>
+
+    <section class="prose" aria-labelledby="example-heading">
+      <h2 id="example-heading">Example Calculation</h2>
+      <div class="example-box">
+        <p><strong>Person:</strong> a man 178 cm tall (about 70.1 inches, or 10.1 inches over 5 ft).</p>
+        <p class="formula">Devine = 50 + 2.3 × 10.1 ≈ 73.2 kg</p>
+        <p class="formula">Robinson = 52 + 1.9 × 10.1 ≈ 71.1 kg</p>
+        <p class="formula">Miller = 56.2 + 1.41 × 10.1 ≈ 70.4 kg</p>
+        <p>The three formulas produce a reference range of roughly <strong>70.4–73.2 kg</strong>. The variation reflects their different assumptions rather than an error.</p>
+      </div>
+    </section>
+
+    <section class="prose" aria-labelledby="age-heading">
+      <h2 id="age-heading">Does Age Affect the Result?</h2>
+      <p>Most traditional reference-weight formulas, including the three used here, are based on height and sex rather than age. This calculator therefore does not adjust its estimate directly for age.</p>
+      <p>Age may still matter in a broader assessment of health, body composition, and personal circumstances. It simply is not part of these particular equations.</p>
+    </section>
+
+    <section class="prose" aria-labelledby="interpret-heading">
+      <h2 id="interpret-heading">How to Interpret the Reference Range</h2>
+      <p>Use the range as an educational comparison rather than a required target. It does not directly account for muscle mass, body composition, frame size, health history, pregnancy, medical conditions, or other individual context.</p>
+      <p>For a separate height-and-current-weight screening estimate, use the <a href="/health/calculators/bmi">BMI Calculator</a>. To explore resting and total daily energy needs, use the <a href="/health/calculators/bmr">BMR Calculator</a> or <a href="/health/calculators/tdee">TDEE Calculator</a>.</p>
+    </section>
+  </Fragment>
+
+  <Fragment slot="decision">
+    <section class="prose" aria-labelledby="reference-not-target-heading">
+      <h2 id="reference-not-target-heading">Why the Result Should Not Become a Target</h2>
+      <p>These equations were created for historical reference and dosing contexts, not to prescribe one body weight for every adult. A narrow spread between the three answers only means the formulas happen to agree for that height; it does not make the result more personal or medically correct.</p>
+      <p>If weight is relevant to a health decision, consider current health, body composition, history, and professional advice rather than trying to reach the calculated range simply because it appears on screen.</p>
+    </section>
+  </Fragment>
+</CalculatorLayout>
+
+<script>
+  import { setupIdealWeight } from "@/scripts/ideal-weight"
+  setupIdealWeight()
+</script>

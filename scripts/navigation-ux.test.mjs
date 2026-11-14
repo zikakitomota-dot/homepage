@@ -41,5 +41,5 @@ test('Model C is shallow, has no future links and retains Health',()=>{
   assert.ok(nav.tools.some(x=>x.href==='/health'));
   assert.ok(!JSON.stringify(nav).includes('/learning/malaysia-curriculum'));
   assert.ok(!readFileSync('components/site-header.tsx','utf8').includes('Explore Health Calculators'));
-  assert.ok(readFileSync('../phase2-navigation-health/src/components/Header.astro','utf8').includes('lib/navigation'));
+  assert.ok(readFileSync('health/src/components/Header.astro','utf8').includes('lib/navigation'));
 });
