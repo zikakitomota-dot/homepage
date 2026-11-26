@@ -1,0 +1,83 @@
+---
+// Same markup, classes and storage key as the main site's components/theme-picker.tsx.
+interface Props { id: string }
+const { id } = Astro.props
+const themes = [
+  { id: "bright", label: "Bright" },
+  { id: "soft", label: "Soft" },
+  { id: "night", label: "Night" },
+]
+const listId = `zalea-theme-list-${id}`
+---
+<div class="zalea-theme" data-zalea-theme-picker>
+  <button type="button" class="zalea-theme-button" aria-expanded="false" aria-controls={listId} aria-label="Theme: Bright">
+    <span class="zalea-theme-swatch" data-swatch="bright" aria-hidden="true"></span>
+    <span aria-hidden="true" data-theme-label>Bright</span>
+    <svg class="zalea-theme-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+  </button>
+  <ul id={listId} class="zalea-theme-menu" hidden aria-label="Choose a theme">
+    {themes.map((theme) => (
+      <li>
+        <button type="button" class="zalea-theme-option" aria-pressed="false" data-theme-option={theme.id} data-ga-event="theme_change" data-ga-label={theme.id}>
+          <span class="zalea-theme-swatch" data-swatch={theme.id} aria-hidden="true"></span>
+          <span class="zalea-theme-option-label">{theme.label}</span>
+          <svg class="zalea-theme-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+        </button>
+      </li>
+    ))}
+  </ul>
+</div>
+<script>
+  const labels: Record<string, string> = { bright: "Bright", soft: "Soft", night: "Night" };
+  const current = () => {
+    const value = document.documentElement.getAttribute("data-theme");
+    return value === "soft" || value === "night" ? value : "bright";
+  };
+  const pickers = Array.from(document.querySelectorAll<HTMLElement>("[data-zalea-theme-picker]"));
+  const render = () => {
+    const theme = current();
+    pickers.forEach((picker) => {
+      const button = picker.querySelector<HTMLButtonElement>(".zalea-theme-button");
+      button?.setAttribute("aria-label", `Theme: ${labels[theme]}`);
+      picker.querySelector(".zalea-theme-button .zalea-theme-swatch")?.setAttribute("data-swatch", theme);
+      const label = picker.querySelector("[data-theme-label]");
+      if (label) label.textContent = labels[theme];
+      picker.querySelectorAll<HTMLButtonElement>("[data-theme-option]").forEach((option) => {
+        option.setAttribute("aria-pressed", String(option.dataset.themeOption === theme));
+      });
+    });
+  };
+  const setOpen = (picker: HTMLElement, open: boolean) => {
+    picker.querySelector(".zalea-theme-button")?.setAttribute("aria-expanded", String(open));
+    const list = picker.querySelector<HTMLElement>(".zalea-theme-menu");
+    if (list) list.hidden = !open;
+  };
+  pickers.forEach((picker) => {
+    const button = picker.querySelector<HTMLButtonElement>(".zalea-theme-button");
+    button?.addEventListener("click", () => setOpen(picker, button.getAttribute("aria-expanded") !== "true"));
+    picker.querySelectorAll<HTMLButtonElement>("[data-theme-option]").forEach((option) => {
+      option.addEventListener("click", () => {
+        const theme = option.dataset.themeOption ?? "bright";
+        if (theme === "bright") document.documentElement.removeAttribute("data-theme");
+        else document.documentElement.setAttribute("data-theme", theme);
+        try { localStorage.setItem("zalea-theme", theme); } catch { /* storage unavailable: theme still applies on this page */ }
+        render();
+        setOpen(picker, false);
+        button?.focus();
+      });
+    });
+    picker.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || button?.getAttribute("aria-expanded") !== "true") return;
+      event.stopPropagation();
+      setOpen(picker, false);
+      button?.focus();
+    });
+    picker.addEventListener("focusout", (event) => {
+      if (!picker.contains(event.relatedTarget as Node)) setOpen(picker, false);
+    });
+  });
+  document.addEventListener("pointerdown", (event) => {
+    pickers.forEach((picker) => { if (!picker.contains(event.target as Node)) setOpen(picker, false); });
+  });
+  render();
+</script>

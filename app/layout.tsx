@@ -1,9 +1,14 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { DynaPuff, Work_Sans } from 'next/font/google';
 import { GoogleAdSense } from '@/components/google-adsense';
 import { GoogleAnalytics } from '@/components/google-analytics';
 import { safeJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/site';
+import { THEME_INIT_SCRIPT } from '@/lib/theme';
+
+const displayFont = DynaPuff({ subsets: ['latin'], weight: ['500', '700'], variable: '--z-font-dynapuff', display: 'swap' });
+const bodyFont = Work_Sans({ subsets: ['latin'], variable: '--z-font-worksans', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://zaleastudio.com'),
@@ -88,7 +93,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body className="font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(siteJsonLd) }} />
         {children}

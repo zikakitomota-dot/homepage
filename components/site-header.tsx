@@ -3,7 +3,8 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Calculator, Check, ChevronDown, Menu } from 'lucide-react';
+import { Check, ChevronDown, Menu } from 'lucide-react';
+import { ThemePicker } from '@/components/theme-picker';
 import { activeNavigationKey, currentNavigationValue, navigation, navigationDecorations } from '@/lib/navigation';
 import './site-navigation.css';
 
@@ -88,12 +89,14 @@ export function SiteHeader() {
 
   return <header ref={root} className="zalea-header">
     <div className="zalea-header-inner">
-      <Link href="/" className="zalea-brand" aria-label="Zalea Studio home"><span className="zalea-brand-icon"><Calculator aria-hidden="true" /></span><span>Zalea Studio</span></Link>
+      <Link href="/" className="zalea-brand" aria-label="Zalea Studio home"><span>Zalea Studio</span></Link>
       <nav className="zalea-desktop-nav" aria-label="Main navigation"><NavigationItems pathname={pathname} /></nav>
+      <div className="zalea-theme-desktop"><ThemePicker /></div>
       <details className="zalea-mobile-navigation">
         <summary className="zalea-mobile-toggle" aria-label="Navigation menu"><Menu aria-hidden="true" /><span>Menu</span></summary>
         <nav className="zalea-mobile-panel" aria-label="Mobile navigation">
           <NavigationItems pathname={pathname} /><div className="zalea-nav-utility">{navigation.utility.map(link => <Link key={link.href} href={link.href} className="zalea-nav-item" aria-current={currentNavigationValue(pathname, link.href)}>{link.label}</Link>)}</div>
+          <ThemePicker />
         </nav>
       </details>
     </div>

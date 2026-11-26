@@ -1,0 +1,178 @@
+/*
+ * Zalea Studio themes, shared by the main site and the Health site.
+ * The theme is chosen per visitor and stored on <html data-theme="bright|soft|night">.
+ * Every text/background pair below was checked for WCAG AA contrast (4.5:1 for text).
+ */
+:root {
+  color-scheme: light;
+  --z-font-display: var(--z-font-dynapuff, 'DynaPuff'), 'Work Sans', system-ui, sans-serif;
+  --z-font-body: var(--z-font-worksans, 'Work Sans'), system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --z-paper: #f6e9d7;
+  --z-paper-alt: #fbf5ec;
+  --z-ink: #1b2a3a;
+  --z-body: #45505c;
+  --z-card: #ffffff;
+  --z-line: #e6d3ba;
+  --z-shadow: rgba(27, 42, 58, 0.15);
+  --z-accent: #a3361a;
+  --z-accent-text: #a3361a;
+  --z-teal: #1d6e6a;
+  --z-on-accent: #ffffff;
+  --z-header-bg: rgba(246, 233, 215, 0.94);
+  --z-nav-hover: #ffffff;
+  --z-nav-current-bg: #ffffff;
+  --z-nav-current-line: #e6d3ba;
+  --z-menu-hover: #fbf5ec;
+  --z-menu-current: #f6e9d7;
+
+  /* Decorative paper shapes (never used behind text). */
+  --z-shape-1: #f4b63f;
+  --z-shape-2: #1d6e6a;
+  --z-shape-3: #e2552d;
+  --z-shape-4: #7a63c9;
+
+  /* Who's visiting? panels. */
+  --z-kid-bg: #a3361a;
+  --z-kid-fg: #ffffff;
+  --z-grown-bg: #1d6e6a;
+  --z-grown-fg: #ffffff;
+}
+
+:root[data-theme='soft'] {
+  --z-paper: #fbf3ef;
+  --z-paper-alt: #f6eae5;
+  --z-ink: #2e2a40;
+  --z-body: #5a5670;
+  --z-card: #ffffff;
+  --z-line: #eedad6;
+  --z-shadow: rgba(46, 42, 64, 0.1);
+  --z-accent: #a23f63;
+  --z-accent-text: #a23f63;
+  --z-teal: #3e7385;
+  --z-on-accent: #ffffff;
+  --z-header-bg: rgba(251, 243, 239, 0.94);
+  --z-nav-hover: #ffffff;
+  --z-nav-current-bg: #ffffff;
+  --z-nav-current-line: #eedad6;
+  --z-menu-hover: #fbf3ef;
+  --z-menu-current: #f6eae5;
+  --z-shape-1: #f6d9a8;
+  --z-shape-2: #bfe0e6;
+  --z-shape-3: #f4b9c8;
+  --z-shape-4: #d9cef5;
+  --z-kid-bg: #a23f63;
+  --z-kid-fg: #ffffff;
+  --z-grown-bg: #3e7385;
+  --z-grown-fg: #ffffff;
+}
+
+:root[data-theme='night'] {
+  color-scheme: dark;
+  --z-paper: #17202b;
+  --z-paper-alt: #1c2734;
+  --z-ink: #f3ebdd;
+  --z-body: #c3cad3;
+  --z-card: #223041;
+  --z-line: #344457;
+  --z-shadow: rgba(0, 0, 0, 0.35);
+  --z-accent: #ff8a5c;
+  --z-accent-text: #ffa27f;
+  --z-teal: #5cc2b5;
+  --z-on-accent: #17202b;
+  --z-header-bg: rgba(23, 32, 43, 0.94);
+  --z-nav-hover: #223041;
+  --z-nav-current-bg: #223041;
+  --z-nav-current-line: #344457;
+  --z-menu-hover: #2a394c;
+  --z-menu-current: #17202b;
+  --z-shape-1: #9c7424;
+  --z-shape-2: #2f7f78;
+  --z-shape-3: #b9573a;
+  --z-shape-4: #5f52a8;
+  --z-kid-bg: #ff8a5c;
+  --z-kid-fg: #17202b;
+  --z-grown-bg: #5cc2b5;
+  --z-grown-fg: #17202b;
+}
+
+/* Theme menu in the header (both sites). */
+.zalea-theme { position: relative; flex-shrink: 0; }
+.zalea-theme-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 10px;
+  border: 1px solid var(--z-line);
+  border-radius: 999px;
+  background: var(--z-card);
+  color: var(--z-ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  cursor: pointer;
+}
+.zalea-theme-button[aria-expanded='true'] { box-shadow: 0 0 0 2px var(--z-ink); }
+.zalea-theme-chevron { width: 12px; height: 12px; transition: transform 150ms ease; }
+.zalea-theme-button[aria-expanded='true'] .zalea-theme-chevron { transform: rotate(180deg); }
+.zalea-theme-swatch {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 999px;
+}
+.zalea-theme-swatch[data-swatch='bright'] { background: #e2552d; }
+.zalea-theme-swatch[data-swatch='soft'] { background: #f4b9c8; box-shadow: inset 0 0 0 1px rgba(46, 42, 64, 0.25); }
+.zalea-theme-swatch[data-swatch='night'] { background: #17202b; box-shadow: inset 0 0 0 2px #f3ebdd, 0 0 0 1px #17202b; }
+.zalea-theme-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 70;
+  display: flex;
+  width: 200px;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid var(--z-line);
+  border-radius: 20px 24px 18px 22px;
+  background: var(--z-card);
+  box-shadow: 6px 8px 0 var(--z-shadow);
+  list-style: none;
+}
+.zalea-theme-menu[hidden] { display: none; }
+.zalea-theme-option {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--z-ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.zalea-theme-option:hover, .zalea-theme-option:focus-visible { background: var(--z-menu-hover); }
+.zalea-theme-option[aria-pressed='true'] { background: var(--z-menu-current); }
+.zalea-theme-option-label { flex: 1; }
+.zalea-theme-check { width: 16px; height: 16px; color: var(--z-accent-text); visibility: hidden; }
+.zalea-theme-option[aria-pressed='true'] .zalea-theme-check { visibility: visible; }
+.zalea-theme-button:focus-visible, .zalea-theme-option:focus-visible { outline: 2px solid var(--z-ink); outline-offset: 2px; }
+/* Inside the mobile menu the theme picker sits in the flow, not as a pop-over. */
+.zalea-mobile-panel .zalea-theme { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--z-line); }
+.zalea-mobile-panel .zalea-theme-button { width: 100%; justify-content: flex-start; }
+.zalea-mobile-panel .zalea-theme-button .zalea-theme-chevron { margin-left: auto; }
+.zalea-mobile-panel .zalea-theme-menu { position: static; width: 100%; margin-top: 6px; box-shadow: none; }
+@media (prefers-reduced-motion: reduce) {
+  .zalea-theme-chevron { transition: none; }
+}

@@ -1,32 +1,79 @@
+@import '../components/zalea-themes.css';
+@import '../components/zalea-night-remap.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  /* Tailwind tokens follow the visitor's theme (data-theme on <html>); see components/zalea-themes.css. */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --background: 35 63% 90%;
+    --foreground: 211 36% 17%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 211 36% 17%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 221 83% 53%;
+    --popover-foreground: 211 36% 17%;
+    --primary: 12 72% 37%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 221 83% 53%;
+    --secondary: 36 65% 95%;
+    --secondary-foreground: 211 36% 17%;
+    --muted: 35 53% 87%;
+    --muted-foreground: 211 14% 32%;
+    --accent: 35 53% 87%;
+    --accent-foreground: 12 72% 37%;
     --sage: 145 14% 57%;
     --sage-foreground: 145 24% 29%;
     --sage-soft: 140 25% 93%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
+    --destructive: 0 72% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 34 47% 82%;
+    --input: 34 47% 82%;
+    --ring: 211 36% 17%;
     --radius: 0.75rem;
+  }
+  :root[data-theme='soft'] {
+    --background: 20 60% 96%;
+    --foreground: 251 21% 21%;
+    --card: 0 0% 100%;
+    --card-foreground: 251 21% 21%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 251 21% 21%;
+    --primary: 338 44% 44%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 18 49% 93%;
+    --secondary-foreground: 251 21% 21%;
+    --muted: 14 43% 90%;
+    --muted-foreground: 249 13% 39%;
+    --accent: 14 43% 90%;
+    --accent-foreground: 338 44% 44%;
+    --border: 10 41% 89%;
+    --input: 10 41% 85%;
+    --ring: 251 21% 21%;
+  }
+  :root[data-theme='night'] {
+    --background: 213 30% 13%;
+    --foreground: 38 48% 91%;
+    --card: 213 31% 19%;
+    --card-foreground: 38 48% 91%;
+    --popover: 213 31% 19%;
+    --popover-foreground: 38 48% 91%;
+    --primary: 17 100% 68%;
+    --primary-foreground: 213 30% 13%;
+    --secondary: 213 30% 16%;
+    --secondary-foreground: 38 48% 91%;
+    --muted: 214 29% 23%;
+    --muted-foreground: 214 15% 80%;
+    --accent: 214 29% 23%;
+    --accent-foreground: 17 100% 68%;
+    --sage: 145 22% 38%;
+    --sage-foreground: 145 32% 72%;
+    --sage-soft: 145 20% 18%;
+    --destructive: 0 84% 70%;
+    --destructive-foreground: 213 30% 13%;
+    --border: 213 25% 27%;
+    --input: 213 25% 32%;
+    --ring: 38 48% 91%;
   }
 }
 
@@ -38,6 +85,9 @@
     @apply bg-background text-foreground;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3 {
+    font-family: var(--z-font-display);
   }
   html {
     scroll-behavior: smooth;
