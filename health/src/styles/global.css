@@ -967,6 +967,25 @@ a { color: var(--primary-dark); }
 .footer-brand-icon svg { width: 1rem; height: 1rem; }
 .footer-brand { font-size: 1rem; }
 .footer-brand-block p { margin: .75rem 0 0; color: var(--muted); font-size: .875rem; line-height: 1.5rem; }
+/* Paper Cut-outs look, matching components/zalea-pages.css on the main site. */
+.hub-hero, .detail-hero { position: relative; isolation: isolate; overflow: hidden; background: var(--z-paper); border-bottom-color: var(--z-line); }
+.hub-hero::before, .hub-hero::after, .detail-hero::before, .detail-hero::after { position: absolute; z-index: -1; content: ''; pointer-events: none; }
+.hub-hero::before, .detail-hero::before { left: -70px; top: 28px; width: 230px; height: 196px; border-radius: 58% 42% 55% 45% / 48% 60% 40% 52%; background: var(--z-shape-1); opacity: .55; }
+.hub-hero::after, .detail-hero::after { right: -56px; bottom: -46px; width: 210px; height: 180px; border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%; background: var(--z-teal); opacity: .25; }
+@media (max-width: 640px) {
+  .hub-hero::before, .detail-hero::before { left: -110px; top: 12px; width: 180px; height: 150px; }
+  .hub-hero::after, .detail-hero::after { right: -100px; width: 170px; height: 140px; }
+}
+.section-badge { padding: .3rem .9rem; border-color: transparent; border-radius: 999px 14px 999px 18px; background: var(--primary); color: var(--z-on-accent); font-size: .8rem; }
+.calc-card, .tool, .detail-content-grid > .prose, .faq details, .related-links a, .example-box { border-color: var(--border); border-radius: 22px 28px 20px 30px; box-shadow: 4px 5px 0 var(--z-shadow); }
+.calc-card:hover { box-shadow: 6px 8px 0 var(--z-shadow); }
+.card-icon { border-radius: 46% 54% 42% 58% / 55% 45% 55% 45%; background: var(--z-accent); color: var(--z-on-accent); }
+.card-grid > :nth-child(4n + 2) .card-icon { background: var(--z-teal); }
+.card-grid > :nth-child(4n + 3) .card-icon { background: var(--z-shape-1); color: var(--z-ink); }
+.card-grid > :nth-child(4n + 4) .card-icon { background: #7a63c9; color: #ffffff; }
+:root[data-theme='night'] .card-grid > :nth-child(4n + 3) .card-icon { background: #e0a93c; color: #17202b; }
+:root[data-theme='night'] .card-grid > :nth-child(4n + 4) .card-icon { background: #a595f0; color: #17202b; }
+
 .footer-main-row { align-items: flex-start; }
 .footer-navigation { display: grid; flex: 0 1 40rem; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 1.5rem; }
 .footer-group h2 { margin: 0; font-size: 1rem; letter-spacing: 0; }

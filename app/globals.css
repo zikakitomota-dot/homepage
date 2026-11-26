@@ -1,5 +1,7 @@
 @import '../components/zalea-themes.css';
 @import '../components/zalea-night-remap.css';
+@import '../components/zalea-brand-remap.css';
+@import '../components/zalea-pages.css';
 
 @tailwind base;
 @tailwind components;
