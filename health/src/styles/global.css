@@ -1038,3 +1038,19 @@ a { color: var(--primary-dark); }
 .global-header a:focus-visible, .global-header summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 .global-header nav a:hover, .global-header nav summary:hover { background: var(--z-menu-hover); }
 @media (min-width: 1280px) { .desktop-navigation { gap: .5rem; } }
+
+/* Hub opener: intro on the left, a real screenshot of the BMI Calculator pinned on the right. */
+.hub-hero-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: center; gap: 3.5rem; text-align: left; }
+.hub-hero-split h1 { margin-left: 0; font-size: clamp(2.25rem, 4.6vw, 3.4rem); line-height: 1.05; }
+.hub-hero-split .lead { margin-left: 0; }
+.zalea-shot { position: relative; margin: 0; transform: rotate(var(--zs-tilt, -2deg)); }
+.zalea-shot::before { position: absolute; top: -12px; left: 50%; z-index: 1; width: 92px; height: 26px; content: ''; transform: translateX(-50%) rotate(-3deg); background: var(--z-shape-1); opacity: .85; border-radius: 3px; }
+.zalea-shot-frame { display: block; padding: 10px; border-radius: 18px 22px 16px 24px; background: var(--z-card); box-shadow: 8px 10px 0 var(--z-shadow); transition: transform 200ms ease, box-shadow 200ms ease; }
+.zalea-shot-frame:hover, .zalea-shot-frame:focus-visible { transform: translateY(-4px); box-shadow: 10px 14px 0 var(--z-shadow); }
+.zalea-shot-frame:focus-visible { outline: 3px solid var(--z-ink); outline-offset: 4px; }
+.zalea-shot img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.zalea-shot-caption { margin-top: 14px; color: var(--z-ink); font-family: var(--z-font-display); font-size: 1.15rem; font-weight: 700; text-align: center; }
+@media (prefers-reduced-motion: reduce) { .zalea-shot-frame { transition: none; } }
+@media (max-width: 1023px) {
+  .hub-hero-split { grid-template-columns: 1fr; gap: 2.5rem; }
+}

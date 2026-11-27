@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ResourceFinder } from '@/components/resources/resource-finder';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
@@ -25,7 +24,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [
 export default function ResourcesPage() {
   return <div className="min-h-screen bg-background"><SiteHeader /><main>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
-    <section className="border-b border-blue-100 bg-gradient-to-b from-blue-50/70 to-background"><div className="mx-auto max-w-[1200px] px-4 py-12 sm:px-6 lg:px-8 lg:py-16"><nav aria-label="Breadcrumb" className="text-sm text-muted-foreground"><Link href="/" className="hover:underline">Home</Link><span className="mx-2" aria-hidden="true">/</span><span aria-current="page">Resources</span></nav><p className="mt-7 text-sm font-bold uppercase tracking-wider text-primary">Zalea Studio Resource Finder</p><h1 className="mt-3 max-w-4xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">{title}</h1><p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">Choose an activity for a learner, a printable for your next session, or a calculator for an everyday decision. Search the free collection by the task you want to do. No account needed.</p></div></section>
+    <section><div className="mx-auto max-w-[1200px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20"><h1 className="max-w-4xl text-balance font-bold tracking-tight">Find a game, worksheet or calculator</h1><p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">Search by topic or by the job in front of you, and see the free games, printables, guides and calculators that fit. No account needed.</p></div></section>
     <div className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14"><ResourceFinder resources={resources} /></div>
   </main><SiteFooter /></div>;
 }

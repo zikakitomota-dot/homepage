@@ -22,14 +22,23 @@ const jsonLd = {
 
 <BaseLayout title={title} description={description} jsonLd={jsonLd}>
   <section class="hub-hero">
-    <div class="hub-hero-inner">
+    <div class="hub-hero-inner hub-hero-split">
+    <div>
     <p class="section-badge">Free adult health calculators</p>
     <h1>Health &amp; fitness calculators that run in your browser</h1>
     <p class="lead">
-      Compare adult BMI, resting and daily energy, reference-weight formulas,
-      total-water planning and walking estimates. Every calculation happens on
-      your device &mdash; nothing you enter is uploaded, stored, or shared.
+      Estimate an adult BMI, resting and daily energy use, reference weights,
+      water intake and walking calories. Each page explains the
+      formula it uses and its limits. Everything is worked out on your device;
+      nothing you enter is uploaded, stored or shared.
     </p>
+    </div>
+    <figure class="zalea-shot" style="--zs-tilt: 2deg">
+      <a class="zalea-shot-frame" href="/health/calculators/bmi" aria-label="The BMI Calculator: open it">
+        <img src="/images/previews/bmi-calculator.webp" alt="The BMI Calculator with a height of 170 cm and a weight of 65 kg: a BMI of 22.5, with a note that BMI is a screening measure and does not diagnose a health condition." width="968" height="608" loading="eager" decoding="async" />
+      </a>
+      <figcaption class="zalea-shot-caption">Height and weight in, BMI out</figcaption>
+    </figure>
     </div>
   </section>
 

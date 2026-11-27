@@ -69,6 +69,7 @@ const downloadRoot = '/downloads/freebies';
 export const freebies: readonly Freebie[] = [
   {
     slug: 'shapes-and-colours-activity-pack',
+    previewImage: '/images/printables/shapes-and-colours-activity-pack.webp',
     title: 'Shapes & Colours Activity Pack',
     shortTitle: 'Shapes & Colours',
     description: 'Practise recognising, tracing, matching and sorting familiar shapes and colours through playful activities.',
@@ -127,6 +128,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'numbers-1-10-activity-pack',
+    previewImage: '/images/printables/numbers-1-10-activity-pack.webp',
     title: 'Numbers 1–10 Activity Pack',
     shortTitle: 'Numbers 1–10',
     description: 'Connect numbers with real quantities through tracing, counting, matching and simple number activities.',
@@ -188,6 +190,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'grade-tracker',
+    previewImage: '/images/printables/grade-tracker.webp',
     title: 'Grade Tracker',
     shortTitle: 'Grade Tracker',
     description: 'Keep assignments, scores and final-grade goals organised in one simple set.',
@@ -239,6 +242,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'study-planner',
+    previewImage: '/images/printables/study-planner.webp',
     title: 'Study Planner',
     shortTitle: 'Study Planner',
     description: 'Plan your week, focus each study session and prepare for exams.',
@@ -288,6 +292,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'student-progress-tracker',
+    previewImage: '/images/printables/student-progress-tracker.webp',
     title: 'Student Progress Tracker',
     shortTitle: 'Student Progress Tracker',
     description: 'Track progress, celebrate strengths and see where extra support may be needed.',
@@ -335,6 +340,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'early-learning-skills-observation-tracker',
+    previewImage: '/images/printables/early-learning-skills-observation-tracker.webp',
     title: 'Early Learning Skills & Observation Tracker',
     shortTitle: 'Early Learning Tracker',
     description: 'Keep track of growing skills, interests and next steps as learning happens.',
@@ -383,6 +389,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'pre-writing-pencil-control',
+    previewImage: '/images/printables/pre-writing-pencil-control.webp',
     title: 'Pre-Writing & Pencil Control',
     shortTitle: 'Pre-Writing & Pencil Control',
     longTitle: 'Pre-Writing & Pencil Control Starter Pack',
@@ -433,6 +440,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'fine-motor-activity-cards',
+    previewImage: '/images/printables/fine-motor-activity-cards.webp',
     title: 'Fine Motor Activity Cards',
     shortTitle: 'Fine Motor Activity Cards',
     description: 'Choose from 48 playful activity ideas for strengthening little hands through everyday play.',
@@ -493,6 +501,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'first-phonics-activities',
+    previewImage: '/images/printables/first-phonics-activities.webp',
     title: 'First Phonics Activities',
     shortTitle: 'First Phonics Activities',
     description: 'Practise six early letter sounds, beginning sounds and simple blending through playful printable activities.',
@@ -554,6 +563,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'scissor-skills-practice',
+    previewImage: '/images/printables/scissor-skills-practice.webp',
     title: 'Scissor Skills Practice',
     shortTitle: 'Scissor Skills Practice',
     description: 'Build cutting confidence with simple snipping, line, shape and cut-and-paste activities for little hands.',
@@ -615,6 +625,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'savings-goal-tracker',
+    previewImage: '/images/printables/savings-goal-tracker.webp',
     title: 'Savings Goal Tracker',
     shortTitle: 'Savings Goal Tracker',
     description: 'Set a goal, track your progress and stay motivated along the way.',
@@ -664,6 +675,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'big-purchase-planner',
+    previewImage: '/images/printables/big-purchase-planner.webp',
     title: 'Big Purchase Planner',
     shortTitle: 'Big Purchase Planner',
     description: 'Plan a major purchase with more clarity, intention and confidence.',
@@ -713,6 +725,7 @@ export const freebies: readonly Freebie[] = [
   },
   {
     slug: 'emergency-fund-planner',
+    previewImage: '/images/printables/emergency-fund-planner.webp',
     title: 'Emergency Fund Planner',
     shortTitle: 'Emergency Fund Planner',
     description: 'Build a buffer for the unexpected with a simple plan you can stick to.',

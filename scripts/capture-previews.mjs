@@ -1,6 +1,7 @@
 // Captures real screenshots of Zalea tools and games for use on the homepage and hub pages.
 // Needs the production build running locally (next start -p 3100) and Chrome installed.
 // Run: node scripts/capture-previews.mjs   (output: public/images/previews/*.webp)
+// Set ONLY=name,name to re-capture just some of them.
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
@@ -29,7 +30,9 @@ const shots = [
   { name: 'percentage-calculator', url: '/math/percentage-calculator', find: 'document.querySelectorAll("main > section")[1]', maxHeight: 760 },
   { name: 'grade-calculator', url: '/education/grade-calculator', find: 'document.querySelectorAll("main > section")[1]', maxHeight: 760 },
   { name: 'worksheet', url: '/worksheets', find: 'document.querySelector(".worksheet-page")', maxHeight: 640 },
-  { name: 'memory-match', url: '/games/logic/memory-match', click: ['Start matching'], after: 'Array.from(document.querySelectorAll("main button[aria-label]")).slice(0,2).forEach((b)=>b.click())', find: 'document.querySelector("main > div")', maxHeight: 760 },];
+  { name: 'memory-match', url: '/games/logic/memory-match', click: ['Start matching'], after: 'Array.from(document.querySelectorAll("main button[aria-label]")).slice(0,2).forEach((b)=>b.click())', find: 'document.querySelector("main > div")', maxHeight: 760 },
+  { name: 'bmi-calculator', url: '/health/calculators/bmi', after: '[["height-cm","170"],["weight-kg","65"]].forEach(([i,v])=>{const el=document.getElementById(i); el.value=v; el.dispatchEvent(new Event("input",{bubbles:true}));}), document.querySelector(".tool-region .btn-primary").click()', find: 'document.querySelector(".tool-region")', maxHeight: 760 },
+].filter((shot) => !process.env.ONLY || process.env.ONLY.split(',').includes(shot.name));
 
 try {
   const target = (await json('/json/list')).find((t) => t.type === 'page');

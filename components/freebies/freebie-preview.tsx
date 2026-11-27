@@ -6,13 +6,13 @@ import { freebieCategories } from '@/lib/freebies';
 export function FreebiePreview({ freebie, compact = false }: { freebie: Freebie; compact?: boolean }) {
   if (freebie.previewImage) {
     return (
-      <div className={`relative bg-secondary ${compact ? 'aspect-[4/3]' : 'min-h-[360px] sm:min-h-[440px]'}`}>
+      <div className={`relative ${compact ? 'aspect-[4/3] bg-secondary' : 'min-h-[420px] bg-[var(--z-paper-alt)] sm:min-h-[540px]'}`}>
         <Image
           src={freebie.previewImage}
-          alt={`Preview of ${freebie.title}`}
+          alt={`Cover page of the ${freebie.title} printable`}
           fill
           sizes={compact ? '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw' : '(min-width: 1024px) 45vw, 100vw'}
-          className="object-cover"
+          className={compact ? 'object-cover object-top' : 'object-contain p-6 drop-shadow-[4px_6px_0_var(--z-shadow)] sm:p-8'}
         />
       </div>
     );
