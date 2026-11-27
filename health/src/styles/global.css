@@ -986,6 +986,12 @@ a { color: var(--primary-dark); }
 :root[data-theme='night'] .card-grid > :nth-child(4n + 3) .card-icon { background: #e0a93c; color: #17202b; }
 :root[data-theme='night'] .card-grid > :nth-child(4n + 4) .card-icon { background: #a595f0; color: #17202b; }
 
+/* Fewer frames and labels (matches components/zalea-pages.css). Shapes stay on the hub only. */
+.detail-hero::before, .detail-hero::after { display: none; }
+.hub-hero, .detail-hero, .hub-information, .hub-information-alt { border-top: 0; border-bottom: 0; }
+.hub-hero .section-badge, .detail-hero .section-badge, .section-heading .eyebrow { display: none; }
+.calc-card, .tool, .detail-content-grid > .prose, .faq details, .related-links a, .example-box { border-color: transparent; }
+
 .footer-main-row { align-items: flex-start; }
 .footer-navigation { display: grid; flex: 0 1 40rem; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 1.5rem; }
 .footer-group h2 { margin: 0; font-size: 1rem; letter-spacing: 0; }

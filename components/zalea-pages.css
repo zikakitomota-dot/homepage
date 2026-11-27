@@ -50,19 +50,34 @@ main > section:first-of-type:not(.zv) h1 {
   letter-spacing: 0;
 }
 
-/* Small badges in the hero ("Free everyday calculations", "No login required") become a cut-out tag. */
+/* Hero shapes are for the main hub pages only (Games, Tools, Health ...). Deeper pages show a
+   breadcrumb trail; there the shapes would just repeat, so they are left out. */
+main > section:first-of-type:not(.zv):has(nav[aria-label='Breadcrumb' i])::before,
+main > section:first-of-type:not(.zv):has(nav[aria-label='Breadcrumb' i])::after { display: none; }
+
+/* Fewer frames: no hairlines between sections that share the same paper, and no outline on
+   boxes whose own fill already sets them apart. */
+main > section:first-of-type:not(.zv) { border-bottom: 0 !important; }
+main > section:not(.zv) { border-top-width: 0 !important; border-bottom-width: 0 !important; }
+main :is(div, section, article, aside, a, li)[class~='border']:is([class*='bg-white'], [class*='bg-card']) { border-color: transparent !important; }
+/* A see-through white box on paper reads as the same colour; make it a solid sheet instead. */
+main :is(div, section, article, aside, a, li)[class*='bg-white/'] { background-color: hsl(var(--card)) !important; }
+
+/* Fewer labels: the small uppercase line or pill sitting directly above a heading is decoration. */
+main :is(p, span, div).uppercase:has(+ :is(h1, h2)) { display: none; }
+main > section:first-of-type:not(.zv) .rounded-full.border.text-xs:has(+ h1) { display: none; }
+/* Any other hero pill becomes plain text. */
 main > section:first-of-type:not(.zv) .rounded-full.border.text-xs {
-  padding: 0.3rem 0.9rem;
-  border-color: transparent !important;
-  border-radius: 999px 14px 999px 18px;
-  background: hsl(var(--primary)) !important;
-  color: hsl(var(--primary-foreground)) !important;
-  font-size: 0.8rem;
+  padding: 0;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--z-body) !important;
+  font-size: 0.9rem;
 }
 
 /* Cards: paper corners and a flat offset shadow, like the cut-outs on the homepage. */
 .zalea-card {
-  border-color: var(--z-line) !important;
+  border-color: transparent !important;
   border-radius: 22px 28px 20px 30px !important;
   box-shadow: 4px 5px 0 var(--z-shadow) !important;
 }
