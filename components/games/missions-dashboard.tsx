@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2, Circle, Printer } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
+import { SubjectIcon } from '@/components/subject-icons';
 import { trackEvent } from '@/lib/analytics';
 import { LEARNING_JOURNEY_EVENT, readLearningJourney, setMissionEvidence, type LearningJourney } from '@/lib/games/learning-journey';
 import { getMissionProgress, isActivityComplete, missions, type Mission } from '@/lib/games/missions';
@@ -31,7 +32,7 @@ export function MissionsDashboard() {
   if (!progress) return <p role="status">Loading missions saved on this device…</p>;
   return <div className="grid gap-6 md:grid-cols-2">{missions.map((mission) => {
     const summary = getMissionProgress(mission, progress);
-    return <Card key={mission.id} className="border-border/70 shadow-sm"><CardHeader><div className="flex items-start justify-between gap-4"><span className="text-4xl" aria-hidden="true">{mission.icon}</span><span className="rounded-full bg-secondary px-3 py-1 text-xs font-bold">{stateLabel[summary.state]}</span></div><CardTitle className="mt-3 text-2xl">{mission.title}</CardTitle></CardHeader><CardContent><p className="leading-relaxed text-muted-foreground">{mission.shortDescription}</p><div className="mt-5 flex items-center justify-between text-sm font-semibold"><span>{summary.completed} of {summary.total} activities</span><span>{summary.percentage}%</span></div><Progress className="mt-2" value={summary.percentage} aria-label={`${mission.title}: ${summary.completed} of ${summary.total} activities completed`} /><Button asChild className="mt-6"><Link href={`/games/missions/${mission.id}`}>View Mission<ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link></Button></CardContent></Card>;
+    return <Card key={mission.id} className="border-border/70 shadow-sm"><CardHeader><div className="flex items-start justify-between gap-4"><SubjectIcon subject={mission.subject} className="h-12 w-12" /><span className="rounded-full bg-secondary px-3 py-1 text-xs font-bold">{stateLabel[summary.state]}</span></div><CardTitle className="mt-3 text-2xl">{mission.title}</CardTitle></CardHeader><CardContent><p className="leading-relaxed text-muted-foreground">{mission.shortDescription}</p><div className="mt-5 flex items-center justify-between text-sm font-semibold"><span>{summary.completed} of {summary.total} activities</span><span>{summary.percentage}%</span></div><Progress className="mt-2" value={summary.percentage} aria-label={`${mission.title}: ${summary.completed} of ${summary.total} activities completed`} /><Button asChild className="mt-6"><Link href={`/games/missions/${mission.id}`}>View Mission<ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link></Button></CardContent></Card>;
   })}</div>;
 }
 

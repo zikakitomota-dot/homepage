@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { ArrowRight, BadgeDollarSign, Banknote, CalendarDays, Clock3, Timer } from 'lucide-react';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
-import { Badge } from '@/components/ui/badge';
+import { HubHero } from '@/components/hub-hero';
+import { shots } from '@/components/peek-shot';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { workTimeTools } from '@/lib/work-time';
 
@@ -27,13 +28,7 @@ export default function WorkTimeToolsPage() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main>
-        <section className="border-b border-border/60 bg-gradient-to-b from-blue-50/70 to-background">
-          <div className="mx-auto max-w-[1200px] px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-24">
-            <Badge variant="secondary" className="border-primary/20 bg-primary/10 text-primary">Free practical calculators</Badge>
-            <h1 className="mx-auto mt-5 max-w-4xl text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Work &amp; Time Tools</h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">Free work and time calculators for working hours, timesheets, schedules, pay and everyday work planning.</p>
-          </div>
-        </section><ResourceFinderLink />
+        <HubHero title="Work & Time Tools" shot={shots.workHours} intro="Add up a week of shifts, count the working days to a deadline, or see what a salary works out to per hour. Pop in your own times and the totals add up for you." /><ResourceFinderLink />
 
         <section className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 lg:px-8 lg:py-24" aria-labelledby="work-calculators-heading">
           <div className="mb-10">
@@ -50,7 +45,7 @@ export default function WorkTimeToolsPage() {
 
         <section className="border-y border-border/60 bg-secondary/30">
           <div className="mx-auto max-w-[1100px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-            <div className="max-w-3xl"><p className="text-sm font-semibold uppercase tracking-wider text-primary">Match the tool to the task</p><h2 className="mt-2 text-3xl font-bold tracking-tight">What do you need to work out?</h2><p className="mt-4 leading-relaxed text-muted-foreground">These calculators cover three common planning needs: recording time already worked, counting future working dates, and converting pay into a form that is easier to compare. Choose the task closest to your question.</p></div>
+            <div className="max-w-3xl"><p className="text-sm font-semibold uppercase tracking-wider text-primary">Match the tool to the task</p><h2 className="mt-2 text-3xl font-bold tracking-tight">What do you need to work out?</h2><p className="mt-4 leading-relaxed text-muted-foreground">Most questions fall into one of three groups: hours you’ve already worked, working days still ahead, or pay you want to compare. Pick the one closest to yours.</p></div>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Track a shift or timesheet</h3><p className="mt-3 leading-relaxed text-muted-foreground">Use the <Link href="/work-time/work-hours-calculator" className="font-semibold text-primary hover:underline">Work Hours Calculator</Link> for daily and weekly shifts, or the <Link href="/work-time/time-duration-calculator" className="font-semibold text-primary hover:underline">Time Duration Calculator</Link> for one interval or decimal-hour conversion.</p></div>
               <div className="rounded-2xl border border-border/70 bg-white p-6"><h3 className="text-xl font-bold">Plan working dates</h3><p className="mt-3 leading-relaxed text-muted-foreground">The <Link href="/work-time/business-days-calculator" className="font-semibold text-primary hover:underline">Business Days Calculator</Link> counts working days or moves a date forward or backward while respecting the workweek and excluded dates you select.</p></div>

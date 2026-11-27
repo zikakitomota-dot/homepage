@@ -75,6 +75,46 @@ main > section:first-of-type:not(.zv) .rounded-full.border.text-xs {
   font-size: 0.9rem;
 }
 
+.zalea-subject-icon { display: block; flex-shrink: 0; }
+.zalea-subject-icon svg { display: block; width: 100%; height: 100%; }
+
+/* Real screenshots, pinned on like printed photos. */
+.zalea-shot { position: relative; margin: 0; transform: rotate(var(--zs-tilt, -2deg)); }
+.zalea-shot::before {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  z-index: 1;
+  width: 92px;
+  height: 26px;
+  content: '';
+  transform: translateX(-50%) rotate(-3deg);
+  background: var(--z-shape-1);
+  opacity: 0.85;
+  border-radius: 3px;
+}
+.zalea-shot-frame {
+  display: block;
+  padding: 10px;
+  border-radius: 18px 22px 16px 24px;
+  background: var(--z-card);
+  box-shadow: 8px 10px 0 var(--z-shadow);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.zalea-shot-frame:hover, .zalea-shot-frame:focus-visible { transform: translateY(-4px); box-shadow: 10px 14px 0 var(--z-shadow); }
+.zalea-shot-frame:focus-visible { outline: 3px solid var(--z-ink); outline-offset: 4px; }
+.zalea-shot img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.zalea-shot-caption { margin-top: 14px; color: var(--z-ink); font-family: var(--z-font-display); font-size: 1.15rem; font-weight: 700; text-align: center; }
+@media (prefers-reduced-motion: reduce) { .zalea-shot-frame { transition: none; } }
+
+/* Peek strip on the homepage: three photos at different tilts. */
+.zalea-peek { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; align-items: start; }
+.zalea-peek > :nth-child(2) { margin-top: 28px; }
+@media (max-width: 900px) {
+  .zalea-peek { grid-template-columns: 1fr; gap: 40px; max-width: 520px; margin-inline: auto; }
+  .zalea-peek > :nth-child(2) { margin-top: 0; }
+}
+
 /* Cards: paper corners and a flat offset shadow, like the cut-outs on the homepage. */
 .zalea-card {
   border-color: transparent !important;

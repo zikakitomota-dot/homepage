@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { ArrowRight, BadgePercent, Fuel, PiggyBank, Scale, Users, WalletCards } from 'lucide-react';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
-import { Badge } from '@/components/ui/badge';
+import { HubHero } from '@/components/hub-hero';
+import { shots } from '@/components/peek-shot';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { moneyTools } from '@/lib/money-tools';
 
@@ -34,13 +35,7 @@ export default function MoneyToolsPage() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main>
-        <section className="border-b border-border/60 bg-gradient-to-b from-blue-50/70 to-background">
-          <div className="mx-auto max-w-[1200px] px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-24">
-            <Badge variant="secondary" className="border-primary/20 bg-primary/10 text-primary">Free everyday calculators</Badge>
-            <h1 className="mx-auto mt-5 max-w-4xl text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Everyday Money Tools</h1>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">Start with the decision you need to make: compare two offers, divide a real expense, test a savings timeline, or estimate a trip. Each tool answers a different question, so choosing the right one matters as much as entering the numbers.</p>
-          </div>
-        </section><ResourceFinderLink />
+        <HubHero title="Everyday Money Tools" shot={shots.unitPrice} tilt={-2} intro="Which pack is really cheaper? How do we split this bill fairly? How long until we reach the savings goal? Small money questions, sorted in a minute." /><ResourceFinderLink />
 
         <section className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 lg:px-8 lg:py-24" aria-labelledby="calculators-heading">
           <div className="mb-10">
