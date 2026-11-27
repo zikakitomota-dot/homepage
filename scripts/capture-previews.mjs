@@ -29,9 +29,7 @@ const shots = [
   { name: 'percentage-calculator', url: '/math/percentage-calculator', find: 'document.querySelectorAll("main > section")[1]', maxHeight: 760 },
   { name: 'grade-calculator', url: '/education/grade-calculator', find: 'document.querySelectorAll("main > section")[1]', maxHeight: 760 },
   { name: 'worksheet', url: '/worksheets', find: 'document.querySelector(".worksheet-page")', maxHeight: 640 },
-  { name: 'memory-match', url: '/games/logic/memory-match', click: ['Start matching'], after: 'Array.from(document.querySelectorAll("main button[aria-label]")).slice(0,2).forEach((b)=>b.click())', find: 'document.querySelector("main > div")', maxHeight: 760 },
-  { name: 'continent-explorer', url: '/games/geography/continent-explorer', click: ['Start Exploring'], find: 'document.querySelectorAll("main > section")[1]', maxHeight: 760 },
-];
+  { name: 'memory-match', url: '/games/logic/memory-match', click: ['Start matching'], after: 'Array.from(document.querySelectorAll("main button[aria-label]")).slice(0,2).forEach((b)=>b.click())', find: 'document.querySelector("main > div")', maxHeight: 760 },];
 
 try {
   const target = (await json('/json/list')).find((t) => t.type === 'page');

@@ -63,10 +63,14 @@ main :is(div, section, article, aside, a, li)[class~='border']:is([class*='bg-wh
 /* A see-through white box on paper reads as the same colour; make it a solid sheet instead. */
 main :is(div, section, article, aside, a, li)[class*='bg-white/'] { background-color: hsl(var(--card)) !important; }
 
-/* Fewer labels: the small uppercase line or pill sitting directly above a heading is decoration. */
-main :is(p, span, div).uppercase:has(+ :is(h1, h2)) { display: none; }
-main > section:first-of-type:not(.zv) .rounded-full.border.text-xs:has(+ h1) { display: none; }
-/* Any other hero pill becomes plain text. */
+/* Quieter labels: the small shouty uppercase line above a heading reads as plain text instead.
+   (Not hidden: on some pages it carries real information, such as a mission's progress status.) */
+main :is(p, span, div).uppercase:has(+ :is(h1, h2)) {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1rem;
+}
+/* Hero pills become plain text. */
 main > section:first-of-type:not(.zv) .rounded-full.border.text-xs {
   padding: 0;
   border: 0 !important;

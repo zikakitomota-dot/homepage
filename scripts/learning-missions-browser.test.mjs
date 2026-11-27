@@ -13,6 +13,16 @@ mkdirSync(outputDir, { recursive: true });
 const chrome = spawn(chromePath, ['--headless=new', '--disable-gpu', '--no-first-run', '--remote-debugging-port=9223', `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
 
 const sleep = (ms) => new Promise((resolvePromise) => setTimeout(resolvePromise, ms));
+// Poll until the page reaches the expected state instead of guessing a fixed delay; the full test run
+// loads the machine heavily, so hydration can take longer than a few hundred milliseconds.
+async function until(page, expression, timeout = 15000) {
+  const end = Date.now() + timeout;
+  while (Date.now() < end) {
+    try { if (await page.evaluate(expression)) return; } catch { /* page still navigating */ }
+    await sleep(100);
+  }
+}
+const hasText = (pattern) => `${pattern}.test(document.body.innerText)`;
 async function waitForJson(path) {
   let lastError;
   for (let attempt = 0; attempt < 50; attempt += 1) {
@@ -78,20 +88,22 @@ try {
   await waitForJson('/json/version');
   const first = await newPage(`${baseUrl}/games/missions/maths-explorer`);
   await first.evaluate(`localStorage.setItem('zalea-learning-journey-v1', ${JSON.stringify(JSON.stringify(emptyJourney))}); location.reload()`);
-  await sleep(600);
+  await sleep(300);
+  await until(first, `${hasText('/not started/i')} && [...document.querySelectorAll('button')].some(button => button.textContent.includes('I finished my worksheet'))`);
   assert.match(await first.evaluate('document.body.innerText'), /not started/i);
   assert.equal(await first.evaluate(`[...document.querySelectorAll('button')].some(button => button.textContent.includes('I finished my worksheet'))`), true);
   await first.evaluate(`[...document.querySelectorAll('button')].find(button => button.textContent.includes('I finished my worksheet')).click()`);
-  await sleep(300);
+  await until(first, hasText('/1 of 3 activities completed/'));
   assert.match(await first.evaluate('document.body.innerText'), /1 of 3 activities completed/);
   await navigate(first, '/games/missions/maths-explorer');
+  await until(first, hasText('/1 of 3 activities completed/'));
   assert.match(await first.evaluate('document.body.innerText'), /1 of 3 activities completed/);
 
   const second = await newPage(`${baseUrl}/games/missions/maths-explorer`);
-  await sleep(400);
+  await until(second, `${hasText('/1 of 3 activities completed/')} && [...document.querySelectorAll('button')].some(button => button.textContent.includes('Undo completion'))`);
   assert.match(await second.evaluate('document.body.innerText'), /1 of 3 activities completed/);
   await second.evaluate(`[...document.querySelectorAll('button')].find(button => button.textContent.includes('Undo completion')).click()`);
-  await sleep(400);
+  await until(first, hasText('/0 of 3 activities completed/'));
   assert.match(await first.evaluate('document.body.innerText'), /0 of 3 activities completed/);
 
   const completed = { ...emptyJourney, updatedAt: '2026-10-25T00:03:00.000Z', missionEvidence: [{ id: 'maths-explorer:worksheet', completedAt: '2026-10-25T00:03:00.000Z' }], games: {
@@ -99,7 +111,7 @@ try {
     'subtraction-level-1': { gameId: 'subtraction-level-1', subjectId: 'mathematics', sessionCount: 1, completedSessionCount: 1, totalCorrectAnswers: 7, totalQuestionsAttempted: 10, personalBest: { correct: 7, questions: 10, percentage: 70 }, lastPlayedAt: '2026-10-25T00:02:00.000Z', firstCompletedAt: '2026-10-25T00:02:00.000Z' },
   } };
   await first.evaluate(`localStorage.setItem('zalea-learning-journey-v1', ${JSON.stringify(JSON.stringify(completed))}); window.dispatchEvent(new CustomEvent('zalea-learning-journey-changed'))`);
-  await sleep(400);
+  await until(first, hasText('/Mission Completed/'));
   const completedText = await first.evaluate('document.body.innerText');
   assert.match(completedText, /Mission Completed/);
   assert.match(completedText, /Maths Explorer/);

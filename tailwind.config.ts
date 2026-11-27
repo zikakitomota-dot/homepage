@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // Tailwind 3.3 has no numbered min-h-*/min-w-* sizes (added in 3.4). Pages use them for 44px+ tap
+      // targets (min-h-11, min-h-12 ...), so map them onto the spacing scale the same way 3.4 does.
+      minHeight: ({ theme }) => theme('spacing'),
+      minWidth: ({ theme }) => theme('spacing'),
       fontFamily: {
         sans: ['var(--z-font-body)'],
         display: ['var(--z-font-display)'],
